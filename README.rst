@@ -9,8 +9,7 @@ Struktūra::
     ├── common          – tai kas bendra visiems;
     ├── config          – konkretaus dokumento individualizavimas;
     ├── dist            – kompiliavimo katalogas;
-    ├── part1           – pirmos dalies tekstas;
-    └── partn           – n-osios dalies tekstas.
+    └── content         – dokumento turinys.
 
 Naujo projekto sukūrimas
 ========================
@@ -33,3 +32,19 @@ Naujo projekto sukūrimas
     Čia ``${REPOSITORY}`` yra pagrindinės projekto saugyklos adresas.
 
 #.  Pritaikome ``config`` esančius failus pagal savo poreikius.
+#.  Susikuriame naują ``README.md`` failą::
+
+    touch README.md
+
+#.  Sukuriame turinio katalogą ``contents`` ir nurodome jį naudoti vietoj
+    pavyzdžių::
+
+    mkdir content
+    echo -e '\chapter{Mano straipsnis}\n' > content/chapters.tex
+
+Šablono atnaujinimas
+====================
+
+::
+
+    git pull template master

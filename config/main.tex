@@ -4,23 +4,13 @@
 
 \begin{document}
   \input{./config/global.tex}
-  \input{./common/title.tex}
+  \input{./common/titles/term.tex}
   {
     \singlespacing
     \tableofcontents
   }
   
   \pagestyle{plain}
-  \input{./config/annotation.tex}
-  \input{./part1/chapters.tex}
-
-  % FIXME Ištrinti, kai atsiras citatų:
-  \nocite{*}
-
-  \clearpage
-  \phantomsection
-  % FIXME Pataisyti skyriaus pavadinimą, iš „Literatūra“ į „Šaltiniai“.
-  \addcontentsline{toc}{chapter}{Šaltiniai}
-  \bibliographystyle{plain}
-  \bibliography{./config/bibliography}
+  \input{annotation.tex}
+  \input{chapters.tex}
 \end{document}

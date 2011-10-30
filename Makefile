@@ -1,7 +1,4 @@
-PARTS    := ./part1
-# Iš trijų dalių atrodytų taip.
-# PARTS    := ./part1:./part2:./part3
-TEXINPUTS := .:./config:./common:${PARTS}:
+TEXINPUTS := .:./config:./common:./deps:./content:./examples:
 export TEXINPUTS
 
 all: config/main.pdf
@@ -10,3 +7,7 @@ all: config/main.pdf
 	echo ${TEXINPUTS} ${PATH}
 	xelatex -shell-escape -output-directory dist "\input{$*.tex}"
 	bibtex dist/main
+	xelatex -shell-escape -output-directory dist "\input{$*.tex}"
+
+show:
+	xdg-open dist/main.pdf
