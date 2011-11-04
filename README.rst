@@ -39,7 +39,8 @@ Naujo projekto sukūrimas
 #.  Sukuriame turinio katalogą ``content`` ir nurodome jį naudoti vietoj
     pavyzdžių::
 
-    mkdir content
+    mkdir content;
+
     echo -e '\\chapter{Mano straipsnis}\\n' > content/chapters.tex
 
 Šablono atnaujinimas
