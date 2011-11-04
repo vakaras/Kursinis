@@ -36,11 +36,11 @@ Naujo projekto sukūrimas
 
     touch README.md
 
-#.  Sukuriame turinio katalogą ``contents`` ir nurodome jį naudoti vietoj
+#.  Sukuriame turinio katalogą ``content`` ir nurodome jį naudoti vietoj
     pavyzdžių::
 
     mkdir content
-    echo -e '\chapter{Mano straipsnis}\n' > content/chapters.tex
+    echo -e '\\chapter{Mano straipsnis}\\n' > content/chapters.tex
 
 Šablono atnaujinimas
 ====================
