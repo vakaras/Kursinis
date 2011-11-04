@@ -40,7 +40,7 @@ Naujo projekto sukūrimas
     pavyzdžių::
 
         mkdir content
-        echo -e '\\chapter{Mano straipsnis}\\n' > content/chapters.tex
+        echo -e '\\chapter{Mano straipsnis}\n' > content/chapters.tex
 
 Šablono atnaujinimas
 ====================
