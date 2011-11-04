@@ -34,13 +34,55 @@ Naujo projekto sukūrimas
 #.  Pritaikome ``config`` esančius failus pagal savo poreikius.
 #.  Susikuriame naują ``README.md`` failą::
 
-    touch README.md
+        touch README.md
 
-#.  Sukuriame turinio katalogą ``contents`` ir nurodome jį naudoti vietoj
+#.  Sukuriame turinio katalogą ``content`` ir nurodome jį naudoti vietoj
     pavyzdžių::
 
-    mkdir content
-    echo -e '\chapter{Mano straipsnis}\n' > content/chapters.tex
+        mkdir content
+        echo -e '\\chapter{Mano straipsnis}\n' > content/chapters.tex
+
+------------------------------
+Titulinio puslapio pritaikymas
+------------------------------
+
+Pavyzdžiui, jei rašome kursinį darbą, tai į ``config/global.tex``
+pridedame::
+
+    \docname{Komponentinis programavimas su Scala}
+    \docnameen{Component-based programming with Scala}
+    \doctype{Kursinis darbas}
+    \authorname{Vytautas Astrauskas}
+    \coursenumber{3}
+    \groupnumber{2}
+    \supervisorname{Darbo Vadovas}
+
+Taip, pat galima nurodyti ir recenzentą::
+
+    \reviewername{Recenzentas}
+
+Taip pat galima apskritai pakeisti autoriaus informacijos rodymą::
+
+    \authorinformation{Autorius: Vytautas Astrauskas}
+
+Jei nenurodysime autoriaus, tai dalis su autoriaus informacija nebus
+sukurta iš viso. Pavyzdžiui, taip galėtų atrodyti konspektų nustatymai::
+
+    \docname{Psichologijos įvadas}
+    \doctype{Paskaitų konspektas}
+
+Aukštosios mokyklos pavadinimą galime pakeisti su komanda::
+
+    \schooltitle{%
+        Vilniaus universitetas\\
+        Matematikos ir informatikos fakultetas\\
+        Informatikos katedra%
+        }
+
+Datą (numatytoji yra metai, kada buvo sukompiliuotas dokumentas) galima
+pakeisti su komanda::
+
+    \date{2011}
 
 Šablono atnaujinimas
 ====================
