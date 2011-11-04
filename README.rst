@@ -34,14 +34,13 @@ Naujo projekto sukūrimas
 #.  Pritaikome ``config`` esančius failus pagal savo poreikius.
 #.  Susikuriame naują ``README.md`` failą::
 
-    touch README.md
+        touch README.md
 
 #.  Sukuriame turinio katalogą ``content`` ir nurodome jį naudoti vietoj
     pavyzdžių::
 
-    mkdir content;
-
-    echo -e '\\chapter{Mano straipsnis}\\n' > content/chapters.tex
+        mkdir content
+        echo -e '\\chapter{Mano straipsnis}\\n' > content/chapters.tex
 
 Šablono atnaujinimas
 ====================
