@@ -51,11 +51,18 @@ Programų sistemų katedra%
       % Aukštosios mokyklos padalinio pilnas pavadinimas.
       \uppercase{
         \normalsize \expandafter\uppercase\expandafter{\@schooltitle}
-      }\\[6.0cm]
+      }
+      \@ifundefined{@docnameen}{%
+      \\[10.0cm]
+      % Dokumento pavadinimas.
+      {\Huge\bf \@docname }\\[0.5cm]
+      }{%
+      \\[6.0cm]
       % Dokumento pavadinimas.
       {\Huge\bf \@docname }\\[0.5cm]
       % Dokumento pavadinimas anglų kalba.
-      \@ifundefined{@docnameen}{\hfill}{{\Large\bf \@docnameen}}\\[4.0cm]
+      {\Large\bf \@docnameen}\\[4.0cm]
+      }
       % Dokumento tipas.
       {\Large \@doctype}\\[4.0cm]
       % Informacija apie autorių.
