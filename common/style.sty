@@ -176,6 +176,7 @@
 \addto\captionslithuanian{\renewcommand{\bibname}{Šaltiniai}}
 \addto\captionslithuanian{\renewcommand{\refname}{Šaltiniai}}
 \addto\captionslithuanian{\renewcommand{\abstractname}{Anotacija}}
+\addto\captionslithuanian{\renewcommand{\proofname}{Įrodymas}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BIBLIOGRAPHY                                                             %
@@ -223,6 +224,9 @@
 \renewcommand{\liminf}{\varliminf}
 \renewcommand{\limsup}{\varlimsup}
 
+\newcommand\RSET{\mathop{\mathbb{R}}}
+\newcommand\NSET{\mathop{\mathbb{N}}}
+
 \renewcommand{\tan}{\mathop{\operator@font tg}\nolimits} 
 \renewcommand{\arctan}{\mathop{\operator@font arctg}\nolimits} 
 \renewcommand{\cot}{\mathop{\operator@font ctg}\nolimits} 
@@ -233,6 +237,32 @@
 \renewcommand{\labelenumii}{\theenumii}
 \renewcommand{\theenumiii}{\arabic{enumiii}}
 \renewcommand{\labelenumiii}{\theenumiii}
+
+% Apibrėžimai, teiginiai, pastabos.
+\swapnumbers
+
+\renewenvironment{proof}[1][\proofname]{%
+\hfill \\
+#1 $\vartriangleright$ \\
+\normalfont
+}{%
+\\
+\strut \hfill $\vartriangleleft$ \\
+}
+
+\theoremstyle{plain}
+\newtheorem{prop}{T}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Ap.}
+\newtheorem{exmp}{Pvz}
+
+\theoremstyle{remark}
+\newtheorem*{note}{Pastaba}
+
+\newtheoremstyle{notation}{3pt}{3pt}{}{}{\itshape}{:}{.5em}{}
+\theoremstyle{notation}
+\newtheorem*{notation}{Žymėjimas}
 
 % Nurodymas sugeneruoti terminų žodynėlį.
 %\makeglossaries
