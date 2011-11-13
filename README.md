@@ -65,3 +65,9 @@ annotate, is-alpha, wmaainf
 
 Stilių sąrašą bei info apie jų kūrimą galima rasti čia:
 http://amath.colorado.edu/documentation/LaTeX/reference/faq/bibstyles.html
+
+LaTeX vikis:
+http://latex.akl.lt/index.php/Pagrindinis_puslapis
+
+LaTeX VU MIF stilius:
+http://ims.mii.lt/~lauras/latexlt/
