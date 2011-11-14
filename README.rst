@@ -90,3 +90,24 @@ pakeisti su komanda::
 ::
 
     git pull template master
+
+Darbai
+======
+
++   Pakeisti pavyzdžių fono spalvą į šviesiai pilką:
+
+    +   `Bandymas panaudojant MiniPage
+        <http://answers.google.com/answers/threadview?id=282787>`_
+        – nelabai tinkamas, nes automatiškai nelaužo teksto per kelis
+        puslapius?
+    +   `Bandymas panaudojant framed
+        <http://www.latex-community.org/forum/viewtopic.php?f=5&t=1441&start=0>`_;
+    +   `LaTeX knygos puslapis apie spalvas
+        <http://en.wikibooks.org/wiki/LaTeX/Colors>`_;
+    +   `LaTeX knygos puslapis apie teoremas
+        <http://en.wikibooks.org/wiki/LaTeX/Theorems>`_;
+
+Naudingos nuorodos
+==================
+
++   http://heather.cs.ucdavis.edu/~matloff/LaTeX/LookHereFirst.html
