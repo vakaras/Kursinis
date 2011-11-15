@@ -1,5 +1,19 @@
 \chapter{Objektinės paradigmos apibrėžimas}
 
+\begin{defn}[Objektas]
+  Esybė sudaryta iš trumpalaikio atributų ir veiksmų junginio.
+
+  Objekto savybės:
+  \begin{description}
+    \item[tapatybė] – savybė, kuri leidžia atskirti objektą nuo kitų
+      objektų;
+    \item[būsena] – objekto saugomi duomenys;
+    \item[elgsena] – veiksmai, kuriuos galima atlikti su objektu.
+  \end{description}
+
+  Pagal \url{http://en.wikipedia.org/wiki/Object_(computer_science)}.
+\end{defn}
+
 \section{Privalomos savybės}
 
 1987 metais ACM OOPSLA paskelbė dokumentą, pavadintą „The Treaty of
@@ -10,8 +24,10 @@ modulinio programavimo, kur visada yra įvykdoma ta pati procedūra.)
 Dokumente yra minimi du būdai, kaip tai galima pasiekti:
 \begin{itemize}
   \item žinučių persiuntimas \en{messages forwarding} ir
-  \item dinaminis paveldėjimas \en{dynamic inheritance} (TODO:
-    Išsiaiškinti).
+  \item dinaminis paveldėjimas \en{dynamic inheritance} (pavyzdžiui,
+    \cite[272]{cpp-design-evolution} aprašomas bandymas C++
+    kalboje realizuoti galimybę konstruktoriui perduoti rodyklę, kuri
+    turėtų būti naudojama, kaip bazinė klasė).
 \end{itemize}
 
 2002 metais Benjamin C. Pierce savo knygoje „Types and programming
@@ -40,4 +56,26 @@ esmines savybes, kurias turi dauguma objektinių programavimo kalbų:
     TODO: \url{http://en.wikipedia.org/wiki/Late_binding}
 \end{description}
 
+TODO: \url{http://en.wikipedia.org/wiki/Class-based_programming}
+\url{http://en.wikipedia.org/wiki/Prototype-based_programming}
+
+\emph{Nurodomas senesnis apibrėžimas (1985 metų) iš esmės atmetant
+„The Treaty of Orlando“:}
+Knygoje \cite[41-42]{Booch:2007:OAD:1407387} teigiama, kad objektiškai
+orientuotas programavimas yra programų kūrimo metodika, kai programos
+yra sudarytos iš tarpusavyje komunikuojančių objektų grupių; kiekvienas
+objektas yra priskirtas kuriai nors klasei ir visos klasės yra
+tarpusavyje susietos paveldėjimo ryšiu.
+
 \section{Papildomos savybės}
+
+\begin{description}
+  \item[objektų klasės] \en{classes of objects};
+  \item[FIXME: klasių objektai] \en{instances of classes};
+  \item[metodai susieti su objektais] \en{methods which act on the
+    attached objects};
+  \item[žinučių siuntimas (kitiems procesams)] \en{message passing}
+    TODO: \url{http://en.wikipedia.org/wiki/Message_passing};
+  \item[abstrakcija] \en{abstraction}
+    TODO: \url{http://en.wikipedia.org/wiki/Abstraction_(computer_science)}
+\end{description}
