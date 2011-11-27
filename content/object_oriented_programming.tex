@@ -1,22 +1,8 @@
 \chapter{Objektinės paradigmos apibrėžimas}
 
-\begin{defn}[Objektas]
-  Esybė sudaryta iš trumpalaikio atributų ir veiksmų junginio.
+\section{Įvairūs objektinės programavimo kalbos apibrėžimai}
 
-  Objekto savybės:
-  \begin{description}
-    \item[tapatybė] – savybė, kuri leidžia atskirti objektą nuo kitų
-      objektų;
-    \item[būsena] – objekto saugomi duomenys;
-    \item[elgsena] – veiksmai, kuriuos galima atlikti su objektu.
-  \end{description}
-
-  Pagal \url{http://en.wikipedia.org/wiki/Object_(computer_science)}.
-
-  TODO: Aprašyti objektą pagal \cite[38]{Booch:2007:OAD:1407387}.
-\end{defn}
-
-\section{Privalomos savybės}
+\subsection{„The Treaty of Orlando“}
 
 1987 metais ACM OOPSLA paskelbė dokumentą, pavadintą „The Treaty of
 Orlando“ \cite{Lieberman:1987:TO:62139.62144}, kuriame nurodoma, kad
@@ -32,45 +18,40 @@ Dokumente yra minimi du būdai, kaip tai galima pasiekti:
     turėtų būti naudojama, kaip bazinė klasė).
 \end{itemize}
 
+\subsection{Benjamin C. Pierce}
+
 2002 metais Benjamin C. Pierce savo knygoje „Types and programming
 languages“\cite[225-227]{types-and-programming-languages} išvardino
 esmines savybes, kurias turi dauguma objektinių programavimo kalbų: 
 \begin{description}
   \item[dinaminis susiejimas] \en{dynamic dispatch, dynamic binding} –
     objekto reakcija į gautą žinutę nustatoma vykdymo metu;
+
     TODO: \url{http://en.wikipedia.org/wiki/Dynamic_dispatch}
   \item[uždarumas, inkapsuliacija] \en{encapsulation} – vidinė objekto
     struktūra yra slepiama;
   \item[potipiai] \en{subtyping} – kai norime pasinaudoti objektu, 
     tai mums rūpi tik jo sąsaja ir mes galime naudoti objektą $I$ vietoj
     objekto $J$, jei objekto $J$ sąsaja yra objekto $I$ sąsajos poaibis;
+
     TODO: \url{http://en.wikipedia.org/wiki/Subtype_polymorphism}
   \item[paveldėjimas, pavedimas] \en{inheritance, delegation} – galimybė
     perpanaudoti jau egzistuojantį kodą: tai gali būti pasiekiama
     objektų kūrimui naudojant klases, kurios gali paveldėti kai kurias
     savybes iš tėvinių klasių, arba naudojant žinučių persiuntimą;
+
     TODO: \url{http://en.wikipedia.org/wiki/Delegation_(programming)}
   \item[atvira rekursija] \en{open recursion} – specialaus kintamojo
     (dažniausiai jis vadinamas „this“, arba „self“) egzistavimas, kuriuo
     pasinaudojant galima kreiptis į kitus to paties objekto metodus.
     Svarbi savybė yra \en{late-bound}.
+
     TODO: \url{http://en.wikipedia.org/wiki/Name_binding}
+
     TODO: \url{http://en.wikipedia.org/wiki/Late_binding}
 \end{description}
 
-TODO: \url{http://en.wikipedia.org/wiki/Class-based_programming}
-\url{http://en.wikipedia.org/wiki/Prototype-based_programming}
-
-\emph{Nurodomas senesnis apibrėžimas (1985 metų) iš esmės atmetant
-„The Treaty of Orlando“:}
-Knygoje \cite[41-42]{Booch:2007:OAD:1407387} teigiama, kad objektiškai
-orientuotas programavimas yra programų kūrimo metodika, kai programos
-yra sudarytos iš tarpusavyje komunikuojančių objektų grupių; kiekvienas
-objektas yra priskirtas kuriai nors klasei ir visos klasės yra
-tarpusavyje susietos paveldėjimo ryšiu.
-
-TODO: Pasinagrinėti \cite[38]{Booch:2007:OAD:1407387} pateikiamus
-šaltinius.
+\subsection{John Mitchell}
 
 Pagal John Mitchell \cite[277]{concepts-in-programming-languages}
 objektinė programavimo kalba \en{object-oriented language} privalo
@@ -92,8 +73,17 @@ turėti:
     objekto apibrėžimą, apibrėžiant kitą objektą.
 \end{description}
 
-TODO: Grady Booch Object-Oriented Design with Applications,
-Benjamin/Cummings, 1991
+\subsection{Grady Booch}
+
+Knygoje \cite[41-42]{Booch:2007:OAD:1407387} teigiama, kad objektiškai
+orientuotas programavimas yra programų kūrimo metodika, kai programos
+yra sudarytos iš tarpusavyje komunikuojančių objektų grupių; kiekvienas
+objektas yra priskirtas kuriai nors klasei ir visos klasės yra
+tarpusavyje susietos paveldėjimo ryšiu. (Nurodomas senesnis
+apibrėžimas (1985 metų) iš esmės atmetant „The Treaty of
+Orlando“.)
+
+\subsection{Michael L. Scott}
 
 Michael L. Scott \cite[529-530]{programming-language-pragmatics}
 išskyrė tik šias savybes:
@@ -103,7 +93,58 @@ išskyrė tik šias savybes:
   \item dinaminis susiejimas.
 \end{itemize}
 
-\section{Papildomos savybės}
+\section{Klasinis objektiškai orientuotas programavimas}
+
+Kadangi objektinio programavimo kalbos, kuriose objektų kūrimas yra
+paremtas klasėmis, yra žymiai populiaresnės (FIXME: Pagrįsti.), tai
+toliau objektiniu programavimu bus vadinamas būtent objektinis
+programavimas panaudojant klases \en{class-based programming}. Jo
+pagrindinės savybės būtų:
+\begin{description}
+  \item[dinaminis susiejimas] – objektas pats sprendžia, kaip sureaguoti
+    į žinutę ir skirtingi objektai gali į tą pačią žinutę sureaguoti
+    skirtingai;
+  \item[uždarumas, inkapsuliacija] – vidinė objekto struktūra yra
+    slepiama;
+  \item[potipiai] – kai norima pasinaudoti objektu, tai mums rūpi tik
+    jo sąsaja ir mes galime naudoti objektą $a$ vietoj objekto $b$,
+    jei objekto $b$ sąsaja yra objekto $a$ sąsajos poaibis;
+  \item[paveldėjimas] – galimybė perpanaudoti vieno objekto apibrėžimą,
+    apibrėžiant kitą objektą.
+\end{description}
+
+\section{Sutvarkyti}
+
+\begin{defn}[Objektas]
+  Esybė sudaryta iš trumpalaikio atributų ir veiksmų junginio.
+
+  Objekto savybės:
+  \begin{description}
+    \item[tapatybė] – savybė, kuri leidžia atskirti objektą nuo kitų
+      objektų;
+    \item[būsena] – objekto saugomi duomenys;
+    \item[elgsena] – veiksmai, kuriuos galima atlikti su objektu.
+  \end{description}
+
+  Pagal \url{http://en.wikipedia.org/wiki/Object_(computer_science)}.
+
+  TODO: Aprašyti objektą pagal \cite[38]{Booch:2007:OAD:1407387}.
+\end{defn}
+
+TODO: Pasidomėti abiem ir pridėti paaiškinimą, kodėl man rūpi tik pirmas:
+\begin{itemize}
+  \item \url{http://en.wikipedia.org/wiki/Class-based_programming},
+  \item \url{http://en.wikipedia.org/wiki/Prototype-based_programming}.
+\end{itemize}
+
+TODO: Nurodyti, kodėl miniu būtent šituos šaltinius. (Kodėl būtent jie
+yra svarbūs.)
+
+TODO: Pasinagrinėti \cite[38]{Booch:2007:OAD:1407387} pateikiamus
+šaltinius.
+
+\subsection{Privalomos savybės}
+\subsection{Papildomos savybės}
 
 \begin{description}
   \item[objektų klasės] \en{classes of objects};
