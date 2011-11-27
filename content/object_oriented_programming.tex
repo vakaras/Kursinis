@@ -12,6 +12,8 @@
   \end{description}
 
   Pagal \url{http://en.wikipedia.org/wiki/Object_(computer_science)}.
+
+  TODO: Aprašyti objektą pagal \cite[38]{Booch:2007:OAD:1407387}.
 \end{defn}
 
 \section{Privalomos savybės}
@@ -39,7 +41,7 @@ esmines savybes, kurias turi dauguma objektinių programavimo kalbų:
     TODO: \url{http://en.wikipedia.org/wiki/Dynamic_dispatch}
   \item[uždarumas, inkapsuliacija] \en{encapsulation} – vidinė objekto
     struktūra yra slepiama;
-  \item[FIXME: subtyping] \en{subtyping} – kai norime pasinaudoti objektu, 
+  \item[potipiai] \en{subtyping} – kai norime pasinaudoti objektu, 
     tai mums rūpi tik jo sąsaja ir mes galime naudoti objektą $I$ vietoj
     objekto $J$, jei objekto $J$ sąsaja yra objekto $I$ sąsajos poaibis;
     TODO: \url{http://en.wikipedia.org/wiki/Subtype_polymorphism}
@@ -66,6 +68,40 @@ orientuotas programavimas yra programų kūrimo metodika, kai programos
 yra sudarytos iš tarpusavyje komunikuojančių objektų grupių; kiekvienas
 objektas yra priskirtas kuriai nors klasei ir visos klasės yra
 tarpusavyje susietos paveldėjimo ryšiu.
+
+TODO: Pasinagrinėti \cite[38]{Booch:2007:OAD:1407387} pateikiamus
+šaltinius.
+
+Pagal John Mitchell \cite[277]{concepts-in-programming-languages}
+objektinė programavimo kalba \en{object-oriented language} privalo
+turėti:
+\begin{description}
+  \item[objektus] – „paslėpti“ duomenys ir operacijos, kurias galima
+    atlikti su jais;
+  \item[dinaminis susiejimas] \en{dynamic lookup} – objektas pats
+    sprendžia, kaip sureaguoti į žinutę ir skirtingi objektai gali
+    į tą pačią žinutę sureaguoti skirtingai;
+  \item[abstrakcija] \en{abstraction} – realizacijos detalės yra
+    paslėptos ir veiksmus galima atlikti tik per sąsają (paprastai
+    objektų sąsaja yra aibė viešų metodų, kurie atlieka veiksmus
+    su paslėptais duomenimis);
+  \item[potipiai] \en{subtyping} – jei objektas a turi visą funkcionalumą,
+    kurį turi objektas b, tai objektą a galima naudoti visur vietoj
+    objekto b;
+  \item[paveldėjimas] \en{inheritance} – galimybė perpanaudoti vieno
+    objekto apibrėžimą, apibrėžiant kitą objektą.
+\end{description}
+
+TODO: Grady Booch Object-Oriented Design with Applications,
+Benjamin/Cummings, 1991
+
+Michael L. Scott \cite[529-530]{programming-language-pragmatics}
+išskyrė tik šias savybes:
+\begin{itemize}
+  \item uždarumas, inkapsuliacija;
+  \item paveldėjimas;
+  \item dinaminis susiejimas.
+\end{itemize}
 
 \section{Papildomos savybės}
 
