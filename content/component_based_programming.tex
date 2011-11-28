@@ -12,7 +12,7 @@
     komponento elgesį;
   \item[perpanaudojamumas] \en{reusability} – 
   \item[programinės įrangos kokybė] \en{software quality} – turi
-    būti parodyta, kad komponentas ar sistema elgesi būtent taip, kaip
+    būti parodyta, kad komponentas ar sistema elgiasi būtent taip, kaip
     yra tikimasi;
   \item[palaikymas] \en{maintainability} – sistema turi būti suprantama
     ir lengvai plečiama.
@@ -23,6 +23,159 @@ programinės įrangos modelio ir gali būti nepriklausomai vystomas
 bei įkomponuotas nedarant jame pakeitimų ir laikantis komponavimo
 standarto.“\cite[438]{analytical-study-cbse} (Originalas iš
 \cite{heineman2001component}.)
+
+\section{UML 2.2}
+
+% 159 – puslapis PDF dokumente.
+„Modulinis vienetas su aiškiai apibrėžtomis sąsajomis, kurį jo
+aplinkoje galima pakeisti kitu.“\cite[143]{UML-superstructure}
+(TODO: Perfrazuoti.)
+
+Savybės:
+\begin{itemize}
+  \item komponentų perpanaudojimas;
+  \item komponentas visada gali būti traktuojamas, kaip savarankiškas
+    vienetas sistemoje arba posistemėje;
+  \item komponentas pateikia ir/arba prašo bent vienos sąsajos;
+  \item komponento vidus yra paslėptas ir prie jo galima prieiti tik
+    per komponento pateikiamas sąsajas;
+  \item komponentui nereikia kitų sistemos elementų, išskyrus tuos, kurių
+    išreikštinai prašo per sąsajas;
+  \item komponentas gali būti kuriamas atskirai nuo visos sistemos.
+\end{itemize}
+
+Kitas apibrėžimas: „Komponentas reprezentuoja modulinę sistemos dalį, kuri
+inkapsuliuoja savo turinį ir kurią galima pakeisti jos aplinkoje.“
+\cite[146]{UML-superstructure}
+
+Apibrėžimas iš \emph{BasicComponents}\cite[146]{UML-superstructure}:
+Komponentas yra klasės potipis, todėl turi viską, ką turi ir klasė. 
+Komponentas taip pat gali turėti vidinę struktūrą ir prievadų (\emph{Ports})
+aibę, kuri formalizuoja sąveikos su juo taškus. Kiekvienas komponentas turi
+pateikiamas ir prašomas sąsajas, kurios suteikia galimybę jungti
+komponentus į visumą naudojantis \emph{Dependencies} ar \emph{Connectors}.
+(TODO: Pasižiūrėti terminų apibrėžimus specifikacijoje.)
+
+TODO: Išsinagrinėti \emph{PackagingComponents}.
+
+\section{Component software: beyond object-oriented programming}
+
+„To be specific, for the purposes of this book, software components
+are executable units of independent production, acquisition, and deployment
+that can be composed into a functioning system.“ 
+\cite[3]{cs-beyond-object-oriented-programming}
+
+TODO: Pasidomėti: „Descriptions in this sense are sometimes called
+components (Sametinger, 1997).“%
+\cite[3]{cs-beyond-object-oriented-programming}
+
+TODO: Apibrėžti, kas yra komponentų modelis. \emph{Component model}
+
+Komponentų savybės\cite[36]{cs-beyond-object-oriented-programming}:
+\begin{description}
+  \item[TODO] \en{is a unit of independent deployment}
+    – tai lemia, kad komponentas yra uždaras (inkapsuliuotas) ir, kad
+    komponentas yra gerai atskirtas nuo aplinkos ir kitų komponentų;
+    % „Also, as it is a unit of deployment, a component will never
+    % be deployed partially.“
+  \item[jungus su „svetimais“] \en{is a unit of third-party composition}
+    – komponentas slepia savo turinį ir su išore bendrauja per gerai
+    apibrėžtas sąsajas;
+  \item[neturi (išoriškai) matomos būsenos] \en{has no (externally)
+    observable state} – turi būti neįmanoma atskirti komponentą
+    nuo jo kopijų.
+\end{description}
+Yra akcentuojama, kad dėl to, jog komponentai neturi stebimos būsenos,
+jų konkrečioje vykdymo aplinkoje turėti daugiau nei vieną nėra prasmės.
+TODO: Išsiaiškinti\cite[37]{cs-beyond-object-oriented-programming}:
+Komponentai yra nekintamos programos, kurios „dirba“ su kintamais
+objektais. Komponentai „pateikia“ objektus. \en{components provide objects}
+Pavyzdys su duombaze (objektu) ir duomenų bazės serveriu (komponentu).
+
+Palyginimui objekto savybės\cite[36]{cs-beyond-object-oriented-programming}:
+\begin{itemize}
+  \item \en{is a unit of instantiation, it has a unique identity}
+    – objektas negali būti sukurtas dalinai, taip pat tam, kad galėtume
+    sukurti objektą, reikia turėti jo kūrimo planą, kuris vadinamas klase,
+    arba objektą \en{prototype object}, kurį klonuosime;
+  \item \en{may have state and this can be externally observable};
+  \item \en{encapsulates its state and behavior}.
+\end{itemize}
+
+Komponentai, skirtingai nei
+moduliai\cite[39-40]{cs-beyond-object-oriented-programming}:
+\begin{itemize}
+  \item gali būti parametrizuoti panaudojant resursus (pavyzdžiui,
+    lokalizavimo taisyklės), moduliai turi tik tą informaciją, kuri
+    buvo įrašyta (įkompiliuota) jų kode;
+  \item neturi būsenos (moduliai gali turėti statinius kintamuosius).
+\end{itemize}
+
+\begin{defn}[Programinės įrangos komponentas]
+  A software component is a unit of composition with contractually
+  specified interfaces and explicit context dependencies only. A
+  software component can be deployed independently and is subject
+  to composition by third parties.
+  \cite[41]{cs-beyond-object-oriented-programming}
+% FIXME Pasitikrinti ar teisingai išverčiau.
+% Komponavimo vienetas su kontraktu apibrėžtomis sąsajomis ir tik
+% išreikštinai nurodytais reikalavimais. Komponentas gali būti
+% naudojamas nepriklausomai ir įkomponuotas trečiųjų šalių.
+\end{defn}
+
+TODO: Perskaityti. (Dabar perskaityta 0-39, 69-79)
+
+\section{Scalable Component Abstractions}
+
+Bendrai komponentai yra tiesiog programos dalys, kurios gali būti
+panaudotos kuriant didesnes dalis ar aplikacijas. Galimos įvairios
+komponentų formos: moduliai, klasės, bibliotekos, karkasai, procesai
+interneto servisai.
+
+Komponento savybės:
+\begin{itemize}
+  \item svarbiausia komponento savybė yra galimybė jo nepakeitus jį
+    panaudoti kitame kontekste, nei jis buvo kurtas;
+  \item tam užtikrinti komponentai turi turėti sąsajas per kurias
+    teikia ir gauna servisus, taip pat komponentai turėtų minimizuoti
+    tvirtą susiejimą \en{hard links} su aplinka;
+\end{itemize}
+
+\begin{note}
+  While these languages offer some support for attaching interfaces
+  describing the provided services of a component, they lack the
+  capability to abstract over the services that are required.
+  \cite[1]{scalable-component-abstractions}
+\end{note}
+
+Servisinis komponentinis modelis \en{Service-Oriented Component Model}:
+\begin{itemize}
+  \item programinės įrangos komponentai yra skaičiavimo vienetai, kurie
+    pateikia gerai apibrėžtą servisų aibę;
+  \item jiems reikia kitų servisų, kuriuos teikia kiti komponentai;
+  \item komponentas yra klasė (būtinas įdėtinių klasių palaikymas!);
+  \item \en{concrete members} – kuriami servisai;
+  \item \en{abstract members} – prašomi servisai;
+  \item komponentų jungimas remiasi \en{mixins}.
+\end{itemize}
+
+Norint sukurti plečiamų \en{scalable} ir dinaminių \en{dynamic} komponentų
+sistemas yra būtina (darome prielaida, jog kalba apie stipriai
+\en{strongly} ir statiškai \en{statically} tipizuotas objektines
+programavimo kalbas):
+\begin{itemize}
+  \item įdėtinių \en{nested} klasių palaikymas;
+  \item \en{mixin} arba \en{trait} kompozicijos palaikymas arba
+    multipaveldėjimas – būtina, kad klasėse, kaip nariai, galėtų
+    būti aprašomi \en{mixin} arba klasės, bei, kad konkretūs klasės
+    nariai pakeistų abstrakčius, nepriklausomai nuo to kokiu būdu
+    buvo atliktas jungimas;
+  \item galimybė abstrakčiai apibrėžti ko reikia klasei.
+\end{itemize}
+
+\begin{note}
+  Komponentų dinaminis radimas ir platinimas nėra nagrinėjamas.
+\end{note}
 
 \section{Sutvarkyti}
 
