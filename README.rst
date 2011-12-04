@@ -46,7 +46,7 @@ Naujo projekto sukūrimas
 Titulinio puslapio pritaikymas
 ------------------------------
 
-Pavyzdžiui, jei rašome kursinį darbą, tai į ``config/global.tex``
+Pavyzdžiui, jei rašome kursinį darbą, tai į ``config/global-config.tex``
 pridedame::
 
     \docname{Komponentinis programavimas su Scala}
