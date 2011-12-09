@@ -48,15 +48,21 @@ Kitas apibrėžimas: „Komponentas reprezentuoja modulinę sistemos dalį, kuri
 inkapsuliuoja savo turinį ir kurią galima pakeisti jos aplinkoje.“
 \cite[146]{UML-superstructure}
 
-Apibrėžimas iš \emph{BasicComponents}\cite[146]{UML-superstructure}:
-Komponentas yra klasės potipis, todėl turi viską, ką turi ir klasė. 
-Komponentas taip pat gali turėti vidinę struktūrą ir prievadų (\emph{Ports})
-aibę, kuri formalizuoja sąveikos su juo taškus. Kiekvienas komponentas turi
-pateikiamas ir prašomas sąsajas, kurios suteikia galimybę jungti
-komponentus į visumą naudojantis \emph{Dependencies} ar \emph{Connectors}.
-(TODO: Pasižiūrėti terminų apibrėžimus specifikacijoje.)
+\begin{note}
+  Realizacijos detalės:
 
-TODO: Išsinagrinėti \emph{PackagingComponents}.
+  Apibrėžimas iš
+  \emph{BasicComponents}\cite[146]{UML-superstructure}: Komponentas yra
+  klasės potipis, todėl turi viską, ką turi ir klasė.  Komponentas
+  taip pat gali turėti vidinę struktūrą ir prievadų (\emph{Ports})
+  aibę, kuri formalizuoja sąveikos su juo taškus. Kiekvienas
+  komponentas turi pateikiamas ir prašomas sąsajas, kurios suteikia
+  galimybę jungti komponentus į visumą naudojantis
+  \emph{Dependencies} ar \emph{Connectors}. (TODO: Pasižiūrėti
+  terminų apibrėžimus specifikacijoje.)
+
+  TODO: Išsinagrinėti \emph{PackagingComponents}.
+\end{note}
 
 \section{Component software: beyond object-oriented programming}
 
@@ -148,30 +154,34 @@ Komponento savybės:
   \cite[1]{scalable-component-abstractions}
 \end{note}
 
-Servisinis komponentinis modelis \en{Service-Oriented Component Model}:
-\begin{itemize}
-  \item programinės įrangos komponentai yra skaičiavimo vienetai, kurie
-    pateikia gerai apibrėžtą servisų aibę;
-  \item jiems reikia kitų servisų, kuriuos teikia kiti komponentai;
-  \item komponentas yra klasė (būtinas įdėtinių klasių palaikymas!);
-  \item \en{concrete members} – kuriami servisai;
-  \item \en{abstract members} – prašomi servisai;
-  \item komponentų jungimas remiasi \en{mixins}.
-\end{itemize}
+\begin{note}
+  Realizacijos detalės:
 
-Norint sukurti plečiamų \en{scalable} ir dinaminių \en{dynamic} komponentų
-sistemas yra būtina (darome prielaida, jog kalba apie stipriai
-\en{strongly} ir statiškai \en{statically} tipizuotas objektines
-programavimo kalbas):
-\begin{itemize}
-  \item įdėtinių \en{nested} klasių palaikymas;
-  \item \en{mixin} arba \en{trait} kompozicijos palaikymas arba
-    multipaveldėjimas – būtina, kad klasėse, kaip nariai, galėtų
-    būti aprašomi \en{mixin} arba klasės, bei, kad konkretūs klasės
-    nariai pakeistų abstrakčius, nepriklausomai nuo to kokiu būdu
-    buvo atliktas jungimas;
-  \item galimybė abstrakčiai apibrėžti ko reikia klasei.
-\end{itemize}
+  Servisinis komponentinis modelis \en{Service-Oriented Component Model}:
+  \begin{itemize}
+    \item programinės įrangos komponentai yra skaičiavimo vienetai, kurie
+      pateikia gerai apibrėžtą servisų aibę;
+    \item jiems reikia kitų servisų, kuriuos teikia kiti komponentai;
+    \item komponentas yra klasė (būtinas įdėtinių klasių palaikymas!);
+    \item \en{concrete members} – kuriami servisai;
+    \item \en{abstract members} – prašomi servisai;
+    \item komponentų jungimas remiasi \en{mixins}.
+  \end{itemize}
+
+  Norint sukurti plečiamų \en{scalable} ir dinaminių \en{dynamic} komponentų
+  sistemas yra būtina (darome prielaida, jog kalba apie stipriai
+  \en{strongly} ir statiškai \en{statically} tipizuotas objektines
+  programavimo kalbas):
+  \begin{itemize}
+    \item įdėtinių \en{nested} klasių palaikymas;
+    \item \en{mixin} arba \en{trait} kompozicijos palaikymas arba
+      multipaveldėjimas – būtina, kad klasėse, kaip nariai, galėtų
+      būti aprašomi \en{mixin} arba klasės, bei, kad konkretūs klasės
+      nariai pakeistų abstrakčius, nepriklausomai nuo to kokiu būdu
+      buvo atliktas jungimas;
+    \item galimybė abstrakčiai apibrėžti ko reikia klasei.
+  \end{itemize}
+\end{note}
 
 \begin{note}
   Komponentų dinaminis radimas ir platinimas nėra nagrinėjamas.
@@ -261,6 +271,35 @@ apibendrintą, apibrėžimą \cite[2]{Gill:2003:CMF:966221.966237}.
     \item gali būti nepriklausomai kuriamas ir pristatytas.
   \end{itemize}
 \end{defn}
+
+\section{Vykdomasis „blokinis“ komponentas}
+
+Dauguma autorių sutaria, kad vykdomasis komponentas yra programinės
+įrangos vienetas, kuris:
+\begin{enumerate}
+  \item gali būti kuriamas nepriklausomai;
+  \item gali būti perpanaudojamas;
+  \item yra juoda dėžė;
+  \item prie jo funkcionalumo galima prieiti tik per išreikštinai
+    apibrėžtas sąsajas;
+  \item savo poreikius nurodo tik per išreikštinai apibrėžtas sąsajas;
+  \item yra fizinis platinimo vienetas \en{unit of deployment};
+  \item gali būti be pakeitimų sujungtas su kitais komponentais į
+    vieną sistemą;
+  \item gali būti pakeičiamas kitu, jei…
+\end{enumerate}
+
+Kai kurie autoriai nurodo dar ir tokias savybes:
+\begin{itemize}
+  \item gali būti traktuojamas, kaip savarankiškas vienetas;
+  \item turi būti silpnai susietas su aplinka;
+  \item nepriklausomas nuo programavimo kalbos;
+  \item neturi (išoriškai) matomos būsenos.
+\end{itemize}
+
+\section{Vykdomasis „bitutinis“ komponentas}
+
+TODO
 
 \section{Sutvarkyti}
 
