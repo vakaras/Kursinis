@@ -177,10 +177,94 @@ programavimo kalbas):
   Komponentų dinaminis radimas ir platinimas nėra nagrinėjamas.
 \end{note}
 
+\section{Lessons learned through six years of component-based development}
+
+Autorius komponentą apibrėžia taip\cite{Sparling:2000:LLT:352183.352202}:
+\begin{defn}[Komponentas]
+  Komponentas yra nuo programavimo kalbos nepriklausomas, nepriklausomai
+  realizuotas programinės įrangos servisų paketas, pristatytas
+  uždarame \en{encapsulated} ir pakeičiamame konteineryje, pasiekiamas
+  per vieną ar daugiau viešų sąsajų.
+
+  Nors komponentas gali turėti galimybę keisti duombazę, bet neturėtų
+  būti tikimasi, kad jis turės būsenos informaciją. Komponentas nėra
+  nei suvaržytas platformos \en{platform-constrained}, nei apribotas
+  aplikacijos srities \en{application-bound}.
+\end{defn}
+
+\section{Component primer}
+
+Autorius komponentą apibrėžia, kaip\cite{Hopkins:2000:CP:352183.352198}:
+\begin{defn}[Komponentas]
+  Programinės įrangos komponentas yra fizinis paketas, vykdomos
+  \en{executable} programinės įrangos su gerai apibrėžtomis ir
+  paviešintomis sąsajomis.
+\end{defn}
+
+Taip pat autorius pabrėžia, kad siekimas sukurti gerai apibrėžtas sąsajas,
+nepriklausomas nuo jų realizacijos yra būtinas siekiant sukurti
+„loosely coupled systems“.
+(TODO: \url{http://en.wikipedia.org/wiki/Loose_coupling}.)
+
+\section{Objects, Components and Frameworks with UML: The Catalysis
+Approach}
+
+Autoriai komponentą apibrėžia,
+kaip\cite[385]{objects-components-and-frameworks-with-uml}:
+\begin{defn}[Komponentas (bendrai)]
+  Rišlus programinės įrangos artefaktų paketas, kuris gali būti
+  nepriklausomai kuriamas ir pristatytas \en{delivered} kaip vienetas
+  ir kuris gali būti įkomponuotas kartu su kitais komponentais siekiant
+  sukurti kažką didesnio.
+\end{defn}
+
+Autoriai taip pat išskiria skirtingus komponentų tipus. Kodo komponentą
+apibrėžia, kaip\cite[386]{objects-components-and-frameworks-with-uml}:
+\begin{defn}[Komponentas (kode)]
+  Rišlus programinės įrangos realizacijos \en{implementation} paketas,
+  kuris:
+  \begin{itemize}
+    \item gali būti nepriklausomai kuriamas ir pristatytas \en{delivered};
+    \item turi išreikštines ir gerai apibrėžtas sąsajas savo pateikiamiems
+      servisams;
+    \item turi išreikštines ir gerai apibrėžtas sąsajas servisams, kurių
+      jis tikisi;
+    \item gali būti sujungtas su kitais komponentais į vieną visumą,
+      nedarant juose pakeitimų.
+  \end{itemize}
+\end{defn}
+
+Taip pat autoriai pabrėžia, kad komponentas:
+\begin{itemize}
+  \item yra „pakavimo vienetas“ \en{a unit of packaging}%
+    \cite[387]{objects-components-and-frameworks-with-uml};
+  \item yra „nepriklausomo perdavimo vienetas“ \en{a unit of independent
+    delivery}\cite[387]{objects-components-and-frameworks-with-uml};
+  \item išreikštinai nurodo tiek kuriamus servisus, tiek jam
+    reikalingus servisus (skirtingai nuo klasių, kurios išreikštinai
+    nurodo tik teikiamus servisus):
+\end{itemize}
+
+TODO: Perskaityti. (Dabar perskaityta 384-393)
+
+\section{Component-Based Measurement: Few Useful Guidelines}
+
+Autoriai, išanalizavę įvairius komponento apibrėžimus, pateikė tokį,
+apibendrintą, apibrėžimą \cite[2]{Gill:2003:CMF:966221.966237}.
+\begin{defn}[Komponentas]
+  Rišlus programinės įrangos realizacijos paketas, kuris:
+  \begin{itemize}
+    \item turi keletą tarpusavyje susijusių servisų ir funkcijų;
+    \item siūlo gerai apibrėžtas ir viešas sąsajas;
+    \item siūlo servisus, kurie yra pasiekiami tik per jo sąsajas;
+    \item yra perpanaudojamas;
+    \item gali būti nepriklausomai kuriamas ir pristatytas.
+  \end{itemize}
+\end{defn}
+
 \section{Sutvarkyti}
 
-TODO: Apibrėžimas iš UML.
+TODO: „Component-oriented programming“ Andy Ju An Wang, Kai Qian:
+\url{http://onlinelibrary.wiley.com/doi/10.1002/0471713708.fmatter/summary}
 
-TODO: „Component software: beyond object-oriented programming By
-Clemens Szyperski, Dominik Gruntz, Stephan Murer“
-\url{http://books.google.com/books?hl=en&lr=&id=U896iwmtiagC&oi=fnd&pg=PR15&dq=object-oriented+programming+dynamic+inheritance&ots=FFWO7xstgM&sig=RhMmypIZ6LsrfHWf4IGB9e3yl4Q#v=onepage&q=object-oriented programming dynamic inheritance&f=false}
+TODO: \url{http://en.wikipedia.org/wiki/Separation_of_concerns}
