@@ -14,3 +14,4 @@ patch: bin/dot2tex
 	#-diff bin/dot2tex dot2tex > mods.diff
 	mv bin/dot2tex bin/dot2tex.org
 	patch bin/dot2tex.org -i mods.diff -o bin/dot2tex
+	chmod 755 bin/dot2tex
