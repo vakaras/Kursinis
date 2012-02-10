@@ -266,7 +266,7 @@
                 \dtt@procprog\space
                 \dtt@mathmode\space
                 \dtt@graphstyle\space
-                -o \dtt@figname.tex \dtt@options\space \dtt@figname.dot}
+                -o dist/\dtt@figname.tex \dtt@options\space dist/\dtt@figname.dot}
             \IfFileExists{\dtt@figname.tex}{%
                 \PackageInfo{dot2texo}{\dtt@figname.dot converted}
             }
@@ -276,7 +276,7 @@
 }
 
 \long\gdef\dottotexgraphicsinclude{\dottotexgraphicsprocess%
-    \IfFileExists{\dtt@figname.tex}{{\input{\dtt@figname}}}
+    \IfFileExists{\dtt@figname.tex}{{\input{dist/\dtt@figname}}}
     {\PackageWarningNoLine{dot2texi}
             {Please convert \dtt@figname.dot manually}}
 }
