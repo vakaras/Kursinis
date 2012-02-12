@@ -1,0 +1,8 @@
+10c10
+< import dot2tex.dot2tex
+---
+> import dot2tex
+13c13
+<     dot2tex.dot2tex.main()
+---
+>     dot2tex.d2t.main()
