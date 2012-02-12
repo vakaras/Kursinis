@@ -135,6 +135,25 @@ Peter Wegner manymu objektinis programavimas \en{object-based} yra nusakomas
   bet jo specializacija.
 \end{comment}
 
+\subsection{Mark Stefik ir Daniel G. Bobrow}
+
+Savo darbe\cite[41]{OOP-themes-and-variations} Mark Stefik ir Daniel G.
+Bobrow objektą apibrėžia, kaip \emph{esybę, kuri apjungia duomenų ir
+procedūrų savybes tam, kad galėtų atlikti veiksmus ir turėti būseną}.
+
+\subsection{Clemens Szyperski}
+
+Clemens Szyperski savo knygoje \emph{Component Software, Beyond
+Object-Oriented Programming} apibrėžia, kad objektas
+yra\cite[37]{cs-beyond-object-oriented-programming}:
+\begin{itemize}
+  \item egzistavimo vienetas \en{unit of instantiation}, kuris turi
+    unikalią tapatybę – objektas negali būti inicializuotas dalinai
+    \en{partially instantiated}
+    (FIXME: Kaip išversti \en{instance}, gal „egzempliorius“?);
+  \item gali turėti būseną, kurią galima stebėti iš išorės;
+  \item enkapsuliuoja savo būseną ir elgseną.
+\end{itemize}
 
 \section{Klasinis objektiškai orientuotas programavimas}
 
@@ -158,26 +177,6 @@ pagrindinės savybės būtų:
 
 \section{Sutvarkyti}
 
-\begin{defn}[Objektas]
-  Esybė sudaryta iš trumpalaikio atributų ir veiksmų junginio.
-
-  Objekto savybės:
-  \begin{description}
-    \item[tapatybė] – savybė, kuri leidžia atskirti objektą nuo kitų
-      objektų;
-    \item[būsena] – objekto saugomi duomenys;
-    \item[elgsena] – veiksmai, kuriuos galima atlikti su objektu.
-  \end{description}
-
-  Pagal \url{http://en.wikipedia.org/wiki/Object_(computer_science)}.
-
-  TODO: Aprašyti objektą pagal \cite[38]{Booch:2007:OAD:1407387}.
-
-  TODO: Aprašyti objektą ir objektinę paradigmą pagal
-  \cite[37]{cs-beyond-object-oriented-programming}.
-
-\end{defn}
-
 TODO: Pridėti paaiškinimą, kodėl man rūpi tik pirmas:
 \begin{itemize}
   \item \url{http://en.wikipedia.org/wiki/Class-based_programming},
@@ -186,9 +185,6 @@ TODO: Pridėti paaiškinimą, kodėl man rūpi tik pirmas:
 
 TODO: Nurodyti, kodėl miniu būtent šituos šaltinius. (Kodėl būtent jie
 yra svarbūs.)
-
-TODO: Pasinagrinėti \cite[38]{Booch:2007:OAD:1407387} pateikiamus
-šaltinius.
 
 TODO: Užmesti akį į:
 \url{http://www.ipipan.gda.pl/~marek/objects/TOA/OOMethod/mcr.html}.
