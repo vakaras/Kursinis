@@ -85,8 +85,56 @@ išskyrė tik šias savybes:
 
 \subsection{Peter Wegner}
 
-TODO: Išanalizuoti.\cite{Wegner:1987:DOL:38807.38823}
-Failas: p168-wegner.pdf
+Peter Wegner manymu objektinis programavimas \en{object-based} yra nusakomas
+šiais terminais \cite[168]{Wegner:1987:DOL:38807.38823}:
+\begin{itemize}
+  \item objektai \en{objects} – savarankiškos esybės, kurios reaguoja į
+    žinutes ir turi būseną;
+  \item klasės \en{classes} – objektų klasifikavimo būdas pagal jų bendras
+    operacijas;
+  \item paveldėjimas \en{inheritance} padeda klasifikuoti klases pagal
+    jų bendrą elgseną;
+  \item duomenų abstrakcija \en{data abstraction} paslepia duomenų
+    vaizdavimo (saugojimo) būdą ir operacijų realizacijos detales;
+  \item stipri tipizacija \en{strong typing} primeta statinius apribojimus
+    operacijų pritaikymui tiek viduje tiek tarp objektų;
+  \item multiprogramiškumas \en{concurrency};
+  \item pastovumas \en{persistence} leidžia objektams išlaikyti tapatybę
+    tarp aplikacijų ir būti nepriklausomam nuo reikšmių ir raktų naudotų
+    renkantis objektus.
+\end{itemize}
+
+\begin{defn}[Objektiškai paremta \en{object-based} kalba]
+  Kalba, kurioje yra galimybė naudoti objektus.
+  \cite[169]{Wegner:1987:DOL:38807.38823}:
+\end{defn}
+
+\begin{defn}[Objektiškai orientuota \en{object-oriented} kalba]
+  Objektiškai paremta kalba, kurioje objektai priklauso klasėms ir kuriose
+  klasių hierarchija gali būti pažingsniui apibrėžta panaudojant paveldėjimo
+  mechanizmą.
+  \cite[169]{Wegner:1987:DOL:38807.38823}:
+\end{defn}
+
+\begin{comment}
+  Šis autorius objektinę paradigmą nagrinėja labai plačiai:
+  išskiria beklases programavimo kalbas (aktorių ir prototipinę)
+  bei klasines programavimo kalbas, bet pastarąsias yra linkęs laikyti
+  svarbesnėmis (jas vadina objektiškai orientuotomis). Jo nuomone
+  beklasės objektinės kalbos tinka eksperimentavimui, nes jos yra
+  lanksčios, o klasinės (ir tuo labiau stipriai tipizuotos bei kuriose
+  yra realizuota duomenų abstrakcija) – „produkcijai“, nes jose
+  daug problemų gali pagauti kompiliatorius. Autorius išreiškė
+  mintį, kad visiškai naujos dalykinės srities modeliavimas turėtų
+  būti pradedamas naudojant beklasę programavimo kalbą ir tada, kai
+  jau pasidaro aiškios bendros objektų savybės išskirti klases ir
+  „pernešti“ visą modelį į klasinę programavimo kalbą.
+
+  Taip pat verta pastebėti, kad Peter Wegner paveldėjimą
+  \en{inheritance} laiko ne alternatyva pavedimui \en{delegation},
+  bet jo specializacija.
+\end{comment}
+
 
 \section{Klasinis objektiškai orientuotas programavimas}
 
