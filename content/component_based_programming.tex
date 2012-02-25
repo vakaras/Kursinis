@@ -292,16 +292,19 @@ apibendrintą, apibrėžimą \cite[2]{Gill:2003:CMF:966221.966237}.
 Dauguma autorių sutaria, kad vykdomasis komponentas yra programinės
 įrangos vienetas, kuris:
 \begin{enumerate}
-  \item gali būti kuriamas nepriklausomai;
-  \item gali būti perpanaudojamas;
-  \item yra juoda dėžė;
-  \item prie jo funkcionalumo galima prieiti tik per išreikštinai
-    apibrėžtas sąsajas;
-  \item savo poreikius nurodo tik per išreikštinai apibrėžtas sąsajas;
-  \item yra fizinis platinimo vienetas \en{unit of deployment};
-  \item gali būti be pakeitimų sujungtas su kitais komponentais į
-    vieną sistemą;
-  \item gali būti pakeičiamas kitu, jei…
+  \item \label{com:exe:independent} gali būti kuriamas nepriklausomai;
+  \item \label{com:exe:reusable} gali būti perpanaudojamas;
+  \item \label{com:exe:blackbox} yra juoda dėžė;
+  \item \label{com:exe:interfaceprovider} prie jo funkcionalumo galima
+    prieiti tik per išreikštinai apibrėžtas sąsajas;
+  \item \label{com:exe:interfaceuser} savo poreikius nurodo tik per
+    išreikštinai apibrėžtas sąsajas;
+  \item \label{com:exe:deployment} yra fizinis diegimo vienetas
+    \en{unit of deployment};
+    TODO: Pakeisti visur deployment → diegimo.
+  \item \label{com:exe:composed} gali būti be pakeitimų sujungtas su
+    kitais komponentais į vieną sistemą;
+  \item \label{com:exe:interchangable} gali būti pakeičiamas kitu, jei…
 \end{enumerate}
 
 Kai kurie autoriai nurodo dar ir tokias savybes:
@@ -322,6 +325,35 @@ TODO:
 TODO
 
 \section{Sutvarkyti}
+
+Mano hipotezė: komponentinę paradigmą galima suvokti, kaip dviejų dalykų
+junginį:
+\begin{itemize}
+  \item paketų sistemos poaibio:
+    \begin{itemize}
+      \item atsakingi už \ref{com:exe:independent} (ta prasme, kad paketo
+        kūrimo metu nereikia taisyti kitų paketų), \ref{com:exe:reusable},
+        \ref{com:exe:deployment}, \ref{com:exe:composed};
+      \item taip pat, OSGi gyvenimo ciklo etapai
+        (\url{http://en.wikipedia.org/wiki/OSGi#Life-cycle}), atrodo,
+        kad priklausytų čia (palyginimas su zc.buildout);
+      \item pavyzdžiai, palaikantys tik šitą dalį: Python Egg, Debian DEB;
+      \item kaip su Java JAR'ais? Kokią meta informaciją, jie savyje turi?
+        Ar turi priklausomybių sąrašus? (Tai yra, ar pačiame JAR'e nurodyta,
+        kad jam reikia kito JAR'o?)
+      \item ar būtinai paketas turi būti vienas failas? Gal pakanka, kad
+        būtų galima įdiegti paketą pagal pavadinimą:
+        \emph{įdiek «paketas»} (Gentoo)?
+    \end{itemize}
+  \item objektinės paradigmos praplėtimo:
+    \begin{itemize}
+      \item atsakingi už \ref{com:exe:independent},
+        \ref{com:exe:reusable}, \ref{com:exe:blackbox},
+        \ref{com:exe:interfaceprovider}, \ref{com:exe:interfaceuser},
+        \ref{com:exe:composed}, \ref{com:exe:interchangable};
+      \item pavydžiai, palaikantys tik šią dalį: Scala;
+    \end{itemize}
+\end{itemize}
 
 TODO: „Component-oriented programming“ Andy Ju An Wang, Kai Qian:
 \url{http://onlinelibrary.wiley.com/doi/10.1002/0471713708.fmatter/summary}
