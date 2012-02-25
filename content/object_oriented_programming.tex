@@ -177,6 +177,43 @@ pagrindinės savybės būtų:
 
 \section{Sutvarkyti}
 
+Objektinio problemos:
+\begin{itemize}
+  \item pataisius vieną klasę, gali reikėti taisyti visas nuo jos
+    priklausomas (objektiniame, tai galima spręsti taikant DIP
+    \en{Dependency Inversion Principle});
+  \item gali reikėti pakeisti konkrečios klasės egzemplioriaus veikseną,
+    nekeičiant jo klasės kodo (objektiniame, tai galima spręsti
+    naudojant pavedimą vietoj paveldėjimo);
+    TODO: UML pavyzdys sprendimo objektiniame panaudojant sąsajų hierarchiją,
+    komponentinio pavyzdys (ar jis apskritai legalus, tai yra ar
+    mastelis nėra per mažas?), Scala pavyzdys, AspectJ pavyzdys
+    (\url{http://en.wikipedia.org/wiki/Aspect-oriented_programming}).
+  \item dalykinės srities kodas „paslepiamas“ „palaikančio“ kodo
+    (žurnalizavimas, transakcijos, saugumas ir t.t.). Šito komponentinis
+    nesprendžia? (Žr.: „Mastering Enterprise JavaBeans“
+    \url{http://books.google.lt/books?id=60oym_-uu3EC&pg=PA285&redir_esc=y#v=onepage&q&f=false})
+  \item klasės vardų srities užteršimas, jei naudojami „mixin“
+    (žr.: \url{http://www.artima.com/weblogs/viewpost.jsp?thread=246341}
+    ir \url{http://www.artima.com/weblogs/viewpost.jsp?thread=246483}).
+    Ar Scala įdėtųjų \en{nested} klasių naudojimas sprendžia šią problemą?
+\end{itemize}
+
+TODO: Kuo skiriasi paveldėjimas nuo pavedimo dinaminėse objektinėse
+programavimo kalbose tokiose, kaip Python? Skirtumai:
+\begin{itemize}
+  \item pavedimo atveju, keli „vaikai“ (objektai) gali turėti tą
+    patį objektą, kaip „tėvą“.
+\end{itemize}
+Skirtumai statinėse objektinėse programavimo kalbose, tokiose, kaip
+Java:
+\begin{itemize}
+  \item pavedimo atveju, keli „vaikai“ (objektai) gali turėti tą
+    patį objektą, kaip „tėvą“;
+  \item pavedimo atveju, „vaikas“ gali turėti kelis „tėvus“;
+  \item paveldėjimo atveju, „vaiką“ galima visada naudoti vietoj „tėvo“.
+\end{itemize}
+
 TODO: Pridėti paaiškinimą, kodėl man rūpi tik pirmas:
 \begin{itemize}
   \item \url{http://en.wikipedia.org/wiki/Class-based_programming},
