@@ -183,16 +183,23 @@ Objektinio problemos:
     priklausomas (objektiniame, tai galima spręsti taikant DIP
     \en{Dependency Inversion Principle});
   \item gali reikėti pakeisti konkrečios klasės egzemplioriaus veikseną,
-    nekeičiant jo klasės kodo (objektiniame, tai galima spręsti
-    naudojant pavedimą vietoj paveldėjimo);
-    TODO: UML pavyzdys sprendimo objektiniame panaudojant sąsajų hierarchiją,
-    komponentinio pavyzdys (ar jis apskritai legalus, tai yra ar
-    mastelis nėra per mažas?), Scala pavyzdys, AspectJ pavyzdys
-    (\url{http://en.wikipedia.org/wiki/Aspect-oriented_programming}).
+    nekeičiant jo klasės kodo (atrodo, kad šioje vietoje Scala skiriasi
+    nuo „tikro“ komponentinio tuo, kad ji imasi „gydimo“, o komponentinis
+    – „prevencijos“, tai yra šioje vietoje turime ne grynai objektinio
+    problemą, bet netinkamos architektūros problemą);
+
+    TODO: UML pavyzdys objektinio architektūros, kurią norima
+    pataisyti, bet tai yra neįmanoma su Java ir yra įmanoma su Scala.
+    Idėja: Turime „Method Template“ šablono pritaikymo atvejį,
+    kai yra varijuojama vienu aspektu. Atsirado poreikis kurią nors
+    funkciją pakeisti į varijuojamą.
+
   \item dalykinės srities kodas „paslepiamas“ „palaikančio“ kodo
-    (žurnalizavimas, transakcijos, saugumas ir t.t.). Šito komponentinis
-    nesprendžia? (Žr.: „Mastering Enterprise JavaBeans“
-    \url{http://books.google.lt/books?id=60oym_-uu3EC&pg=PA285&redir_esc=y#v=onepage&q&f=false})
+    (žurnalizavimas, transakcijos, saugumas ir t.t.) – šią problemą
+    bando spręsti \en{Aspect-oriented programming}, kuris yra objektinio
+    „praplėtimas“ (kita kryptimi, nei tai daro komponentinis; pavyzdžiui,
+    EJB konteineris teikia kai kuriuos servisus, bet kurti naujus
+    servisus nėra galimybės \cite[285]{mastering-EJB});
   \item klasės vardų srities užteršimas, jei naudojami „mixin“
     (žr.: \url{http://www.artima.com/weblogs/viewpost.jsp?thread=246341}
     ir \url{http://www.artima.com/weblogs/viewpost.jsp?thread=246483}).
