@@ -187,24 +187,33 @@ Objektinio problemos:
     nuo „tikro“ komponentinio tuo, kad ji imasi „gydimo“, o komponentinis
     – „prevencijos“, tai yra šioje vietoje turime ne grynai objektinio
     problemą, bet netinkamos architektūros problemą);
-
-    TODO: UML pavyzdys objektinio architektūros, kurią norima
-    pataisyti, bet tai yra neįmanoma su Java ir yra įmanoma su Scala.
-    Idėja: Turime „Method Template“ šablono pritaikymo atvejį,
-    kai yra varijuojama vienu aspektu. Atsirado poreikis kurią nors
-    funkciją pakeisti į varijuojamą.
-
   \item dalykinės srities kodas „paslepiamas“ „palaikančio“ kodo
     (žurnalizavimas, transakcijos, saugumas ir t.t.) – šią problemą
     bando spręsti \en{Aspect-oriented programming}, kuris yra objektinio
     „praplėtimas“ (kita kryptimi, nei tai daro komponentinis; pavyzdžiui,
     EJB konteineris teikia kai kuriuos servisus, bet kurti naujus
     servisus nėra galimybės \cite[285]{mastering-EJB});
+
+    \TODO: EJB: CDI Portable extensions.
+
+    \TODO Komponento modifikavimas. Ką reiškią paveldėjimas tarp
+    komponentų?
+
+    \TODO Ar Scalable Component Abstractions autoriai yra teisūs
+    siūlydami komponentinį programavimo būdą? (Užmesti akį į
+    \cite{odersky:scala-experiment}.) Išsiaiškinti CakePattern
+    ir Scalable Component Abstractions ir ką tai duoda daugiau
+    nei paprastas programavimas. O jei duoda, tai parodyti, kaip
+    eiliniam programuotojui tuo pasinaudoti.
+    Standartiniam komponentiniam kompiliatorius komponentų jungimui nėra
+    kviečiamas.
+
   \item klasės vardų srities užteršimas, jei naudojami „mixin“
     (žr.: \url{http://www.artima.com/weblogs/viewpost.jsp?thread=246341}
     ir \url{http://www.artima.com/weblogs/viewpost.jsp?thread=246483}).
     Ar Scala įdėtųjų \en{nested} klasių naudojimas sprendžia šią problemą?
 \end{itemize}
+
 
 TODO: Kuo skiriasi paveldėjimas nuo pavedimo dinaminėse objektinėse
 programavimo kalbose tokiose, kaip Python? Skirtumai:
@@ -234,6 +243,85 @@ TODO: Užmesti akį į: basicoo.pdf, mcr.pdf
 
 TODO: Penki gero objektinio programavimo stiliaus principai:
 \url{http://en.wikipedia.org/wiki/Solid_(object-oriented_design)}
+
+\subsubsection{Scala prieš Java}
+
+Kuo Scala pranašesnė už Java? (Ar pranašesnė?) Ir kaip reikia
+programuoti, kad pasinaudoti tais privalumais? Ir į ką tai labiau
+panašu: į komponentinį ar į objektinį?
+Gauti sąrašėlį, ką Scaloje dar įmanoma padaryti, ko nebeįmanoma
+su Java.
+
+Scala privalumai prieš Java:
+\begin{enumerate}
+  \item galima apsieiti be null (panaudojant Options)
+    \url{http://ofps.oreilly.com/titles/9780596155957/TypeLessDoMore.html#OptionSomeNone};
+  \item didesnės galimybės nurodyti kas yra matoma paketo (komponento)
+    klientams
+    \url{http://ofps.oreilly.com/titles/9780596155957/ApplicationDesign.html#FineGrainedVisibilityRules};
+  \item neišreikštinis konvertavimas tarp tipų leidžiantis:
+    \begin{itemize}
+      \item „modifikuoti“ klasę, pažymėtą, kaip „final“
+        Martin Odersky straipsnis „Pimp my Library“
+        \url{http://www.artima.com/weblogs/viewpost.jsp?thread=179766}
+        ir \cite[173]{beginning-scala}
+        \TODO Kuo tai yra susiję su „Adapter Pattern“?;
+      \item kurti dalykinės srities kalbą\cite[175]{beginning-scala}
+        (\verb|val a = 2 days|);
+    \end{itemize}
+  \item sudėtingos klasių hierarchijos, garantavimas, kad objektas
+    tenkina ne vieną, o kelias sąsajas\cite[184]{beginning-scala};
+  \item saugesnė tipų sistema – apsauga nuo „rankinių“,
+    kompiliatoriaus netikrinamų konvertavimų tarp tipų
+    \cite[172]{beginning-scala} ir
+    \en{covariant, contravariant, invariant} \cite[207]{beginning-scala};
+    \TODO: \cite{scala:type-checking}
+    \TODO: A Nominal Theory of Objects with Dependent Types
+    \url{http://www.springerlink.com/content/cc97g8gruwtfudm5/}
+  \item TODO: galingesnė tipų sistema? Žr.: duomenų bazės abstrakcijos
+    lygio realizaciją \cite[190]{beginning-scala};
+  \item didesnės galimybės pataisyti svetimos bibliotekos klases.
+\end{enumerate}
+
+Konkrečios situacijos.
+\begin{enumerate}
+  \item Turime trečiųjų šalių sukurtą Java biblioteką (jos kodo
+    keisti negalime), kurioje yra įgyvendintas „Metodo šablono“
+    projektavimo šablonas. Tarkime, kad mums prisireikė pakeisti
+    abstrakčios klasės kažkurį tai iš metodų. (Žr. KursinisMethodTemplate
+    Eclipse projektą.)
+
+    TODO: Parodyti galimus sprendimus su Java:
+    \begin{itemize}
+      \item sukuriant klasę, kuri deleguoja visas žinutes išskyrus
+        \verb|someMethod|, kurią perdengia;
+      \item sukuriant išvestines klases klasėms \verb|ConcreteClass1|
+        ir \verb|ConcreteClass2|, kurios perdengia \verb|someMethod|
+        metodą.
+    \end{itemize}
+
+    TODO: Parodyti galimus sprendimus su C++:
+    \begin{itemize}
+      \item panaudojant template.
+    \end{itemize}
+
+    Čia Scala suteikiamas privalumas yra metodų kodo perpanaudojimas.
+
+  \item TODO: Turime Java final klasę. Scala programavimo kalboje
+    galime pasinaudoti \verb|implicit| konstrukcija. Java – reiktų
+    naudoti delegavimą ir išreikštinį konvertavimą.
+  \item TODO: Type safe database abstraction layer
+    \cite[190]{beginning-scala}.
+    FIXME: Ar šitas pavyzdys tinka?
+  \item TODO: Pavyzdys su daugybiniu paveldėjimu. (Pademonstruoti jo
+    realizaciją su Java, panaudojant pavedimą.)
+  \item „Design Patterns“ patobulinimai:
+    \begin{itemize}
+      \item „Method Template“ – tą pačią funkcionalumo variaciją galima
+        pritaikyti kelioms skirtingoms abstrakčioms klasėms tol, kol
+        jos naudoja tą patį šablono metodą;
+    \end{itemize}
+\end{enumerate}
 
 \subsection{Robert C. Martin}
 
