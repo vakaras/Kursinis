@@ -1,0 +1,61 @@
+\chapter{Scala}
+
+\section{Tikslas}
+
+Išsiaiškinti, kaip galima būtų padidinti verslo palaikymo sistemų, kurtų
+naudojant klasikines objektines programavimo kalbas, modifikuojamumą.
+
+Sistemos modifikuojamumas suprantamas, kaip galimybė vystyti sistemą
+evoliuciniu būdu: sistemą papildyti naujomis funkcijomis neliečiant
+senųjų. Priešprieša evoliuciniam sistemos vystymo būdui būtų
+revoliucinis: norint pridėti naują funkciją, reikia keisti jau
+esamas.
+
+Šiame darbe laikoma, kad klasikinė objektinė programavimo kalba
+yra statinė klasinė objektinė programavimo kalba. Kaip pagrindinis
+pavyzdys yra nagrinėjama Java.
+
+\section{Uždaviniai}
+
+\begin{enumerate}
+  \item Išsiaiškinti, kuo klasikinį objektinį papildė Scala
+    kūrėjai ir kokias papildomas galimybes suteikia pridėtosios
+    savybės.
+  \item Išskirti kokias savybes pridedant klasikiniam objektiniam
+    galima padidinti jo modifikuojamumą.
+  \item Išsiaiškinti, kaip reikėtų programuoti tam, kad pasinaudoti
+    papildomų savybių suteikiamomis galimybėmis.
+\end{enumerate}
+
+\section{Scala išskirtinės savybės}
+
+Straipsnyje \cite{scalable-component-abstractions} Martin Odersky
+ir Matthias Zenger išskyrė tris savybes įgalinančias kurti
+įvairaus dydžio \en{scalable} komponentus:
+\begin{itemize}
+  \item abstraktūs tipai \en{abstract type members};
+  \item atviros rekursijos anotacija \en{selftype annotations, open
+    recursion};
+  \item modulinė maišos kompozicija \en{modular mixin composition}.
+\end{itemize}
+
+Ką jie turi omeny sakydami įvairaus dydžio komponentus matosi
+iš tokio pavyzdžio.
+TODO: Pavyzdys, kaip galima perdengti nested klasę.
+
+\subsection{Kodo dubliavimo vengimas}
+
+Programuojant objektinėmis kalbomis, kurios neturi multipaveldėjimo
+yra susiduriama su problema, jog kai kuriais atvejais yra sudėtinga
+išvengti kodo dubliavimo. Panagrinėsime du pavyzdžius.
+
+\subsubsection{Trečiųjų šalių bibliotekos kodo modifikavimas}
+
+TODO: Pavyzdys, kaip pasinaudojant Scala savybės \en{trait} konstrukcija
+galima išvengti kodo dubliavimo taisant trečiųjų šalių biblioteką.
+
+\subsubsection{Kraunamų savybių dizaino šablonas}
+
+\en{Stackable trait design pattern}\cite[267p.]{programming-in-scala}.
+
+TODO: (e1)
