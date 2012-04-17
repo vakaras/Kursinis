@@ -59,3 +59,82 @@ galima išvengti kodo dubliavimo taisant trečiųjų šalių biblioteką.
 \en{Stackable trait design pattern}\cite[267p.]{programming-in-scala}.
 
 TODO: (e1)
+
+\section{Scala komponentinis modelis}
+
+Straipsnyje \cite{scalable-component-abstractions} Martin Odersky
+ir Matthias Zenger išskyrė tris programavimo kalbos elementus
+įgalinančius kurti įvairaus dydžio \en{scalable} komponentus:
+\begin{itemize}
+  \item abstraktūs tipai \en{abstract type members};
+  \item atviros rekursijos anotacija \en{selftype annotations, open
+    recursion};
+  \item modulinė maišos kompozicija \en{modular mixin composition}.
+\end{itemize}
+Visi šie elementai yra realizuoti
+Scala\footnote{\url{http://www.scala-lang.org}} programavimo kalboje.
+
+Scala, vietoj klasinėms objektinėms programavimo kalboms įprastos
+sąsajos \en{interface} konstrukcijos, turi savybės \en{trait}
+konstrukciją. Pagrindinis savybės ir sąsajos skirtumas yra tai, kad
+savybė gali turėti konkrečias metodų realizacijas. Taigi Scala
+savybė labiau primena abstrakčią klasę, tik skirtingai nuo klasės,
+Scala savybių konstruktoriai neturi parametrų. Savybės konstrukcija
+leidžia pasinaudoti multi paveldėjimo suteikiamais kodo perpanaudojimo
+privalumais (į klasę galima sukomponuoti kelias savybes), bet tuo
+pačiu, dėl to, kad kompiliavimo metu paveldėjimo grafas yra
+ištiesinamas, neturi taip vadinamos rombo problemos.
+
+Pasinaudojant Scala savybės konstrukcija su Scala galima programuoti
+komponentiškai:
+\begin{itemize}
+  \item komponentas realizuojamas pasinaudojant Scala klasės arba
+    savybės konstrukcija;
+  \item komponentas savo poreikius nurodo per abstrakčius metodus;
+  \item komponentas savo teikiamus servisus nurodo per savo konkrečius
+    metodus;
+  \item komponentai yra surišami kompiliavimo metu;
+  \item komponentų kompozicijos rezultatas yra naujas komponentas
+    (Scala klasė).
+\end{itemize}
+Kadangi komponentų kompozicijos rezultatas yra nauja klasė, tai yra
+komponentas, tai ją galima toliau jungti su kitais komponentais.
+Kitaip tariant Scala komponentinis modelis palaiko vertikalų
+jungimą
+\en{vertical binding}\cite[598p.]{classification-framework-for-scm}.
+Tiesa, jis nėra visiškai pilnas, nes negalima sukomponuoti dviejų
+kompozicijos rezultatų (klasių) į naują komponentą.
+
+Klasių hierarchijos pakeitimas į savybių hierarchiją turi privalumą,
+kad kompozicijos metu galima „įlįsti“ į savybių hierarchijos vidų ir ten
+atlikti modifikacijas, ko negalima padaryti su klasių hierarchija.
+(Jau egzistuojančių klasių veikseną galima keisti tik per numatytus
+išplėtimo taškus.) TODO: Iliustruojantis pavyzdys.
+
+
+
+Trait yra tai, ką galime sukomponuoti į klasę. Klasės komponavimo
+metu mes nusprendžiame iš kokių savybių mes norime ją sudaryti.
+Po sukomponavimo mes gauname standartinę Java klasę, kurią
+toliau galime plėsti per numatytus plėtimo taškus. Trait naudojimas
+leidžia pasinaudoti multipaveldėjimo teikiama nauda, bet apsaugo
+nuo situacijos, kai bandoma sujungti dvi „nesuderinamas“ klases
+(TODO: C++ pavyzdys su dviem nesuderinamomis klasėmis), nes
+trait neturi konstruktoriaus ir jei jo nėra bandoma emuliuoti,
+tai traitų būsena yra suderinama klasės sukomponavimo metu. Šis
+modelis yra lengvai plečiamas, nes jei klasė traitams kitus traitus
+perduoda pasinaudodama def konstrukcija, tai tada ją galime perdengti
+išvestinėje klasėje.
+
+Sukomponuotos klasės jau nebegalima keisti. (Lįsti į jos vidų. Ją galima
+tik „anotuoti“.) Klases visur galima keisti į savybes. Klasės reikalingos
+tik tada, kai mums reikia sukonstruoti naują objektą. Šis dizainas
+lemia, kad egzistuoja tik viena vieta, kur yra sukonstruojamas objektas.
+
+Taip pat šis komponentinis modelis palaiko vertikalų jungimą
+\en{vertical binding}\cite[598p.]{classification-framework-for-scm}.
+TODO: Įrodyti formaliai. Neformalus įrodymas: Scala palaiko vertikalų
+jungimą, nes savybes sukomponavus į klasę, mes toliau galime tą
+klasę komponuoti su naujomis savybėmis ir gauti naujas klases.
+Visgi Scala vertikalus jungimas nėra visiškai pilnas, nes negalima
+sukomponuoti dviejų ansamblių (klasių) į naują ansamblį.
