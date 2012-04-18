@@ -2,6 +2,16 @@
 
 \usepackage{style}
 
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
+\newcommand{\inputscala}[1]{%
+\inputminted[linenos,texcl,bgcolor=bg]%
+{scala}%
+{../code/KursinisScala/src/lt/astrauskas/kursinis/#1.scala}%
+}
+
+\newminted{text}{linenos,texcl,bgcolor=bg,gobble=4}
+
 \begin{document}
   \input{global-config.tex}
   \maketitle

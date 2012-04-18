@@ -107,11 +107,42 @@ kompozicijos rezultatų (klasių) į naują komponentą.
 
 Klasių hierarchijos pakeitimas į savybių hierarchiją turi privalumą,
 kad kompozicijos metu galima „įlįsti“ į savybių hierarchijos vidų ir ten
-atlikti modifikacijas, ko negalima padaryti su klasių hierarchija.
-(Jau egzistuojančių klasių veikseną galima keisti tik per numatytus
-išplėtimo taškus.) TODO: Iliustruojantis pavyzdys.
+atlikti modifikacijas, ko negalima padaryti su klasių hierarchija,
+nes pastarosios ištiesinimas turi tenkinti savybę: „klasės hierarchijos
+ištiesinimas visada turi tiesioginės tėvinės klasės hierarchijos
+ištiesinimą, kaip galūnę“\cite[57p.]{scala-reference}. Toks sprendimas
+priimtas todėl, kad galima būtų naudoti jau sukompiliuotas klases
+naujame kode.
+
+\begin{exmp}
+  Pakeisdami klasių hierarchiją į savybių hierarchiją padidiname
+  sistemos modifikuojamumą, nes iš savybių rinkinio kurdami naują
+  klasę skirtingai nei klasių paveldėjimo atveju, galime įterpti
+  naują savybę į norimą vietą. Tai iliustruoja toks kodo fragmentas:
+
+  \inputscala{e1/Demo}
+
+  Jį įvykdžius į standartinę išvestį bus atspausdinta:
+
+  \begin{textcode}
+    List(C1, T4, T3, T2, T1)
+    List(C2, T4, T3, M3, T2, T1)
+  \end{textcode}
+
+\end{exmp}
 
 
+TODO: Pavyzdys su įdėtinėmis klasėmis:
+class A {
+  class Logger {}
+  def getLogger(): Logger = new Logger()
+}
+class B {
+  class ExtendedLogger extends Logger {}
+  override def getLogger(): ExtendedLogger = new ExtendedLogger()
+}
+TODO: Patikrinti ar tai veikia Java?
+TODO: Kokia visgi yra priežastis daryti įdėtines klases?
 
 Trait yra tai, ką galime sukomponuoti į klasę. Klasės komponavimo
 metu mes nusprendžiame iš kokių savybių mes norime ją sudaryti.
