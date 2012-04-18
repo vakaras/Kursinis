@@ -131,6 +131,18 @@ naujame kode.
 
 \end{exmp}
 
+Be trijų aukščiau išvardintų savybių Scala kūrėjai, kaip vieną iš
+itin svarbių programavimo kalbos savybių reikalingų komponentų kūrimui
+išskiria įdėtines klases. Jie jos neįtraukė tarp tų trijų
+savybių vien todėl, kad dauguma pagrindinių programavimo kalbų
+šią savybę turi\cite[12p.]{scalable-component-abstractions}.
+Galimybė naudoti įdėtines klases yra svarbi tuo, kad jos gali pasiekti
+tėvinės klasės atributus be jokio papildomo surišimo tuo pačiu
+išvengiant klasės vardų srities užteršimo problemos. (Jei bandytume
+apsieiti be įdėtinių klasių, tai greičiausiai būtume priversti
+rašyti ilgesnius metodų pavadinimus, pavyzdžiui, „loggerAppend“,
+„SyntaxTreeAppend“.) Scala patobulina įdėtines klases leisdama jų
+paveldėjimą. (TODO: Patikrinti, ar Java to neturi.)
 
 TODO: Pavyzdys su įdėtinėmis klasėmis:
 class A {
@@ -142,7 +154,6 @@ class B {
   override def getLogger(): ExtendedLogger = new ExtendedLogger()
 }
 TODO: Patikrinti ar tai veikia Java?
-TODO: Kokia visgi yra priežastis daryti įdėtines klases?
 
 Trait yra tai, ką galime sukomponuoti į klasę. Klasės komponavimo
 metu mes nusprendžiame iš kokių savybių mes norime ją sudaryti.
