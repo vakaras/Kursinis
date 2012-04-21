@@ -142,19 +142,10 @@ tėvinės klasės atributus be jokio papildomo surišimo tuo pačiu
 išvengiant klasės vardų srities užteršimo problemos. (Jei bandytume
 apsieiti be įdėtinių klasių, tai greičiausiai būtume priversti
 rašyti ilgesnius metodų pavadinimus, pavyzdžiui, „loggerAppend“,
-„SyntaxTreeAppend“.) Scala patobulina įdėtines klases leisdama jų
-paveldėjimą. (TODO: Patikrinti, ar Java to neturi.)
-
-TODO: Pavyzdys su įdėtinėmis klasėmis:
-class A {
-  class Logger {}
-  def getLogger(): Logger = new Logger()
-}
-class B {
-  class ExtendedLogger extends Logger {}
-  override def getLogger(): ExtendedLogger = new ExtendedLogger()
-}
-TODO: Patikrinti ar tai veikia Java?
+„SyntaxTreeAppend“.) Scala, skirtingai nei Java, vidinės
+\en{inner} klasės yra susietos ne su supančia klase, bet su supančiu
+objektu, todėl skirtingiems objektams priklausančių vidinių
+klasių maišyti negalima.
 
 Trait yra tai, ką galime sukomponuoti į klasę. Klasės komponavimo
 metu mes nusprendžiame iš kokių savybių mes norime ją sudaryti.
