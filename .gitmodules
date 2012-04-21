@@ -1,0 +1,3 @@
+[submodule "code/scala-compiler"]
+	path = code/scala-compiler
+	url = https://github.com/scala/scala.git
