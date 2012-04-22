@@ -172,3 +172,18 @@ jungimą, nes savybes sukomponavus į klasę, mes toliau galime tą
 klasę komponuoti su naujomis savybėmis ir gauti naujas klases.
 Visgi Scala vertikalus jungimas nėra visiškai pilnas, nes negalima
 sukomponuoti dviejų ansamblių (klasių) į naują ansamblį.
+
+Clemens Szyperski apibrėždamas
+komponentą\cite{cs-beyond-object-oriented-programming} nurodė, kad tai
+yra diegimo vienetas \en{unit of deployment}. Taip pat paaiškindamas
+savo apibrėžimą, jis nurodė, kad komponentai būtinai turi būti
+gaunami jau sukompiliuoti. Kadangi Scala komponentai jungiami
+pasinaudojant kompiliatoriumi, tai Scala komponentinis modelis
+šio reikalavimo netenkina, bet Szyperski aiškinimas buvo kritikuojamas
+(TODO: kieno), kadangi jokio skirtumo ar komponentus gauname
+jau sukompiliuotus, ar ne, jei jų įdiegimu sugeba pasirūpinti
+automatinė diegimo sistema. Su Scala šioje vietoje galima išsisukti
+pasinaudodami versijų kontrolės sistemų teikiamomis galimybėmis.
+Pavyzdžiui, \verb|git submodule|.
+TODO: Scala kompiliatorius, kaip mano programos dalis pasinaudojant git
+submodule galimybėmis.
