@@ -9,11 +9,12 @@ trait ArticleWithSection {
 
   class Section(val title: String) extends interfaces.Section {
 
+    protected type ElementType <: Element
     protected val subsectionsList = new mutable.MutableList[SectionType]
-    protected val elementsList = new mutable.MutableList[Element]
+    protected val elementsList = new mutable.MutableList[ElementType]
 
     def subsections = subsectionsList
-    def body = elementsList
+    def body: mutable.MutableList[ElementType] = elementsList
     def addSubsection(title: String): SectionType = {
       val section = createSection(title)
       subsectionsList += section
@@ -31,14 +32,14 @@ trait ArticleWithSection {
 
   protected def createSection(title: String): SectionType
 
-  val sectionsList = new mutable.MutableList[Section]
+  val sectionsList = new mutable.MutableList[SectionType]
 
   def bibliography: interfaces.Bibliography
   def index: interfaces.Index
   def sections = sectionsList
   def addSection(title: String): SectionType = {
     val section = createSection(title)
-    sectionsList += section
+    sections += section
     return section
   }
 

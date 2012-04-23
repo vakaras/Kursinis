@@ -1,6 +1,7 @@
 package lt.astrauskas.kursinis.e5.simple
 
 import lt.astrauskas.kursinis.e5.interfaces
+import scala.collection.mutable
 
 trait SectionWithParagraph extends interfaces.Section {
 
@@ -26,7 +27,9 @@ trait SectionWithParagraph extends interfaces.Section {
     val citations = citationRe.findAllIn(text).map(
         (citation: String) => citation.slice(6, citation.length()-1)
           ).toSet
-    return createParagraph(text, citations)
+    val paragraph = createParagraph(text, citations)
+    // FIXME: Nesikompiliuoja body += paragraph
+    return paragraph
   }
 
 }

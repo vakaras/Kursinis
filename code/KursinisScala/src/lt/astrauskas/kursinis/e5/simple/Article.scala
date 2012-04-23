@@ -11,12 +11,12 @@ class Article(
     with ArticleWithBibliography
     with ArticleWithIndex
     with ArticleWithSection
-    with writers.Article {
+    with writers.XMLArticle {
 
   class Section(title: String)
     extends super.Section(title)
     with SectionWithParagraph
-    with writers.SectionWithParagraph {
+    with XMLSection {
 
     class Paragraph(text: String, citations: Set[String])
       extends super.Paragraph(text, citations)
@@ -28,6 +28,8 @@ class Article(
         ): Paragraph = (
       new Paragraph(text, citations))
     protected override type ParagraphType = Paragraph
+
+    override protected type ElementType = Paragraph
 
   }
   protected override type SectionType = Section

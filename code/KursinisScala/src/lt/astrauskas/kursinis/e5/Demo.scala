@@ -16,14 +16,12 @@ object Demo {
         "Scalable Component Abstractions", 2005)
     val section1 = article.addSection(
         "Objektiškai orientuotas programavimas")
-    println(section1.asXML())
     val section2 = article.addSection(
         "Komponentiškai orientuotas programavimas")
     val paragraph1 = section1.addParagraph("""
 Labas rytas. Aš cituoju \cite{szyperski02} ir \cite{scalable05}.
 """)
     println(article.asXML())
-    println(paragraph1.asXML())
   }
 
 }
