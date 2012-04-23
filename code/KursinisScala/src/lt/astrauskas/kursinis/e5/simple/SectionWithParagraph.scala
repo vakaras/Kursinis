@@ -4,13 +4,29 @@ import lt.astrauskas.kursinis.e5.interfaces
 
 trait SectionWithParagraph extends interfaces.Section {
 
-  class Paragraph(val text: String) extends Element {
+  protected val citationRe = "\\\\cite\\{\\w+\\}".r
+
+  protected type ParagraphType <: Paragraph
+
+  class Paragraph(
+      val text: String,
+      val citations: Set[String]
+      ) extends Element {
   }
 
-  def addParagraph(text: String): Paragraph = {
-    println("\\\\cite\\{\\w+\\}".r.findAllIn(text).reduceLeft(
-        (a: String, b) => a + b))
-    return new Paragraph(text)
+  protected def createParagraph(
+      text: String, citations: Set[String]
+      ): ParagraphType
+//  protected def createParagraph(
+//      text: String, citations: Set[String]
+//      ): ParagraphType = (
+//      new Paragraph(text, citations))
+
+  def addParagraph(text: String): ParagraphType = {
+    val citations = citationRe.findAllIn(text).map(
+        (citation: String) => citation.slice(6, citation.length()-1)
+          ).toSet
+    return createParagraph(text, citations)
   }
 
 }

@@ -19,6 +19,8 @@ trait ArticleWithSection {
       subsectionsList += section
       return section
     }
+    def bibliography = ArticleWithSection.this.bibliography
+    def index = ArticleWithSection.this.index
     protected def getReference(element: Element) = {
       "%s.%d".format(
           "unknown",
@@ -31,6 +33,8 @@ trait ArticleWithSection {
 
   val sectionsList = new mutable.MutableList[Section]
 
+  def bibliography: interfaces.Bibliography
+  def index: interfaces.Index
   def sections = sectionsList
   def addSection(title: String): SectionType = {
     val section = createSection(title)

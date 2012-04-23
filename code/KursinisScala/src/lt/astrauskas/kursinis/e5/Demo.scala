@@ -8,15 +8,22 @@ object Demo {
     val article = new simple.Article(
         "Komponentinis programavimas su Scala",
         mutable.HashSet("Vytautas Astrauskas"))
+    article.bibliography.add(
+        "szyperski02", mutable.HashSet("Clemens Szyperski"),
+        "Component Software, Beyond Object-Oriented Programming", 2002)
+    article.bibliography.add(
+        "scalable05", mutable.HashSet("Martin Odersky", "Matthias Zenger"),
+        "Scalable Component Abstractions", 2005)
     val section1 = article.addSection(
         "Objektiškai orientuotas programavimas")
+    println(section1.asXML())
     val section2 = article.addSection(
         "Komponentiškai orientuotas programavimas")
-        section1.addParagraph("""
-Labas rytas. Aš cituoju \\cite{lamb434} ir \\cite{pri3432},
-o kitoje eilutėje \\cite{vdi3434}.
+    val paragraph1 = section1.addParagraph("""
+Labas rytas. Aš cituoju \cite{szyperski02} ir \cite{scalable05}.
 """)
     println(article.asXML())
+    println(paragraph1.asXML())
   }
 
 }

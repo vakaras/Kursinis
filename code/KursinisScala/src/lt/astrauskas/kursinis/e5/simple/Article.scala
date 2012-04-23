@@ -15,7 +15,20 @@ class Article(
 
   class Section(title: String)
     extends super.Section(title)
-    with SectionWithParagraph {
+    with SectionWithParagraph
+    with writers.SectionWithParagraph {
+
+    class Paragraph(text: String, citations: Set[String])
+      extends super.Paragraph(text, citations)
+      with XMLParagraph {
+    }
+
+    protected def createParagraph(
+        text: String, citations: Set[String]
+        ): Paragraph = (
+      new Paragraph(text, citations))
+    protected override type ParagraphType = Paragraph
+
   }
   protected override type SectionType = Section
   protected def createSection(title: String): SectionType = {

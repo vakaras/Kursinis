@@ -29,6 +29,8 @@ trait Section {
   def subsections: mutable.MutableList[_ <: Section]
   def body: mutable.MutableList[_ <: Element]
   def addSubsection(title: String): Section
+  def bibliography: Bibliography
+  def index: Index
 }
 
 trait Article {

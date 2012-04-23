@@ -18,8 +18,10 @@ trait ArticleWithBibliography {
         new mutable.HashMap[String, Entry])
 
     def createReference(entry: Entry): String = {
-      val authors = entry.authors.reduceLeft(
-          (authors: String, author: String) => authors + author.charAt(0))
+      val authors = entry.authors.map(
+          (author: String) => author.charAt(0).toString()
+          ).reduceLeft(
+          (authors: String, author: String) => authors + author)
       return "[%s%d]".format(authors, entry.year % 100)
     }
 
