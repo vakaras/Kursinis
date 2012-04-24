@@ -6,7 +6,7 @@ Vis didėjant sistemoms, jų vystymas darosi vis sudėtingesnis procesas.
 Dėl šios priežasties auga poreikis turėti priemones, kurios:
 \begin{itemize}
   \item leistų sistemas kurti evoliuciniu būdu, jas vis papildant nauju
-    funkcionalumu neliečiant jau veikiančių sistemos dalių;
+    funkcionalumu, neliečiant jau veikiančių sistemos dalių;
   \item leistų sistemos kūrimo darbą efektyviai paskirstyti dideliam
     kiekiui žmonių.
 \end{itemize}
@@ -88,6 +88,9 @@ pasakymas, kad komponentas turi būti įdiegiamas (TODO: kritika
 išsakyta Szyperski'ui dėl jo minties, kad komponentas turi būti
 sukompiliuotas) duoda mažai naudos, tuo tarpu komponentinis
 modelis apibrėžia kaip yra platinami ir įdiegiami komponentai).
+
+TODO: Pagrindimas, kad komponentinis ir objektinis yra skirtingi
+dalykai.
 
 \section{Komponento savybių sąrašas}
 
@@ -206,5 +209,5 @@ Tiek objektiniame, tiek komponentiniame dažnai gauname, kad dalykinės
 srities kodas yra „paslepiamas“ „palaikančio“ kodo (žurnalizavimas,
 tranzakcijos, saugumas ir t.t.). Objektiniame šitai bandoma spręsti
 naudojant Aspect-oriented programming. Kaip šitai yra bandoma
-spręsti komponentiniame (pavyzdžiui, EJB CDI Portable extensions)
-ir kokie tokių sprendimų privalumai lyginant su AOP?
+spręsti komponentiniame (pavyzdžiui, EJB CDI Portable extensions
+bei Scala mixin) ir kokie tokių sprendimų privalumai lyginant su AOP?
