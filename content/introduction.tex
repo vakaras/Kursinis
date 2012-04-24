@@ -106,8 +106,12 @@ TODO: Ką Scala pridėjo objektiniam (Java):
     kompoziciją \en{modular mixin composition};
   \item atviros rekursijos anotacija \en{selftype annotations} –
     iš principo tik sintaksinis saldainiukas;
-  \item savybių naudojimo vietoj klasių privalumai, pavyzdys e1.
+  \item savybių naudojimo vietoj klasių privalumai, pavyzdys e1
+    (savybės perdengimas vidury hierarchijos).
 \end{itemize}
+
+TODO: Scala vidinių klasių ir Java įdėtinių klasių skirtumai. Taip pat
+pavyzdys su Scala tipų sistema ir Abstract factory projektavimo šablonu.
 
 TODO: Scala savybės nuo Java sąsajų skiriasi tuo, kad savybės gali turėti
 metodų realizacijas.
@@ -115,6 +119,10 @@ metodų realizacijas.
 TODO: Scala savybės nuo klasių skiriasi tuo, kad savybės negali turėti
 konstruktoriaus parametrų. Šis apribojimas leidžia efektyviai
 išspręsti su multipaveldėjimu susijusią rombo problemą.
+
+Šio skyrelio tikslas parodyti kuo Scala papildė Java objektinį ir
+kokias papildomas galimybes tai suteikia. (Scala, kaip komponentinė
+programavimo kalba dar nenagrinėjama)
 
 \section{Scala komponentinis modelis}
 
@@ -143,7 +151,7 @@ Scala komponentinio modelio trūkumai:
     komponento realizacijos.)
 \end{itemize}
 
-\section{Pavyzdys: komponentinis prieš objektinį}
+\section{Pavyzdys: Scala komponentinis prieš Java objektinį}
 
 e6 analizė. Cake pattern taikymas: turime ComponentA ir ComponentB,
 juos sujungę į System gauname sistemą sudarytą iš dviejų komponentų.
@@ -193,3 +201,10 @@ kad programuojant bet kaip gausime kažką panašaus į komponentinį.}
 Kaip pagerinti Java modifikuojamumą. \emph{Nenaudojant komponentinio,
 modifikuojamumą galimą padidinti klasių hierarchiją pakeičiant
 į savybių hierarchiją.}
+
+Tiek objektiniame, tiek komponentiniame dažnai gauname, kad dalykinės
+srities kodas yra „paslepiamas“ „palaikančio“ kodo (žurnalizavimas,
+tranzakcijos, saugumas ir t.t.). Objektiniame šitai bandoma spręsti
+naudojant Aspect-oriented programming. Kaip šitai yra bandoma
+spręsti komponentiniame (pavyzdžiui, EJB CDI Portable extensions)
+ir kokie tokių sprendimų privalumai lyginant su AOP?
