@@ -280,8 +280,75 @@ Scala privalumai prieš Java:
     \url{http://www.springerlink.com/content/cc97g8gruwtfudm5/}
   \item TODO: galingesnė tipų sistema? Žr.: duomenų bazės abstrakcijos
     lygio realizaciją \cite[190]{beginning-scala};
-  \item didesnės galimybės pataisyti svetimos bibliotekos klases.
+  \item didesnės galimybės pataisyti svetimos bibliotekos klases;
+  \item apsauga nuo skirtingų realizacijų maišymo
+    \cite[24p.]{scala-design-patterns}.
 \end{enumerate}
+
+TODO (bakalauriniam, suvokimas): Ką klasikiniam objektiniui pridėjus
+iš Scala, kokias savybes gautume. Koks kiekis ir kokių Scala savybių
+smarkiai pagerina 
+
+\TODO: Išsiaiškinti kur Scala modifikuojamumo ribos. Su Java lyg ir
+viskas aišku: galime pakeisti tik „apačioje“. Ar Scala'oje galima
+perdengti nested klasę kita nested klase? Ar įmanoma perdengti trait
+vidury hierarchijos. 
+
+TODO: Sugalvoti „trait“ vertimą.
+
+TODO: Išsiaiškinti pavyzdį:
+A with B with C with D with E
+Visi „trait“ turi metodą foo, kuris kviečia super.foo. Klausimas:
+kokia tvarka ir kokie metodai bus įvykdyti?
+
+\TODO: Kodėl būtent stato viską ant nested klasių? Ar tik tam, kad
+apsisaugoti nuo namespace pollution, ar ir dar dėl kokios nors
+priežasties? Ar nested klasės objektai yra sukuriami automatiškai,
+ar juos reikia kurtis rankomis?
+
+Pavyzdys iš Java:
+class A { // Klasei B, nebūtinas klasės A objektas.
+  public static class B {
+    }
+}
+class A { // Klasės B objektui sukonstruoti, būtina turėti A objektą.
+  public class B {
+  }
+}
+
+Dėstyme: ar cake pattern yra komponentinis + keletas pavyzdžių,
+kai Java jau nebeeina, o Scala dar eina. Nurodyti, kad apsiribojam Java.
+Ar CakePattern yra komponentinis.
+
+\TODO: Dar surasti situaciją, kur naudojam Scala klases.
+
+\TODO Perskaityti \cite{scala-design-patterns}. Sustota 18p. Praleista
+iki 32 p.
+
+\TODO Išsitraukti: „[ScalaWikiPatterns] Scala Wiki: Scala Design Patterns, 
+\url{http://scala.sygneca.com/patterns/start}“.
+
+Scala \emph{Gang of Four} „Design patterns“ siūlomi pakeitimai:
+\begin{itemize}
+  \item pakeisti kalbos struktūromis:
+    \begin{itemize}
+      \item singletonas;
+      \item iteratorius;
+    \end{itemize}
+  \item nauji šablonai:
+    \begin{itemize}
+      \item „Pimp my library“
+        \url{http://ofps.oreilly.com/titles/9780596155957/ApplicationDesign.html#DesignPatterns}
+      \item „Cake Pattern“
+        \url{http://ofps.oreilly.com/titles/9780596155957/ApplicationDesign.html#DependencyInjectionInScala}
+    \end{itemize}
+  \item patobulinti:
+    \begin{itemize}
+      \item „Visitor Pattern“
+        \url{http://ofps.oreilly.com/titles/9780596155957/ApplicationDesign.html#VisitorAlternativeInScala}
+    \end{itemize}
+\end{itemize}
+
 
 Konkrečios situacijos.
 \begin{enumerate}
@@ -320,6 +387,22 @@ Konkrečios situacijos.
       \item „Method Template“ – tą pačią funkcionalumo variaciją galima
         pritaikyti kelioms skirtingoms abstrakčioms klasėms tol, kol
         jos naudoja tą patį šablono metodą;
+      \item „Decorator“ – dekoravimą galima pakeisti Trait naudojimu.
+        Privalumai: greitis (nereikia keisti objekto tipo), klaidos
+        gaudomos kompiliavimo metu.
+        Trūkumai: negalima pakeisti vykdymo metu.
+
+        TODO: Kodo pagražinimas pasinaudojant Scala „implicit“
+        konstrukcija. Tarkime, kad komponentas yra klasė C ir
+        jis yra dekoruotas D[N] dekoratorių. Viršutinis iš jų būtų
+        toks, kuris nieko daugiau nedaro, tik persiunčia žinutes.
+        Tarkime, jog iškviečiame metodą, kuris priklauso dekoratoriui
+        D[i]. Tada yra iškviečiamas D[i] dekoratoriaus „companion
+        object“ metodas, kuris teoriškai turi konvertuoti D[n-1] į D[i],
+        o praktiškai jisai arba dekoratorių eilėje suranda reikiamą
+        dekoratorių ir grąžina rodyklę į jį, arba jei tokio nėra
+        įdeda naują dekoratorių reikiamą dekoratorių prieš paskutinįjį
+        ir grąžina rodyklę į jį.
     \end{itemize}
 \end{enumerate}
 
