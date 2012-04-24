@@ -18,11 +18,11 @@ Straipsnyje \cite{scalable-component-abstractions} Martin Odersky
 ir Matthias Zenger teigia, jog su Scala galima programuoti
 komponentiškai. Šio darbo tikslas yra patikrinti ar jų teiginys yra
 teisingas ir jei taip, tai kokias būtent papildomas galimybes
-suteikia komponentinis programavimas lyginant su programavimu Java.
+suteikia komponentinis programavimas lyginant su statiniu
+klasiniu programavimu (kaip pavyzdys nagrinėjama Java) kuriant verslo
+informacines sistemas.
 
 TODO: Martin Odersky nurodyti dabartinių programavimo kalbų trūkumai.
-
-TODO: Kodėl lyginama būtent su Java.
 
 \section{Siekiami rezultatai}
 
@@ -109,6 +109,13 @@ TODO: Ką Scala pridėjo objektiniam (Java):
   \item savybių naudojimo vietoj klasių privalumai, pavyzdys e1.
 \end{itemize}
 
+TODO: Scala savybės nuo Java sąsajų skiriasi tuo, kad savybės gali turėti
+metodų realizacijas.
+
+TODO: Scala savybės nuo klasių skiriasi tuo, kad savybės negali turėti
+konstruktoriaus parametrų. Šis apribojimas leidžia efektyviai
+išspręsti su multipaveldėjimu susijusią rombo problemą.
+
 \section{Scala komponentinis modelis}
 
 TODO: Scala komponentinio modelio apibrėžimas (pagal išrinktas savybes).
@@ -153,7 +160,7 @@ Norėdami realizuoti analogišką sistemą su Java, turime du variantus:
 
 Šis pavyzdys iliustruoja teiginį, kad komponentinis programavimas yra
 susijęs ne su realizacine technologija (programavimo kalba), o su
-dalių jungimo metodika, kuri užtikrina:
+jos naudojimo būdu, kuris užtikrina:
 \begin{enumerate}
   \item galimybę dalis kurti atskirai, nepriklausomai viena nuo kitos;
   \item galimybę lengvai dalį pakeisti kita jos realizacija.
@@ -164,3 +171,25 @@ dalių jungimo metodika, kuri užtikrina:
 Šiame darbe buvo apibrėžta kas yra komponentinis modelis ir parodyta,
 jog Scala autorių teiginys, jog su Scala galima programuoti
 komponentiškai yra teisingas.
+
+\chapter{Neišnagrinėti klausimai}
+
+Komponentų vykdymo aplinka. Komponento konteineris. Galimybė vieną
+komponentą pakeisti kitu vykdymo metu bei su tuo susijęs komponento
+gyvavimo ciklas. (Pagal OSGi.)
+
+Įtaisytųjų \en{embedded} sistemų komponentų ir paketinės sistemos
+paketų (pavyzdžiui, Debian DEB) skirtumai.
+
+Programuojant bet kaip su Java, tai tikimybė, kad gausis kažkas artimo
+taisyklingam komponentiniam yra labai maža. Programuojant bet kaip su
+Scala turėtų gautis žymiai mažesnis $\Delta$. \emph{Jeigu programuodami
+su Java naudojame projektavimo šablonus, tai tikėtina, kad gausime
+sistemą, kurią galime nesunkiai išskaidyti į komponentus. Norint
+programuoti komponentiškai su Scala irgi reikia taikyti projektavimo
+šablonus (Cake pattern, Stackable trait). Kitaip tariant mažai tikėtina,
+kad programuojant bet kaip gausime kažką panašaus į komponentinį.}
+
+Kaip pagerinti Java modifikuojamumą. \emph{Nenaudojant komponentinio,
+modifikuojamumą galimą padidinti klasių hierarchiją pakeičiant
+į savybių hierarchiją.}
