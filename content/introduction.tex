@@ -1,15 +1,166 @@
 \chapter{Įvadas}
 
-TODO: Šis darbas yra…
+\section{Temos aktualumas}
+
+Vis didėjant sistemoms, jų vystymas darosi vis sudėtingesnis procesas.
+Dėl šios priežasties auga poreikis turėti priemones, kurios:
+\begin{itemize}
+  \item leistų sistemas kurti evoliuciniu būdu, jas vis papildant nauju
+    funkcionalumu neliečiant jau veikiančių sistemos dalių;
+  \item leistų sistemos kūrimo darbą efektyviai paskirstyti dideliam
+    kiekiui žmonių.
+\end{itemize}
+TODO: Susieti su komponentiniu programavimu.
 
 \section{Darbo tikslas}
 
-TODO
+Straipsnyje \cite{scalable-component-abstractions} Martin Odersky
+ir Matthias Zenger teigia, jog su Scala galima programuoti
+komponentiškai. Šio darbo tikslas yra patikrinti ar jų teiginys yra
+teisingas ir jei taip, tai kokias būtent papildomas galimybes
+suteikia komponentinis programavimas lyginant su programavimu Java.
 
-\section{Temos aktualumas}
+TODO: Martin Odersky nurodyti dabartinių programavimo kalbų trūkumai.
 
-TODO
+TODO: Kodėl lyginama būtent su Java.
 
 \section{Siekiami rezultatai}
 
-TODO
+Uždaviniai:
+\begin{enumerate}
+  \item išsiaiškinti kas yra objektinis programavimas;
+  \item išsiaiškinti kas yra komponentinis programavimas;
+  \item apibrėžti komponento sąvoką;
+  \item \label{task:enum:scala-component} patikrinti ar su Scala galima
+    programuoti komponentiškai;
+  \item jei \ref{task:enum:scala-component}, tai nustatyti kokios
+    būtent Scala galimybės tai leidžia;
+  \item išsiaiškinti, kokias papildomas galimybes suteikia Scala
+    lyginant su Java ir kaip turėtų būti programuojama, kad jos
+    būtų išnaudojamos.
+\end{enumerate}
+
+TODO: Paaiškinti uždavinių ryšius: kodėl yra svarbu išsiaiškinti kas
+yra objektinis programavimas.
+
+\chapter{Objektinis programavimas}
+
+\section{Objektinio programavimo apibrėžimai}
+
+TODO:
+\begin{itemize}
+  \item Objektinio programavimo apibrėžimas:
+    \begin{itemize}
+      \item dinaminis susiejimas;
+      \item inkapsuliacija;
+      \item potipiai;
+      \item paveldėjimas, pavedimas;
+      \item atvira rekursija.
+    \end{itemize}
+  \item Objektinio programavimo rūšys ir kur patartina ką naudoti:
+    \begin{itemize}
+      \item prototipinis objektinis;
+      \item dinaminis klasinis objektinis;
+      \item statinis klasinis objektinis.
+    \end{itemize}
+\end{itemize}
+
+\section{Statinis klasinis objektiškai orientuotas programavimas}
+
+TODO: Apibrėžimas ir nurodymas, kad toliau darbe apsiribojama tik juo.
+Kaip pagrindinis pavyzdys nagrinėjama Java programavimo kalba.
+
+\chapter{Komponentinis programavimas}
+
+\section{Komponento apibrėžimai}
+
+TODO: Įvairių autorių pateikti komponento apibrėžimai.
+
+\section{Komponentinio modelio apibrėžimas}
+
+TODO: Komponentinio programavimo supratimo pokytis, perėjimas nuo
+bandymo apibrėžti kas yra komponentas prie komponentinio modelio
+sąvokos. Komponentinio modelio apibrėžimas pagal
+\cite{classification-framework-for-scm}. Paaiškinimas, kuo svarbus šis
+pokytis (Clemens Szyperski nurodo, kad komponentas yra diegimo
+vienetas\cite{cs-beyond-object-oriented-programming}, bet tiesiog
+pasakymas, kad komponentas turi būti įdiegiamas (TODO: kritika
+išsakyta Szyperski'ui dėl jo minties, kad komponentas turi būti
+sukompiliuotas) duoda mažai naudos, tuo tarpu komponentinis
+modelis apibrėžia kaip yra platinami ir įdiegiami komponentai).
+
+\section{Komponento savybių sąrašas}
+
+TODO: Iš ankstesnių skyrelių surinktas komponento būtinųjų savybių
+sąrašas.
+
+\chapter{Scala}
+
+\section{Scala ir Java skirtumai}
+
+TODO: Ką Scala pridėjo objektiniam (Java):
+\begin{itemize}
+  \item Scala tipų sistema;
+  \item Scala savybės \en{trait} konstrukcija;
+  \item savybių jungimas į klases panaudojant modulių maišos
+    kompoziciją \en{modular mixin composition};
+  \item atviros rekursijos anotacija \en{selftype annotations} –
+    iš principo tik sintaksinis saldainiukas;
+  \item savybių naudojimo vietoj klasių privalumai, pavyzdys e1.
+\end{itemize}
+
+\section{Scala komponentinis modelis}
+
+TODO: Scala komponentinio modelio apibrėžimas (pagal išrinktas savybes).
+Parodymas, kad Scala komponentinis modelis tenkina reikalavimus,
+nurodymas kokios būtent Scala programavimo kalbos savybės kuriuos
+būtent reikalavimus realizuoja.
+
+Scala komponentinio modelio privalumai (remiantis
+\cite{classification-framework-for-scm}):
+\begin{itemize}
+  \item vertikalaus sujungimo\cite[599]{classification-framework-for-scm}
+    palaikymas leidžia kurti įvairaus dydžio \en{scalable} komponentus.
+\end{itemize}
+
+Scala komponentinio modelio trūkumai:
+\begin{itemize}
+  \item nėra komponentų, kaip paketų, valdymo mechanizmo (šitai galima
+    apeiti pasinaudojant versijų kontrolės sistemų galimybėmis,
+    pavyzdžiui, \verb|git submodule|);
+  \item komponentų kiekis turi būti žinomas projektavimo metu, todėl
+    Scala komponentinis modelis nėra tinkamas, pavyzdžiui,
+    grafinės sąsajos elementų bibliotekos \en{GUI widgets toolkit}
+    kūrimui. (Kadangi komponentai yra „užregistruojami“
+    kompiliavimo metu, tai nėra, kaip pridėti trečiųjų šalių
+    komponento realizacijos.)
+\end{itemize}
+
+\section{Pavyzdys: komponentinis prieš objektinį}
+
+e6 analizė. Cake pattern taikymas: turime ComponentA ir ComponentB,
+juos sujungę į System gauname sistemą sudarytą iš dviejų komponentų.
+Norėdami realizuoti analogišką sistemą su Java, turime du variantus:
+\begin{enumerate}
+  \item visą kodą sudėti į System, bet tada bus neįmanomas kodo
+    perpanaudojimas, taip pat bus sudėtingesnis sistemos kūrimo
+    darbų paskirstymas keliems programuotojams;
+  \item \label{scala:exmp:enum:2} paveldėjimą pakeisti į delegavimą,
+    tuo pačiu sukuriant Container, kuris pasirūpintų dalių
+    sujungimu. Šiuo atveju vėl gauname kažką panašaus į
+    komponentinį.
+\end{enumerate}
+
+Šis pavyzdys iliustruoja teiginį, kad komponentinis programavimas yra
+susijęs ne su realizacine technologija (programavimo kalba), o su
+dalių jungimo metodika, kuri užtikrina:
+\begin{enumerate}
+  \item galimybę dalis kurti atskirai, nepriklausomai viena nuo kitos;
+  \item galimybę lengvai dalį pakeisti kita jos realizacija.
+\end{enumerate}
+
+\chapter{Išvados}
+
+Šiame darbe buvo apibrėžta kas yra komponentinis modelis ir parodyta,
+jog Scala autorių teiginys, jog su Scala galima programuoti
+komponentiškai yra teisingas.
