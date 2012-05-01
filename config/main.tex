@@ -1,6 +1,7 @@
 \documentclass[12pt, a4paper, xcolor=table]{documentation}
 
 \usepackage{style}
+\usepackage{xparse}
 
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 
@@ -11,6 +12,34 @@
 }
 
 \newminted{text}{linenos,texcl,bgcolor=bg,gobble=4}
+
+\newcounter{glossaryCounter}
+\makeatletter
+\def\glossaryLabel#1{\begingroup
+  \def\@currentlabel{\textsuperscript{Ž\arabic{glossaryCounter}}}%
+	\phantomsection\label{#1}\endgroup
+}
+\makeatother
+\renewenvironment{glossary}{%
+\setcounter{glossaryCounter}{1}%
+\NewDocumentEnvironment{entry}{m m o o}{%
+\glossaryLabel{glossary:##1}%
+{\noindent\strong{##2}} \par
+}{%
+  \IfNoValueTF{##3}{%
+  }{%
+
+  Angliškai: \emph{##3}
+  }
+  \IfNoValueTF{##4}{%
+  }{%
+
+  Aprašymas: ##4
+  }
+}
+}{%
+}
+\newcommand{\gls}[2]{#2\ref{glossary:#1}}
 
 \begin{document}
   \input{global-config.tex}
