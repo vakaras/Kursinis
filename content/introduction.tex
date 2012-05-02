@@ -108,8 +108,18 @@ TODO: Ką Scala pridėjo objektiniam (Java):
   \item savybių jungimas į klases panaudojant modulių maišos
     kompoziciją \en{modular mixin composition};
   \item atviros rekursijos anotacija \en{selftype annotations} –
-    iš principo tik sintaksinis saldainiukas;
-    TODO: Įrodyti.
+    iš principo tik sintaksinis saldainiukas dviem konstrukcijoms
+    (TODO: Ar tai, kad tai yra dviejų konstrukcijų junginys nereiškia,
+    jog tai jau nėra tik sintaksinis saldainiukas?):
+    \begin{enumerate}
+      \item \verb|def self: S = this.asInstanceOf[S]|, žr.: Observer
+        Pattern realizaciją e7;
+      \item \verb|T extends C|;
+    \end{enumerate}
+    (kadangi sujungia abi konstrukcijas į vieną, tai turi privalumą, kad
+    e7 Subject pakeitus į ką nors kitą lūš kompiliavimo, o ne vykdymo
+    metu; taip pat antruoju atveju C negali būti abstraktus tipas, o
+    naudojant anotaciją – gali)
   \item savybių naudojimo vietoj klasių privalumai, pavyzdys e1
     (savybės perdengimas vidury hierarchijos).
 \end{itemize}
