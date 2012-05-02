@@ -114,7 +114,9 @@ TODO: Ką Scala pridėjo objektiniam (Java):
     \begin{enumerate}
       \item \verb|def self: S = this.asInstanceOf[S]|, žr.: Observer
         Pattern realizaciją e7;
-      \item \verb|T extends C|;
+      \item \verb|T extends C| – skirtumas tas, kad šis apibrėžia
+        tvarką, kokia bus išdėstyti super kvietimai, o self-type
+        – ne (TODO: Patikrinti ar tikrai.);
     \end{enumerate}
     (kadangi sujungia abi konstrukcijas į vieną, tai turi privalumą, kad
     e7 Subject pakeitus į ką nors kitą lūš kompiliavimo, o ne vykdymo
