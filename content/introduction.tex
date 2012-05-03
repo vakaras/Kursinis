@@ -1,5 +1,45 @@
 \chapter{Įvadas}
 
+Problema: sudėtingėjant sistemoms bei nuolat kintant reikalavimams
+reikia priemonių leidžiančių kurti tokias sistemas evoliuciniu
+būdu bei dideliam kiekiui žmonių.
+
+Šias problemas atrodo, kad sprendžia komponentinis programavimas,
+bet jis turi problemų \TODO{Martin bei Matthias Zenger
+įvardintos egzistuojančių komponentinių technologijų problemos}:
+\begin{itemize}
+  \item kadangi reikalavimai nuolat kinta, tai turi būti galimybė
+    „pataisyti“ komponentą\cite[vii]{extensible-software-components}
+  \item norint programuoti komponentiškai reikia naudoti specialius
+    karkasus, dėl ko dažnai reikia rašyti nemažai „boilerplate“ kodo
+    arba naudoti metaprogramavimo metodikas.
+\end{itemize}
+
+Šias problemas Martin ir Matthias siūlo spręsti papildydami klasinę
+objektinę programavimo kalbą naujomis savybėmis: abstrakčiais
+atributų tipais, atviros rekursijos anotacija bei moduline maišos
+kompozicija. Autorių teigimu, šios savybės įgalina programuoti
+komponentiškai.
+
+Šio darbo tikslas yra patikrinti ar jų teiginys, kad su Scala
+galima programuoti komponentiškai yra teisingas. To bus siekiama
+įgyvendinant šiuos uždavinius: TODO
+
+Uždaviniai po skyrius išskirstyti taip: pirmajame skyriuje surinkti
+įvairūs objektinio programavimo apibrėžimai bei apibrėžta kas
+yra statinis klasinis objektiškai orientuotas programavimas.
+Antrojo skyriaus struktūra panaši į pirmojo: jame pabandyta
+apibrėžti kas yra komponentas, bei kas yra komponentinis modelis.
+Trečiajame skyriuje pristatomos galimybės, kuriomis Scala
+papildė statines klasines objektines programavimo kalbas, tokias
+kaip Java. Tada remiantis komponento apibrėžimu parodoma, kad
+su Scala iš tiesų galima programuoti komponentiškai.
+
+TODO: Nurodyti, kad apsiriboju Java pasauliu.
+
+Vis didėjant programinės įrangos sistemoms \TODO{Pagrįsti su
+statistika}, jų kūrimas darosi vis sudėtingesnis procesas
+
 \section{Temos aktualumas}
 
 Vis didėjant sistemoms, jų vystymas darosi vis sudėtingesnis procesas.
