@@ -43,86 +43,43 @@ tam naudoti specialius karkasus, dėl ko dažnai tenka rašyti
 nemažai palaikančio \en{boilerplate} kodo, arba naudoti
 metaprogramavimą\cite{extensible-software-components}.
 
-
-
-Šias problemas atrodo, kad sprendžia komponentinis programavimas,
-bet jis turi problemų \TODO{Martin bei Matthias Zenger
-įvardintos egzistuojančių komponentinių technologijų problemos}:
+\gls{scala}{Scala} kūrėjai pasiūlė pastarąsias problemas spręsti
+statinę klasinę objektinę programavimo kalbą papildydami naujomis
+savybėmis\cite{scalable-component-abstractions}:
 \begin{itemize}
-  \item kadangi reikalavimai nuolat kinta, tai turi būti galimybė
-    „pataisyti“ komponentą\cite[vii]{extensible-software-components}
-  \item norint programuoti komponentiškai reikia naudoti specialius
-    karkasus, dėl ko dažnai reikia rašyti nemažai „boilerplate“ kodo
-    arba naudoti metaprogramavimo metodikas.
+  \item \gls{abstract-type-member}{abstrakčiais tipais-atributais};
+  \item \gls{selftype-annotation}{savo tipo anotacija};
+  \item \gls{modular-mixin-composition}{moduline maišos kompozicija}.
 \end{itemize}
-
-Šias problemas Martin ir Matthias siūlo spręsti papildydami klasinę
-objektinę programavimo kalbą naujomis savybėmis: abstrakčiais
-atributų tipais, atviros rekursijos anotacija bei moduline maišos
-kompozicija. Autorių teigimu, šios savybės įgalina programuoti
-komponentiškai.
-
-Šio darbo tikslas yra patikrinti ar jų teiginys, kad su Scala
-galima programuoti komponentiškai yra teisingas. To bus siekiama
-įgyvendinant šiuos uždavinius: TODO
+Jų teigimu\cite[1]{scalable-component-abstractions} šios trys
+\gls{scala}{Scala} savybės įgalina su ja programuoti komponentiškai.
+Šio darbo tikslas yra patikrinti ar šis teiginys yra teisingas.
+To bus siekiama įgyvendinant šiuos uždavinius:
+\begin{enumerate}
+  \item kadangi \gls{scala}{Scala} autoriai komponentinę programavimo
+    kalbą bando kurti objektinę papildydami naujomis savybėmis, tai
+    norint atskirti objektinę nuo komponentinės pirmiausia reikia
+    apibrėžti, kas yra objektinis programavimas;
+  \item išsiaiškinti, kas yra komponentinis programavimas, kokios
+    yra jį išskiriančios (privalomosios) savybės;
+  \item pagal išskirtąsias savybes patikrinti ar su \gls{scala}{Scala}
+    galima programuoti komponentiškai;
+  \item jei su \gls{scala}{Scala} yra įmanoma programuoti
+    komponentiškai, tai išsiaiškinti kokie yra to privalumai.
+\end{enumerate}
 
 Uždaviniai po skyrius išskirstyti taip: pirmajame skyriuje surinkti
 įvairūs objektinio programavimo apibrėžimai bei apibrėžta kas
 yra statinis klasinis objektiškai orientuotas programavimas.
 Antrojo skyriaus struktūra panaši į pirmojo: jame pabandyta
-apibrėžti kas yra komponentas, bei kas yra komponentinis modelis.
+apibrėžti kas yra komponentas bei kas yra komponentinis modelis.
 Trečiajame skyriuje pristatomos galimybės, kuriomis Scala
 papildė statines klasines objektines programavimo kalbas, tokias
 kaip Java. Tada remiantis komponento apibrėžimu parodoma, kad
-su Scala iš tiesų galima programuoti komponentiškai.
+su Scala iš tiesų galima programuoti komponentiškai bei pateikiama
+keletas pavyzdžių, parodančių \gls{scala}{Scala} privalumus.
 
-TODO: Nurodyti, kad apsiriboju Java pasauliu.
-
-Vis didėjant programinės įrangos sistemoms \TODO{Pagrįsti su
-statistika}, jų kūrimas darosi vis sudėtingesnis procesas
-
-\section{Temos aktualumas}
-
-Vis didėjant sistemoms, jų vystymas darosi vis sudėtingesnis procesas.
-Dėl šios priežasties auga poreikis turėti priemones, kurios:
-\begin{itemize}
-  \item leistų sistemas kurti evoliuciniu būdu, jas vis papildant nauju
-    funkcionalumu, neliečiant jau veikiančių sistemos dalių;
-  \item leistų sistemos kūrimo darbą efektyviai paskirstyti dideliam
-    kiekiui žmonių.
-\end{itemize}
-TODO: Susieti su komponentiniu programavimu.
-
-\section{Darbo tikslas}
-
-Straipsnyje \cite{scalable-component-abstractions} Martin Odersky
-ir Matthias Zenger teigia, jog su Scala galima programuoti
-komponentiškai. Šio darbo tikslas yra patikrinti ar jų teiginys yra
-teisingas ir jei taip, tai kokias būtent papildomas galimybes
-suteikia komponentinis programavimas lyginant su statiniu
-klasiniu programavimu (kaip pavyzdys nagrinėjama Java) kuriant verslo
-informacines sistemas.
-
-TODO: Martin Odersky nurodyti dabartinių programavimo kalbų trūkumai.
-
-\section{Siekiami rezultatai}
-
-Uždaviniai:
-\begin{enumerate}
-  \item išsiaiškinti kas yra objektinis programavimas;
-  \item išsiaiškinti kas yra komponentinis programavimas;
-  \item apibrėžti komponento sąvoką;
-  \item \label{task:enum:scala-component} patikrinti ar su Scala galima
-    programuoti komponentiškai;
-  \item jei \ref{task:enum:scala-component}, tai nustatyti kokios
-    būtent Scala galimybės tai leidžia;
-  \item išsiaiškinti, kokias papildomas galimybes suteikia Scala
-    lyginant su Java ir kaip turėtų būti programuojama, kad jos
-    būtų išnaudojamos.
-\end{enumerate}
-
-TODO: Paaiškinti uždavinių ryšius: kodėl yra svarbu išsiaiškinti kas
-yra objektinis programavimas.
+\TODO{Nurodyti, kad apsiriboju Java pasauliu.}
 
 \chapter{Objektinis programavimas}
 
