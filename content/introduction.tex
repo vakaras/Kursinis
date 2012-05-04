@@ -283,3 +283,12 @@ komponentiškai su Scala.
 Realaus pasaulio modeliavimas pasinaudojant Scala komponentiniu
 modeliu. Susirenkam komponentą variklis ir jį įkomponuojam į
 mašiną.
+
+Standartinė biblioteka nėra komponentas, nes išreikštinai nenurodo
+reikalavimų. Iš principo, komponentą nuo ne komponento dažniausiai
+skiria tai, kurioje pusėje būna sąsajos abstrakcija. Jei ji yra
+sąsajos naudotojo pusėje, tai turime komponentinę architektūrą, o
+jei serviso teikėjo – tada ne komponentinę architektūrą. Dėl šios
+priežasties Linux nėra komponentinė technologija, nes yra
+išreikštinai nurodomas teikiamas servisas, bet nėra išreikštinai
+nurodomas norimas gauti servisas.
