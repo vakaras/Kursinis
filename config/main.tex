@@ -21,10 +21,11 @@
 }
 \makeatother
 \renewenvironment{glossary}{%
-\setcounter{glossaryCounter}{1}%
+\setcounter{glossaryCounter}{0}%
 \NewDocumentEnvironment{entry}{m m o o}{%
+\addtocounter{glossaryCounter}{1}%
 \glossaryLabel{glossary:##1}%
-{\noindent\strong{##2}} \par
+{\noindent Ž\arabic{glossaryCounter} \strong{##2}} \par
 }{%
   \IfNoValueTF{##3}{%
   }{%
