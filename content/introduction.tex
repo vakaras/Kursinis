@@ -290,3 +290,19 @@ jei serviso teikėjo – tada ne komponentinę architektūrą. Dėl šios
 priežasties Linux nėra komponentinė technologija, nes yra
 išreikštinai nurodomas teikiamas servisas, bet nėra išreikštinai
 nurodomas norimas gauti servisas.
+
+Jei programuodami objektiškai laikysimės SOLID, tai gausime sistemą,
+kurią galima nesunkiai „sukapoti“ į atskiras dalis. Tai leistų
+nesunkiai kažkurią iš dalių pakeisti kita, bet kiekviena iš dalių
+greičiausiai turės prasmę tik tos sistemos kontekste – kitaip
+tariant dalių negalėsime vadinti komponentais, nes jų negalime
+laisvai panaudoti kitose sistemose. Taip atsitinka todėl, kad
+komponentai yra labiau paketai, nei klasės objektinėse programavimo
+kalbose, todėl tam, kad sistemos dalys būtų perpanaudojamos, jos
+turėtų būti skaidomos remiantis paketų architektūros sudarymo
+principais: \en{The Release Reuse Equivalency Principle},
+\en{The Common Closure Principle}, \en{The Common Reuse Principle}
+\cite[17]{design-principles-and-design-patterns}.
+Scala kūrėjai nieko nesako, kaip programuoti, kad sistemos
+dalys būtų perpanaudojamos, kaip komponentai. Taigi, tai reikia
+išsiaiškinti.
