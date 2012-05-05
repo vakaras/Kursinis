@@ -1,11 +1,12 @@
 \chapter{Įvadas}
 
-Nuo pat kompiuterių atsiradimo programinės įrangos naudojimas vien
-tik didėja, kuriamos vis didesnės sistemos, kurios vien dėl
-savo dydžio tampa sudėtingomis. Taip pat, kuriamoms sistemoms yra
-nuolat keliami vis nauji reikalavimai. Esant tokiai situacijai
+Programinės įrangos naudojimas nuo pat jos atsiradimo nuolat auga,
+verslo palaikymo sistemos perima vis daugiau verslo funkcijų, todėl
+jos tampa vis didesnės ir tuo pačiu vien dėl savo dydžio tampa
+sudėtingos. Taip pat, dėl nuolatinio verslo poreikių kitimo kinta
+ir programų sistemoms keliami reikalavimai. Esant tokiai situacijai
 atsiranda noras turėti priemones, kurios leistų susitvarkyti
-su dėl kuriamų sistemų dydžio atsirandančiomis problemomis. Kitaip
+su problemomis atsirandančiomis dėl kuriamų sistemų dydžio. Kitaip
 tariant, norisi turėti priemones, kurios:
 \begin{itemize}
   \item leistų kurti dideles sistemas
@@ -15,36 +16,50 @@ tariant, norisi turėti priemones, kurios:
 
 Viena iš šias galimybes žadančių priemonių yra
 \gls{component-oriented-software-development}{komponentinis programavimas}.
-Kadangi sistemą kuriant komponentiniu būdu ji yra surenkama iš
-komponentų, kurie išreikštinai nepriklauso (tai yra komponento
-veikimui yra reikalingas ne kažkoks konkretus kitas komponentas, o
-bet koks komponentas, kuris tenkina tam tikrus reikalavimus) vienas nuo
-kito, tai tuos komponentus gali kurti žmonių grupės nepriklausomai
-viena nuo kitos – tai leistų sistemą kurti palyginti didelei grupei
-žmonių. Taip pat, dėl tos pačios priežasties vieną komponentą galima
-pakeisti kitu neperdarant visos sistemos, kas leidžia vystyti
-sistemą \gls{evolutionary-software-development-process}{evoliuciniu būdu}%
-\cite[6]{cs-beyond-object-oriented-programming}. Komponentinis programų
-kūrimo procesas turi dar ir tą privalumą, kad tuos pačius komponentus
-galima panaudoti keliose skirtingose sistemose, kas leidžia sumažinti
-kuriamų sistemų kainą\cite[6]{cs-beyond-object-oriented-programming}.
+\NFIXME{Aurelijaus pastaba: „Susidaro įvaizdis, kad svarbiau galimybė,
+o ne problemos, apibendrintos šiomis galimybėmis (gal geriau savybės,
+o ne galimybės)“. Nebūčiau linkęs „galimybės“ keisti į „savybes“,
+nes priemonės turi savybes, bet jų nežada. O čia būtent žada, nes ką
+duoda, tai jau bus prie išvadų.}
+Idealiu atveju komponentinis sistemų kūrimo būdas yra veikiančios
+sistemos surinkimas iš trečiųjų šalių sukurtų dalių –
+komponentų, kurie yra tarpusavyje nepriklausomi. (Nepriklausomi ta
+prasme, kad jokio komponento veikimui nereikia jokio kito konkretaus
+komponento, tačiau jam gali reikėti komponento tenkinančio tam
+tikras savybes.) Taigi, dėl komponentų nepriklausomumo, kiekvieną iš
+komponentų galėtų kurti atskira komanda, kas leistų sistemos kūrimu
+užsiimti palyginti didelei grupei žmonių. Taip pat, komponentinėje
+sistemoje vieną komponentą galima pakeisti kitu neperdarant visos
+sistemos, kas leidžia vystyti sistemą
+\gls{evolutionary-software-development-process}{evoliuciniu būdu}%
+\cite[6]{cs-beyond-object-oriented-programming}. Be paminėtų,
+komponentinis sistemų kūrimas turi dar ir tą privalumą, kad tuos
+pačius komponentus galima panaudoti keliose skirtingose sistemose, kas
+leidžia sumažinti kuriamų sistemų
+kainą\cite[6]{cs-beyond-object-oriented-programming}.
 
-Martin Odersky ir Matthias Zenger teigimu komponentinių technologijų
-plitimui trukdo dabartinių programavimo kalbų
-trūkumai\cite{scalable-component-abstractions, odersky:scala-experiment}.
-Pagrindinės šiuo metu naudojamos programavimo kalbos, tokios, kaip
-Java, turi galimybes išreikštinai nurodyti komponentų teikiamus
-servisus, bet neturi galimybės išreikštinai nurodyti, kokių servisų
-komponentui reikia. Dėl šios priežasties dažnai servisų naudotojai
-būna pririšami prie servisų konkrečių
-tiekėjų\cite{scalable-component-abstractions}. Taip pat, norint
+Programavimo kalbos \gls{scala}{Scala} autoriaus \human{Martin
+Odersky}\NFIXME{Aurelijaus pastaba: „Kiek atsimenu, tai reikia
+rašyti sulietuvintus vardus ir išnašose ar pan. parašyti originalo
+kalba.“} teigimu komponentinių technologijų plitimui trukdo
+tai, kad dabartinėse programavimo kalbose trūksta priemonių leidžiančių
+apibrėžti ir sujungti komponentus\cite{odersky:scala-experiment}.
+Pagrindinės šiuo metu naudojamos programavimo kalbos turi galimybes
+išreikštinai nurodyti komponentų teikiamas paslaugas, bet neturi
+galimybės išreikštinai nurodyti, kokių paslaugų
+komponentui reikia. Dėl šios priežasties dažnai paslaugų naudotojai
+būna pririšami prie konkrečių komponentų, teikiančių tas
+paslaugas\cite{scalable-component-abstractions}. Taip pat, norint
 su dabartinėmis sistemomis programuoti komponentiškai reikia
 tam naudoti specialius karkasus, dėl ko dažnai tenka rašyti
 nemažai palaikančio \en{boilerplate} kodo, arba naudoti
 metaprogramavimą\cite{extensible-software-components}.
 
-\gls{scala}{Scala} kūrėjai pasiūlė pastarąsias problemas spręsti
-statinę klasinę objektinę programavimo kalbą papildydami naujomis
+\gls{scala}{Scala} kūrėjai pasiūlė pastarąsias dabartinių programavimo
+kalbų problemas spręsti
+\gls{statically-typed-programming-language}{statinę}
+\gls{class-based-programming-language}{klasinę}
+\TODO{objektinę} programavimo kalbą papildydami naujomis
 savybėmis\cite{scalable-component-abstractions}:
 \begin{itemize}
   \item \gls{abstract-type-member}{abstrakčiais tipais-atributais};
@@ -53,29 +68,35 @@ savybėmis\cite{scalable-component-abstractions}:
 \end{itemize}
 Jų teigimu\cite[1]{scalable-component-abstractions} šios trys
 \gls{scala}{Scala} savybės įgalina su ja programuoti komponentiškai.
+
 Šio darbo tikslas yra patikrinti ar šis teiginys yra teisingas.
 To bus siekiama įgyvendinant šiuos uždavinius:
 \begin{enumerate}
   \item kadangi \gls{scala}{Scala} autoriai komponentinę programavimo
     kalbą bando kurti objektinę papildydami naujomis savybėmis, tai
-    norint atskirti objektinę nuo komponentinės pirmiausia reikia
+    norint atskirti objektinę nuo komponentinės pirmiausia reikia\NFIXME{
+    Aurelijaus pastaba: Na norėtųsi, kad pašaliniai komentarai būtų
+    paminėti anksčiau įvade. Uždavinai yra checklist'as, ką turi
+    padaryti, kad parašytum darbą (oficialiai tinka ir punktas,
+    suvesti darbo tekstą ir jį atspausdinti).}
     apibrėžti, kas yra objektinis programavimas;
   \item išsiaiškinti, kas yra komponentinis programavimas, kokios
     yra jį išskiriančios (privalomosios) savybės;
   \item pagal išskirtąsias savybes patikrinti ar su \gls{scala}{Scala}
     galima programuoti komponentiškai;
   \item jei su \gls{scala}{Scala} yra įmanoma programuoti
-    komponentiškai, tai išsiaiškinti kokie yra to privalumai.
+    komponentiškai, tai išsiaiškinti kokie yra \gls{scala}{Scala}
+    komponentinės technologijos privalumai lyginant su objektiniu
+    programavimu bei su kitomis komponentinėmis technologijomis.
 \end{enumerate}
 
 Uždaviniai po skyrius išskirstyti taip: pirmajame skyriuje surinkti
 įvairūs objektinio programavimo apibrėžimai bei apibrėžta kas
 yra statinis klasinis objektiškai orientuotas programavimas.
-Antrojo skyriaus struktūra panaši į pirmojo: jame pabandyta
-apibrėžti kas yra komponentas bei kas yra komponentinis modelis.
+Antrajame apibrėžta kas yra komponentas bei kas yra komponentinis modelis.
 Trečiajame skyriuje pristatomos galimybės, kuriomis Scala
 papildė statines klasines objektines programavimo kalbas, tokias
-kaip Java. Tada remiantis komponento apibrėžimu parodoma, kad
+kaip Java. Tada remiantis komponento apibrėžimu patikrinama, ar
 su Scala iš tiesų galima programuoti komponentiškai bei pateikiama
 keletas pavyzdžių, parodančių \gls{scala}{Scala} privalumus.
 
@@ -286,10 +307,10 @@ Standartinė biblioteka nėra komponentas, nes išreikštinai nenurodo
 reikalavimų. Iš principo, komponentą nuo ne komponento dažniausiai
 skiria tai, kurioje pusėje būna sąsajos abstrakcija. Jei ji yra
 sąsajos naudotojo pusėje, tai turime komponentinę architektūrą, o
-jei serviso teikėjo – tada ne komponentinę architektūrą. Dėl šios
+jei paslaugos teikėjo – tada ne komponentinę architektūrą. Dėl šios
 priežasties Linux nėra komponentinė technologija, nes yra
-išreikštinai nurodomas teikiamas servisas, bet nėra išreikštinai
-nurodomas norimas gauti servisas.
+išreikštinai nurodomos teikiamos paslaugos, bet nėra išreikštinai
+nurodomos norimos gauti paslaugos.
 
 Jei programuodami objektiškai laikysimės SOLID, tai gausime sistemą,
 kurią galima nesunkiai „sukapoti“ į atskiras dalis. Tai leistų
