@@ -47,9 +47,9 @@ apibrėžti ir sujungti komponentus\cite{odersky:scala-experiment}.
 Pagrindinės šiuo metu naudojamos programavimo kalbos turi galimybes
 išreikštinai nurodyti komponentų teikiamas paslaugas, bet neturi
 galimybės išreikštinai nurodyti, kokių paslaugų
-komponentui reikia. Dėl šios priežasties dažnai paslaugų naudotojai
-būna pririšami prie konkrečių komponentų, teikiančių tas
-paslaugas\cite{scalable-component-abstractions}. Taip pat, norint
+komponentui reikia. Dėl šios priežasties paslaugų naudotojai dažnai
+būna pririšami prie konkrečių paslaugų teikėjų, pavyzdžiui,
+bibliotekų\cite{scalable-component-abstractions}. Taip pat, norint
 su dabartinėmis sistemomis programuoti komponentiškai reikia
 tam naudoti specialius karkasus, dėl ko dažnai tenka rašyti
 nemažai palaikančio \en{boilerplate} kodo, arba naudoti
@@ -59,26 +59,22 @@ metaprogramavimą\cite{extensible-software-components}.
 kalbų problemas spręsti
 \gls{statically-typed-programming-language}{statinę}
 \gls{class-based-programming-language}{klasinę}
-\TODO{objektinę} programavimo kalbą papildydami naujomis
+\TODO{gls:objektinę} programavimo kalbą papildydami naujomis
 savybėmis\cite{scalable-component-abstractions}:
 \begin{itemize}
   \item \gls{abstract-type-member}{abstrakčiais tipais-atributais};
   \item \gls{selftype-annotation}{savo tipo anotacija};
   \item \gls{modular-mixin-composition}{moduline maišos kompozicija}.
 \end{itemize}
-Jų teigimu\cite[1]{scalable-component-abstractions} šios trys
-\gls{scala}{Scala} savybės įgalina su ja programuoti komponentiškai.
+Jų teigimu\cite[1]{scalable-component-abstractions} šių trijų savybių
+pridėjimas įgalina programuoti komponentiškai.
 
-Šio darbo tikslas yra patikrinti ar šis teiginys yra teisingas.
-To bus siekiama įgyvendinant šiuos uždavinius:
+Šio darbo tikslas yra patikrinti ar šis \gls{scala}{Scala} kūrėjų
+teiginys, jog su \gls{scala}{Scala} yra įmanoma programuoti
+komponentiškai, yra teisingas. To bus siekiama įgyvendinant šiuos
+uždavinius:
 \begin{enumerate}
-  \item kadangi \gls{scala}{Scala} autoriai komponentinę programavimo
-    kalbą bando kurti objektinę papildydami naujomis savybėmis, tai
-    norint atskirti objektinę nuo komponentinės pirmiausia reikia\NFIXME{
-    Aurelijaus pastaba: Na norėtųsi, kad pašaliniai komentarai būtų
-    paminėti anksčiau įvade. Uždavinai yra checklist'as, ką turi
-    padaryti, kad parašytum darbą (oficialiai tinka ir punktas,
-    suvesti darbo tekstą ir jį atspausdinti).}
+  \item \label{introduction:task:object-oriented-programming}
     apibrėžti, kas yra objektinis programavimas;
   \item išsiaiškinti, kas yra komponentinis programavimas, kokios
     yra jį išskiriančios (privalomosios) savybės;
@@ -89,6 +85,20 @@ To bus siekiama įgyvendinant šiuos uždavinius:
     komponentinės technologijos privalumai lyginant su objektiniu
     programavimu bei su kitomis komponentinėmis technologijomis.
 \end{enumerate}
+\emph{Pastabos:}
+\begin{itemize}
+  \item \ref{introduction:task:object-oriented-programming}
+    uždavinio rezultatas yra svarbus norint pilnai suvokti kaip būtent
+    \gls{scala}{Scala} autoriai pakeitė objektinį, kad iš jo gautų
+    komponentinį, bei siekiant suprasti kuo susijęs objektinis su
+    komponentiniu.
+  \item Kadangi \gls{scala}{Scala} yra susijusi su Java (iš
+    \gls{scala}{Scala} kodo galima kviesti Java kodą ir atvirkščiai),
+    tai šiame darbe, kaip pagrindinė
+    \gls{statically-typed-programming-language}{statinių}
+    \gls{class-based-programming-language}{klasinių}
+    \TODO{gls:objektinių} programavimo kalbų atstovė imama Java.
+\end{itemize}
 
 Uždaviniai po skyrius išskirstyti taip: pirmajame skyriuje surinkti
 įvairūs objektinio programavimo apibrėžimai bei apibrėžta kas
@@ -99,8 +109,6 @@ papildė statines klasines objektines programavimo kalbas, tokias
 kaip Java. Tada remiantis komponento apibrėžimu patikrinama, ar
 su Scala iš tiesų galima programuoti komponentiškai bei pateikiama
 keletas pavyzdžių, parodančių \gls{scala}{Scala} privalumus.
-
-\TODO{Nurodyti, kad apsiriboju Java pasauliu.}
 
 \chapter{Objektinis programavimas}
 
