@@ -3,7 +3,7 @@
 Programinės įrangos naudojimas nuo pat jos atsiradimo nuolat auga,
 verslo palaikymo sistemos perima vis daugiau verslo funkcijų, todėl
 jos tampa vis didesnės ir tuo pačiu vien dėl savo dydžio tampa
-sudėtingos. Taip pat, dėl nuolatinio verslo poreikių kitimo kinta
+sudėtingos. Be to, verslo poreikiai nuolat kinta, o kartu su jais
 ir programų sistemoms keliami reikalavimai. Esant tokiai situacijai
 atsiranda noras turėti priemones, kurios leistų susitvarkyti
 su problemomis atsirandančiomis dėl kuriamų sistemų dydžio. Kitaip
@@ -42,7 +42,7 @@ Programavimo kalbos \gls{scala}{Scala} autoriaus \human{Martin'o
 Odersky} teigimu komponentinių technologijų plitimui trukdo
 tai, kad dabartinėse programavimo kalbose trūksta priemonių leidžiančių
 apibrėžti ir sujungti komponentus\cite{odersky:scala-experiment}.
-Pagrindinės šiuo metu naudojamos programavimo kalbos turi galimybes
+Populiariausios šiuo metu naudojamos programavimo kalbos turi galimybes
 išreikštinai nurodyti komponentų teikiamas paslaugas, bet neturi
 galimybės išreikštinai nurodyti, kokių paslaugų
 komponentui reikia. Dėl šios priežasties paslaugų naudotojai dažnai
@@ -69,8 +69,9 @@ pridėjimas įgalina programuoti komponentiškai.
 
 Šio darbo tikslas yra patikrinti ar šis \gls{scala}{Scala} kūrėjų
 teiginys, jog su \gls{scala}{Scala} yra įmanoma programuoti
-komponentiškai, yra teisingas. To bus siekiama įgyvendinant šiuos
-uždavinius:
+komponentiškai, yra teisingas.
+
+Darbo tikslo bus siekiama įgyvendinant šiuos uždavinius:
 \begin{enumerate}
   \item \label{introduction:task:object-oriented-programming}
     apibrėžti, kas yra objektinis programavimas;
@@ -84,21 +85,21 @@ uždavinius:
     programavimu bei su kitomis komponentinėmis technologijomis.
 \end{enumerate}
 \emph{Pastabos:}
-\begin{itemize}
+\begin{enumerate}
   \item \ref{introduction:task:object-oriented-programming}
     uždavinio rezultatas yra svarbus norint pilnai suvokti kaip būtent
-    \gls{scala}{Scala} autoriai pakeitė objektinį, kad iš jo gautų
-    komponentinį, bei siekiant suprasti kuo susijęs objektinis su
-    komponentiniu.
+    \gls{scala}{Scala} autoriai pakeitė objektinį programavimo
+    modelį, kad iš jo gautų komponentinį, bei siekiant suprasti kuo
+    susijęs objektinis su komponentiniu.
   \item Kadangi \gls{scala}{Scala} yra susijusi su Java (iš
     \gls{scala}{Scala} kodo galima kviesti Java kodą ir atvirkščiai),
     tai šiame darbe, kaip pagrindinė
     \gls{statically-typed-programming-language}{statinių}
     \gls{class-based-programming-language}{klasinių}
     \TODO{gls:objektinių} programavimo kalbų atstovė imama Java.
-\end{itemize}
+\end{enumerate}
 
-Uždaviniai po skyrius išskirstyti taip: pirmajame skyriuje surinkti
+Darbas suskirstytas į tris skyrius: pirmajame skyriuje surinkti
 įvairūs objektinio programavimo apibrėžimai bei apibrėžta kas
 yra statinis klasinis objektiškai orientuotas programavimas.
 Antrajame apibrėžta kas yra komponentas bei kas yra komponentinis modelis.
