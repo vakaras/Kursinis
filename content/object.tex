@@ -1,5 +1,89 @@
 \chapter{Objektinis programavimas}
 
+Norint atskirti dvi paradigmas, reikia tiksliai apibrėžti kas priklauso
+kiekvienai iš jų. Šiame skyriuje bus pabandyta išskirti kas yra
+objektinis programavimas apskritai, kokios yra objektinio
+rūšys\NTODO{Nagrinėjant Scala yra svarbu nurodyti ant kokio objektinio
+ji „stovi“.} bei kam tos rūšys yra reikalingos (kokios yra jų
+pritaikymo sritys)\NTODO{Nagrinėjant Scala panagrinėti ar ji keičia
+pritaikymo sritį.}.
+
+\section{Objektinio programavimo apibrėžimai}
+
+Objektinis programavimas bendrąja prasme yra programavimas
+pasinaudojant objekto abstrakcija. Objektą galima apibrėžti, kaip
+\quote{esybę, kuri apjungia duomenų ir procedūrų savybes tam,
+kad galėtų atlikti veiksmus ir turėti
+būseną}\cite[41]{OOP-themes-and-variations}. Objektinės sistemos veikimas
+yra suvokiamas, kaip objektų tarpusavio sąveika: objektai vienas kitam
+siuntinėja žinutes, o kiekvienas gavęs žinutę objektas į ją sureaguoja
+įvykdydamas atitinkamos procedūros (metodo)
+kodą\cite[41]{OOP-themes-and-variations}%
+\cite[277]{concepts-in-programming-languages}%
+\cite[168]{Wegner:1987:DOL:38807.38823}.
+Be būsenos ir veiksenos, prie objekto išskirtinių savybių 
+\cite[37]{cs-beyond-object-oriented-programming} bei
+populiariausių objektinių programavimo kalbų autoriai nurodo
+dar ir tai, kad kiekvienas objektas turi unikalią tapatybę.
+Taigi apibendrinant, objektai yra esybės, kurios:
+\begin{enumerate}
+  \item turi unikalią tapatybę;
+  \item turi būsenas;
+  \item sąveikauja besikeisdamos žinutėmis;
+  \item reaguoja į žinutes įvykdydamos tam tikrą procedūrą.
+\end{enumerate}
+
+Siekiant išskirti objektines programavimo kalbas iš programavimo
+kalbų, kuriomis įmanoma programuoti objektiškai (pavyzdžiui,
+tarę, kad programavimo kalbos Modula-2 modulis yra objektas,
+su ja galėtume programuoti objektiškai), yra reikalaujama, kad
+programavimo kalba, kurią vadiname objektine palaikytų objektinį
+programavimą kalbinėmis priemonėmis. 1987 metais ACM OOPSLA
+konferencijos metu paskelbtame „Orlando susitarime“
+\en{„The Treaty of Orlando“}
+\cite{Lieberman:1987:TO:62139.62144} nurodoma, kad esminis
+objektinių programavimo kalbų bruožas yra galimybė perpanaudoti
+esamų objektų apibrėžimų dalis apibrėžiant naujus objektus.
+Objektinės programavimo kalbos tai įgyvendina panaudodamos
+delegavimo \en{delegation} arba klasių paveldėjimo \en{inheritance}
+mechanizmus.
+
+objektinių programavimo kalbų bruožas yra tai, kad kaip objektas
+reaguos į konkrečią žinutę, yra nusprendžiama vykdymo metu.
+Ši savybė vadinama yra vadinama \strong{dinaminiu susiejimu}
+\TODO{Patikrinti ar neturėčiau rašyti „sharing mechanism“.}
+\en{dynamic dispatch, dynamic binding}. (Šito reikalavimo Modula-2
+moduliai netenkina, nes juose visada yra kviečiama ta pati procedūra.)
+Be šios pagrindinės savybės, objektinės programavimo kalbos
+dažniausiai turi ir daugiau bendrų bruožų, kuriuos išskyrė
+\cite[225-227]{types-and-programming-languages}:
+\begin{description}
+  \item[dinaminis susiejimas] \en{dynamic dispatch, dynamic binding} –
+    objekto reakcija į gautą žinutę nustatoma vykdymo metu;
+  \item[uždarumas, inkapsuliacija] \en{encapsulation} – vidinė objekto
+    struktūra yra slepiama;
+  \item[potipiai] \en{subtyping} – kai norime pasinaudoti objektu, 
+    tai mums rūpi tik jo sąsaja ir mes galime naudoti objektą $I$ vietoj
+    objekto $J$, jei objekto $J$ sąsaja yra objekto $I$ sąsajos poaibis;
+  \item[paveldėjimas, pavedimas] \en{inheritance, delegation} – galimybė
+    perpanaudoti jau egzistuojantį kodą: tai gali būti pasiekiama
+    objektų kūrimui naudojant klases, kurios gali paveldėti kai kurias
+    savybes iš tėvinių klasių, arba naudojant žinučių persiuntimą;
+  \item[atvira rekursija] \en{open recursion} – specialaus kintamojo
+    (dažniausiai jis vadinamas „this“, arba „self“) egzistavimas, kuriuo
+    pasinaudojant galima kreiptis į kitus to paties objekto metodus.
+    Svarbi savybė yra \en{late-bound}.
+\end{description}
+
+
+\section{Objektinio programavimo rūšys}
+
+\section{Objektinio programavimo rūšių taikymai}
+
+Prototipinė objektinė programavimo kalba (JavaScript) yra tinkamesnė
+žmonių kalbos modeliavimui nei klasinė programavimo kalba, nes
+žmonių kalboje paprastai yra daugiau išimčių negu taisyklių.
+
 \section{Objektinio programavimo apibrėžimai}
 
 TODO:
