@@ -2,6 +2,7 @@
 
 \usepackage{style}
 \usepackage{xparse}
+\usepackage{pdfcomment}
 
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 
@@ -40,7 +41,12 @@
 }
 }{%
 }
-\newcommand{\gls}[2]{#2\ref{glossary:#1}}
+\newcommand{\gls}[2]{%
+%\pdfmarkupcomment[markup=Highlight]{#2}{Paaiškinimas.}
+#2%
+\ref{glossary:#1}%
+%\pdfcomment{Paaiškinimas.}
+}
 
 \newcommand{\TODO}[1]{TODO: \emph{#1}}
 \newcommand{\NFIXME}[1]{\footnote{FIXME: #1}}
