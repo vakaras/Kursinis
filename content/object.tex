@@ -8,7 +8,7 @@ ji „stovi“.} bei kam tos rūšys yra reikalingos (kokios yra jų
 pritaikymo sritys)\NTODO{Nagrinėjant Scala panagrinėti ar ji keičia
 pritaikymo sritį.}.
 
-\section{Objektinio programavimo apibrėžimai}
+\section{Objektinio programavimo apibrėžimas}
 
 Objektinis programavimas bendrąja prasme yra programavimas
 pasinaudojant objekto abstrakcija. Objektą galima apibrėžti, kaip
@@ -23,7 +23,7 @@ kodą\cite[41]{OOP-themes-and-variations}%
 \cite[168]{Wegner:1987:DOL:38807.38823}.
 Be būsenos ir veiksenos, prie objekto išskirtinių savybių 
 \cite[37]{cs-beyond-object-oriented-programming} bei
-populiariausių objektinių programavimo kalbų autoriai nurodo
+populiariausių objektinių programavimo kalbų kūrėjai nurodo
 dar ir tai, kad kiekvienas objektas turi unikalią tapatybę.
 Taigi apibendrinant, objektai yra esybės, kurios:
 \begin{enumerate}
@@ -33,33 +33,32 @@ Taigi apibendrinant, objektai yra esybės, kurios:
   \item reaguoja į žinutes įvykdydamos tam tikrą procedūrą.
 \end{enumerate}
 
-Siekiant išskirti objektines programavimo kalbas iš programavimo
-kalbų, kuriomis įmanoma programuoti objektiškai (pavyzdžiui,
-tarę, kad programavimo kalbos Modula-2 modulis yra objektas,
-su ja galėtume programuoti objektiškai), yra reikalaujama, kad
-programavimo kalba, kurią vadiname objektine palaikytų objektinį
-programavimą kalbinėmis priemonėmis. 1987 metais ACM OOPSLA
-konferencijos metu paskelbtame „Orlando susitarime“
-\en{„The Treaty of Orlando“}
+Siekiant išskirti
+\gls{object-oriented-programming-language}{objektines programavimo
+kalbas} iš programavimo kalbų, kuriomis įmanoma programuoti
+objektiškai (pavyzdžiui, tarę, kad programavimo kalbos Modula-2
+modulis yra objektas, su ja galėtume programuoti objektiškai), yra
+reikalaujama, kad programavimo kalba, kurią vadiname objektine
+palaikytų objektinį programavimą kalbinėmis priemonėmis. 1987
+metais ACM OOPSLA konferencijos metu paskelbtame „Orlando
+susitarime“ \en{„The Treaty of Orlando“}
 \cite{Lieberman:1987:TO:62139.62144} nurodoma, kad esminis
-objektinių programavimo kalbų bruožas yra galimybė perpanaudoti
-esamų objektų apibrėžimų dalis apibrėžiant naujus objektus.
-Objektinės programavimo kalbos tai įgyvendina panaudodamos
-delegavimo \en{delegation} arba klasių paveldėjimo \en{inheritance}
-mechanizmus.
+objektinių programavimo kalbų bruožas yra 
+\gls{object-description-sharing-mechanism}{dalinimosi \en{sharing}
+mechanizmas} – galimybė perpanaudoti esamų objektų apibrėžimų dalis
+apibrėžiant naujus objektus.
+\gls{object-oriented-programming-language}{Objektinės programavimo kalbos}
+tai gali įgyvendinti panaudodamos \gls{delegation}{delegavimo} arba
+\gls{class-inheritance}{paveldėjimo} mechanizmus. Taigi, Modula-2 nėra
+objektinė programavimo kalba, nes jos modulis negali automatiškai
+„perimti“ kito modulio veiksenos.
 
-objektinių programavimo kalbų bruožas yra tai, kad kaip objektas
-reaguos į konkrečią žinutę, yra nusprendžiama vykdymo metu.
-Ši savybė vadinama yra vadinama \strong{dinaminiu susiejimu}
-\TODO{Patikrinti ar neturėčiau rašyti „sharing mechanism“.}
-\en{dynamic dispatch, dynamic binding}. (Šito reikalavimo Modula-2
-moduliai netenkina, nes juose visada yra kviečiama ta pati procedūra.)
-Be šios pagrindinės savybės, objektinės programavimo kalbos
-dažniausiai turi ir daugiau bendrų bruožų, kuriuos išskyrė
-\cite[225-227]{types-and-programming-languages}:
+Be šios „Orlando susitarime“ nurodytos savybės, dauguma
+objektinių programavimo kalbų turi ir daugiau bendrų bruožų,
+kuriuos išskyrė \cite[225-227]{types-and-programming-languages}:
 \begin{description}
   \item[dinaminis susiejimas] \en{dynamic dispatch, dynamic binding} –
-    objekto reakcija į gautą žinutę nustatoma vykdymo metu;
+    objekto reakcija į gautą žinutę yra nustatoma vykdymo metu;
   \item[uždarumas, inkapsuliacija] \en{encapsulation} – vidinė objekto
     struktūra yra slepiama;
   \item[potipiai] \en{subtyping} – kai norime pasinaudoti objektu, 
@@ -72,11 +71,40 @@ dažniausiai turi ir daugiau bendrų bruožų, kuriuos išskyrė
   \item[atvira rekursija] \en{open recursion} – specialaus kintamojo
     (dažniausiai jis vadinamas „this“, arba „self“) egzistavimas, kuriuo
     pasinaudojant galima kreiptis į kitus to paties objekto metodus.
-    Svarbi savybė yra \en{late-bound}.
 \end{description}
+Nors paminėtos savybės ir yra bendros populiariausioms objektinėms
+programavimo kalboms, bet jos jas įgyvendina įvairiais būdais,
+dėl ko jos įgauna savitumų, kurie daro įtaką šių programavimo
+kalbų pritaikymo sritims.
 
+\section{Objektinių kalbų rūšys}
 
-\section{Objektinio programavimo rūšys}
+Įvertinant tai, kad objektinių programavimo kalbų yra ne viena,
+galima kelti hipotezę, kad neegzistuoja objektinės programavimo
+kalbos savybių rinkinys, kuris tiktų visoms situacijoms. Todėl
+atsiranda poreikis nustatyti:
+\begin{enumerate}
+  \item kokios kalbos savybės kokiems atvejams yra labiau tinkamos;
+  \item kurios iš tų savybių yra suderinamos, o kurios ne.
+\end{enumerate}
+Vienas iš itin rūpimų kriterijų yra galimybė sistemas kurti evoliuciniu
+būdu, tai yra mums rūpi kokios kalbos savybės leidžia evoliuciniu
+būdu kurti sistemas skirtingomis situacijomis:
+\begin{itemize}
+  \item kai aplinka yra nežinoma arba labai greitai kintanti;
+  \item kai sistema kinta palyginus lėtai.
+\end{itemize}
+Kiti du svarbūs kriterijai: sistemos tobulinimo kaina bei sistemos
+stabilumas.
+
+„Orlando susitarime“ išskiriami iš principo du skirtingi objektinių
+kalbų pritaikymo atvejai:
+\begin{enumerate}
+  \item dalykinė sritis yra labai greitai kintanti – prioritetas yra
+    galimybė greitai atlikti pakeitimus;
+  \item dalykinė sritis kinta lėtai – prioritetas yra garantijos,
+    kad sistema veikia taip, kaip numatyta.
+\end{enumerate}
 
 \section{Objektinio programavimo rūšių taikymai}
 
