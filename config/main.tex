@@ -42,11 +42,10 @@
 }{%
 }
 \newcommand{\gls}[2]{%
-%\pdfmarkupcomment[markup=Highlight]{#2}{Paaiškinimas.}
-#2%
+\pdfmarkupcomment[markup=Highlight]{#2}{Paaiškinimas.}
 \ref{glossary:#1}%
-%\pdfcomment{Paaiškinimas.}
 }
+\pdfcommentsetup{color={0.8 0.8 0.8}}
 
 \newcommand{\TODO}[1]{TODO: \emph{#1}}
 \newcommand{\NFIXME}[1]{\footnote{FIXME: #1}}
