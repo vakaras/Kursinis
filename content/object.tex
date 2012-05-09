@@ -10,10 +10,12 @@ pritaikymo sritį.}.
 
 \section{Objektinio programavimo apibrėžimas}
 
-Objektinis programavimas bendrąja prasme yra programavimas
-pasinaudojant objekto abstrakcija. Objektą galima apibrėžti, kaip
-\quote{esybę, kuri apjungia duomenų ir procedūrų savybes tam,
-kad galėtų atlikti veiksmus ir turėti
+\cite[225]{types-and-programming-languages} teigimu yra beprasmiška
+bandyti tiksliai apibrėžti ką reiškia „objektiškai orientuotas“,
+bet objektinį programavimą bendrąja prasme galime suvokti, kaip
+programavimą pasinaudojant objekto abstrakcija. Objektą galima
+apibrėžti, kaip \quote{esybę, kuri apjungia duomenų ir procedūrų
+savybes tam, kad galėtų atlikti veiksmus ir turėti
 būseną}\cite[41]{OOP-themes-and-variations}. Objektinės sistemos veikimas
 yra suvokiamas, kaip objektų tarpusavio sąveika: objektai vienas kitam
 siuntinėja žinutes, o kiekvienas gavęs žinutę objektas į ją sureaguoja
@@ -49,9 +51,18 @@ mechanizmas} – galimybė perpanaudoti esamų objektų apibrėžimų dalis
 apibrėžiant naujus objektus.
 \gls{object-oriented-programming-language}{Objektinės programavimo kalbos}
 tai gali įgyvendinti panaudodamos \gls{delegation}{delegavimo} arba
-\gls{class-inheritance}{paveldėjimo} mechanizmus. Taigi, Modula-2 nėra
-objektinė programavimo kalba, nes jos modulis negali automatiškai
-„perimti“ kito modulio veiksenos.
+\gls{class-inheritance}{paveldėjimo}
+mechanizmus.\NFIXME{Ar reikia pavyzdžio su Python, kuris parodo, jog
+paveldėjimas ir delegavimas yra tas pats
+\cite[1]{Stein:1987:DI:38807.38820}?
+(Jei $a$ yra klasės $A$ tipo
+objektas, o klasė $A$ paveldi iš $B$, tai delegavimo ryšys būtų:
+$a \to A \to B$, o \varname{self} yra tiesiog paprasčiausias
+argumentas.)}
+Šis mechanizmas yra itin svarbus tuo, kad leidžia objektus apibrėžti
+palaipsniui. Taigi, \plangname{Modula-2} nėra objektinė programavimo
+kalba, nes jos modulis negali automatiškai „perimti“ kito modulio
+veiksenos.
 
 Be šios „Orlando susitarime“ nurodytos savybės, dauguma
 objektinių programavimo kalbų turi ir daugiau bendrų bruožų,
@@ -69,8 +80,9 @@ kuriuos išskyrė \cite[225-227]{types-and-programming-languages}:
     objektų kūrimui naudojant klases, kurios gali paveldėti kai kurias
     savybes iš tėvinių klasių, arba naudojant žinučių persiuntimą;
   \item[atvira rekursija] \en{open recursion} – specialaus kintamojo
-    (dažniausiai jis vadinamas „this“, arba „self“) egzistavimas, kuriuo
-    pasinaudojant galima kreiptis į kitus to paties objekto metodus.
+    (dažniausiai jis vadinamas „this“, arba „self“)
+    egzistavimas, kuriuo pasinaudojant galima kreiptis į kitus to
+    paties objekto metodus.
 \end{description}
 Nors paminėtos savybės ir yra bendros populiariausioms objektinėms
 programavimo kalboms, bet jos jas įgyvendina įvairiais būdais,
@@ -78,6 +90,129 @@ dėl ko jos įgauna savitumų, kurie daro įtaką šių programavimo
 kalbų pritaikymo sritims.
 
 \section{Objektinių kalbų rūšys}
+
+Objektinės programavimo kalbos yra naudojamos įvairioms situacijoms:
+tiek eksperimentiniam, tiriamajam bei prototipiniam programavimui, kai
+dalykinė sritis yra prastai žinoma ir yra svarbus lankstumas, tiek
+jau produkcijai skirtoms sistemoms, kurios, palyginus,
+lėtai keičiasi ir kurių patikimumas yra itin
+svarbus\cite{Lieberman:1987:TO:62139.62144}. Pagal
+\cite{Lieberman:1987:TO:62139.62144} pirmuoju atveju lankstumą
+suteikia galimybės:
+\begin{itemize}
+  \item modifikuoti atskiro objekto veikseną – pavyzdžiui, vienam
+    konkrečiam objektui pridėti naują metodą;
+  \item keisti \gls{object-description-sharing-mechanism}{dalinimosi
+    mechanizmo} ryšius vykdymo metu – pavyzdžiui, pakeisti tėvinį
+    objektą;
+  \item išreikštinai nurodyti
+    \gls{object-description-sharing-mechanism}{dalinimosi mechanizmo}
+    ryšius – pavyzdžiui, kokios žinutės kokiam objektui yra
+    persiunčiamos.
+\end{itemize}
+Šiomis savybėmis pasižymi \gls{}{prototipinės objektinės programavimo
+kalbos}, iš kurių, turbūt, populiariausia atstovė yra
+\plangname{JavaScript}.
+
+Kuriamų sistemų patikimumą padeda užtikrinti tokios programavimo
+kalbos savybės, kaip:
+\begin{itemize}
+  \item galimybė užtikrinti, kad visi konkrečiai grupei priklausantys
+    objektai elgsis vienodai;
+  \item draudimas keisti objekto apibrėžimą po jo sukūrimo – tai
+    gali būti naudinga, pavyzdžiui, tuo, kad mes esame garantuoti,
+    jog objektas tenkina tą patį kontraktą, kurį jis tenkino iš
+    karto po sukūrimo;
+  \item vieningas \gls{object-description-sharing-mechanism}{
+    apibrėžimų dalinimosi mechanizmas}, kuris palengvina supratimą
+    kaip sistema veikia.
+\end{itemize}
+Šiomis savybėmis pasižymi \gls{}{klasinės objektinės programavimo
+kalbos}, tokios, kaip \plangname{Java}, \plangname{C++},
+\plangname{Python}, \plangname{Ruby}.
+
+Kaip pavyzdys situacijos, kur prototipinės objektinės programavimo
+kalbos savybės yra naudingesnės nei klasinės objektinės, galėtų
+būti natūralios žmonių kalbos sintezatoriaus kūrimas. Tarkime, kad
+mums reikia galimybės turint veiksmažodžio bendratį susigeneruoti
+visas jo formas. Naudodami klasinę objektinę programavimo kalbą
+kiekvienai veiksmažodžių rūšiai galėtume susikurti po klasę,
+kuri gavusi bendratį mokėtų sugeneruoti tos rūšies veiksmažodžių
+formas. Problema ta, kad natūralios žmonių kalbos pasižymi didele
+išimčių gausa ir šiuo atveju kiekvienai išimčiai irgi reikėtų
+sukurti po klasę. Jei naudotume prototipinę objektinę programavimo
+kalbą, tai kiekvieną kartą pridėdami po naują veiksmažodžio
+objektą, jam kaip tėvinį galėtume nurodyti panašiausią į jį ir
+tereikėtų perrašyti tik jų skirtumus.
+
+Pagal \cite[2]{Madsen:1990:STO:97946.97964} programavimo kalbų
+lankstumą dar padidina silpna tipizacija bei dinaminis tipų tikrinimo
+mechanizmas. Tuo tarpu stipri tipizacija bei statinis tipų tikrinimo
+mechanizmas leidžia nemažai klaidų surasti dar programos kompiliavimo
+stadijoje, kas padidina programos patikimumą. Taigi siekiant kurti
+sistemas, kurioms yra itin svarbus jų patikimumas, derėtų naudoti
+statines stipriai tipizuotas klasines programavimo kalbas. Kadangi
+šiame darbe yra nagrinėjamos priemonės, kurios pagelbėtų kuriant
+verslo palaikymo sistemas, kurioms ir yra itin svarbus patikimumo
+kriterijus tai toliau darbe yra nagrinėjamos tik statinės stipriai
+tipizuotos klasinės objektinės programavimo kalbos.
+
+Galima išskirti šias programavimo kalbų savybes, kurios padidina
+kuriamų sistemų patikimumą\cite{Lieberman:1987:TO:62139.62144}:
+\begin{enumerate}
+  \item \gls{statically-typed-programming-language}{statinis tipų
+    tikrinimas}
+  \item stipri tipizacija \en{strong typing}
+  \item statinis dalinimosi
+    mechanizmas\cite{Lieberman:1987:TO:62139.62144}
+  \item galimybė užtikrinti, kad visi konkrečiai grupei priklausantys
+    objektai elgsis vienodai\cite{Lieberman:1987:TO:62139.62144}.
+\end{enumerate}
+
+lankstumą\cite{Lieberman:1987:TO:62139.62144}:
+\begin{enumerate}
+  \item dinaminė tipų sistema – rasti autorių, kuris apibrėžia;
+  \item silpna tipizacija \en{weak typing} – 
+    \cite[168]{Wegner:1987:DOL:38807.38823};
+  \item dinaminis dalinimosi
+    mechanizmas\cite{Lieberman:1987:TO:62139.62144} – galimybė
+    vykdymo metu pakeisti „tėvą“\NFIXME{Ar reikia minėti pavyzdį
+    su \plangname{C++}?};
+  \item galimybė modifikuoti atskiro objekto
+    apibrėžimą\cite{Lieberman:1987:TO:62139.62144}.
+\end{enumerate}
+
+Tai, kad objektinės programavimo kalbos yra naudojamos įvairioms
+situacijoms: tiek eksperimentiniam, tiriamajam programavimui,
+kuriam yra svarbus lankstumas, tiek didelėms verslo palaikymo
+sistemoms, kurios, palyginus, keičiasi žymiai lėčiau ir kurių
+patikimumas yra svarbiausias kriterijus, tai lemia skirtingų
+objektinių programavimo kalbų poreikį
+. Deja, savybės, kurios lemia
+sistemų dinamiškumą, yra sunkiai suderinamos su savybėmis,
+kurios lemia jų patikimumą.
+
+Sistemų dinamiškumą lemia šios programavimo kalbos savybės:
+Tuo tarpu sistemos patikimumą padidina šios kalbos savybės:
+
+Pagal šių savybių palaikymą šiuo metu populiariausias objektines
+programavimo kalbas galime suskirstyti į tris grupes\footnote{
+Grupių galėtų būti ir daugiau, bet arba nėra į jas pakliūnančių
+kalbų, arba jos yra labai nepopuliarios.}:
+\begin{description}
+  \item[prototipinės] – populiariausias pavyzdys:
+    \plangname{JavaScript};
+  \item[dinaminės klasinės] – 
+    pavyzdžiai: \plangname{Ruby}, \plangname{Python};
+  \item[statinės klasinės] – 
+    pavyzdžiai: \plangname{Java}, \plangname{C++}.
+\end{description}
+
+
+Kursiniame darbe apsiribojama statinėmis, klasinėmis objektinėmis
+kalbomis.
+
+Nagrinėjant objektines programavimo kalbas yra 
 
 Įvertinant tai, kad objektinių programavimo kalbų yra ne viena,
 galima kelti hipotezę, kad neegzistuoja objektinės programavimo
