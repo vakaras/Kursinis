@@ -38,7 +38,7 @@ pačius komponentus galima panaudoti keliose skirtingose sistemose, kas
 leidžia sumažinti kuriamų sistemų
 kainą\cite[6]{cs-beyond-object-oriented-programming}.
 
-Programavimo kalbos \gls{scala}{Scala} autoriaus \human{Martin'o
+Programavimo kalbos \gls{scala}{\plangname{Scala}} autoriaus \human{Martin'o
 Odersky} teigimu komponentinių technologijų plitimui trukdo
 tai, kad dabartinėse programavimo kalbose trūksta priemonių leidžiančių
 apibrėžti ir sujungti komponentus\cite{odersky:scala-experiment}.
@@ -58,8 +58,8 @@ stabilumą užtikrinančius įrankius. Naudodami metaprogramavimą
 mes pakeičiam „normalią“ elgseną, kurios galbūt tikisi kitos sistemos
 dalį.}\cite{extensible-software-components}.
 
-\gls{scala}{Scala} kūrėjai pasiūlė pastarąsias dabartinių programavimo
-kalbų problemas spręsti
+\gls{scala}{\plangname{Scala}} kūrėjai pasiūlė pastarąsias
+dabartinių programavimo kalbų problemas spręsti
 \gls{statically-typed-programming-language}{statinę}
 \gls{class-based-programming-language}{klasinę}
 \TODO{gls:objektinę} programavimo kalbą papildydami naujomis
@@ -72,9 +72,9 @@ savybėmis\cite{scalable-component-abstractions}:
 Jų teigimu\cite[1]{scalable-component-abstractions} šių trijų savybių
 pridėjimas įgalina programuoti komponentiškai.
 
-Šio darbo tikslas yra patikrinti ar šis \gls{scala}{Scala} kūrėjų
-teiginys, jog su \gls{scala}{Scala} yra įmanoma programuoti
-komponentiškai, yra teisingas.
+Šio darbo tikslas yra patikrinti ar šis \gls{scala}{\plangname{Scala}}
+kūrėjų teiginys, jog su \gls{scala}{\plangname{Scala}} yra įmanoma
+programuoti komponentiškai, yra teisingas.
 
 Darbo tikslo bus siekiama įgyvendinant šiuos uždavinius:
 \begin{enumerate}
@@ -82,37 +82,40 @@ Darbo tikslo bus siekiama įgyvendinant šiuos uždavinius:
     apibrėžti, kas yra objektinis programavimas;
   \item išsiaiškinti, kas yra komponentinis programavimas, kokios
     yra jį išskiriančios (privalomosios) savybės;
-  \item pagal išskirtąsias savybes patikrinti ar su \gls{scala}{Scala}
-    galima programuoti komponentiškai;
-  \item jei su \gls{scala}{Scala} yra įmanoma programuoti
-    komponentiškai, tai išsiaiškinti kokie yra \gls{scala}{Scala}
-    komponentinės technologijos privalumai lyginant su objektiniu
-    programavimu bei su kitomis komponentinėmis technologijomis.
+  \item pagal išskirtąsias savybes patikrinti ar su
+    \gls{scala}{\plangname{Scala}} galima programuoti komponentiškai;
+  \item jei su \gls{scala}{\plangname{Scala}} yra įmanoma programuoti
+    komponentiškai, tai išsiaiškinti kokie yra
+    \gls{scala}{\plangname{Scala}} komponentinės technologijos
+    privalumai lyginant su objektiniu programavimu bei su kitomis
+    komponentinėmis technologijomis.
 \end{enumerate}
 \emph{Pastabos:}
 \begin{enumerate}
   \item \ref{introduction:task:object-oriented-programming}
     uždavinio rezultatas yra svarbus norint pilnai suvokti kaip būtent
-    \gls{scala}{Scala} autoriai pakeitė objektinį programavimo
+    \gls{scala}{\plangname{Scala}} autoriai pakeitė objektinį programavimo
     modelį, kad iš jo gautų komponentinį, bei siekiant suprasti kuo
     susijęs objektinis su komponentiniu.
-  \item Kadangi \gls{scala}{Scala} yra susijusi su Java (iš
-    \gls{scala}{Scala} kodo galima kviesti Java kodą ir atvirkščiai),
-    tai šiame darbe, kaip pagrindinė
-    \gls{statically-typed-programming-language}{statinių}
+  \item Kadangi \gls{scala}{\plangname{Scala}} yra susijusi su
+    \plangname{Java} (iš \gls{scala}{\plangname{Scala}} kodo galima
+    kviesti \plangname{Java} kodą ir atvirkščiai), tai šiame darbe,
+    kaip pagrindinė \gls{statically-typed-programming-language}{statinių}
     \gls{class-based-programming-language}{klasinių}
-    \TODO{gls:objektinių} programavimo kalbų atstovė imama Java.
+    \TODO{gls:objektinių} programavimo kalbų atstovė imama
+    \plangname{Java}.
 \end{enumerate}
 
 Darbas suskirstytas į tris skyrius: pirmajame skyriuje surinkti
 įvairūs objektinio programavimo apibrėžimai bei apibrėžta kas
 yra statinis klasinis objektiškai orientuotas programavimas.
 Antrajame apibrėžta kas yra komponentas bei kas yra komponentinis modelis.
-Trečiajame skyriuje pristatomos galimybės, kuriomis Scala
+Trečiajame skyriuje pristatomos galimybės, kuriomis \plangname{Scala}
 papildė statines klasines objektines programavimo kalbas, tokias
-kaip Java. Tada remiantis komponento apibrėžimu patikrinama, ar
-su Scala iš tiesų galima programuoti komponentiškai bei pateikiama
-keletas pavyzdžių, parodančių \gls{scala}{Scala} privalumus.
+kaip \plangname{Java}. Tada remiantis komponento apibrėžimu patikrinama, ar
+su \plangname{Scala} iš tiesų galima programuoti komponentiškai bei
+pateikiama keletas pavyzdžių, parodančių
+\gls{scala}{\plangname{Scala}} privalumus.
 
 \chapter{Komponentinis programavimas}
 
