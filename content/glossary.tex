@@ -148,6 +148,9 @@
 
     Mechanizmas leidžiantis egzistuojančių objektų apibrėžimus panaudoti
     apibrėžiant naujus objektus.
+    \gls{object-oriented-programming-language}{Objektinėse programavimo
+    kalbose} tai gali būti realizuota, kaip \gls{delegation}{delegavimas}
+    arba \gls{class-inheritance}{klasių paveldėjimas}.
     
   \end{entry}
 
@@ -204,18 +207,54 @@
     
   \end{entry}
 
-  % Nesutvarkyti.
-
   \begin{entry}%
     {dynamic-dispatch}%
     {dinaminis susiejimas}%
-    [dynamic dispatch]%
+    [dynamic dispatch, dynamic binding]%
     [\url{http://en.wikipedia.org/wiki/Dynamic_dispatch}]
 
-    Nusprendimo, kokį kodą vykdyti gavus žinutę, procesas,
+    Nusprendimo, kokią procedūrą vykdyti gavus žinutę, procesas,
     atliekamas programos vykdymo metu.
+    \cite[225]{types-and-programming-languages}
 
   \end{entry}
+
+  \begin{entry}%
+    {encapsulation}%
+    {uždarumas}%
+    [encapsulation]
+
+    Savybė, kai vidinė objekto struktūra yra slepiama nuo išorės
+    naudotojų. \cite[225]{types-and-programming-languages}
+    
+  \end{entry}
+
+  \begin{entry}%
+    {subtyping}%
+    {potipiai}%
+    [subtyping]
+
+    \gls{object-oriented-programming-language}{Objektinės programavimo
+    kalbos} savybė, kai norint pasinaudoti objektu mums rūpi tik
+    jo sąsaja ir mes galime naudoti objektą $I$ vietoj
+    objekto $J$, jei objekto $J$ sąsaja yra objekto $I$ sąsajos poaibis.
+    \cite[226]{types-and-programming-languages}
+    
+  \end{entry}
+
+  \begin{entry}%
+    {open-recursion}%
+    {atvira rekursija}%
+    {open recursion}
+
+    Specialaus kintamojo (dažniausiai jis vadinamas „this“, arba
+    „self“) egzistavimas, kuriuo pasinaudojant galima kreiptis į
+    kitus to paties objekto metodus.
+    \cite[226]{types-and-programming-languages}
+    
+  \end{entry}
+
+  % Nesutvarkyti.
 
   \begin{entry}%
     {polymorphism}%
