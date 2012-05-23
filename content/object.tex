@@ -1,18 +1,21 @@
 \chapter{Objektinis programavimas}
 
-Norint atskirti dvi paradigmas, reikia tiksliai apibrėžti kas priklauso
-kiekvienai iš jų. Šiame skyriuje pabandyta išskirti kas yra
-objektinis programavimas apskritai, kokios yra objektinio
-rūšys\NTODO{Nagrinėjant Scala yra svarbu nurodyti ant kokio objektinio
-ji „stovi“.} bei kam tos rūšys yra reikalingos (kokios yra jų
-pritaikymo sritys)\NTODO{Nagrinėjant Scala panagrinėti ar ji keičia
-pritaikymo sritį.}.
+Norint atskirti objektinę paradigmą nuo komponentinės, reikia
+tiksliai apibrėžti, kas priklauso kiekvienai iš jų.
+Šiame skyriuje pabandyta išskirti, kas yra objektinis programavimas
+apskritai, kokios yra objektinio programavimo rūšys\NTODO{Nagrinėjant
+Scala yra svarbu nurodyti ant kokio objektinio ji „stovi“.} bei kam
+tos rūšys yra reikalingos (jų pritaikymo sritys)\NTODO{Nagrinėjant
+Scala panagrinėti ar ji keičia pritaikymo sritį.}\NFIXME{Aurelijaus
+pastaba: „Siūlau pradėti pastraipą nuo šito sakinio. Arba
+„Objektinį programavimą skirtingi autoriai apibrėžia skirtingai
+arba neišsamiai arba nepakankamai [Bla12; Bla13; Bla14]“}.
 
 \section{Objektinio programavimo apibrėžimas}
 
 \cite[225]{types-and-programming-languages} teigimu yra beprasmiška
-bandyti tiksliai apibrėžti ką reiškia „objektiškai orientuotas“,
-bet objektinį programavimą bendrąja prasme galime suvokti, kaip
+bandyti tiksliai apibrėžti, ką reiškia „objektiškai orientuotas“,
+bet objektinį programavimą bendrąja prasme galima suvokti, kaip
 programavimą pasinaudojant objekto abstrakcija. Objektą galima
 apibrėžti, kaip \quote{esybę, kuri apjungia duomenų ir procedūrų
 savybes tam, kad galėtų atlikti veiksmus ir turėti
@@ -22,9 +25,26 @@ siuntinėja žinutes, o kiekvienas gavęs žinutę objektas į ją sureaguoja
 įvykdydamas atitinkamos procedūros (metodo)
 kodą\cite[41]{OOP-themes-and-variations}%
 \cite[277]{concepts-in-programming-languages}%
-\cite[168]{Wegner:1987:DOL:38807.38823}.
-Be būsenos ir veiksenos, prie objekto išskirtinių savybių 
-\cite[37]{cs-beyond-object-oriented-programming} bei
+\cite[168]{Wegner:1987:DOL:38807.38823}.\NFIXME{Aurelijaus pastaba:
+„Perskaičius pirmus sakinius man iš karto norėjosi išgirsti, kad
+objektai visų pirma skirti darbui su savyje saugomais duomenimis.
+Būsenos kažką į tą pusę sako, bet nepakankamai aiškiai
+„tūlam“ skaitytojui. Tai būtų kaip „abstrakciją“
+paaiškinimas, nes išreikštinio susiejimo su abstrakcijos formomis
+taip iki pastraipos galo ir neradau. Kai matai, kad nesiskaito, dėk
+pavyzdžius: procedūrinė (pvz., OpenGL) turi būsenų sistemą, bet
+bendrą „RAM'ą“, o programuojant objektiškai kiekvienas gauna savo
+gabalą ir daugiausia tik su tuo gabalu ir dirba. Su gabalais dirba ir
+funkcinės programavimo kalbos, bet jos paima pradinę būseną ir
+išspjauna galine (čia tinka tavo bendravimas žinutėmis). Kiek
+supratau, ši mano rašliava pas tave atitinka „unikalią
+tapatybę“, bet kadangi aš abejoju, tai reikės „unikalios
+tapatybės“ paaiškinimo.“}
+Be būsenos ir veiksenos\NFIXME{Aurelijaus pastaba: „low
+suprantability. „veikimas“, „kodo dalių vykdymas“,
+„paprogramių vykdymas“ (paprogramės įprastos informatikams, bet
+pridėjus į žodyną, turėtų sueiti.“}, prie objekto išskirtinių
+savybių \cite[37]{cs-beyond-object-oriented-programming} bei
 populiariausių objektinių programavimo kalbų kūrėjai nurodo
 dar ir tai, kad kiekvienas objektas turi unikalią tapatybę.
 Taigi apibendrinant, objektai yra esybės, kurios:
@@ -32,7 +52,12 @@ Taigi apibendrinant, objektai yra esybės, kurios:
   \item turi unikalią tapatybę;
   \item turi būsenas;
   \item sąveikauja besikeisdamos žinutėmis;
-  \item reaguoja į žinutes įvykdydamos tam tikrą procedūrą.
+  \item reaguoja į žinutes įvykdydamos tam tikrą procedūrą.\NFIXME{
+    Aurelijaus pastaba: „Pasižiūrėk skirtumus tarp procedūrų ir
+    funkcijų. Nes „sąveikauja besikeisdamos žinutėmis“ tai man
+    asocijuojasi su sekų diagramomis, taigi ir return (funkciškesniu)
+    apibrėžimu. Čia tik tik pastebėjimas, jei prisikabintų per
+    ginimus.“}
 \end{enumerate}
 
 Siekiant išskirti
@@ -41,7 +66,15 @@ kalbas} iš programavimo kalbų, kuriomis įmanoma programuoti
 objektiškai (pavyzdžiui, tarę, kad programavimo kalbos \plangname{Modula-2}
 modulis yra objektas, su ja galėtume programuoti objektiškai), yra
 reikalaujama, kad programavimo kalba, kurią vadiname objektine
-palaikytų objektinį programavimą kalbinėmis priemonėmis. 1987
+palaikytų objektinį programavimą kalbinėmis priemonėmis. 1987\NFIXME{
+Aurelijaus pastaba: „Prie mano „istorinių faktų“ vadovas kibo,
+klausė, „ar tai tiksliui/uždaviniams tikrai reikalinga“. Kadangi
+su apimtimi problemos, tai siūlyčiau truputi įdėti beletristikos su
+kalbų pavyzdžiais (kaip kas daro), taip ir suprantability turėtų
+padidėti. Istoriniai faktai yra naudingi, jei yra žinomas kontekstas:
+kokia situacija su kalbų įvairove buvo 1987 metais, kodėl svarbi ACM
+(neinformatikui), OOPSLA (wtf?), Orlando susitikime (ar kas nors
+pasikeistų, jei būtų „Kupiškio“)“}
 metais ACM OOPSLA konferencijos metu paskelbtame „Orlando
 susitarime“ \en{„The Treaty of Orlando“}
 \cite{Lieberman:1987:TO:62139.62144} nurodoma, kad esminis
@@ -63,6 +96,9 @@ argumentas.)}
 palaipsniui. Taigi, \plangname{Modula-2} nėra objektinė programavimo
 kalba, nes jos modulis negali automatiškai „perimti“ dalies kito modulio
 veiksenos.
+\TODO{Paminėti teiginį iš \cite{Wegner:1987:DOL:38765.38823}, kad
+paveldėjimas yra delegavimo mechanizmo poaibis. Tai palengvintų
+terminologiją. Bet tada netinka prototipinis su „deepcopy“?}
 
 Be šios „Orlando susitarime“ nurodytos savybės, dauguma
 objektinių programavimo kalbų turi ir daugiau bendrų bruožų,
@@ -86,9 +122,15 @@ kuriuos išskyrė \cite[225-227]{types-and-programming-languages}:
     paties objekto metodus.
 \end{description}
 Nors paminėtos savybės ir yra bendros populiariausioms objektinėms
-programavimo kalboms, bet jos jas įgyvendina įvairiais būdais,
-dėl ko jos įgauna savitumų, kurie daro įtaką šių programavimo
-kalbų galimoms pritaikymo sritims.
+programavimo kalboms, bet\NFIXME{Aurelijaus pastaba: „Paįvairink
+jungtukus, pradeda atsibosti...
+\url{http://ualgiman.dtiltas.lt/jungtukas.html}} jos jas
+\NFIXME{Aurelijaus pastaba: „Blogai. Įvardžius reikia vartoti labai
+atsargiai, nes per gynimus mėgsta tokiu būtu suvar(t)inėti. Siūloma
+didelio įvardžių kiekio (bent jau 2 viename) vengti. Geriau
+sinonimus.} įgyvendina įvairiais būdais, dėl ko jos įgauna
+savitumų, kurie daro įtaką šių programavimo kalbų galimoms
+pritaikymo sritims.
 
 \section{Objektinių kalbų rūšys}
 
@@ -97,9 +139,14 @@ tiek eksperimentiniam, tiriamajam bei prototipiniam programavimui, kai
 dalykinė sritis yra prastai žinoma ir yra svarbus lankstumas, tiek
 jau produkcijai skirtoms sistemoms, kurios palyginus
 lėtai keičiasi ir kurių patikimumas yra itin
-svarbus\cite{Lieberman:1987:TO:62139.62144}. Pagal
-\cite{Lieberman:1987:TO:62139.62144} pirmuoju atveju lankstumą
-suteikia galimybės:
+svarbus\cite{Lieberman:1987:TO:62139.62144}\NFIXME{
+Aurelijaus pastaba: „4 eilutės 1-nam sakiniui „politiko“ stilius.
+Pabadyk išvardyti viską trumpai, o pridėtinus (šalutinius) sakinius
+parašyk po to.“}. Pagal \cite{Lieberman:1987:TO:62139.62144}\NFIXME{
+Aurelijaus pastaba: „Pagal pirmuoju“ Ir šiaip, jei jau pradedi
+plačiai rašyti, tai gražu būtų ir naujoje pastraipoje“} pirmuoju
+atveju lankstumą suteikia galimybės\NFIXME{Aurelijaus pastaba:
+„Nors taupom popierių, man gražiau skambėtų suteikia: [ENTER]“}:
 \begin{itemize}
   \item modifikuoti atskiro objekto veikseną – pavyzdžiui, vienam
     konkrečiam objektui pridėti naują metodą;
@@ -120,11 +167,17 @@ Kuriamų sistemų patikimumą padeda užtikrinti tokios programavimo
 kalbos savybės, kaip:
 \begin{itemize}
   \item galimybė užtikrinti, kad visi konkrečiai grupei priklausantys
-    objektai elgsis vienodai;
+    objektai elgsis vienodai \NFIXME{Aurelijaus pastaba: „Pridėk,
+    „pvz, tai realizuojama gali būti realziuota klasėmis“.  Nes
+    turi praeiti keli suprantability ciklai, kol „until sąlyga tampa
+    patenkinta.“};
   \item draudimas keisti objekto apibrėžimą po jo sukūrimo – tai
-    gali būti naudinga, pavyzdžiui, tuo, kad mes esame garantuoti,
+    gali būti naudinga, pavyzdžiui, tuo, kad yra garantuojama,
     jog objektas tenkina tą patį kontraktą, kurį jis tenkino iš
-    karto po sukūrimo;
+    karto po sukūrimo;\NFIXME{Aurelijaus pastaba: „O ar yra kas, kas
+    keičia apibrėžimą po sukūrimo?  Netipizuotos kalbos,
+    reflectionai, dinaminiai metodai
+    (\url{http://www.php.net/manual/en/language.oop5.magic.php})“}
   \item vieningas \gls{object-description-sharing-mechanism}{
     apibrėžimų dalinimosi mechanizmas}, kuris palengvina supratimą
     kaip veikia sistema.
@@ -148,7 +201,7 @@ kalbą, tai kiekvieną kartą pridėdami po naują veiksmažodžio
 objektą, jam kaip prototipą galėtume nurodyti panašiausią į jį ir
 tereikėtų perrašyti tik jų skirtumus.
 
-Pagal \cite[2]{Madsen:1990:STO:97946.97964} programavimo kalbų
+Pagal \cite[2]{Madsen:1990:STO:97946.97964}, programavimo kalbų
 lankstumą dar padidina \gls{weakly-typed-programming-language}{silpna
 tipizacija} bei \gls{dynamically-typed-programming-language}{dinaminis
 tipų tikrinimo mechanizmas}. Tuo tarpu
@@ -168,3 +221,8 @@ patikimumo kriterijus, tai toliau darbe yra nagrinėjamos tik
 \gls{class-based-programming-language}{klasinės}
 \gls{object-oriented-programming-language}{objektinės} programavimo
 kalbos.
+
+\FIXME{Aurelijaus pastaba: „Loginė slinktis: eksperimentinis,
+tiramosios, prototipinės ->  Prototipinės, klasinės [norėtųsi
+susieti su eksperimentinėmis arba tiriamosiomis], [vėl] prototipinės,
+tipizacija~lankstumas. Minčių šokinėjimas blogiau nei vidurkis :(“}
