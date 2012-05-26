@@ -1,0 +1,182 @@
+\chapter{Komponentinis programavimas}
+
+Šiame skyriuje yra surinkti įvairių autorių pateikiami komponento
+apibrėžimai, pateikiamas komponento savybių sąrašas, pristatoma kas
+yra komponentinis modelis, nurodomi objektinio ir komponentinio
+skirtumai.
+
+\section{Komponento apibrėžimai}
+
+Nors apie programinės įrangos komponentus yra kalbama jau daugiau
+nei dešimt metų, vis dar nėra vieningo apibrėžimo, kas per esybė
+yra komponentas\cite{classification-framework-for-scm}. Vienas
+iš senesnių ir, turbūt, dažniausiai cituojamų yra Clemens Szyperski
+\cite{cs-beyond-object-oriented-programming}
+pateiktas komponento apibrėžimas\footnote{Google duomenimis pacituotas
+daugiau nei 6 tūkstančius kartų.}:
+\begin{quote}
+  Programinės įrangos komponentas yra kompozicijos elementas su
+  sutartinai apibrėžtomis sąsajomis ir tik su išreikštinai
+  nurodytomis priklausomybėmis. Programinės įrangos komponentas
+  gali būti naudojamas nepriklausomai bei panaudotas
+  kompozicijoje trečiųjų šalių.
+\end{quote}
+Nors apibrėžime to išreikštinai ir nėra, tačiau kaip vieną iš
+esminių komponento savybių autorius nurodo, kad komponentas yra
+nepriklausomo diegimo vienetas \en{unit of deployment}
+\cite[36]{cs-beyond-object-oriented-programming} ir netgi
+pareikalauja, kad komponentai klientui būtų pateikiami jau
+sukompiliuoti \cite{point-counterpoint}. Kitaip tariant, komponentas
+yra laikomas fiziniu paketu\footnote{Fizinis paketas nuo loginio paketo
+skiriasi tuo, kad fiziniam paketui turi būti įmanoma įvykdyti
+operaciją „perkelti iš vieno kompiuterio į kitą“.}. Ši
+komponento savybė yra išreikštinai
+nurodyta \cite[385]{objects-components-and-frameworks-with-uml}
+apibrėžime:
+\begin{quote}
+  Komponentas (kode) yra rišlus programinės įrangos realizacijos
+  paketas, kuris:
+  \begin{enumerate}
+    \item gali būti nepriklausomai kuriamas ir pristatytas;
+    \item turi išreikštines ir gerai apibrėžtas sąsajas savo teikiamiems
+      servisams;
+    \item turi išreikštines ir gerai apibrėžtas sąsajas servisams,
+      kurių jis tikisi iš kitų;
+    \item gali būti sujungtas su kitais komponentais, galbūt pritaikant
+      kai kurias savybes \en{properties}, bet be pačių komponentų
+      keitimo.
+  \end{enumerate}
+\end{quote}
+bei \cite[1]{Hopkins:2000:CP:352183.352198} apibrėžime:
+\begin{quote}
+  Programinės įrangos komponentas yra fizinė vykdomosios programinės
+  įrangos pakuotė su gerai apibrėžta ir vieša sąsaja.
+\end{quote}
+
+Su tuo, kad komponentas yra fizinis diegimo vienetas yra susiję
+tai, kad jis yra uždaras
+\cite[36]{cs-beyond-object-oriented-programming}. Kitaip tariant,
+sistemos naudotojai į komponentą žiūri, kaip į juodą
+dėžę\cite[2]{Gill:2003:CMF:966221.966237}.
+Kadangi nėra galimybės pasižiūrėti kas yra komponento „viduje“,
+tai norint pasinaudoti jo teikiamu funkcionalumu reikia, kad būtų
+pateiktos išreikštinės sąsajos, per kurias galima prie jo
+prieiti\cite[387]{objects-components-and-frameworks-with-uml}
+\cite[36]{cs-beyond-object-oriented-programming}. Dėl tos
+pačios priežasties tam, kad galėtume komponentui leisti pasinaudoti
+jam reikiamais servisais, jie irgi turi būti išreikštinai nurodyti
+\cite[387]{objects-components-and-frameworks-with-uml}
+\cite[36]{cs-beyond-object-oriented-programming}. Visos šios
+savybės leidžia komponentų kūrėjams kurti komponentus nieko
+nežinant apie komponentų naudotojus\cite[2]{Gill:2003:CMF:966221.966237}
+\cite[139]{meyer1999components}
+kas lemia, kad sistema gali būti surinkta iš nepriklausomai sukurtų
+komponentų. Taip pat tie patys komponentai be pakeitimų gali būti
+panaudoti keliose skirtingose trečiųjų šalių sistemose
+\cite[388]{objects-components-and-frameworks-with-uml}
+\cite[36]{cs-beyond-object-oriented-programming}. Taigi
+apibendrinant, galima būtų išskirti tokias komponento savybes:
+\begin{enumerate}
+  \item \label{com:exe:deployment} yra fizinis diegimo vienetas;
+  \item \label{com:exe:blackbox} yra juoda dėžė;
+  \item \label{com:exe:interfaceprovider} prie jo funkcionalumo galima
+    prieiti tik per išreikštinai apibrėžtas sąsajas;
+  \item \label{com:exe:interfaceuser} savo poreikius nurodo tik per
+    išreikštinai apibrėžtas sąsajas;
+  \item \label{com:exe:independent} gali būti kuriamas nepriklausomai;
+  \item \label{com:exe:reusable} gali būti perpanaudojamas;
+  \item \label{com:exe:composed} gali būti be pakeitimų sujungtas su
+    kitais komponentais į vieną sistemą;
+  \item \label{com:exe:interchangable} gali būti sistemoje
+    pakeičiamas kitu, jei naujasis įgyvendina visą senojo
+    funkcionalumą ir nereikalauja nieko daugiau.
+\end{enumerate}
+
+\section{Komponentinio modelio apibrėžimas}
+
+Ankstesniame skyrelyje pateiktais komponento apibrėžimais pasakoma kas
+yra komponentas, bet nėra pasakoma kaip yra kuriami komponentai ir kaip
+iš jų sukomponuojama sistema. Šitai apibrėžia komponentinis
+modelis. \cite[37]{heineman2001component} nurodo, kad
+\begin{quote}
+  Komponentinis modelis apibrėžia standartus komponentų realizacijai,
+  naudojamiems vardams, tarpusavio sąveikai, tinkinimui, kompozicijai,
+  evoliucijai ir įdiegimui.
+\end{quote}
+Pasinaudodami komponentinio modelio apibrėžimu autoriai šiek tiek
+kitaip apibrėžia ir patį komponentą\cite[7]{heineman2001component}:
+\begin{quote}
+  Programinės įrangos komponentas yra programinis elementas kuris
+  atitinka komponentinį modelį ir gali būti nepriklausomai įdiegtas
+  ir jo nekeičiant įkomponuotas laikantis komponavimo standarto.
+\end{quote}
+
+Komponentinio programavimo nagrinėjimas akcentuojant komponentinį modelį
+turi privalumą, kad remiantis juo galima nagrinėti skirtingas
+komponentinių sistemų kūrimo metodikas bei tuo pačiu išskirti
+kiekvienos iš jų privalumus ir trūkumus.
+\cite[4]{classification-framework-for-scm} išskyrė tokias komponentinių
+modelių klasifikavimo dimensijas:
+\begin{description}
+  \item[gyvavimo ciklas] – kiek komponentinis modelis paremia kiekvieną
+    iš komponento gyvavimo ciklo stadijų;
+  \item[konstravimas] – kokiu būdu yra sukonstruojama sistema iš
+    komponentų;
+  \item[ekstra-funkcinės savybės] – ką komponentinis modelis siūlo
+    ekstra-funkcinių savybių specifikavimui, valdymui ir kompozicijai.
+\end{description}
+
+Šis komponento apibrėžimas, pasinaudojant komponentinio modelio
+apibrėžimu, yra naudingas tuo, jog leidžia kalbėti apie
+komponentais paremtą programų sistemų inžineriją.
+
+Komponentinio modelio akcentavimas vietoje  
+  
+
+Bandant projektuoti komponentines sistemas, pasinaudojant komponento
+sąvoka, iškyla problema, kad arba komponento apibrėžimas yra per
+siauras ir „nepagauna komponentinio idėjos“ arba yra per platus ir
+dėl to tampa sunkiai pritaikomas. Pavyzdžiui, nurodymas, kad komponentas
+yra fizinis diegimo vienetas nieko nepasako apie tai, kaip
+
+Tam, kad komponentus galima būtų sujungti į vieną sistemą, reikalinga,
+kad komponentai būtų suderinami. 
+
+Komponentinį modelį jau mini
+\cite[42]{cs-beyond-object-oriented-programming}.
+
+TODO: Komponentinio programavimo supratimo pokytis, perėjimas nuo
+bandymo apibrėžti kas yra komponentas prie komponentinio modelio
+sąvokos. Komponentinio modelio apibrėžimas pagal
+\cite{classification-framework-for-scm}. Paaiškinimas, kuo svarbus šis
+pokytis (Clemens Szyperski nurodo, kad komponentas yra diegimo
+vienetas\cite{cs-beyond-object-oriented-programming}, bet tiesiog
+pasakymas, kad komponentas turi būti įdiegiamas (TODO: kritika
+išsakyta Szyperski'ui dėl jo minties, kad komponentas turi būti
+sukompiliuotas) duoda mažai naudos, tuo tarpu komponentinis
+modelis apibrėžia kaip yra platinami ir įdiegiami komponentai).
+
+TODO: Pagrindimas, kad komponentinis ir objektinis yra skirtingi
+dalykai.
+
+\section{Pastabos}
+
+Su Szyperski teiginiu, kad komponentai būtinai turi būti sukompiliuoti
+Meyer iš principo nesutinka ir teigia, kad tai yra reikalinga tik
+tiek, kiek padeda garantuoti informacijos slėpimą.
+\url{http://web.archive.org/web/20010608234054/http://www.sdmagazine.com/articles/1999/9911/9911k/9911k.htm}
+
+Pagal Szyperski, komponentų perpanaudojimas nėra pagrindinis argumentas
+naudoti komponentus. Svarbiausia yra kuriamos sistemos praplečiamumas
+\en{extensibility} ir modifikuojamumas \en{evolvability}.
+(„Why use components“ iš
+\url{http://web.archive.org/web/20010609003644/http://www.sdmagazine.com/articles/2000/0002/0002l/0002l.htm})
+
+\section{Objektinio ir komponentinio skirtumai}
+
+Paminėti, kad nors komponentai ir neprivalo būti kuriami panaudojant
+objektinį, bet komponentus kurti pasinaudojant objektiniu yra
+natūralu. (Pacituoti Bertrand Meyer ir
+\cite[389]{objects-components-and-frameworks-with-uml},
+\cite[11]{cs-beyond-object-oriented-programming},
+\cite[36]{heineman2001component}.)

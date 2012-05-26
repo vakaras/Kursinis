@@ -117,36 +117,6 @@ su \plangname{Scala} iš tiesų galima programuoti komponentiškai bei
 pateikiama keletas pavyzdžių, parodančių
 \gls{scala}{\plangname{Scala}} privalumus.
 
-\chapter{Komponentinis programavimas}
-
-\section{Komponento apibrėžimai}
-
-TODO: Įvairių autorių pateikti komponento apibrėžimai.
-
-\section{Komponentinio modelio apibrėžimas}
-
-Komponentinį modelį jau mini
-\cite[4]{cs-beyond-object-oriented-programming}.
-
-TODO: Komponentinio programavimo supratimo pokytis, perėjimas nuo
-bandymo apibrėžti kas yra komponentas prie komponentinio modelio
-sąvokos. Komponentinio modelio apibrėžimas pagal
-\cite{classification-framework-for-scm}. Paaiškinimas, kuo svarbus šis
-pokytis (Clemens Szyperski nurodo, kad komponentas yra diegimo
-vienetas\cite{cs-beyond-object-oriented-programming}, bet tiesiog
-pasakymas, kad komponentas turi būti įdiegiamas (TODO: kritika
-išsakyta Szyperski'ui dėl jo minties, kad komponentas turi būti
-sukompiliuotas) duoda mažai naudos, tuo tarpu komponentinis
-modelis apibrėžia kaip yra platinami ir įdiegiami komponentai).
-
-TODO: Pagrindimas, kad komponentinis ir objektinis yra skirtingi
-dalykai.
-
-\section{Komponento savybių sąrašas}
-
-TODO: Iš ankstesnių skyrelių surinktas komponento būtinųjų savybių
-sąrašas.
-
 \chapter{Scala}
 
 \section{Scala ir Java skirtumai}
@@ -320,3 +290,18 @@ principais: \en{The Release Reuse Equivalency Principle},
 Scala kūrėjai nieko nesako, kaip programuoti, kad sistemos
 dalys būtų perpanaudojamos, kaip komponentai. Taigi, tai reikia
 išsiaiškinti.
+
+Clemens Szyperski
+(\url{http://web.archive.org/web/20010609003644/http://www.sdmagazine.com/articles/2000/0002/0002l/0002l.htm})
+ir Bertrand Meyer
+(\url{http://web.archive.org/web/20010609010006/http://www.sdmagazine.com/articles/2000/0003/0003k/0003k.htm})
+teigimu svarbiausios komponentinio teikiamos savybės yra šios:
+\begin{itemize}
+  \item perpanaudojamumas \en{reusability};
+  \item praplečiamumas \en{extensibility} ir
+  \item modifikuojamumas \en{evolvability}.
+\end{itemize}
+Meyer akcentuoja, kad svarbiausias yra perpanaudojamumas, tuo tarpu
+Szyperski svarbiausiais laiko praplečiamumą ir modifikuojamumą.
+Perpanaudojimą bei evoliuciją taip pat mini ir
+\cite[28]{Hopkins:2000:CP:352183.352198}.
