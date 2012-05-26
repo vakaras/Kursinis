@@ -10,7 +10,7 @@ skirtumai.
 Nors apie programinės įrangos komponentus yra kalbama jau daugiau
 nei dešimt metų, vis dar nėra vieningo apibrėžimo, kas per esybė
 yra komponentas\cite{classification-framework-for-scm}. Vienas
-iš senesnių ir, turbūt, dažniausiai cituojamų yra Clemens Szyperski
+iš senesnių ir, turbūt, dažniausiai cituojamų yra \human{Clemens Szyperski}
 \cite{cs-beyond-object-oriented-programming}
 pateiktas komponento apibrėžimas\footnote{Google duomenimis pacituotas
 daugiau nei 6 tūkstančius kartų.}:
@@ -126,57 +126,57 @@ modelių klasifikavimo dimensijas:
     ekstra-funkcinių savybių specifikavimui, valdymui ir kompozicijai.
 \end{description}
 
-Šis komponento apibrėžimas, pasinaudojant komponentinio modelio
-apibrėžimu, yra naudingas tuo, jog leidžia kalbėti apie
-komponentais paremtą programų sistemų inžineriją.
+\section{Objektinio ir komponentinio sąryšis}
 
-Komponentinio modelio akcentavimas vietoje  
-  
+Siekiant suprasti kokias naujas galimybes suteikia komponentinis
+lyginant su objektiniu yra svarbu išskirti jų panašumus ir skirtumus.
+Palyginus komponentinį su klasiniu objektiniu\footnote{Lyginama
+būtent su klasiniu objektiniu, nes prototipinis objektinis yra
+palyginti nepopuliarus, o skirtumai tarp prototipinio objektinio
+ir klasinio objektinio yra nemaži. (Pavyzdžiui, prototipiniame
+objektiniame nėra tokios sąvokos, kaip „sąsaja“.)}, galima rasti
+tokius jų panašumus:
+\begin{enumerate}
+  \item tiek \gls{component-instance}{komponento egzempliorių}, tiek
+    objektą jų klientai traktuoja, kaip juodą dėžę;
+  \item tiek \gls{component-instance}{komponento egzempliorius}, tiek
+    objektas išreikštinai nurodo teikiamus servisus.
+\end{enumerate}
 
-Bandant projektuoti komponentines sistemas, pasinaudojant komponento
-sąvoka, iškyla problema, kad arba komponento apibrėžimas yra per
-siauras ir „nepagauna komponentinio idėjos“ arba yra per platus ir
-dėl to tampa sunkiai pritaikomas. Pavyzdžiui, nurodymas, kad komponentas
-yra fizinis diegimo vienetas nieko nepasako apie tai, kaip
+Nagrinėjant kuo komponentinis skiriasi nuo objektinio reikėtų
+pastebėti, kad komponentas visu pirma yra fizinis darinys, kai tuo
+tarpu klasė yra labiau loginis. Kitaip tariant, kai galima teigti,
+kad klasės ir jų naudotojai yra realizuojami ta pačia programavimo
+kalba (arba suderinamomis programavimo kalbomis, tokiomis kaip
+\plangname{Scala} ir \plangname{Java}), tai to apie komponentus ir jų
+naudotojus pasakyti nebegalime. Komponentai netgi gali būti realizuoti
+skirtingoms paradigmoms priklausančiomis programavimo kalbomis.
+Pavyzdžiui, objektine programavimo kalba realizuotas komponentas gali
+naudotis funkcine kalba realizuoto komponento
+funkcionalumu\cite[36]{heineman2001component}. Nepaisant to,
+dėl objektinio ir komponentinio panašumų komponentus realizuoti
+pasinaudojant objektine programavimo kalba yra žymiai paprasčiau,
+nei, pavyzdžiui, procedūrine programavimo kalba\cite{what-to-compose}.
+Be šio skirtumo dar galima būtų išskirti ir tai, kad komponentas
+išreikštinai nurodo ne tik teikiamus, bet ir jam reikiamus
+servisus.
 
-Tam, kad komponentus galima būtų sujungti į vieną sistemą, reikalinga,
-kad komponentai būtų suderinami. 
+Todėl kai klasės ir jų
+naudotojai yra realizuojami ta pačia programavimo kalba, tai
+apie komponentą ir jo naudotoją to pasakyti negalime.
 
-Komponentinį modelį jau mini
-\cite[42]{cs-beyond-object-oriented-programming}.
+Pagrindiniai skirtumai būtų:
+\begin{enumerate}
+  \item komponentas yra fizinis darinys, kai tuo tarpu klasė yra
+    labiau loginė abstrakcija;
+  \item komponentas išreikštinai nurodo ne tik teikiamus, bet ir
+    prašomus servisus.
+\end{enumerate}
+Taigi kalbant apie objektinį, praktiškai visada turima omeny
 
-TODO: Komponentinio programavimo supratimo pokytis, perėjimas nuo
-bandymo apibrėžti kas yra komponentas prie komponentinio modelio
-sąvokos. Komponentinio modelio apibrėžimas pagal
-\cite{classification-framework-for-scm}. Paaiškinimas, kuo svarbus šis
-pokytis (Clemens Szyperski nurodo, kad komponentas yra diegimo
-vienetas\cite{cs-beyond-object-oriented-programming}, bet tiesiog
-pasakymas, kad komponentas turi būti įdiegiamas (TODO: kritika
-išsakyta Szyperski'ui dėl jo minties, kad komponentas turi būti
-sukompiliuotas) duoda mažai naudos, tuo tarpu komponentinis
-modelis apibrėžia kaip yra platinami ir įdiegiami komponentai).
-
-TODO: Pagrindimas, kad komponentinis ir objektinis yra skirtingi
-dalykai.
-
-\section{Pastabos}
-
-Su Szyperski teiginiu, kad komponentai būtinai turi būti sukompiliuoti
-Meyer iš principo nesutinka ir teigia, kad tai yra reikalinga tik
-tiek, kiek padeda garantuoti informacijos slėpimą.
-\url{http://web.archive.org/web/20010608234054/http://www.sdmagazine.com/articles/1999/9911/9911k/9911k.htm}
-
-Pagal Szyperski, komponentų perpanaudojimas nėra pagrindinis argumentas
-naudoti komponentus. Svarbiausia yra kuriamos sistemos praplečiamumas
-\en{extensibility} ir modifikuojamumas \en{evolvability}.
-(„Why use components“ iš
-\url{http://web.archive.org/web/20010609003644/http://www.sdmagazine.com/articles/2000/0002/0002l/0002l.htm})
-
-\section{Objektinio ir komponentinio skirtumai}
-
-Paminėti, kad nors komponentai ir neprivalo būti kuriami panaudojant
-objektinį, bet komponentus kurti pasinaudojant objektiniu yra
-natūralu. (Pacituoti Bertrand Meyer ir
-\cite[389]{objects-components-and-frameworks-with-uml},
+Taigi komponentinė ir objektinė paradigmos yra gana panašios, dėl to
+komponentus kurti pasinaudojant objektine technologija, nors ir nėra
+privaloma\cite[389]{objects-components-and-frameworks-with-uml},
 \cite[11]{cs-beyond-object-oriented-programming},
-\cite[36]{heineman2001component}.)
+\cite[36]{heineman2001component}, bet yra patogiau nei su, pavyzdžiui,
+procedūrinėmis programavimo kalbomis \cite{what-to-compose}.
