@@ -1,5 +1,222 @@
 \chapter{Scala}
 
+Šiame skyriuje pristatyta programavimo kalba \plangname{Scala}:
+nurodyta kuo ji skiriasi nuo \plangname{Java}, aprašytas
+ir išanalizuotas \plangname{Scala} komponentinis modelis,
+pateiktas pavyzdys iliustruojantis \plangname{Scala} komponentinio
+privalumus lyginant su programavimu \plangname{Java}.
+
+\section{\plangname{Scala} ir \plangname{Java} skirtumai}
+
+\plangname{Scala} kūrėjų \cite[1]{scala-overview} teigimu bent iš
+dalies komponentinių technologijų evoliucijai trukdo programavimo
+kalbų, kurios yra naudojamos komponentų kūrimui ir jų jungimui,
+trūkumai. Dėl šios priežasties jie pabandė sukurti programavimo
+kalbą, su kuria naudojant tas pačias priemones galima būtų aprašyti
+tiek mažas tiek dideles dalis\footnote{\plangname{Scala} išsišifruoja,
+kaip \emph{scalable language}.}. \plangname{Scala} yra multiparadigminė
+programavimo kalba, derinanti objektinio ir funkcinio programavimo
+savybes:
+\begin{itemize}
+  \item ji yra objektinė kalba ta prasme, kad kiekviena reikšmė
+    \en{value} yra objektas ir kiekviena operacija yra metodo kvietimas
+    \cite[3]{scala-overview};
+  \item ji yra funkcinė kalba ta prasme, kad kiekviena funkcija yra
+    reikšmė \en{value}.
+\end{itemize}
+Toliau yra pristatoma kuo \plangname{Scala} pakeitė statinį, klasinį
+objektinį programavimą, kuriam „atstovauja“ \plangname{Java}.
+\plangname{Scala}, kaip funkcinės kalbos savybės šiame darbe nėra
+nagrinėjamos.
+
+\plangname{Scala} autoriai \cite{scalable-component-abstractions}
+išskyrė tris programavimo kalbos elementus įgalinančius kurti įvairaus
+dydžio \en{scalable} komponentus:
+\begin{itemize}
+  \item abstraktūs tipai – nariai \en{abstract type members};
+  \item savo tipo anotavimas \en{selftype annotations};
+  \item modulinė maišos kompozicija \en{modular mixin composition}.
+\end{itemize}
+
+\plangname{Scala} klasės gali turėti narius \en{member}, kurie
+yra abstraktūs tipai. Šiems tipams galima nurodyti, kad jie privalo
+realizuoti kokias nors sąsajas arba turi būti kokios nors klasės
+išvestinės klasės. Taip pat išvestinės klasės, juos gali patikslinti.
+\ref{lst:scala:abstract:members} kodo fragmente nurodyta, kad abstraktus
+tipas \scala|Tipas| yra išvestinis iš tipo \scala|Number|. Šis
+abstrakčių tipų mechanizmas yra naudingas tuo, kad tipų
+suderinamumas yra tikrinamas kompiliavimo metu
+(\ref{lst:scala:abstract:members:2} kodo fragmentas), o ne
+vykdymo metu, kaip \ref{lst:scala:abstract:members:3} kodo fragmente.
+
+\begin{listing}[H]
+  \begin{scalacode}
+    trait SkaičiųLangelis {
+      type Tipas <: Number
+      val numatytojiReikšmė: Tipas
+      private var reikšmė: Tipas = numatytojiReikšmė
+      def nustatytiReikšmę(naujaReikšmė: Tipas) = reikšmė = naujaReikšmė
+      def gautiReikšmę() = reikšmė
+      }
+
+    class SveikųjųSkaičiųLangelis(val numatytojiReikšmė: Tipas)
+        extends SkaičiųLangelis {
+      type Tipas = Int
+      }
+
+    class SimoboliųEilučiųLangelis(val numatytojiReikšmė: Tipas)
+        extends SkaičiųLangelis {
+      type Tipas = String               // Kompiliavimo klaida.
+      }
+  \end{scalacode}
+  \caption{Scala abstraktūs tipai – nariai.}
+  \label{lst:scala:abstract:members:1}
+\end{listing}
+
+\begin{listing}[H]
+  \begin{scalacode}
+    object Demo {
+      def main(args: Array[String]): Unit = {
+        val langelis = SveikųjųSkaičiųLangelis(4)
+        val skaičius: Int = langelis.gautiReikšmę()
+        val eilutė: String = langelis.gautiReikšmę()
+                                        // Kompiliavimo klaida.
+        }
+      }
+  \end{scalacode}
+  \caption{Scala abstraktūs tipai – nariai, tipų tikrinimas
+  kompiliavimo metu.}
+  \label{lst:scala:abstract:members:2}
+\end{listing}
+
+\begin{listing}[H]
+  \begin{scalacode}
+    trait SkaičiųLangelis {
+      val numatytojiReikšmė: Number
+      private var reikšmė: Number = numatytojiReikšmė
+      def nustatytiReikšmę(naujaReikšmė: Number) = reikšmė = naujaReikšmė
+      def gautiReikšmę() = reikšmė
+      }
+
+    object Demo {
+      def main(args: Array[String]): Unit = {
+        val langelis = SveikųjųSkaičiųLangelis(4)
+        val skaičius: Int = langelis.gautiReikšmę().asInstanceOf[Int]
+        val eilutė: String = langelis.gautiReikšmę().asInstanceOf[String]
+                                        // Klaida vykdymo metu.
+        }
+      }
+  \end{scalacode}
+  \caption{Scala abstraktūs tipai – nariai, tipų tikrinimas
+  vykdymo metu.}
+  \label{lst:scala:abstract:members:3}
+\end{listing}
+
+TODO: Path dependent types? e8. Pasitikrinti iš frederik 25 psl ir
+Scala Overview 11 psl. Taip pat svarbu, kad vidinės klasės tipas
+priklauso nuo išorinės klasės Objekto. Kartu su abstract type
+members, tai leidžia sukurti abstract factory, kurių negalima
+maišyti.
+
+TODO: Ką Scala pridėjo objektiniam (Java):
+\begin{itemize}
+  \item Scala tipų sistema;
+  \item Scala savybės \en{trait} konstrukcija;
+  \item savybių jungimas į klases panaudojant modulių maišos
+    kompoziciją \en{modular mixin composition};
+  \item atviros rekursijos anotacija \en{selftype annotations} –
+    iš principo tik sintaksinis saldainiukas dviem konstrukcijoms
+    (TODO: Ar tai, kad tai yra dviejų konstrukcijų junginys nereiškia,
+    jog tai jau nėra tik sintaksinis saldainiukas?):
+    \begin{enumerate}
+      \item \verb|def self: S = this.asInstanceOf[S]|, žr.: Observer
+        Pattern realizaciją e7;
+      \item \verb|T extends C| – skirtumas tas, kad šis apibrėžia
+        tvarką, kokia bus išdėstyti super kvietimai, o self-type
+        – ne (TODO: Patikrinti ar tikrai.);
+    \end{enumerate}
+    (kadangi sujungia abi konstrukcijas į vieną, tai turi privalumą, kad
+    e7 Subject pakeitus į ką nors kitą lūš kompiliavimo, o ne vykdymo
+    metu; taip pat antruoju atveju C negali būti abstraktus tipas, o
+    naudojant anotaciją – gali)
+  \item savybių naudojimo vietoj klasių privalumai, pavyzdys e1
+    (savybės perdengimas vidury hierarchijos).
+\end{itemize}
+
+TODO: Scala vidinių klasių ir Java įdėtinių klasių skirtumai. Taip pat
+pavyzdys su Scala tipų sistema ir Abstract factory projektavimo šablonu.
+
+TODO: Scala naudodama fragmentų hierarchiją patobulina esminę objektinio
+programavimo savybę – „dalinimasį“ \en{sharing}. Fragmentų ir klasių
+hierachija išlaiko „gerąsias“ klasių paveldėjimo mechanizmo teikiamas
+savybes, bet tuo pačiu smarkiai padidina lankstumą.
+
+TODO: Scala savybės nuo Java sąsajų skiriasi tuo, kad savybės gali turėti
+metodų realizacijas.
+
+TODO: Scala savybės nuo klasių skiriasi tuo, kad savybės negali turėti
+konstruktoriaus parametrų. Šis apribojimas leidžia efektyviai
+išspręsti su multipaveldėjimu susijusią rombo problemą.
+
+Šio skyrelio tikslas parodyti kuo Scala papildė Java objektinį ir
+kokias papildomas galimybes tai suteikia. (Scala, kaip komponentinė
+programavimo kalba dar nenagrinėjama)
+
+\section{Scala komponentinis modelis}
+
+TODO: Scala komponentinio modelio apibrėžimas (pagal išrinktas savybes).
+Parodymas, kad Scala komponentinis modelis tenkina reikalavimus,
+nurodymas kokios būtent Scala programavimo kalbos savybės kuriuos
+būtent reikalavimus realizuoja.
+
+Scala komponentinio modelio privalumai (remiantis
+\cite{classification-framework-for-scm}):
+\begin{itemize}
+  \item vertikalaus sujungimo\cite[599]{classification-framework-for-scm}
+    palaikymas leidžia kurti įvairaus dydžio \en{scalable} komponentus;
+  \item TODO: paprastesnis komponentų panaudojimas (komponentu
+    pasinaudoti (jį inicializuoti) yra paprasčiau nei komponentų
+    ansambliu).
+\end{itemize}
+
+Scala komponentinio modelio trūkumai:
+\begin{itemize}
+  \item nėra komponentų, kaip paketų, valdymo mechanizmo (šitai galima
+    apeiti pasinaudojant versijų kontrolės sistemų galimybėmis,
+    pavyzdžiui, \verb|git submodule|);
+  \item komponentų kiekis turi būti žinomas projektavimo metu, todėl
+    Scala komponentinis modelis nėra tinkamas, pavyzdžiui,
+    grafinės sąsajos elementų bibliotekos \en{GUI widgets toolkit}
+    kūrimui. (Kadangi komponentai yra „užregistruojami“
+    kompiliavimo metu, tai nėra, kaip pridėti trečiųjų šalių
+    komponento realizacijos.)
+\end{itemize}
+
+\section{Pavyzdys: Scala komponentinis prieš Java objektinį}
+
+e6 analizė. Cake pattern taikymas: turime ComponentA ir ComponentB,
+juos sujungę į System gauname sistemą sudarytą iš dviejų komponentų.
+Norėdami realizuoti analogišką sistemą su Java, turime du variantus:
+\begin{enumerate}
+  \item visą kodą sudėti į System, bet tada bus neįmanomas kodo
+    perpanaudojimas, taip pat bus sudėtingesnis sistemos kūrimo
+    darbų paskirstymas keliems programuotojams;
+  \item \label{scala:exmp:enum:2} paveldėjimą pakeisti į delegavimą,
+    tuo pačiu sukuriant Container, kuris pasirūpintų dalių
+    sujungimu. Šiuo atveju vėl gauname kažką panašaus į
+    komponentinį.
+\end{enumerate}
+
+Šis pavyzdys iliustruoja teiginį, kad komponentinis programavimas yra
+susijęs ne su realizacine technologija (programavimo kalba), o su
+jos naudojimo būdu, kuris užtikrina:
+\begin{enumerate}
+  \item galimybę dalis kurti atskirai, nepriklausomai viena nuo kitos;
+  \item galimybę lengvai dalį pakeisti kita jos realizacija.
+\end{enumerate}
+
+\chapter{Scala}
+
 \section{Tikslas}
 
 Išsiaiškinti, kaip galima būtų padidinti verslo palaikymo sistemų, kurtų
