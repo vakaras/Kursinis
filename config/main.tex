@@ -13,6 +13,11 @@
 }
 
 \newminted{text}{linenos,texcl,bgcolor=bg,gobble=4}
+\newminted{scala}{linenos,texcl,bgcolor=bg,gobble=4}
+\NewDocumentCommand \scala {v} { \emph{#1} }
+\renewcommand{\listingscaption}{}
+\renewcommand{\listoflistingscaption}{Kodo fragmentų sąrašas}
+\renewcommand{\thelisting}{\arabic{listing} kodo fragmentas}
 
 \newcounter{glossaryCounter}
 \makeatletter
