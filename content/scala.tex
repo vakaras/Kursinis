@@ -39,40 +39,154 @@ dydžio \en{scalable} komponentus:
 \end{itemize}
 
 \plangname{Scala}, be parametrizuojamųjų tipų \en{generics}, kuriuos
-turi \plangname{Java}, turi dar vieną abstrakcijos mechanizmą.
+turi \plangname{Java}, turi dar vieną abstrakcijos mechanizmą:
 \plangname{Scala} klasės gali turėti narius \en{member}, kurie
-yra abstraktūs tipai. Šiems tipams galima nurodyti, kad jie privalo
-realizuoti kokias nors sąsajas arba turi būti kokios nors klasės
-išvestinės klasės. Taip pat išvestinės klasės, juos gali patikslinti.
-\ref{lst:scala:abstract:members} kodo fragmente nurodyta, kad abstraktus
-tipas \scala|Tipas| yra išvestinis iš tipo \scala|Number|. Šis
-abstrakčių tipų mechanizmas yra naudingas tuo, kad tipų
-suderinamumas yra tikrinamas kompiliavimo metu
-(\ref{lst:scala:abstract:members:2} kodo fragmentas), o ne
-vykdymo metu, kaip \ref{lst:scala:abstract:members:3} kodo fragmente.
-Šio abstrakcijos mechanizmo pranašumas prieš parametrizuojamų tipų
-mechanizmą pasireiškia naudojant kitą \plangname{Scala} „naujovę“
-– modulinę maišos kompoziciją.
+yra abstraktūs tipai. Abu mechanizmai yra pakeičiami vienas kitu:
+\cite[10]{scala-overview} pateiktas pavyzdys, kaip parametrizuojamuosius
+tipus galima būtų modeliuoti pasinaudojant abstrakčiais tipais, taip
+pat nurodoma, kad yra įmanomas ir atvirkštinis variantas.
+\plangname{Scala} kūrėjų \cite[11]{scala-overview} nurodytos
+priežastys kalboje realizuoti abu mechanizmus yra skirtingi jų
+panaudojimo atvejai: parametrizuojamus tipus yra siūloma naudoti kai
+norime tiesiog galimybės klasės naudotojui nurodyti konkretų tipą
+(tipinis pavyzdys būtų kolekcijos, \ref{lst:scala:abstract:members:4}
+kodo fragmentas), o abstrakčius tipus tada, kai norime kliento kode
+pasinaudoti abstrakčiu tipu. Pastaroji galimybė yra dažniausiai
+naudojama su kita \plangname{Scala} „naujove“\footnote{
+Visi trys programavimo kalbos elementai, kurie \plangname{Scala}
+kūrėjų teigimu yra reikalingi komponentų kūrimui, (abstraktūs
+tipai – nariai, savo tipo anotavimas ir modulinė maišos kompozicija)
+egzistavo dar iki \plangname{Scala} sukūrimo, bet \plangname{Scala}
+yra pirmoji programavimo kalba, kurioje realizuoti jie visi
+\cite[2]{scalable-component-abstractions}.} – moduline maišos
+kompozicija.
+
+\begin{listing}[h]
+  \begin{scalacode}
+    import scala.collection.mutable.LinkedList
+    val list = new LinkedList[String]
+  \end{scalacode}
+  \caption{Parametrizuotų tipų panaudojimo atvejis.}
+  \label{lst:scala:abstract:members:4}
+\end{listing}
+
+Modulinė maišos kompozicija, tai klasių kūrimo mechanizmas
+pasinaudojant fragmentų \en{trait} komponavimu. Fragmentą galimą
+būtų apibrėžti kaip sąsają, kurios metodai gali turėti
+realizacijas. Šiuo požiūriu fragmentai primena abstrakčias klases,
+tik skirtingai nuo jų, fragmentų konstruktoriai negali turėti
+parametrų. Fragmento konstrukcija leidžia pasinaudoti
+multipaveldėjimo suteikiamais kodo perpanaudojimo privalumais
+(klasę galima sukomponuoti iš kelių fragmentų), bet tuo pačiu, dėl
+to, kad kompiliavimo metu paveldėjimo grafas yra ištiesinamas, neturi
+taip vadinamos rombo problemos.
+
+Klasių hierarchijos pakeitimas į fragmentų hierarchiją, net ir
+nesinaudojant komponentinio galimybėmis, turi privalumą, kad
+gauta sistema yra lengviau modifikuojama. Komponuojant klasę iš
+fragmentų yra įmanoma „įlįsti“ į fragmentų hierarchijos vidų
+ir ten atlikti modifikacija, ko negalima padaryti su klasių hierarchija,
+nes pastarosios ištiesinimas turi tenkinti savybę: „klasės hierarchijos
+ištiesinimas visada turi tiesioginės tėvinės klasės hierarchijos
+ištiesinimą, kaip galūnę“\cite[57p.]{scala-reference}. Galimybė
+atlikti pakeitimus vidurį hierarchijos iliustruota programa,
+pateikta \ref{lst:scala:mixin:1} kodo fragmente. Jos išvestis pateikta
+\ref{lst:scala:mixin:2} fragmente. Šiame pavyzdyje klasė \scala{C2}
+yra sukomponuojama iš fragmentų \scala{M3} ir \scala{T4} pritaikant
+maišos kompoziciją.
 
 \begin{listing}[H]
-  \inputscala{e9/Langelis}
-  \caption{Scala abstraktūs tipai – nariai.}
-  \label{lst:scala:abstract:members:1}
+  \inputscala{e1/Demo}
+  \caption{Fragmentų hierarchijos modifikavimas.}
+  \label{lst:scala:mixin:1}
 \end{listing}
 
 \begin{listing}[H]
-  \inputscala{e9/Demo}
-  \caption{Scala abstraktūs tipai – nariai, tipų tikrinimas
-  kompiliavimo metu.}
-  \label{lst:scala:abstract:members:2}
+  \begin{textcode}
+    List(C1, T4, T3, T2, T1)
+    List(C2, T4, T3, M3, T2, T1)
+  \end{textcode}
+  \caption{\ref{lst:scala:mixin:1} kodo fragmente pateiktos programos
+  išvestis.}
+  \label{lst:scala:mixin:2}
+\end{listing}
+
+Turbūt svarbiausia maišos kompozicijos savybė yra ta, kad konkretus
+narys visada užkloja abstraktų
+\cite[6]{scalable-component-abstractions}. Ši savybė leidžia
+sujungti du fragmentus, kurių nesieja bendra hierarchija. Tai yra
+iliustruota programoje, pateiktoje \ref{lst:scala:mixin:3} kodo
+fragmente. Jos išvestis yra pateikta \ref{lst:scala:mixin:4}
+fragmente. Fragmento \scala{CachedCalculation} nariai
+\scala{KeyType}, \scala{ValueType} ir \scala{calculate} yra abstraktūs
+ir jie yra užklojami atitinkamų narių apibrėžtų fragmente
+\scala{Factorial}. Fragmente \scala{Factorial} taip pat yra
+abstraktus metodas \scala{lookup}, kurį užkloja konkretus metodas
+\scala{lookup}, apibrėžtas \scala{CachedCalculation}.
+
+\begin{listing}[H]
+  \inputscala{e10/Demo}
+  \caption{Maišos kompozicijos pavyzdys.}
+  \label{lst:scala:mixin:3}
 \end{listing}
 
 \begin{listing}[H]
-  \inputscala{e9/Demo2}
-  \caption{Scala abstraktūs tipai – nariai, tipų tikrinimas
-  vykdymo metu.}
-  \label{lst:scala:abstract:members:3}
+  \begin{textcode}
+    Calculating 3
+    Calculating 2
+    Calculating 1
+    3! = 6
+    Calculating 5
+    Calculating 4
+    5! = 120
+  \end{textcode}
+  \caption{\ref{lst:scala:mixin:3} kodo fragmente pateiktos programos
+  išvestis.}
+  \label{lst:scala:mixin:4}
 \end{listing}
+
+Taikant maišos kompoziciją kartais prireikia, kad
+\scala{this}\footnote{this yra specialus kintamasis rodantis į
+objektą, kurio metodas dabar vykdomas.} tipas būtų ne tas fragmentas,
+kurio metodas šiuo metu yra vykdomas, o kažkoks kitas, išvestinis
+iš šio. Tai galima realizuoti vykdymo metu keičiant \scala{this}
+tipą į norimą arba pasinaudoti \plangname{Scala} savojo tipo
+anotacija. Pastarasis būdas turi privalumą, kad klaidos būtų randamos
+kompiliavimo metu. Savojo tipo anotacijos panaudojimo pavyzdys pateiktas
+\ref{lst:scala:selftype:1} kodo fragmente, o programos išvestis
+– \ref{lst:scala:selftype:2}. Šiame pavyzdyje savojo tipo anotacija
+yra \scala{this: Node =>} – su ja nurodoma, kad \scala{BaseNode}
+viduje \scala{this} tipas yra \scala{Node}. Todėl kvietimas
+\scala{show(this)} tampa galimas.
+
+\begin{listing}[H]
+  \inputscala{e11/Demo}
+  \caption{Savojo tipo anotacijos panaudojimo pavyzdys.}
+  \label{lst:scala:selftype:1}
+\end{listing}
+
+\begin{listing}[H]
+  \begin{textcode}
+    Root
+    First child
+    Second child
+  \end{textcode}
+  \caption{\ref{lst:scala:selftype:1} kodo fragmente pateiktos programos
+  išvestis.}
+  \label{lst:scala:selftype:2}
+\end{listing}
+
+Be savojo tipo anotacijos \ref{lst:scala:selftype:1} pavyzdyje buvo
+panaudota dar viena svarbi konstrukcija – vidinė klasė (ir fragmentas).
+
+Be šių trijų programavimo kalbos elementų, komponentiniam programavimui
+yra taip pat labai svarbi galimybė naudoti vidines klases. Šios
+savybės \plangname{Scala} autoriai nemini, nes ją turi visos
+populiariausios objektinės programavimo kalbos. Turbūt esminis
+skirtumas tarp \plangname{Java} ir \plangname{Scala} vidinių klasių
+yra tai, kad \plangname{Java} vidinės klasės tipas yra susietas su
+išorine klase, o \plangname{Scala} su išoriniu objektu. Tai
+iliustruota pavyzdžiu pateiktu \ref{lst:scala:selftype:1}.
 
 Siekiant gauti multipaveldėjimo teikiamą naudą ir tuo pačiu išvengti
 dėl jo atsirandančių problemų, \plangname{Scala} programavimo
