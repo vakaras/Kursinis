@@ -3,6 +3,7 @@
 \usepackage{style}
 \usepackage{xparse}
 \usepackage{pdfcomment}
+\usepackage{caption}
 
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 
@@ -15,9 +16,11 @@
 \newminted{text}{linenos,texcl,bgcolor=bg,gobble=4}
 \newminted{scala}{linenos,texcl,bgcolor=bg,gobble=4}
 \NewDocumentCommand \scala {v} { \emph{#1} }
-\renewcommand{\listingscaption}{}
+%\renewcommand{\listingscaption}{kodo fragmentas}
 \renewcommand{\listoflistingscaption}{Kodo fragmentų sąrašas}
-\renewcommand{\thelisting}{\arabic{listing} kodo fragmentas}
+%\renewcommand{\thelisting}{\arabic{listing}}
+\DeclareCaptionLabelFormat{ltcaptionlisting}{#2 kodo fragmentas}
+\captionsetup[listing]{labelformat=ltcaptionlisting}
 
 \newcounter{glossaryCounter}
 \makeatletter
