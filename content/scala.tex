@@ -38,6 +38,8 @@ dydžio \en{scalable} komponentus:
   \item modulinė maišos kompozicija \en{modular mixin composition}.
 \end{itemize}
 
+\plangname{Scala}, be parametrizuojamųjų tipų \en{generics}, kuriuos
+turi \plangname{Java}, turi dar vieną abstrakcijos mechanizmą.
 \plangname{Scala} klasės gali turėti narius \en{member}, kurie
 yra abstraktūs tipai. Šiems tipams galima nurodyti, kad jie privalo
 realizuoti kokias nors sąsajas arba turi būti kokios nors klasės
@@ -48,75 +50,44 @@ abstrakčių tipų mechanizmas yra naudingas tuo, kad tipų
 suderinamumas yra tikrinamas kompiliavimo metu
 (\ref{lst:scala:abstract:members:2} kodo fragmentas), o ne
 vykdymo metu, kaip \ref{lst:scala:abstract:members:3} kodo fragmente.
+Šio abstrakcijos mechanizmo pranašumas prieš parametrizuojamų tipų
+mechanizmą pasireiškia naudojant kitą \plangname{Scala} „naujovę“
+– modulinę maišos kompoziciją.
 
 \begin{listing}[H]
-  \begin{scalacode}
-    trait SkaičiųLangelis {
-      type Tipas <: Number
-      val numatytojiReikšmė: Tipas
-      private var reikšmė: Tipas = numatytojiReikšmė
-      def nustatytiReikšmę(naujaReikšmė: Tipas) = reikšmė = naujaReikšmė
-      def gautiReikšmę() = reikšmė
-      }
-
-    class SveikųjųSkaičiųLangelis(val numatytojiReikšmė: Tipas)
-        extends SkaičiųLangelis {
-      type Tipas = Int
-      }
-
-    class SimoboliųEilučiųLangelis(val numatytojiReikšmė: Tipas)
-        extends SkaičiųLangelis {
-      type Tipas = String               // Kompiliavimo klaida.
-      }
-  \end{scalacode}
+  \inputscala{e9/Langelis}
   \caption{Scala abstraktūs tipai – nariai.}
   \label{lst:scala:abstract:members:1}
 \end{listing}
 
 \begin{listing}[H]
-  \begin{scalacode}
-    object Demo {
-      def main(args: Array[String]): Unit = {
-        val langelis = SveikųjųSkaičiųLangelis(4)
-        val skaičius: Int = langelis.gautiReikšmę()
-        val eilutė: String = langelis.gautiReikšmę()
-                                        // Kompiliavimo klaida.
-        }
-      }
-  \end{scalacode}
+  \inputscala{e9/Demo}
   \caption{Scala abstraktūs tipai – nariai, tipų tikrinimas
   kompiliavimo metu.}
   \label{lst:scala:abstract:members:2}
 \end{listing}
 
 \begin{listing}[H]
-  \begin{scalacode}
-    trait SkaičiųLangelis {
-      val numatytojiReikšmė: Number
-      private var reikšmė: Number = numatytojiReikšmė
-      def nustatytiReikšmę(naujaReikšmė: Number) = reikšmė = naujaReikšmė
-      def gautiReikšmę() = reikšmė
-      }
-
-    object Demo {
-      def main(args: Array[String]): Unit = {
-        val langelis = SveikųjųSkaičiųLangelis(4)
-        val skaičius: Int = langelis.gautiReikšmę().asInstanceOf[Int]
-        val eilutė: String = langelis.gautiReikšmę().asInstanceOf[String]
-                                        // Klaida vykdymo metu.
-        }
-      }
-  \end{scalacode}
+  \inputscala{e9/Demo2}
   \caption{Scala abstraktūs tipai – nariai, tipų tikrinimas
   vykdymo metu.}
   \label{lst:scala:abstract:members:3}
 \end{listing}
+
+Siekiant gauti multipaveldėjimo teikiamą naudą ir tuo pačiu išvengti
+dėl jo atsirandančių problemų, \plangname{Scala} programavimo
+kalboje buvo realizuota fragmento \en{trait} konstrukcija.
+Fragmentas tai yra…
 
 TODO: Path dependent types? e8. Pasitikrinti iš frederik 25 psl ir
 Scala Overview 11 psl. Taip pat svarbu, kad vidinės klasės tipas
 priklauso nuo išorinės klasės Objekto. Kartu su abstract type
 members, tai leidžia sukurti abstract factory, kurių negalima
 maišyti.
+
+TODO: Kuo abstract type members yra naudingesni prieš type parameters
+pasireiškia naudojant mixin: jų nereikia nuolat kartoti.
+(\url{http://www.artima.com/weblogs/viewpost.jsp?thread=270195})
 
 TODO: Ką Scala pridėjo objektiniam (Java):
 \begin{itemize}
