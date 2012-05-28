@@ -177,75 +177,25 @@ viduje \scala{this} tipas yra \scala{Node}. Todėl kvietimas
 \end{listing}
 
 Be savojo tipo anotacijos \ref{lst:scala:selftype:1} pavyzdyje buvo
-panaudota dar viena svarbi konstrukcija – vidinė klasė (ir fragmentas).
-
-Be šių trijų programavimo kalbos elementų, komponentiniam programavimui
-yra taip pat labai svarbi galimybė naudoti vidines klases. Šios
-savybės \plangname{Scala} autoriai nemini, nes ją turi visos
-populiariausios objektinės programavimo kalbos. Turbūt esminis
-skirtumas tarp \plangname{Java} ir \plangname{Scala} vidinių klasių
-yra tai, kad \plangname{Java} vidinės klasės tipas yra susietas su
-išorine klase, o \plangname{Scala} su išoriniu objektu. Tai
-iliustruota pavyzdžiu pateiktu \ref{lst:scala:selftype:1}.
-
-Siekiant gauti multipaveldėjimo teikiamą naudą ir tuo pačiu išvengti
-dėl jo atsirandančių problemų, \plangname{Scala} programavimo
-kalboje buvo realizuota fragmento \en{trait} konstrukcija.
-Fragmentas tai yra…
-
-TODO: Path dependent types? e8. Pasitikrinti iš frederik 25 psl ir
-Scala Overview 11 psl. Taip pat svarbu, kad vidinės klasės tipas
-priklauso nuo išorinės klasės Objekto. Kartu su abstract type
-members, tai leidžia sukurti abstract factory, kurių negalima
-maišyti.
-
-TODO: Kuo abstract type members yra naudingesni prieš type parameters
-pasireiškia naudojant mixin: jų nereikia nuolat kartoti.
-(\url{http://www.artima.com/weblogs/viewpost.jsp?thread=270195})
-
-TODO: Ką Scala pridėjo objektiniam (Java):
-\begin{itemize}
-  \item Scala tipų sistema;
-  \item Scala savybės \en{trait} konstrukcija;
-  \item savybių jungimas į klases panaudojant modulių maišos
-    kompoziciją \en{modular mixin composition};
-  \item atviros rekursijos anotacija \en{selftype annotations} –
-    iš principo tik sintaksinis saldainiukas dviem konstrukcijoms
-    (TODO: Ar tai, kad tai yra dviejų konstrukcijų junginys nereiškia,
-    jog tai jau nėra tik sintaksinis saldainiukas?):
-    \begin{enumerate}
-      \item \verb|def self: S = this.asInstanceOf[S]|, žr.: Observer
-        Pattern realizaciją e7;
-      \item \verb|T extends C| – skirtumas tas, kad šis apibrėžia
-        tvarką, kokia bus išdėstyti super kvietimai, o self-type
-        – ne (TODO: Patikrinti ar tikrai.);
-    \end{enumerate}
-    (kadangi sujungia abi konstrukcijas į vieną, tai turi privalumą, kad
-    e7 Subject pakeitus į ką nors kitą lūš kompiliavimo, o ne vykdymo
-    metu; taip pat antruoju atveju C negali būti abstraktus tipas, o
-    naudojant anotaciją – gali)
-  \item savybių naudojimo vietoj klasių privalumai, pavyzdys e1
-    (savybės perdengimas vidury hierarchijos).
-\end{itemize}
-
-TODO: Scala vidinių klasių ir Java įdėtinių klasių skirtumai. Taip pat
-pavyzdys su Scala tipų sistema ir Abstract factory projektavimo šablonu.
-
-TODO: Scala naudodama fragmentų hierarchiją patobulina esminę objektinio
-programavimo savybę – „dalinimasį“ \en{sharing}. Fragmentų ir klasių
-hierachija išlaiko „gerąsias“ klasių paveldėjimo mechanizmo teikiamas
-savybes, bet tuo pačiu smarkiai padidina lankstumą.
-
-TODO: Scala savybės nuo Java sąsajų skiriasi tuo, kad savybės gali turėti
-metodų realizacijas.
-
-TODO: Scala savybės nuo klasių skiriasi tuo, kad savybės negali turėti
-konstruktoriaus parametrų. Šis apribojimas leidžia efektyviai
-išspręsti su multipaveldėjimu susijusią rombo problemą.
-
-Šio skyrelio tikslas parodyti kuo Scala papildė Java objektinį ir
-kokias papildomas galimybes tai suteikia. (Scala, kaip komponentinė
-programavimo kalba dar nenagrinėjama)
+panaudotas dar vienas svarbus programavimo kalbos elementas – vidinė
+klasė (ir fragmentas). \cite[12]{scalable-component-abstractions}
+nurodo, kad jie šio elemento neįtraukė tarp būtinų komponetiniam
+programavimui, vien todėl, kad vidines klases palaiko pagrindinės
+\en{mainstream} programavimo kalbos. Turbūt esminis skirtumas tarp
+\plangname{Java} ir \plangname{Scala} vidinių klasių yra tai, kad
+\plangname{Java} vidinės klasės tipas yra susietas su išorine klase,
+o \plangname{Scala} su išoriniu objektu. \ref{lst:scala:selftype:1}
+kodo fragmente pateiktame pavyzdyje kintamojo \scala{root} tipas
+yra \scala{tree.SimpleNode}, kai \plangname{Java} jis būtų
+\scala{Tree.SimpleNode}. Ši savybė yra naudinga, pavyzdžiui, tuo, kad 
+leidžia statiniais metodais užtikrinti, kad skirtingų abstrakčios
+gamyklos \en{abstract factory} realizacijų objektai nebūtų maišomi
+tarpusavyje \cite[36]{scala-design-patterns}. Prireikus šią savybę
+galima apeiti pasinaudojant tipų projekcija \en{type projection},
+tai yra išreikštinai nurodant, kad vidinės klasės objekto tipas
+turi priklausyti nuo išorinės klasės. \ref{lst:scala:selftype:1}
+kodo fragmente nurodyta, kad kintamojo \scala{node} tipas yra
+bet kokio \scala{Tree} tipo objekto \scala{SimpleNode} tipo objektas.
 
 \section{Scala komponentinis modelis}
 
@@ -505,3 +455,67 @@ kompiliavimo metu.) Cake pattern geriausiai veikia, kai
 yra palyginti mažas galutinių tipų variantų skaičius, nes norint
 pakeisti vieną komponentą kitu, reikia visuose galutiniuose tipuose
 atlikti pakeitimus.
+
+\section{Sutvarkyti}
+
+\subsection{Scala prieš Java}
+
+Siekiant gauti multipaveldėjimo teikiamą naudą ir tuo pačiu išvengti
+dėl jo atsirandančių problemų, \plangname{Scala} programavimo
+kalboje buvo realizuota fragmento \en{trait} konstrukcija.
+Fragmentas tai yra…
+
+TODO: Path dependent types? e8. Pasitikrinti iš frederik 25 psl ir
+Scala Overview 11 psl. Taip pat svarbu, kad vidinės klasės tipas
+priklauso nuo išorinės klasės Objekto. Kartu su abstract type
+members, tai leidžia sukurti abstract factory, kurių negalima
+maišyti.
+
+TODO: Kuo abstract type members yra naudingesni prieš type parameters
+pasireiškia naudojant mixin: jų nereikia nuolat kartoti.
+(\url{http://www.artima.com/weblogs/viewpost.jsp?thread=270195})
+
+TODO: Ką Scala pridėjo objektiniam (Java):
+\begin{itemize}
+  \item Scala tipų sistema;
+  \item Scala savybės \en{trait} konstrukcija;
+  \item savybių jungimas į klases panaudojant modulių maišos
+    kompoziciją \en{modular mixin composition};
+  \item atviros rekursijos anotacija \en{selftype annotations} –
+    iš principo tik sintaksinis saldainiukas dviem konstrukcijoms
+    (TODO: Ar tai, kad tai yra dviejų konstrukcijų junginys nereiškia,
+    jog tai jau nėra tik sintaksinis saldainiukas?):
+    \begin{enumerate}
+      \item \verb|def self: S = this.asInstanceOf[S]|, žr.: Observer
+        Pattern realizaciją e7;
+      \item \verb|T extends C| – skirtumas tas, kad šis apibrėžia
+        tvarką, kokia bus išdėstyti super kvietimai, o self-type
+        – ne (TODO: Patikrinti ar tikrai.);
+    \end{enumerate}
+    (kadangi sujungia abi konstrukcijas į vieną, tai turi privalumą, kad
+    e7 Subject pakeitus į ką nors kitą lūš kompiliavimo, o ne vykdymo
+    metu; taip pat antruoju atveju C negali būti abstraktus tipas, o
+    naudojant anotaciją – gali)
+  \item savybių naudojimo vietoj klasių privalumai, pavyzdys e1
+    (savybės perdengimas vidury hierarchijos).
+\end{itemize}
+
+TODO: Scala vidinių klasių ir Java įdėtinių klasių skirtumai. Taip pat
+pavyzdys su Scala tipų sistema ir Abstract factory projektavimo šablonu.
+
+TODO: Scala naudodama fragmentų hierarchiją patobulina esminę objektinio
+programavimo savybę – „dalinimasį“ \en{sharing}. Fragmentų ir klasių
+hierachija išlaiko „gerąsias“ klasių paveldėjimo mechanizmo teikiamas
+savybes, bet tuo pačiu smarkiai padidina lankstumą.
+
+TODO: Scala savybės nuo Java sąsajų skiriasi tuo, kad savybės gali turėti
+metodų realizacijas.
+
+TODO: Scala savybės nuo klasių skiriasi tuo, kad savybės negali turėti
+konstruktoriaus parametrų. Šis apribojimas leidžia efektyviai
+išspręsti su multipaveldėjimu susijusią rombo problemą.
+
+Šio skyrelio tikslas parodyti kuo Scala papildė Java objektinį ir
+kokias papildomas galimybes tai suteikia. (Scala, kaip komponentinė
+programavimo kalba dar nenagrinėjama)
+
