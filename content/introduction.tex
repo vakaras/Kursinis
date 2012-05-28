@@ -172,7 +172,20 @@ sąsajos naudotojo pusėje, tai turime komponentinę architektūrą, o
 jei paslaugos teikėjo – tada ne komponentinę architektūrą. Dėl šios
 priežasties Linux nėra komponentinė technologija, nes yra
 išreikštinai nurodomos teikiamos paslaugos, bet nėra išreikštinai
-nurodomos norimos gauti paslaugos.
+nurodomos norimos gauti paslaugos. Bet \cite[34]{heineman2001component}
+ir Szyperski teigia, kad operacinės sistemos yra pirmosios
+komponentinės sistemos. Aplikacijas galime vadinti komponentais, bet
+jos yra labai dideli komponentai ir dabartinės komponentinių sistemų
+inžinerijos tikslas yra sukurti priemones mažesnių komponentų
+kūrimui. (Pastaba: \cite[34]{heineman2001component} komponentą
+apibrėžia per komponentinį modelį.) Ar verta įsivesti sąvoką
+„paketų valdymo sistema“ ir ja remiantis atskirti paketus nuo
+komponentų, kur komponentai yra paketai, kurie nurodo ne jiems
+reikalingus paketus, o reikalingas sąsajas. Tokiu būdu būtų galima
+atskirti DEB'us nuo EJB. Komponentinį galima būtų apibrėžti, kaip
+paketinį su reikalavimu, kad vienas komponentas negali priklausyti nuo
+kito (konkretaus) komponento. Jie turi priklausyti nuo abstrakčių
+sąsajų.
 
 Jei programuodami objektiškai laikysimės SOLID, tai gausime sistemą,
 kurią galima nesunkiai „sukapoti“ į atskiras dalis. Tai leistų
@@ -204,3 +217,12 @@ Meyer akcentuoja, kad svarbiausias yra perpanaudojamumas, tuo tarpu
 Szyperski svarbiausiais laiko praplečiamumą ir modifikuojamumą.
 Perpanaudojimą bei evoliuciją taip pat mini ir
 \cite[28]{Hopkins:2000:CP:352183.352198}.
+
+Objektiniame mes turime nuorodą į klasę. Komponentiniame mes galime
+turėti nuorodą tik į sąsają. Tai yra joks komponentas negali
+žinoti apie konkrečią realizaciją, kas teoriškai leidžia, kad
+vienoje sistemoje „gyventų“ dvi to paties komponento versijos.
+\cite[44]{heineman2001component} mini, kad tai būtų naudinga
+evoliucijos palaikymui. Su Scala atrodo, kad tai neįmanoma? Ar
+įmanoma su EJB, OSGi, CORBA? OSGi nuo 4 versijos, atrodo, kad
+tai turi \url{https://en.wikipedia.org/wiki/OSGi#New_in_OSGi_Release_4}.
