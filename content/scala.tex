@@ -199,6 +199,39 @@ bet kokio \scala{Tree} tipo objekto \scala{SimpleNode} tipo objektas.
 
 \section{Scala komponentinis modelis}
 
+Remiantis \ref{chapter:component} skyriuje pateiktu komponentinio
+modelio apibrėžimu, galima pabandyti nusakyti \plangname{Scala}
+komponentinį modelį:
+\begin{enumerate}
+  \item komponentų realizavimas:
+    \begin{enumerate}
+      \item komponentas realizuojamas, kaip klasė arba fragmentas;
+      \item komponentas servisus, kurių jam reikia nurodo, kaip
+        abstrakčius narius;
+      \item komponentas servisus, kuriuos realizuoja nurodo, kaip
+        konkrečius narius;
+    \end{enumerate}
+  \item specialių taisyklių, kaip turėtų būti pavadinami elementai
+    nėra;
+  \item komponentų sąveika:
+    \begin{enumerate}
+      \item kadangi komponentų egzemplioriai \en{component instances}
+        yra objektai, tai jie tarpusavyje sąveikauja keisdamiesi
+        žinutėmis;
+    \end{enumerate}
+  \item komponentų tinkinimas:
+    \begin{enumerate}
+      \item komponentų 
+    \end{enumerate}<++>
+\end{enumerate}
+Kaip išversti customization – pritaikymas.
+
+% A component model defines a set of standards for component
+% implementation, naming, interoperability, customization, composition,
+% evolution and deployment.
+
+\plangname{Scala} komponentai yra 
+
 TODO: Scala komponentinio modelio apibrėžimas (pagal išrinktas savybes).
 Parodymas, kad Scala komponentinis modelis tenkina reikalavimus,
 nurodymas kokios būtent Scala programavimo kalbos savybės kuriuos
