@@ -292,7 +292,113 @@ pateiktą apibrėžimą.
 
 \section{\plangname{Scala} komponentinio modelio savybės}
 
-Scalos vertical binding tipas yra delegation + aggregation, nes visos
+Šiame skyrelyje pabandyta palyginti \plangname{Scala} komponentinį
+modelį su kitais komponentiniais modeliais, remiantis
+\cite{classification-framework-for-scm} klasifikacija. Klasifikacijos
+autoriai išskyrė tokias komponentinių modelių klasifikavimo dimensijas:
+\begin{description}
+  \item[gyvavimo ciklas] – kiek komponentinis modelis paremia kiekvieną
+    iš komponento gyvavimo ciklo stadijų;
+  \item[konstravimas] – kokiu būdu yra sukonstruojama sistema iš
+    komponentų;
+  \item[ekstra-funkcinės savybės] – ką komponentinis modelis siūlo
+    ekstra-funkcinių savybių specifikavimui, valdymui ir kompozicijai.
+\end{description}
+
+\cite{classification-framework-for-scm} gyvavimo ciklą suskirstė į
+keturias stadijas. Komentarai, kaip \plangname{Scala} komponentinis
+modelis palaiko kiekvieną iš jų, pateikti lentelėje:
+\xtable{
+  w [ 2 | 5 ]
+  a [ p | p ]
+  h [ Stadija | Jos palaikymas ]
+  %
+  e [
+    modeliavimas |
+    Specialių metodų ar įrankių nėra. Iš dalies (be konstrukcijų
+    perimtų iš funkcinių programavimo kalbų) galima modeliuoti
+    pasinaudojant @progname{UML} (Unified Modeling Language), ją
+    papildžius tokiomis konstrukcijomis kaip fragmentas ir
+    modulinė maišos kompozicija. Galima realizacija pateikiama
+    @cite&L145&R{rachimow2009scala}.
+    ]
+  e [
+    realizacija |
+    Galima teigti, kad @plangname{Scala} komponentinis modelis yra
+    labiausiai orientuotas į šią komponento gyvavimo ciklo dalį.
+    Komponentų realizavimui jis pateikia ne tik taisykles, bet
+    ir kalbos konstrukcijas. (Skirtingai, pavyzdžiui, nuo @progname{EJB} ar
+    @progname{OSGi}, kurie tik apriboja programavimo su @plangname{Java}
+    būdus.) Taip pat, kitaip nei kai kurių kitų komponentinių modelių,
+    @plangname{Scala} komponentinio modelio atveju, šios stadijos
+    rezultatas yra komponento išeities tekstai, o ne sukompiliuotas
+    komponentas.
+    ]
+  e [
+    pakavimas |
+    Šios stadijos @plangname{Scala} komponentinis modelis nepalaiko.
+    ]
+  e [
+    įdiegimas |
+    Komponentai yra surišami kompiliavimo metu.
+    ]
+}
+
+\cite{classification-framework-for-scm} konstravimo dimensiją suskirstė
+į tris dalis:
+\begin{enumerate}
+  \item sąsajų specifikavimas – komponentų sujungimo taškų nurodymas;
+  \item surišimas – ryšių tarp komponentų sukūrimas;
+  \item sąveika – komponentų tarpusavio komunikacija.
+\end{enumerate}
+
+Nagrinėjant \plangname{Scala} komponentinio modelio sąsajų
+specifikaciją pagal \cite[600]{classification-framework-for-scm}
+pateiktus kriterijus galima būtų išskirti:
+\begin{enumerate}
+  \item sąsajos yra paremtos operacijomis (o ne prievadais);
+  \item yra aiškiai atskiriamos reikalaujamos \en{required interface}
+    ir teikiamos sąsajos \en{provided interface};
+  \item sąsajos yra aprašomos \plangname{Scala} programavimo kalba;
+  \item sąsajų suderinamumas yra tikrinamas tik sintaksiniu
+    požiūriu.
+\end{enumerate}
+Nagrinėjant surišimo mechanizmus galima būtų išskirti:
+\begin{enumerate}
+  \item komponentus galima sujungti tik tiesiogiai, tai yra sujungimai
+    \en{connectors}, kaip atskiri elementai nėra išskiriami;
+  \item kadangi kompozicijos rezultatas yra komponentas, tai
+    galime teigti, kad \plangname{Scala} palaiko pilną vertikalią
+    kompoziciją: delegavimo tipo jungimą (ansamblio prašomos /
+    teikiamos sąsajos sujungiamos su vidinių jo komponentų
+    prašomomis / teikiamomis sąsajomis), agregavimo jungimą
+    (visos vidinių komponentų sąsajos yra pasiekiamos per ansamblio
+    sąsajas) ir naujojo komponento ekstra-funkcinės savybės
+    tenkina komponentinio modelio reikalavimus\NTODO{Įrodyti remiantis
+    \cite{classification-framework-for-scm} pateiktais apibrėžimais.}
+\end{enumerate}
+Nagrinėjant komponentų sąveiką galima būtų išskirti:
+\begin{enumerate}
+  \item sąveikos stilius tarp komponentų yra užklausa-atsakymas
+    \en{request-response};
+  \item kadangi komunikacija tarp komponentų vyksta kviečiant metodus,
+    tai ji yra sinchroninio tipo.
+\end{enumerate}
+
+Ekstra-funkcinės savybės:
+TODO
+
+Apibendrinant galima būtų nurodyti, kad \plangname{Scala} komponentinis
+modelis iš kitų modelių, nagrinėtų
+\cite{classification-framework-for-scm}, išsiskiria:
+TODO
+
+Be to, iš \cite{classification-framework-for-scm} nenagrinėtų savybių
+galima būtų paminėti, kad \plangname{Scala} komponentai gali būti
+labai maži (iki kelių dešimčių eilučių), tiek labai dideli (visa
+sistema, ar posistemė, pavyzdžiui \plangname{Scala} kompiliatorius).
+
+Scala vertical binding tipas yra delegation + aggregation, nes visos
 vidinių komponentų sąsajos yra ansamblio sąsajos
 \cite[599]{classification-framework-for-scm}. Kadangi ansamblio
 ne tik sąsajos bet ir savybės tenkina komponentinio modelį, tai
