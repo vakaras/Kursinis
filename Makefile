@@ -20,3 +20,6 @@ all: config/main.pdf
 
 show:
 	xdg-open "${XELATEX_OUTPUT_DIR}/${XELATEX_JOB_NAME}.pdf" 2> /dev/null
+
+clean:
+	rm -f dist/document.* dist/*.tmp
