@@ -173,7 +173,6 @@ def main()
   $dst = File.open("dist/output.tmp", "w");
   fun  = src.readline.strip;
   arg  = src.read.gsub('@', '\\');
-  puts "READ: #{arg}"
   send(fun, arg);
   $dst.close
 end;
