@@ -239,8 +239,9 @@ kiekvienas iš standartų galima rasti
     pritaikymas |
     Komponentą pritaikyti konkrečiam atvejui galima jam pateikiant
     kitokias jo abstrakčių narių realizacijas (pavyzdžiui, kitą
-    konkretų tipą) arba naudojantis parametrizuojamais tipais
-    komponento egzemplioriaus sukūrimo metu.
+    konkretų tipą). Taip pat komponento egzemplioriaus sukūrimo
+    metu jį galima pritaikyti pasinaudojant konstruktoriaus parametrais
+    bei parametrizuojamais tipais.
     ]
   e [
     kompozicija |
@@ -305,7 +306,7 @@ autoriai išskyrė tokias komponentinių modelių klasifikavimo dimensijas:
     ekstra-funkcinių savybių specifikavimui, valdymui ir kompozicijai.
 \end{description}
 
-\cite{classification-framework-for-scm} gyvavimo ciklą suskirstė į
+\cite[596]{classification-framework-for-scm} gyvavimo ciklą suskirstė į
 keturias stadijas. Komentarai, kaip \plangname{Scala} komponentinis
 modelis palaiko kiekvieną iš jų, pateikti lentelėje:
 \xtable{
@@ -353,7 +354,7 @@ modelis palaiko kiekvieną iš jų, pateikti lentelėje:
 \end{enumerate}
 
 Nagrinėjant \plangname{Scala} komponentinio modelio sąsajų
-specifikaciją pagal \cite[600]{classification-framework-for-scm}
+specifikaciją pagal \cite[599]{classification-framework-for-scm}
 pateiktus kriterijus galima būtų išskirti:
 \begin{enumerate}
   \item sąsajos yra paremtos operacijomis (o ne prievadais);
@@ -374,8 +375,9 @@ Nagrinėjant surišimo mechanizmus galima būtų išskirti:
     prašomomis / teikiamomis sąsajomis), agregavimo jungimą
     (visos vidinių komponentų sąsajos yra pasiekiamos per ansamblio
     sąsajas) ir naujojo komponento ekstra-funkcinės savybės
-    tenkina komponentinio modelio reikalavimus\NTODO{Įrodyti remiantis
-    \cite{classification-framework-for-scm} pateiktais apibrėžimais.}
+    tenkina komponentinio modelio reikalavimus, kadangi visi
+    \plangname{Scala} fragmentai ir klasės gali būti naudojami,
+    kaip komponentai.
 \end{enumerate}
 Nagrinėjant komponentų sąveiką galima būtų išskirti:
 \begin{enumerate}
@@ -385,47 +387,46 @@ Nagrinėjant komponentų sąveiką galima būtų išskirti:
     tai ji yra sinchroninio tipo.
 \end{enumerate}
 
-Ekstra-funkcinės savybės:
-TODO
+\cite[602]{classification-framework-for-scm} išskyrė tokius
+aspektus, pagal kuriuos galima nagrinėti kaip komponentinis
+modelis palaiko ekstra-funkcines savybes \en{extra-functional
+properties}:
+\begin{enumerate}
+  \item ekstra-funkcinių savybių valdymas;
+  \item ekstra-funkcinių savybių specifikavimas;
+  \item ekstra-funkcinių savybių komponavimas.
+\end{enumerate}
+\plangname{Scala} komponentinis modelis nei vieno iš šių aspektų
+išreikštinai nepalaiko.
 
-Apibendrinant galima būtų nurodyti, kad \plangname{Scala} komponentinis
+Apibendrinant galima būtų paminėti, kad \plangname{Scala} komponentinis
 modelis iš kitų modelių, nagrinėtų
-\cite{classification-framework-for-scm}, išsiskiria:
-TODO
+\cite{classification-framework-for-scm}, išsiskiria tuo, kad
+pilnai palaiko vertikalią kompoziciją. Iš to atsiranda privalumų
+ir trūkumų. Kadangi komponentai, iš kurių yra surinktas ansamblis
+yra paslepiami jo viduje, tai toks modelis labiau tinkamas realaus
+pasaulio modeliavimui, nei modelis palaikantis tik horizontalų jungimą.
+Pavyzdžiui, modeliuojant su \plangname{Scala} komponentas variklis po
+kompozicijos būtų paslėptas komponente automobilis ir galima būtų
+naudotis automobiliu nieko nežinant apie jo variklį. Tuo tarpu
+modeliuojant su komponentiniu modeliu, kuris palaiko tik horizontalų
+jungimą, komponentai variklis ir automobilis būtų atskirai, todėl
+kiekvieną kartą kažką darant su automobiliu, reikėtų nepamiršti
+ir jo variklio. Kitaip tariant \plangname{Scala} komponentais, kurie
+yra ansambliai, yra žymiai paprasčiau naudotis, nei kitų modelių
+ansambliais, kurie yra tiesiog komponentų rinkiniai. Ši savybė taip
+pat turi ir trūkumą: kadangi komponentai yra paslepiami viduje, tai
+norint juos pakeisti gali reikėti išardyti ansamblį.
 
-Be to, iš \cite{classification-framework-for-scm} nenagrinėtų savybių
-galima būtų paminėti, kad \plangname{Scala} komponentai gali būti
-labai maži (iki kelių dešimčių eilučių), tiek labai dideli (visa
-sistema, ar posistemė, pavyzdžiui \plangname{Scala} kompiliatorius).
+\FIXME{Reikėtų paminėti, kad komponentai gali būti vidiniai
+\en{nested}, todėl ir gaunasi, kad jie iš išorės nematomi, kai juos
+gaubiantys komponentai, kurie turi metodus jų kūrimui, yra matomi.}
 
-Scala vertical binding tipas yra delegation + aggregation, nes visos
-vidinių komponentų sąsajos yra ansamblio sąsajos
-\cite[599]{classification-framework-for-scm}. Kadangi ansamblio
-ne tik sąsajos bet ir savybės tenkina komponentinio modelį, tai
-Scala palaiko vertikalią kompoziciją.
-
-Scala komponentinio modelio privalumai (remiantis
-\cite{classification-framework-for-scm}):
-\begin{itemize}
-  \item vertikalaus sujungimo\cite[599]{classification-framework-for-scm}
-    palaikymas leidžia kurti įvairaus dydžio \en{scalable} komponentus;
-  \item TODO: paprastesnis komponentų panaudojimas (komponentu
-    pasinaudoti (jį inicializuoti) yra paprasčiau nei komponentų
-    ansambliu).
-\end{itemize}
-
-Scala komponentinio modelio trūkumai:
-\begin{itemize}
-  \item nėra komponentų, kaip paketų, valdymo mechanizmo (šitai galima
-    apeiti pasinaudojant versijų kontrolės sistemų galimybėmis,
-    pavyzdžiui, \verb|git submodule|);
-  \item komponentų kiekis turi būti žinomas projektavimo metu, todėl
-    Scala komponentinis modelis nėra tinkamas, pavyzdžiui,
-    grafinės sąsajos elementų bibliotekos \en{GUI widgets toolkit}
-    kūrimui. (Kadangi komponentai yra „užregistruojami“
-    kompiliavimo metu, tai nėra, kaip pridėti trečiųjų šalių
-    komponento realizacijos.)
-\end{itemize}
+Taigi galima teigti, kad \plangname{Scala} kūrėjams pavyko sukurti
+komponentinį modelį, kuris leistų taip pat lengvai dirbti ir
+su labai mažais komponentais (iki kelių dešimčių eilučių) ir su
+dideliais (visa sistema, ar posistemė, pavyzdžiui \plangname{Scala}
+kompiliatorius).
 
 \section{Pavyzdys: Scala komponentinis prieš Java objektinį}
 
