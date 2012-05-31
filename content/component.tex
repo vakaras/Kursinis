@@ -5,7 +5,7 @@
 Šiame skyriuje yra surinkti įvairių autorių pateikiami komponento
 apibrėžimai, pateikiamas komponento savybių sąrašas, pristatoma kas
 yra komponentinis modelis, nurodomi objektinio ir komponentinio
-skirtumai.
+bei komponentinio ir paketinio skirtumai.
 
 \section{Komponento apibrėžimai}
 
@@ -154,3 +154,17 @@ nei, pavyzdžiui, procedūrine programavimo kalba \cite{what-to-compose}.
 Be šio skirtumo dar galima būtų išskirti ir tai, kad komponentas
 išreikštinai nurodo ne tik teikiamus, bet ir jam reikiamus
 servisus.
+
+\section{Komponentinio ir paketinio skirtumai}
+
+TODO: \human{Clemens Szyperski}
+\cite{cs-beyond-object-oriented-programming} (taip pat ir
+\cite[34]{heineman2001component}) teigia, kad Operacinės sitemos
+yra tarp pirmųjų sėkmingų komponentinių modelių. Iš to sektų,
+kad ir GNU/Linux naudojamas paketų valdymo sistemas, tokias kaip
+APT\footnote{\url{http://en.wikipedia.org/wiki/Advanced_Packaging_Tool}}
+ir RPM\footnote{\url{http://en.wikipedia.org/wiki/RPM_Package_Manager}}
+irgi galima vadinti komponentinėmis. Teoriškai šių paketinių
+sistemų paketai netenkina esminės komponento savybės – jie priklauso
+nuo konkrečių kitų paketų. TODO: Ar OSGi, EJB, CORBA komponentai
+nurodo konkrečius kitus komponentus ar tik abstrakčias sąsajas?
