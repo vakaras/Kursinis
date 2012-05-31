@@ -222,5 +222,17 @@ turėti nuorodą tik į sąsają. Tai yra joks komponentas negali
 vienoje sistemoje „gyventų“ dvi to paties komponento versijos.
 \cite[44]{heineman2001component} mini, kad tai būtų naudinga
 evoliucijos palaikymui. Su Scala atrodo, kad tai neįmanoma? Ar
-įmanoma su EJB, OSGi, CORBA? OSGi nuo 4 versijos, atrodo, kad
-tai turi \url{https://en.wikipedia.org/wiki/OSGi#New_in_OSGi_Release_4}.
+įmanoma su EJB, OSGi, CORBA? OSGi nuo 4 versijos,
+tai turi \url{https://en.wikipedia.org/wiki/OSGi#New_in_OSGi_Release_4}
+ir:
+\begin{quote}
+  Versioning - OSGi technology solves JAR hell. JAR hell is the problem
+  that library A works with library B;version=2, but library C can only
+  work with B;version=3. In standard Java, you're out of luck. In the
+  OSGi environment, all bundles are carefully versioned and only bundles
+  that can collaborate are wired together in the same class space. This
+  allows both bundle A and C to function with their own library. Though
+  it is not advised to design systems with this versioning issue, it can
+  be a life saver in some cases.
+\end{quote}
+iš \url{http://www.osgi.org/About/WhyOSGi}.
