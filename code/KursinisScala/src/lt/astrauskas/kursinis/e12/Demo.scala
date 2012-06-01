@@ -41,8 +41,8 @@ class DocGenerator(val reader: Reader, val writer: PrintWriter) {
 
 object Demo {
   def main(args: Array[String]): Unit = {
-    val reader = new FileReader("test.scala")
-    val output = new PrintStream("test.out.scala")
+    val reader = new FileReader(args(1))
+    val output = new PrintStream(args(2))
     val writer = new PrintWriter(output)
     Console.setOut(output)
     val generator = new DocGenerator(reader, writer)

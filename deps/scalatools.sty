@@ -1,0 +1,20 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{scalatools}
+
+\newwrite\@out
+
+\newcounter{scalainvokecounter}
+\setcounter{scalainvokecounter}{0}
+
+\newenvironment{scalainterpreter}
+  {\VerbatimOut{\jobname.interpreter.scala}}
+  {\endVerbatimOut%
+\immediate\write18 {%
+  scala -cp code/KursinisScala/bin lt.astrauskas.kursinis.e12.Demo %
+    generate %
+    "dist/\jobname.interpreter.scala" %
+    "dist/\jobname.interpreted.scala" %
+    "\arabic{scalainvokecounter}"}
+\inputminted[linenos,bgcolor=bg]{scala}{\jobname.interpreted.scala}%
+\addtocounter{scalainvokecounter}{1}
+  }
