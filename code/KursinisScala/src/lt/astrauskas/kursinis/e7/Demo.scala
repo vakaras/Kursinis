@@ -6,7 +6,7 @@ abstract class SubjectObserver {
   abstract class Subject {
     private var observers: List[O] = List()
     def subscribe(obs: O) = observers = obs :: observers
-    def publish = for (val obs <- observers) obs.notify(self)
+    def publish = for (obs <- observers) obs.notify(self)
     def self: S = this.asInstanceOf[S]
     }
   abstract class Observer {
