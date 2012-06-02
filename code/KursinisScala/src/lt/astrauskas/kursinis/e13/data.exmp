@@ -1,0 +1,21 @@
+scala> val r = 2
+r: Int = 2
+
+scala> r * 5
+res0: Int = 10
+
+scala> class A {
+     | 
+     | def apply(a: Int): Int = {
+     |   return a * 2
+     |   }
+     | 
+     | }
+defined class A
+
+scala> object a extends A
+defined module a
+
+scala> a(5)
+res1: Int = 10
+

@@ -16,3 +16,9 @@ SRCFILES_e12 := $(shell find $(SRCDIR)/e12 -type f -name "*.scala")
 e12: ${SRCFILES_e12}
 	scalac -unchecked -deprecation -d $(DESTDIR) $(SRCFILES_e12)
 	scala -cp bin lt.astrauskas.kursinis.e12.Demo
+
+SRCFILES_e13 := $(shell find $(SRCDIR)/e13 -type f -name "*.scala")
+e13: ${SRCFILES_e13}
+	scalac -unchecked -deprecation -d $(DESTDIR) $(SRCFILES_e13)
+	scala -cp bin lt.astrauskas.kursinis.e13.Demo \
+		src/lt/astrauskas/kursinis/e13/data.exmp
