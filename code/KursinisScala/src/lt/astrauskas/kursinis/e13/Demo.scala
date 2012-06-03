@@ -18,6 +18,7 @@ import java.io.PrintStream
 class Fragment {
   val input = new Queue[String]
   val output = new StringBuffer()
+  var check = true
 }
 
 class SourceFile(val reader: Reader) extends BufferedReader(reader) {
@@ -29,6 +30,10 @@ class SourceFile(val reader: Reader) extends BufferedReader(reader) {
   readFile()
 
   private def readFile() = {
+    val cpFragment = new Fragment()
+    cpFragment.input += ":cp code/KursinisScala/bin"
+    cpFragment.check = false
+    fragments += cpFragment
     var line = super.readLine()
     var currentFragment: Fragment = null
     while (line != null) {
@@ -78,7 +83,10 @@ trait FragmentProvider extends SourceFile {
     }
     if (currentFragment.input.isEmpty) {
       outputStream.remove(prompt.length())
-      check(currentFragment.output.toString())
+      if (currentFragment.check) {
+        check(currentFragment.output.toString())
+      }
+      outputStream.clear()
       if (fragmentIterator.hasNext) {
         currentFragment = fragmentIterator.next()
       }
@@ -97,9 +105,22 @@ trait FragmentProvider extends SourceFile {
 
 trait Checker extends SourceFile {
   val outputStream: ClearableOutputStream
+  def compare(expected: String, got: String): Boolean = {
+    if (expected.length() != got.length()) {
+      return false
+    }
+    else {
+      for ((e, g) <- expected.zip(got)) {
+        if ((e != '?') && (e != g)) {
+          return false
+        }
+      }
+      return true
+    }
+  }
   def check(expectedOutput: String): Unit = {
     val output = outputStream.get()
-    if (expectedOutput == output) {
+    if (compare(expectedOutput, output)) {
       log("Passed.")
     }
     else {
@@ -110,7 +131,6 @@ trait Checker extends SourceFile {
       log(output)
       log("-----------------------------")
     }
-    outputStream.clear()
   }
   def log(x: Any): Unit
   def logf(text: String, args: Any*): Unit
