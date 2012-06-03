@@ -65,7 +65,7 @@ trait FragmentProvider extends SourceFile {
   val outputStream: ClearableOutputStream
   lazy val fragmentIterator = fragments.iterator
 
-  def check(expectedOutput: String): Unit
+  def check(expectedOutput: String, output: String): Unit
 
   def quit() = ":quit"
 
@@ -84,7 +84,7 @@ trait FragmentProvider extends SourceFile {
     if (currentFragment.input.isEmpty) {
       outputStream.remove(prompt.length())
       if (currentFragment.check) {
-        check(currentFragment.output.toString())
+        check(currentFragment.output.toString(), outputStream.get())
       }
       outputStream.clear()
       if (fragmentIterator.hasNext) {
@@ -104,7 +104,6 @@ trait FragmentProvider extends SourceFile {
 }
 
 trait Checker extends SourceFile {
-  val outputStream: ClearableOutputStream
   def compare(expected: String, got: String): Boolean = {
     if (expected.length() != got.length()) {
       return false
@@ -118,14 +117,18 @@ trait Checker extends SourceFile {
       return true
     }
   }
-  def check(expectedOutput: String): Unit = {
-    val output = outputStream.get()
-    if (compare(expectedOutput, output)) {
+  def fixExpected(expectedOutput: String) = {
+    expectedOutput.replaceAllLiterally("\\\n  ", "")
+  }
+  def check(expectedOutput: String, output: String): Unit = {
+    if (compare(fixExpected(expectedOutput), output)) {
       log("Passed.")
     }
     else {
       log("FAIL.")
       log("----------Expected-----------")
+      log(fixExpected(expectedOutput))
+      log("------Original expected------")
       log(expectedOutput)
       log("-----------Got---------------")
       log(output)
