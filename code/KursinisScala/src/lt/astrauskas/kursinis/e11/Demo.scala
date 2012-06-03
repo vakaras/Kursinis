@@ -12,7 +12,7 @@ class AbstractTree {
       for (node <- children)
         node.walk(show)
     }
-    def addChild(child: BaseNode) = children += child
+    def addChild(child: BaseNode): Unit = children += child
   }
 }
 
