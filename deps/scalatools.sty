@@ -24,6 +24,15 @@
   {\inputscalafile{\@scalaCodePath/#2.scala}}
   {\inputscalafile[#1]{\@scalaCodePath/#2.scala}}
   }
+\NewDocumentCommand \inputscalai {m} {
+  \immediate\write18 {%
+  python3 -c "%
+    print(open('content/code/#1.scala').read().replace(%
+      chr(10)+chr(10), chr(10)))"
+    > dist/document.#1.scala %
+    }
+  \inputscalafile{document.#1.scala}
+  }
 
 % Listing: scalainterpreterlisting
 \floatstyle{ruled}

@@ -60,15 +60,11 @@ yra pirmoji programavimo kalba, kurioje realizuoti jie visi
 \cite[2]{scalable-component-abstractions}.} – moduline maišos
 kompozicija.
 
-\begin{scalailisting}{lst:scala:abstract:members:4}{%
-  Parametrizuotų tipų panaudojimo atvejis.}
-scala> import scala.collection.mutable.LinkedList
-import scala.collection.mutable.LinkedList
-
-scala> val list = new LinkedList[String]
-list: scala.collection.mutable.LinkedList[String] = LinkedList()
-
-\end{scalailisting}
+\begin{scalainterpreterlisting}
+  \inputscalai{AbstractMembers4}
+  \caption{Parametrizuotų tipų panaudojimo atvejis.}
+  \label{lst:scala:abstract:members:4}
+\end{scalainterpreterlisting}
 
 Modulinė maišos kompozicija, tai klasių kūrimo mechanizmas
 pasinaudojant fragmentų \en{trait} komponavimu. Fragmentą galimą
@@ -101,24 +97,11 @@ maišos kompoziciją.
   \label{lst:scala:mixin:1}
 \end{scalacodelisting}
 
-\begin{scalailisting}{lst:scala:mixin:2}{%
-  \ref{lst:scala:mixin:1} TODO}
-scala> import lt.astrauskas.kursinis.e1._
-import lt.astrauskas.kursinis.e1._
-
-scala> val o1 = new C1
-o1: lt.astrauskas.kursinis.e1.C1 = lt.astrauskas.kursinis.e1.C1@????????
-
-scala> println(o1.m)
-List(C1, T4, T3, T2, T1)
-
-scala> val o2 = new C2
-o2: lt.astrauskas.kursinis.e1.C2 = lt.astrauskas.kursinis.e1.C2@????????
-
-scala> println(o2.m)
-List(C2, T4, T3, M3, T2, T1)
-
-\end{scalailisting}
+\begin{scalainterpreterlisting}
+  \inputscalai{Mixin2}
+  \caption{\ref{lst:scala:mixin:1} TODO}
+  \label{lst:scala:mixin:2}
+\end{scalainterpreterlisting}
 
 Turbūt svarbiausia maišos kompozicijos savybė yra ta, kad konkretus
 narys visada užkloja abstraktų

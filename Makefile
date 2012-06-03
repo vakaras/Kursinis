@@ -32,4 +32,4 @@ clean:
 test:
 	scala -cp code/KursinisScala/bin \
 		lt.astrauskas.kursinis.e13.Demo \
-		dist/document.interpreter.*.scala
+		content/code/*.scala
