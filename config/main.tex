@@ -8,17 +8,6 @@
 \usepackage{fancyvrb}
 \usepackage{scalatools}
 
-\definecolor{bg}{rgb}{0.95,0.95,0.95}
-
-\newcommand{\inputscala}[1]{%
-\inputminted[linenos,bgcolor=bg]%
-{scala}%
-{../code/KursinisScala/src/lt/astrauskas/kursinis/#1.scala}%
-}
-
-\newminted{text}{linenos,texcl,bgcolor=bg,gobble=4}
-\newminted{scala}{linenos,texcl,bgcolor=bg,gobble=4}
-\NewDocumentCommand \scala {v} { \emph{#1} }
 %\renewcommand{\listingscaption}{kodo fragmentas}
 \renewcommand{\listoflistingscaption}{Fragmentų sąrašas}
 %\renewcommand{\thelisting}{\arabic{listing}}

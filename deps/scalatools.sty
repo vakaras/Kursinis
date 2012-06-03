@@ -3,18 +3,74 @@
 
 \newwrite\@out
 
+\newcommand{\@scalaCodePath}{%
+  ../code/KursinisScala/src/lt/astrauskas/kursinis}
+
 \newcounter{scalainvokecounter}
 \setcounter{scalainvokecounter}{0}
 
-\newenvironment{scalainterpreter}
-  {\VerbatimOut{\jobname.interpreter.scala}}
+\newminted{text}{linenos,texcl,bgcolor=bg,gobble=4}
+\newminted{scala}{linenos,texcl,bgcolor=bg,gobble=4}
+\NewDocumentCommand \scala {v} { \emph{#1} }
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\NewDocumentCommand \inputscalafile {o m} {
+  \IfNoValueTF{#1}
+    {\inputminted[linenos,bgcolor=bg]{scala}{#2}}
+    {\inputminted[linenos,bgcolor=bg,#1]{scala}{#2}}
+    }
+\NewDocumentCommand \inputscala {o m} {%
+  \IfNoValueTF{#1}
+  {\inputscalafile{\@scalaCodePath/#2.scala}}
+  {\inputscalafile[#1]{\@scalaCodePath/#2.scala}}
+  }
+
+% Listing: scalainterpreterlisting
+\floatstyle{ruled}
+\newfloat{scalainterpreterlisting}{h}{lol}
+\floatname{scalainterpreterlisting}{Scala sesijos pavyzdys}
+\DeclareCaptionLabelFormat{ltcaptionscalai}{#2 Scala sesijos pavyzdys:}
+\captionsetup[scalainterpreterlisting]{labelformat=ltcaptionscalai}
+
+% Listing: scalacodelisting
+\floatstyle{ruled}
+\newfloat{scalacodelisting}{h}{lol}
+\floatname{scalacodelisting}{Scala kodo pavyzdys}
+\DeclareCaptionLabelFormat{ltcaptionscalac}{#2 Scala kodo pavyzdys:}
+\captionsetup[scalacodelisting]{labelformat=ltcaptionscalac}
+
+\newcommand{\@ifilename}{%
+  \jobname.interpreter.\arabic{scalainvokecounter}.scala}
+\newenvironment{scalainterpreter}{%
+  \VerbatimOut{\@ifilename}%
+  }{%
+  \endVerbatimOut%
+  \inputminted[linenos,bgcolor=bg]{scala}{\@ifilename}%
+  \addtocounter{scalainvokecounter}{1}
+  }
+\newenvironment{scalailisting}[2]{%
+  \def\@labelArg{#1}%
+  \def\@captionArg{#2}%
+  \VerbatimOut{\@ifilename}%
+  }{%
+  \endVerbatimOut%
+  \begin{scalainterpreterlisting}
+  \inputminted[linenos,bgcolor=bg]{scala}{\@ifilename}%
+  \caption{\@captionArg}
+  \label{\@labelArg}
+  \end{scalainterpreterlisting}%
+  \addtocounter{scalainvokecounter}{1}
+  }
+
+\newenvironment{scalagenerator}
+  {\VerbatimOut{\jobname.generator.scala}}
   {\endVerbatimOut%
 \immediate\write18 {%
   scala -cp code/KursinisScala/bin lt.astrauskas.kursinis.e12.Demo %
     generate %
-    "dist/\jobname.interpreter.scala" %
-    "dist/\jobname.interpreted.scala" %
+    "dist/\jobname.generator.scala" %
+    "dist/\jobname.generated.scala" %
     "\arabic{scalainvokecounter}"}
-\inputminted[linenos,bgcolor=bg]{scala}{\jobname.interpreted.scala}%
+\inputminted[linenos,bgcolor=bg]{scala}{\jobname.generated.scala}%
 \addtocounter{scalainvokecounter}{1}
   }
