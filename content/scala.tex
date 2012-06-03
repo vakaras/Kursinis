@@ -122,27 +122,11 @@ abstraktus metodas \scala{lookup}, kurį užkloja konkretus metodas
   \label{lst:scala:mixin:3}
 \end{scalacodelisting}
 
-\begin{scalailisting}{lst:scala:mixin:4}{%
-  \ref{lst:scala:mixin:3} TODO}
-scala> import lt.astrauskas.kursinis.e10.CachedFactorial
-import lt.astrauskas.kursinis.e10.CachedFactorial
-
-scala> val cf = new CachedFactorial()
-cf: lt.astrauskas.kursinis.e10.CachedFactorial = \
-  lt.astrauskas.kursinis.e10.CachedFactorial@????????
-
-scala> println("3! = " + cf.lookup(3))
-Calculating 3
-Calculating 2
-Calculating 1
-3! = 6
-
-scala> println("5! = " + cf.lookup(5))
-Calculating 5
-Calculating 4
-5! = 120
-
-\end{scalailisting}
+\begin{scalainterpreterlisting}
+  \inputscalai{Mixin4}
+  \caption{\ref{lst:scala:mixin:3} TODO}
+  \label{lst:scala:mixin:4}
+\end{scalainterpreterlisting}
 
 Taikant maišos kompoziciją kartais prireikia, kad
 \scala{this}\footnote{this yra specialus kintamasis rodantis į
@@ -164,53 +148,11 @@ viduje \scala{this} tipas yra \scala{Node}. Todėl kvietimas
   \label{lst:scala:selftype:1}
 \end{scalacodelisting}
 
-\begin{scalailisting}{lst:scala:selftype:2}{%
-  \ref{lst:scala:selftype:1} TODO}
-scala> import lt.astrauskas.kursinis.e11._
-import lt.astrauskas.kursinis.e11._
-
-scala> val tree = new Tree()
-tree: lt.astrauskas.kursinis.e11.Tree = \
-  lt.astrauskas.kursinis.e11.Tree@????????
-
-scala> var root = new tree.SimpleNode("Root")
-root: tree.SimpleNode = lt.astrauskas.kursinis.e11.Tree$SimpleNode@???????
-
-scala> // root tipas yra tree.SimpleNode.
-
-scala> root.addChild(new tree.SimpleNode("First child"))
-
-scala> root.addChild(new tree.SimpleNode("Second child"))
-
-scala> root.walk((n: tree.SimpleNode) => println(n.name))
-Root
-First child
-Second child
-
-scala> val tree2 = new Tree()
-tree2: lt.astrauskas.kursinis.e11.Tree = \
-  lt.astrauskas.kursinis.e11.Tree@????????
-
-scala> root = new tree.SimpleNode("Root2")
-root: tree.SimpleNode = lt.astrauskas.kursinis.e11.Tree$SimpleNode@????????
-
-scala> root = new tree2.SimpleNode("Root3")
-<console>:13: error: type mismatch;
- found   : tree2.SimpleNode
- required: tree.SimpleNode
-       root = new tree2.SimpleNode("Root3")
-              ^
-
-scala> var node: Tree#SimpleNode = new tree.SimpleNode("Node1")
-node: lt.astrauskas.kursinis.e11.Tree#SimpleNode = \
-  lt.astrauskas.kursinis.e11.Tree$SimpleNode@????????
-
-scala> node = new tree2.SimpleNode("Node2")
-node: lt.astrauskas.kursinis.e11.Tree#SimpleNode = \
-  lt.astrauskas.kursinis.e11.Tree$SimpleNode@????????
-
-\end{scalailisting}
-%stopzone VIM BUG…
+\begin{scalainterpreterlisting}
+  \inputscalai{Selftype2}
+  \caption{\ref{lst:scala:selftype:1} TODO}
+  \label{lst:scala:selftype:2}
+\end{scalainterpreterlisting}
 
 Be savojo tipo anotacijos \ref{lst:scala:selftype:1} pavyzdyje buvo
 panaudotas dar vienas svarbus programavimo kalbos elementas – vidinė
