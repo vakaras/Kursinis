@@ -1,3 +1,6 @@
 [submodule "code/scala-compiler"]
 	path = code/scala-compiler
 	url = https://github.com/scala/scala.git
+[submodule "deps/biblatex-iso690"]
+	path = deps/biblatex-iso690
+	url = https://github.com/michal-h21/biblatex-iso690.git

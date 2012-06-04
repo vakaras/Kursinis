@@ -1,4 +1,5 @@
-TEXINPUTS := .:./config:./common:./deps:./content:./examples:
+TEXINPUTS := \
+	.:./config:./common:./deps:./content:./examples:./deps/biblatex-iso690:
 export TEXINPUTS
 PATH := deps/dot2tex/bin:${PATH}
 export PATH
@@ -20,14 +21,16 @@ all: config/main.pdf
 %.pdf: %.tex
 	echo ${TEXINPUTS} ${PATH}
 	$(XELATEX_COMMAND)
+	mv dist/document-blx.bib .
 	bibtex "${XELATEX_OUTPUT_DIR}/${XELATEX_JOB_NAME}"
+	mv document-blx.bib dist/
 	$(XELATEX_COMMAND)
 
 show:
 	xdg-open "${XELATEX_OUTPUT_DIR}/${XELATEX_JOB_NAME}.pdf" 2> /dev/null
 
 clean:
-	rm -f dist/document.* dist/*.tmp
+	rm -f dist/document* dist/*.tmp
 
 test:
 	scala -cp code/KursinisScala/bin \
