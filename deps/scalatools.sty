@@ -48,6 +48,21 @@
 \DeclareCaptionLabelFormat{ltcaptionscalac}{#2 Scala kodo pavyzdys.}
 \captionsetup[scalacodelisting]{labelformat=ltcaptionscalac}
 
+% Listing counters.
+\newcounter{scalalisting}
+\def\ucaption{%
+   \ifx\@captype\@undefined
+     \@latex@error{\noexpand\ucaption outside float}\@ehd
+     \expandafter\@gobble
+   \else
+     \refstepcounter{scalalisting}
+     \expandafter\@firstofone
+   \fi
+   {\@dblarg{\@caption\@captype}}%
+}
+\def\thescalainterpreterlisting{\@arabic\c@scalalisting}
+\def\thescalacodelisting{\@arabic\c@scalalisting}
+
 \newcommand{\@ifilename}{%
   \jobname.interpreter.\arabic{scalainvokecounter}.scala}
 \newenvironment{scalainterpreter}{%
