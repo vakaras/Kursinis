@@ -11,6 +11,23 @@ Struktūra::
     ├── dist            – kompiliavimo katalogas;
     └── content         – dokumento turinys.
 
+Reikalavimai
+============
+
+Ubuntu::
+
+    sudo apt-get install \
+        liblog-log4perl-perl \
+        libreadonly-perl \
+        libipc-run3-perl \
+        liblist-allutils-perl \
+        libdata-compare-perl \
+        libxml-libxml-simple-perl \
+        libregexp-common-perl \
+        libdate-simple-perl \
+        libtext-bibtex-perl \
+        libfile-slurp-unicode-perl \
+
 Naujo projekto sukūrimas
 ========================
 

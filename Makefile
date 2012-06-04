@@ -1,8 +1,11 @@
 TEXINPUTS := \
 	.:./config:./common:./deps:./content:./examples:./deps/biblatex-iso690:
 export TEXINPUTS
-PATH := deps/dot2tex/bin:${PATH}
+PATH := deps/biber/bin:deps/dot2tex/bin:${PATH}
 export PATH
+PERL5LIB := deps/biber/lib:${PERL5LIB}
+export PERL5LIB
+
 DOC_VERSION_HASH=$(shell git log -1 --pretty=format:"%H")
 DOC_VERSION_TIME=$(shell git log -1 --pretty=format:"%ai")
 XELATEX_JOB_NAME=document
@@ -21,9 +24,7 @@ all: config/main.pdf
 %.pdf: %.tex
 	echo ${TEXINPUTS} ${PATH}
 	$(XELATEX_COMMAND)
-	mv dist/document-blx.bib .
-	bibtex "${XELATEX_OUTPUT_DIR}/${XELATEX_JOB_NAME}"
-	mv document-blx.bib dist/
+	biber "${XELATEX_OUTPUT_DIR}/${XELATEX_JOB_NAME}"
 	$(XELATEX_COMMAND)
 
 show:

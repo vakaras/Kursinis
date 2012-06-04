@@ -4,3 +4,6 @@
 [submodule "deps/biblatex-iso690"]
 	path = deps/biblatex-iso690
 	url = https://github.com/michal-h21/biblatex-iso690.git
+[submodule "deps/biber"]
+	path = deps/biber
+	url = https://github.com/plk/biber.git
