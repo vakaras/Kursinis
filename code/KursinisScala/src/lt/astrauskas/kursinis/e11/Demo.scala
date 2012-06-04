@@ -1,7 +1,5 @@
 package lt.astrauskas.kursinis.e11
-
 import scala.collection.mutable.ListBuffer
-
 class AbstractTree {
   type Node <: BaseNode
   trait BaseNode {
@@ -15,14 +13,11 @@ class AbstractTree {
     def addChild(child: BaseNode): Unit = children += child
   }
 }
-
 class Tree extends AbstractTree {
   type Node = SimpleNode
   class SimpleNode(val name: String) extends BaseNode {}
 }
-
 object Demo {
-
   def main(args: Array[String]): Unit = {
     val tree = new Tree()
     var root = new tree.SimpleNode("Root")
@@ -37,5 +32,4 @@ object Demo {
     var node: Tree#SimpleNode = new tree.SimpleNode("Node1")
     node = new tree2.SimpleNode("Node2")
   }
-
 }
