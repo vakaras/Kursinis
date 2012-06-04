@@ -48,8 +48,9 @@ pat nurodoma, kad yra įmanomas ir atvirkštinis variantas.
 priežastys kalboje realizuoti abu mechanizmus yra skirtingi jų
 panaudojimo atvejai: parametrizuojamus tipus yra siūloma naudoti kai
 norime tiesiog galimybės klasės naudotojui nurodyti konkretų tipą
-(tipinis pavyzdys būtų kolekcijos, \ref{lst:scala:abstract:members:4}
-kodo fragmentas), o abstrakčius tipus tada, kai norime kliento kode
+(tipinis pavyzdys būtų kolekcijos, kurių panaudojimas pademonstruotas
+\ref{lst:scala:abstract:members:4} \plangname{Scala} sesijos
+pavyzdyje), o abstrakčius tipus tada, kai norime kliento kode
 pasinaudoti abstrakčiu tipu. Pastaroji galimybė yra dažniausiai
 naudojama su kita \plangname{Scala} „naujove“\footnote{
 Visi trys programavimo kalbos elementai, kurie \plangname{Scala}
@@ -62,7 +63,7 @@ kompozicija.
 
 \begin{scalainterpreterlisting}
   \inputscalai{AbstractMembers4}
-  \caption{Parametrizuotų tipų panaudojimo atvejis}
+  \ucaption{Parametrizuotų tipų panaudojimo atvejis}
   \label{lst:scala:abstract:members:4}
 \end{scalainterpreterlisting}
 
@@ -84,22 +85,23 @@ fragmentų yra įmanoma „įlįsti“ į fragmentų hierarchijos vidų
 ir ten atlikti pakeitimus, ko negalima padaryti su klasių hierarchija,
 nes pastarosios ištiesinimas turi tenkinti savybę: „klasės hierarchijos
 ištiesinimas visada turi tiesioginės tėvinės klasės hierarchijos
-ištiesinimą, kaip galūnę“\cite[57]{scala-reference}. Galimybė,
-atlikti pakeitimus viduje hierarchijos medžio, iliustruota programa,
-pateikta \ref{lst:scala:mixin:1} kodo fragmente. Jos išvestis pateikta
-\ref{lst:scala:mixin:2} fragmente. Šiame pavyzdyje klasė \scala{C2}
-yra sukomponuojama iš fragmentų \scala{M3} ir \scala{T4} pritaikant
-maišos kompoziciją.
+ištiesinimą, kaip galūnę“\cite[57]{scala-reference}. Galimybę
+atlikti pakeitimus viduje hierarchijos medžio iliustruojanti fragmentų
+hierarchija pateikta \ref{lst:scala:mixin:1} kodo pavyzdyje,
+o jos panaudojimas pateiktas \ref{lst:scala:mixin:2} \plangname{Scala}
+sesijos pavyzdyje. Šiame pavyzdyje klasė \scala{C2} yra sukomponuojama
+iš fragmentų \scala{M3} ir \scala{T4} pritaikant maišos kompoziciją.
 
 \begin{scalacodelisting}
-  \inputscala[lastline=29]{e1/Demo}
-  \caption{Fragmentų hierarchijos modifikavimas}
+  \inputscala[lastline=22]{e1/Demo}
+  \ucaption{Fragmentų hierarchijos modifikavimas}
   \label{lst:scala:mixin:1}
 \end{scalacodelisting}
 
 \begin{scalainterpreterlisting}
   \inputscalai{Mixin2}
-  \caption{\ref{lst:scala:mixin:1} TODO}
+  \ucaption{\ref{lst:scala:mixin:1} kodo pavyzdyje pateiktos hierarchijos
+  panaudojimas}
   \label{lst:scala:mixin:2}
 \end{scalainterpreterlisting}
 
@@ -107,9 +109,10 @@ Turbūt svarbiausia maišos kompozicijos savybė yra ta, kad konkretus
 narys visada užkloja abstraktų
 \cite[6]{scalable-component-abstractions}. Ši savybė leidžia
 sujungti du fragmentus, kurių nesieja bendra hierarchija. Tai yra
-iliustruota programoje, pateiktoje \ref{lst:scala:mixin:3} kodo
-fragmente. Jos išvestis yra pateikta \ref{lst:scala:mixin:4}
-fragmente. Fragmento \scala{CachedCalculation} nariai
+iliustruota \ref{lst:scala:mixin:3} kodo pavyzdyje.
+Sukomponuotosios klasės \scala{CachedFactorial} panaudojimas
+pademonstruotas \ref{lst:scala:mixin:4} \plangname{Scala} sesijos
+pavyzdyje. Fragmento \scala{CachedCalculation} nariai
 \scala{KeyType}, \scala{ValueType} ir \scala{calculate} yra abstraktūs
 ir jie yra užklojami atitinkamų narių apibrėžtų fragmente
 \scala{Factorial}. Fragmente \scala{Factorial} taip pat yra
@@ -118,62 +121,64 @@ abstraktus metodas \scala{lookup}, kurį užkloja konkretus metodas
 
 \begin{scalacodelisting}
   \inputscala[lastline=32]{e10/Demo}
-  \caption{Maišos kompozicijos pavyzdys}
+  \ucaption{Maišos kompozicijos panaudojimas}
   \label{lst:scala:mixin:3}
 \end{scalacodelisting}
 
 \begin{scalainterpreterlisting}
   \inputscalai{Mixin4}
-  \caption{\ref{lst:scala:mixin:3} TODO}
+  \ucaption{\ref{lst:scala:mixin:3} kodo pavyzdyje sukomponuotos
+  klasės \scala{CachedFactorial} panaudojimas}
   \label{lst:scala:mixin:4}
 \end{scalainterpreterlisting}
 
 Taikant maišos kompoziciją kartais prireikia, kad
-\scala{this}\footnote{this yra specialus kintamasis rodantis į
-objektą, kurio metodas dabar vykdomas.} tipas būtų ne tas fragmentas,
+\scala{this}\footnote{\scala{this} yra specialus kintamasis rodantis į
+objektą, kurio metodas dabar yra vykdomas.} tipas būtų ne tas fragmentas,
 kurio metodas šiuo metu yra vykdomas, o kažkoks kitas, išvestinis
 iš šio. Tai galima realizuoti vykdymo metu keičiant \scala{this}
 tipą į norimą arba pasinaudojant \plangname{Scala} savojo tipo
-anotacija. Pastarasis būdas turi privalumą, kad klaidos būtų randamos
-kompiliavimo metu. Savojo tipo anotacijos panaudojimo pavyzdys pateiktas
-\ref{lst:scala:selftype:1} kodo fragmente, o programos išvestis
-– \ref{lst:scala:selftype:2}. Šiame pavyzdyje savojo tipo anotacija
-yra \scala{this: Node =>} – su ja nurodoma, kad \scala{BaseNode}
-viduje \scala{this} tipas yra \scala{Node}. Todėl kvietimas
-\scala{show(this)} tampa galimas.
+anotacija. Pastarasis būdas turi privalumą, kad klaidos yra randamos
+kompiliavimo metu. Savojo tipo anotacijos panaudojimas pateiktas
+\ref{lst:scala:selftype:1} kodo pavyzdyje, o jame aprašytų klasių
+veikimas iliustruotas \ref{lst:scala:selftype:2} \plangname{Scala}
+sesijos pavyzdyje. \ref{lst:scala:selftype:1} kodo pavyzdyje savojo tipo
+anotacija yra \scala{this: Node =>} – su ja nurodoma, kad
+\scala{BaseNode} viduje \scala{this} tipas yra \scala{Node}. Todėl
+kvietimas \scala{show(this)} tampa galimas.
 
 \begin{scalacodelisting}
-  \inputscala[lastline=22]{e11/Demo}
-  \caption{Savojo tipo anotacijos panaudojimo pavyzdys}
+  \inputscala[lastline=19]{e11/Demo}
+  \ucaption{Savojo tipo anotacijos panaudojimas}
   \label{lst:scala:selftype:1}
 \end{scalacodelisting}
 
 \begin{scalainterpreterlisting}
   \inputscalai{Selftype2}
-  \caption{\ref{lst:scala:selftype:1} TODO}
+  \ucaption{\ref{lst:scala:selftype:1} kodo pavyzdyje apibrėžtų
+  klasių panaudojimas}
   \label{lst:scala:selftype:2}
 \end{scalainterpreterlisting}
 
-Be savojo tipo anotacijos \ref{lst:scala:selftype:1} pavyzdyje buvo
+Be savojo tipo anotacijos \ref{lst:scala:selftype:1} kodo pavyzdyje buvo
 panaudotas dar vienas svarbus programavimo kalbos elementas – vidinė
 klasė (ir fragmentas). \cite[12]{scalable-component-abstractions}
 nurodo, kad jie šio elemento neįtraukė tarp būtinų komponentiniam
-programavimui, vien todėl, kad vidines klases palaiko pagrindinės
+programavimui vien todėl, kad vidines klases palaiko pagrindinės
 \en{mainstream} objektinės programavimo kalbos. Turbūt esminis
 skirtumas tarp \plangname{Java} ir \plangname{Scala} vidinių klasių
-yra tai, kad
-\plangname{Java} vidinės klasės tipas yra susietas su išorine klase,
-o \plangname{Scala} su išoriniu objektu. \ref{lst:scala:selftype:1}
-kodo fragmente pateiktame pavyzdyje kintamojo \scala{root} tipas
-yra \scala{tree.SimpleNode}, kai \plangname{Java} jis būtų
-\scala{Tree.SimpleNode}. Ši savybė yra naudinga, pavyzdžiui, tuo, kad 
+yra tai, kad \plangname{Java} vidinės klasės tipas yra susietas su
+išorine klase, o \plangname{Scala} su išoriniu objektu.
+\ref{lst:scala:selftype:2} \plangname{Scala} sesijos pavyzdyje kintamojo
+\scala{root} tipas yra \scala{tree.SimpleNode}, kai \plangname{Java} jis
+būtų \scala{Tree.SimpleNode}. Ši savybė yra naudinga, pavyzdžiui, tuo, kad 
 leidžia statiniais metodais užtikrinti, kad skirtingų abstrakčios
 gamyklos \en{abstract factory} realizacijų objektai nebūtų maišomi
 tarpusavyje \cite[36]{scala-design-patterns}. Prireikus šią savybę
 galima apeiti pasinaudojant tipų projekcija \en{type projection},
 tai yra išreikštinai nurodant, kad vidinės klasės objekto tipas
-turi priklausyti nuo išorinės klasės. \ref{lst:scala:selftype:1}
-kodo fragmente nurodyta, kad kintamojo \scala{node} tipas yra
+turi priklausyti nuo išorinės klasės. \ref{lst:scala:selftype:2}
+sesijos pavyzdyje nurodyta, kad kintamojo \scala{node} tipas yra
 bet kokio \scala{Tree} tipo objekto \scala{SimpleNode} tipo objektas.
 
 \section{Scala komponentinis modelis}
