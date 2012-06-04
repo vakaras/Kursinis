@@ -25,7 +25,7 @@ trait ArticleWithSection {
     protected def getReference(element: Element) = {
       "%s.%d".format(
           "unknown",
-          elementsList.findIndexOf((p: Element) => p == element))
+          elementsList.indexWhere((p: Element) => p == element))
     }
 
   }

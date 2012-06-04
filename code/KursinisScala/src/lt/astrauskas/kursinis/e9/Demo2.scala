@@ -1,5 +1,7 @@
 package lt.astrauskas.kursinis.e9
 
+import java.lang.Integer
+
 class SkaičiųLangelis2(val numatytojiReikšmė: Number) {
   private var reikšmė: Number = numatytojiReikšmė
   def nustatytiReikšmę(naujaReikšmė: Number) = reikšmė = naujaReikšmė
