@@ -1,6 +1,9 @@
 SRCDIR := src/lt/astrauskas/kursinis
 DESTDIR := bin
+
 SRCFILES := $(shell find $(SRCDIR) -type f -name "*.scala")
+all: ${SRCFILES}
+	scalac -unchecked -deprecation -d $(DESTDIR) $(SRCFILES)
 
 SRCFILES_e9 := $(shell find $(SRCDIR)/e9 -type f -name "*.scala")
 e9: ${SRCFILES_e9}
