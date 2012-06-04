@@ -224,10 +224,10 @@ kiekvienas iš standartų galima rasti
     ]
   e [
     kompozicija |
-    Komponentai yra surišami kompiliavimo metu. Abstraktūs nariai
-    su jų realizacijomis yra sujungiami pagal sutampančią
-    @FIXME{Veicekausko vertimas: signatūrą}. Kompozicijos rezultatas
-    yra naujas komponentas, kuris gali būti toliau komponuojamas.
+    Komponentai yra surišami kompiliavimo metu. Abstraktūs nariai su
+    jų realizacijomis yra sujungiami pagal sutampančią signatūrą.
+    Kompozicijos rezultatas yra naujas komponentas, kuris gali būti
+    toliau komponuojamas.
     ]
   e [
     evoliucijos palaikymas |
@@ -251,10 +251,8 @@ metu, tai ši informacija nėra reikalinga.
 Viena iš esminių komponento savybių yra tai, kad jis yra fizinis
 diegimo vienetas. Tačiau \plangname{Scala} komponentinis modelis
 neapibrėžia kokiu būdu turėtų būti platinami ir įdiegiami
-komponentai. Be to komponentų naudotojas tam, kad galėtų juos
-sukomponuoti į sistemą, turi turėti jų išeities tekstus. Taigi
-galima būtų teigti, kad \plangname{Scala} komponentinis modelis šios
-apibrėžimo dalies netenkina.
+komponentai. Taigi galima būtų teigti, kad \plangname{Scala}
+komponentinis modelis šios komponento apibrėžimo dalies netenkina.
 
 Tam, kad \plangname{Scala} komponentinis modelis visiškai tenkintų
 komponentinio modelio apibrėžimą, reikia apibrėžti komponentų
@@ -265,10 +263,12 @@ versijų kontrolės sistemose, tai kaip vienas iš būdų platinti
 \progname{Mercurial}\footnote{\url{http://mercurial.selenic.com/}} palaiko
 įdėtines saugyklas, taigi komponentų, iš kurių sudaryta sistema,
 versijų kontrolės saugyklas galima būtų nurodyti, kaip įdėtines
-kuriamos sistemos versijų kontrolės sistemai. Taigi tokiu
-būdu papildžius \plangname{Scala} komponentinį modelį gautume
-komponentinį modelį atitinkantį \cite[37]{heineman2001component}
-pateiktą apibrėžimą.
+kuriamos sistemos versijų kontrolės sistemai. Alternatyvus komponentų
+platinimo būdas būtų pasinaudojant JAR failais\footnote{Nors Scala
+komponentai yra sujungiami kompiliavimo metu, bet sujungti galima ir jau
+sukompiliuotus komponentus.}. Taigi tokiu būdu papildžius
+\plangname{Scala} komponentinį modelį gautume komponentinį modelį
+atitinkantį \cite[37]{heineman2001component} pateiktą apibrėžimą.
 
 \section{\plangname{Scala} komponentinio modelio savybės}
 
@@ -309,10 +309,7 @@ modelis palaiko kiekvieną iš jų, pateikti lentelėje:
     Komponentų realizavimui jis pateikia ne tik taisykles, bet
     ir kalbos konstrukcijas. (Skirtingai, pavyzdžiui, nuo @progname{EJB} ar
     @progname{OSGi}, kurie tik apriboja programavimo su @plangname{Java}
-    būdus.) Taip pat, kitaip nei kai kurių kitų komponentinių modelių,
-    @plangname{Scala} komponentinio modelio atveju, šios stadijos
-    rezultatas yra komponento išeities tekstai, o ne sukompiliuotas
-    komponentas.
+    būdus.)
     ]
   e [
     pakavimas |
@@ -369,7 +366,8 @@ Nagrinėjant komponentų sąveiką galima būtų išskirti:
 \cite[602]{classification-framework-for-scm} išskyrė tokius
 aspektus, pagal kuriuos galima nagrinėti kaip komponentinis
 modelis palaiko ekstra-funkcines savybes \en{extra-functional
-properties}:
+properties}\NFIXME{Vadovo pastaba: „būtų gerai pasakyti, kas tai
+yra (ar pavyzdį duoti).“}:
 \begin{enumerate}
   \item ekstra-funkcinių savybių valdymas;
   \item ekstra-funkcinių savybių specifikavimas;
