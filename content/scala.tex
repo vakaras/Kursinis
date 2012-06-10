@@ -396,9 +396,21 @@ jungimą, komponentai variklis ir automobilis būtų atskirai, todėl
 kiekvieną kartą kažką darant su automobiliu, reikėtų nepamiršti
 ir jo variklio. Kitaip tariant \plangname{Scala} komponentais, kurie
 yra ansambliai, yra žymiai paprasčiau naudotis, nei kitų modelių
-ansambliais, kurie yra tiesiog komponentų rinkiniai. Ši savybė taip
-pat turi ir trūkumą: kadangi komponentai yra paslepiami viduje, tai
-norint juos pakeisti gali reikėti išardyti ansamblį.
+ansambliais, kurie yra tiesiog komponentų rinkiniai. Pavyzdžiui,
+nors \plangname{Scala} kompiliatorius yra ansamblis sukomponuotas
+iš kelių skirtingų komponentų, bet norint jį inicijuoti nieko apie
+tuos komponentus, iš kurių jis buvo sukomponuotas, žinoti nereikia –
+pakanka susikurti kompiliatoriaus objektą pasinaudojant standartiniu
+\scala{new} operatoriumi (\ref{lst:scala:compiler:1} \plangname{Scala}
+sesijos pavyzdys). Be nurodyto privalumo, komponentų paslėpimas
+ansamblyje turi ir trūkumą: kadangi komponentai yra paslepiami viduje,
+tai norint juos pakeisti gali reikėti išardyti ansamblį.
+
+\begin{scalainterpreterlisting}
+  \inputscalai{Compiler1}
+  \ucaption{Scala kompiliatoriaus objekto sukūrimas}
+  \label{lst:scala:compiler:1}
+\end{scalainterpreterlisting}
 
 \FIXME{Reikėtų paminėti, kad komponentai gali būti vidiniai
 \en{nested}, todėl ir gaunasi, kad jie iš išorės nematomi, kai juos
