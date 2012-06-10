@@ -9,6 +9,8 @@ bei komponentinio ir paketinio skirtumai.
 
 \section{Komponento apibrėžimai}
 
+\label{section:component:descriptions}
+
 Nors apie programinės įrangos komponentus yra kalbama jau daugiau
 nei dešimt metų, vis dar nėra vieningo apibrėžimo, kas per esybė
 yra komponentas \cite{classification-framework-for-scm}. Vienas
@@ -157,7 +159,131 @@ Be šio skirtumo dar galima būtų išskirti ir tai, kad komponentas
 išreikštinai nurodo ne tik teikiamus, bet ir jam reikiamus
 servisus.
 
-\section{Komponentinių ir paketinių technologijų skirtumai}
+\section{Komponentinių technologijų ir paketų tvarkymo sistemų skirtumai}
+
+\cite[12]{cs-beyond-object-oriented-programming} teigimu operacinės
+sistemos yra pirmosios sėkmingos komponentinės technologijos. Šiuo
+atveju komponentu yra laikoma programa. Dauguma \progname{GNU/Linux}
+operacinės sistemos platinamųjų paketų \en{distribution} programų
+platinimui naudoja paketų tvarkymo sistemas \en{package management
+system}. Kila klausimas ar šias sistemas galime vadinti komponentinėmis,
+o jų paketus – komponentais?
+
+Viena iš populiariausių paketų tvarkymo sistemų yra
+\progname{Debian}\footnote{\url{http://www.debian.org/}} paketų
+tvarkymo sistema. Jos paketo savybi̇ų palyginimas su
+\ref{section:component:descriptions} skyrelyje išvardintomis
+komponento savybėmis:
+\begin{enumerate}
+  \item \emph{yra fizinis diegimo vienetas:} taip;
+  \item \emph{yra juoda dėžė:} taip, nes paketo turinys yra jau
+    sukompiliuotas;
+  \item \emph{prie jo funkcionalumo galima prieiti tik per
+    išreikštinai apibrėžtas sąsajas:} taip, kadangi paketo turinys
+    yra jau sukompiliuotas, tai juo pasinaudoti galima tik per
+    pateiktas sąsajas;
+  \item \emph{savo poreikius nurodo tik per išreikštinai apibrėžtas
+    sąsajas:} ne visada, nes \progname{Debian} paketai priklauso nuo
+    kitų paketų, iš kurių kai kurie gali būti virtualūs\footnote{
+    \url{http://www.debian.org/doc/manuals/debian-faq/ch-pkg_basics\#s-virtual}};
+  \item \emph{gali būti kuriamas nepriklausomai:} taip;
+  \item \emph{gali būti perpanaudojamas:} taip;
+  \item \emph{gali būti be pakeitimų sujungtas su kitais paketais
+    į vieną sistemą:} taip;
+  \item \emph{gali būti sistemoje pakeičiamas kitu, jei naujasis
+    įgyvendina visą senojo funkcionalumą ir nereikalauja nieko
+    daugiau:} tik tada, kai toks pakeitimas buvo numatytas iš anksto
+    (tai yra buvo sukurta priklausomybė nuo virtualaus paketo).
+\end{enumerate}
+Kadangi \progname{Debian} paketas beveik visiškai atitinka komponento
+savybes, tai \progname{Debian} paketų tvarkymo sistemą galima
+būtų pavadinti komponentine technologija.
+
+Paketų tvarkymo sistemų esminis privalumas yra tai, kad jos leidžia
+pasiekti aukštą perpanaudojamumą \en{reusability}. Perpanaudojamumą,
+kaip esminį komponentinio privalumą išskyrė \human{Bertrand Meyer}
+\cite{what-to-compose}.
+% Let's probe further what components are really about. Szyperski notes
+% that components foster not just reusability but also extendibility and
+% "evolvability." Quite true, but improvements in reusability improve
+% these other two properties anyway.
+Tuo tarpu \human{Clemens Szyperski} \cite{point-counterpoint}
+teigimu esminiai komponentinio privalumai yra modifikuojamumas
+\en{evolvability} ir praplečiamumas \en{extensibility}. Šiomis
+savybėmis \progname{Debian} paketų tvarkymo sistema nepasižymi:
+\begin{enumerate}
+  \item vienus paketus pakeisti kitais galima tik ten, kur tokia galimybė
+    buvo numatyta iš anksto – taigi sistema ne visada gali būti
+    lengvai modifikuojama;
+  \item naujų sistemos funkcijų pridėjimui dažnai trukdo tai,
+    kad sistemoje gali būti įdiegta tik viena konkretaus paketo
+    versija (pavyzdžiui, jei sisteminių procesų veikimui yra reikalinga
+    2.6 \plangname{Python} versija, o norimai įdiegti programai – 2.7,
+    tai tokiu atveju tam, kad programą susieti su 2.7 versija gali
+    reikėti programą įdiegti nesinaudojant paketų tvarkymo sistema).
+\end{enumerate}
+Remiantis šiuo pavyzdžiu galima būtų kelti hipotezę, kad norint
+pasiekti, jog sistema būtų lengvai plečiama ir modifikuojama reikia,
+kad komponentai iš kurių ji yra surenkama savo poreikius nurodytų
+tik per abstrakčias sąsajas. Kadangi ši hipotezė reikalauja itin
+plačios analizės, tai ji toliau šiame darbe nėra nagrinėjama.
+
+Apibendrinant galima būtų pastebėti, kad be formalaus skirtumo, jog
+paketų tvarkymo sistemų paketai ne visada priklauso nuo sąsajos,
+paketų tvarkymo sistemos nuo komponentinių sistemų dar skiriasi ir
+tuo, kad jos akcentuoja ne paketų sukūrimą ir kompoziciją, o jų
+perdavimą ir įdiegimą. Kitaip tariant, nors komponentas ir yra
+diegimo vienetas, o komponentinis modelis būtinai turi nurodyti
+kokiu būdu komponentai yra sujungiami į sistemą, bet komponentinis
+modelis neprivalo nurodyti kokiu būdu komponentai yra perduodami
+klientams, o paketų tvarkymo sistemos būtent tai ir nurodo. Kadangi
+abi technologijos siekia užtikrinti galimybę surinkti sistemą
+iš atskirų dalių, tai todėl ir atsiranda jų supanašėjimas.
+
+\TODO{Atsakymo į klausimą, kodėl tokios panašios technologijos
+visiškai skirtingai vadinamos galima būtų bandyti ieškoti
+istorijoje. Paketų tvarkymo sistemos atsirado tobulinant programų
+platinimo būdus (jos iš pradžių buvo platinamos paprasčiausiuose
+archyvuose TODO: PAGRĮSTI), o komponentinės – nagrinėjant programų
+sistemų kūrimo metodikas TODO:PAGRĮSTI. Nors pagal apibrėžimą
+komponentas ir yra platinimo vienetas, bet komponentinis modelis
+dažniausiai neapibrėžia kokiu būdu klientas gauna komponentą, tuo
+tarpu paketų tvarkymo sistemos būtent tai ir daro. Taigi šios
+sistemos palaiko skirtingas komponento gyvavimo ciklo stadijas,
+o kadangi yra poreikis turėti sistemas, kurios palaiko visą gyvavimo
+ciklą, tai dėl to jos ir perima viena kitos savybes.}
+
+bluetooth riktas su PDF reader, WEB aplikacijos paleidimas, kuriai
+reikia naujesnio Python.
+
+Priklausymas tik nuo abstrakcijos turi savų problemų: nėra automatizmo,
+ne taip patogu pasinaudoti kitais komponentais.
+
+
+perpanaudojamumą turi, bet modifikuojamumo ir evoliucijos neturi
+todėl galima būtų kelti hipotezę, kad privalomas priklausymas
+nuo abstrakcijos yra esminė savybė reikalinga
+
+pagrindinis skirtumas tarp \progname{Debian} paketo ir komponento
+būtų tai, kad \progname{Debian} paketas gali nurodyti, kad yra
+priklausomas nuo abstrakcijos, o komponentas turėtų būti priklausomas
+nuo jos visada
+
+Taigi skirtumas tarp paketo ir kompoento yra tai, kad negalima pakeisti.
+ar šis skirtuams yra esminis reikia platesnės analizės.
+
+Jos paketai netenkina dviejų iš
+\ref{section:component:descriptions} skyrelyje išvardintų komponento
+savybių: paketas savo poreikius nurodo ne per abstrakčias sąsajas,
+o nurodydamas konkrečius kitus paketus, kurie yra jam reikalingi.
+Virtual Package \url{http://www.debian.org/doc/manuals/debian-faq/ch-pkg_basics}
+Gali prisirišti prie abstrakcijos, bet nebūtinai prisiriša.
+
+Visgi šis klausimas reikalauja gilesnio konkrečių technologijų išmanymo,
+todėl jis paliekamas atviras.
+
+Debian gali būti, kad yra komponentinė sistema, bet kitos paketinės
+– nebūtinai.
 
 \FIXME{Darbo vadovo komentaras: „nelietuviškai skamba. komponentinio ko?
 paketinio ko? Gal tiesiog „komponento ir paketo skirtumai?“}
