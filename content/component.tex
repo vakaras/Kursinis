@@ -166,12 +166,12 @@ sistemos yra pirmosios sėkmingos komponentinės technologijos. Šiuo
 atveju komponentu yra laikoma programa. Dauguma \progname{GNU/Linux}
 operacinės sistemos platinamųjų paketų \en{distribution} programų
 platinimui naudoja paketų tvarkymo sistemas \en{package management
-system}. Kila klausimas ar šias sistemas galime vadinti komponentinėmis,
+system}. Kyla klausimas ar šias sistemas galime vadinti komponentinėmis,
 o jų paketus – komponentais?
 
 Viena iš populiariausių paketų tvarkymo sistemų yra
 \progname{Debian}\footnote{\url{http://www.debian.org/}} paketų
-tvarkymo sistema. Jos paketo savybi̇ų palyginimas su
+tvarkymo sistema. Jos paketo savybių palyginimas su
 \ref{section:component:descriptions} skyrelyje išvardintomis
 komponento savybėmis:
 \begin{enumerate}
@@ -239,63 +239,3 @@ modelis neprivalo nurodyti kokiu būdu komponentai yra perduodami
 klientams, o paketų tvarkymo sistemos būtent tai ir nurodo. Kadangi
 abi technologijos siekia užtikrinti galimybę surinkti sistemą
 iš atskirų dalių, tai todėl ir atsiranda jų supanašėjimas.
-
-\TODO{Atsakymo į klausimą, kodėl tokios panašios technologijos
-visiškai skirtingai vadinamos galima būtų bandyti ieškoti
-istorijoje. Paketų tvarkymo sistemos atsirado tobulinant programų
-platinimo būdus (jos iš pradžių buvo platinamos paprasčiausiuose
-archyvuose TODO: PAGRĮSTI), o komponentinės – nagrinėjant programų
-sistemų kūrimo metodikas TODO:PAGRĮSTI. Nors pagal apibrėžimą
-komponentas ir yra platinimo vienetas, bet komponentinis modelis
-dažniausiai neapibrėžia kokiu būdu klientas gauna komponentą, tuo
-tarpu paketų tvarkymo sistemos būtent tai ir daro. Taigi šios
-sistemos palaiko skirtingas komponento gyvavimo ciklo stadijas,
-o kadangi yra poreikis turėti sistemas, kurios palaiko visą gyvavimo
-ciklą, tai dėl to jos ir perima viena kitos savybes.}
-
-bluetooth riktas su PDF reader, WEB aplikacijos paleidimas, kuriai
-reikia naujesnio Python.
-
-Priklausymas tik nuo abstrakcijos turi savų problemų: nėra automatizmo,
-ne taip patogu pasinaudoti kitais komponentais.
-
-
-perpanaudojamumą turi, bet modifikuojamumo ir evoliucijos neturi
-todėl galima būtų kelti hipotezę, kad privalomas priklausymas
-nuo abstrakcijos yra esminė savybė reikalinga
-
-pagrindinis skirtumas tarp \progname{Debian} paketo ir komponento
-būtų tai, kad \progname{Debian} paketas gali nurodyti, kad yra
-priklausomas nuo abstrakcijos, o komponentas turėtų būti priklausomas
-nuo jos visada
-
-Taigi skirtumas tarp paketo ir kompoento yra tai, kad negalima pakeisti.
-ar šis skirtuams yra esminis reikia platesnės analizės.
-
-Jos paketai netenkina dviejų iš
-\ref{section:component:descriptions} skyrelyje išvardintų komponento
-savybių: paketas savo poreikius nurodo ne per abstrakčias sąsajas,
-o nurodydamas konkrečius kitus paketus, kurie yra jam reikalingi.
-Virtual Package \url{http://www.debian.org/doc/manuals/debian-faq/ch-pkg_basics}
-Gali prisirišti prie abstrakcijos, bet nebūtinai prisiriša.
-
-Visgi šis klausimas reikalauja gilesnio konkrečių technologijų išmanymo,
-todėl jis paliekamas atviras.
-
-Debian gali būti, kad yra komponentinė sistema, bet kitos paketinės
-– nebūtinai.
-
-\FIXME{Darbo vadovo komentaras: „nelietuviškai skamba. komponentinio ko?
-paketinio ko? Gal tiesiog „komponento ir paketo skirtumai?“}
-
-TODO: \human{Clemens Szyperski}
-\cite{cs-beyond-object-oriented-programming} (taip pat ir
-\cite[34]{heineman2001component}) teigia, kad Operacinės sitemos
-yra tarp pirmųjų sėkmingų komponentinių modelių. Iš to sektų,
-kad ir GNU/Linux naudojamas paketų valdymo sistemas, tokias kaip
-APT\footnote{\url{http://en.wikipedia.org/wiki/Advanced_Packaging_Tool}}
-ir RPM\footnote{\url{http://en.wikipedia.org/wiki/RPM_Package_Manager}}
-irgi galima vadinti komponentinėmis. Teoriškai šių paketinių
-sistemų paketai netenkina esminės komponento savybės – jie priklauso
-nuo konkrečių kitų paketų. TODO: Ar OSGi, EJB, CORBA komponentai
-nurodo konkrečius kitus komponentus ar tik abstrakčias sąsajas?
