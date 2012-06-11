@@ -158,6 +158,94 @@ turi privalumą, kad remiantis juo galima nagrinėti skirtingas
 komponentinių sistemų kūrimo metodikas bei tuo pačiu išskirti
 kiekvienos iš jų privalumus ir trūkumus.
 
+\section{Komponentinių modelių klasifikacija}
+
+Norint palyginti kelis komponentinius modelius, nustatyti jų privalumus
+ir trūkumus yra reikalinga jų klasifikavimo metodika. Šiame skyrelyje
+pristatomas \cite{classification-framework-for-scm} pateiktas
+komponentinių modelių klasifikavimo karkasas bei klasifikacijos
+autorių pastebėjimai apie išanalizuotus 24 komponentinius modelius.
+
+Klasifikacijos autoriai analizuojamas komponentinių modelių savybes
+suskirstė į tris sritis (dimensijas):
+\begin{description}
+  \item[Gyvavimo ciklas] – kiek komponentinis modelis paremia kiekvieną
+    iš komponento gyvavimo ciklo stadijų.
+  \item[Konstravimas] – kokiu būdu yra sukonstruojama sistema iš
+    komponentų.
+  \item[\gls{extra-functional-properties}{ekstra-funkcinės savybės}]
+    – ką komponentinis modelis siūlo
+    \gls{extra-functional-properties}{ekstra-funkcinių savybių}
+    specifikavimui, valdymui ir kompozicijai.
+\end{description}
+
+Nagrinėdami komponento gyvavimo ciklą autoriai išskyrė tokius
+etapus:
+\begin{enumerate}
+  \item \emph{Modeliavimas} – ar komponentinis modelis suteikia
+    specialias priemones komponentų bei iš jų sudarytų sistemų
+    modeliavimui. Iš autorių analizuotų komponentinių modelių net
+    32 procentai šio komponento gyvavimo ciklo etapo nepalaiko,
+    o išlikusių didesnė dalis modeliavimui pateikia sričiai
+    specifines \en{domain-specific} modeliavimo kalbas. Autoriai
+    pastebi, kad visi komponentiniai modeliai, kurie nenaudoja
+    modeliavimo kalbų yra atėję iš praktikos \en{state of the
+    practice}, o ne akademinių tyrimų \en{state of the art}
+    \cite[604]{classification-framework-for-scm}.
+  \item \emph{Realizacija} – kokias komponentų realizacines technologijas
+    komponentinis modelis palaiko ir kokią daro įtaką jų naudojimui
+    (pavyzdžiui, EJB komponentinis modelis prideda papildomus reikalavimus
+    programavimo su Java būdui
+    \cite[597]{classification-framework-for-scm}). Pagal palaikomas
+    programavimo kalbas autoriai išskyrė keturias komponentinių
+    modelių grupes:
+    \begin{enumerate}
+      \item Nepriklausomi nuo programavimo kalbos (18 procentų).
+      \item Palaikantys objektiškai orientuotas programavimo kalbas
+        (36 procentai), iš kurių pagrindinė yra \plangname{Java}.
+      \item Palaikantys \plangname{C} programavimo kalbą (36 procentai)
+        – šie komponentiniai modeliai daugiausiai skirti įtaisytoms
+        \en{embedded} ir realaus laiko sistemoms.
+      \item Palaikantys specifinės sričiai \en{domain-specific}
+        programavimo kalbas (10 procentų).
+    \end{enumerate}
+  \item \emph{Supakavimas} – ar komponentinis modelis nurodo kokiu
+    būdu turi būti komponentai perduodami klientui. Dauguma
+    analizuotų komponentinių modelių naudoja standartinius archyvus
+    (tokius kaip DLL ir JAR paketai). Remdamiesi tuo, kad komponentiniai
+    modeliai paketų platinimui nenaudoja saugyklų, autoriai daro
+    išvadą, kad komponentų perpanaudojimas nėra komponentinių
+    modelių kūrėjų dėmesio centre.
+  \item \emph{Įdiegimas} – kokiu būdu komponentai yra sujungiami į sistemą.
+    Autoriai išskiria du pagrindinius sujungimo būdus, pagal
+    sujungimo laiką:
+    \begin{enumerate}
+      \item \emph{Kompiliavimo metu} – komponentai į sistemą yra sujungiami
+        prieš ją paleidžiant, jos kompiliavimo (ir saistymo) metu.
+      \item \emph{Vykdymo metu} – komponentai yra įdiegiami į jau veikiančią
+        sistemą.
+    \end{enumerate}
+    Tarp analizuotų komponentinių modelių surišimas kompiliavimo
+    metu yra populiaresnis tarp specifiniai dalykinei sričiai skirtų
+    komponentinių modelių, tuo tarpu tarp bendro pobūdžio
+    komponentinių modelių populiaresnis surišimas vykdymo metu.
+    Kaip galimas tokio pasiskirstymo priežastis autoriai nurodo
+    sistemų naudojančių surišimą kompiliavimo metu didesnį
+    nuspėjamumą ir greitį bei mažesnį lankstumą.
+    \FIXME{Šioje vietoje norėtųsi dar išskirti komponentų jungimą ir
+    komponentų egzempliorių jungimą, o įdiegimą pervadinti į statinį
+    ir dinaminį. Tokiu atveju galima būtų išskirti keturis atvejus:
+    +   statinis komponentų jungimas (Scala, komponentų kodas dažnai
+        yra dubliuojamas, o egzempliorių būsena visada);
+    +   dinaminis komponentų jungimas (Debian: kadangi OS įdiegus
+        paketą paleisti iš naujo nereikia, tai įdiegimas yra dinaminis,
+        bet nėra galimybės sujungti skirtingus egzempliorius; EJB, CORBA,
+        OSGi pakliūna šičia?);
+    +   statinis egzempliorių jungimas (turbūt neprasmingas variantas);
+    +   dinaminis egzempliorių jungimas (ar yra komponentinių modeli̇ų,
+        kurie tai palaikytų?)}
+\end{enumerate}
+
 \section{Komponentinių technologijų ir paketų tvarkymo sistemų skirtumai}
 
 \TODO{\cite[605]{classification-framework-for-scm} teigiama, kad
