@@ -225,12 +225,12 @@ etapus:
       \item \emph{Vykdymo metu} – komponentai yra įdiegiami į jau veikiančią
         sistemą.
     \end{enumerate}
-    Tarp analizuotų komponentinių modelių surišimas kompiliavimo
+    Tarp analizuotų komponentinių modelių saistymas kompiliavimo
     metu yra populiaresnis tarp specifiniai dalykinei sričiai skirtų
     komponentinių modelių, tuo tarpu tarp bendro pobūdžio
-    komponentinių modelių populiaresnis surišimas vykdymo metu.
+    komponentinių modelių populiaresnis saistymas vykdymo metu.
     Kaip galimas tokio pasiskirstymo priežastis autoriai nurodo
-    sistemų naudojančių surišimą kompiliavimo metu didesnį
+    sistemų naudojančių saistymą kompiliavimo metu didesnį
     nuspėjamumą ir greitį bei mažesnį lankstumą.
     \FIXME{Šioje vietoje norėtųsi dar išskirti komponentų jungimą ir
     komponentų egzempliorių jungimą, o įdiegimą pervadinti į statinį
@@ -244,6 +244,111 @@ etapus:
     +   statinis egzempliorių jungimas (turbūt neprasmingas variantas);
     +   dinaminis egzempliorių jungimas (ar yra komponentinių modeli̇ų,
         kurie tai palaikytų?)}
+\end{enumerate}
+
+Konstrukcijos sritį autoriai suskirstė į tris grupes:
+\begin{enumerate}
+  \item \emph{Sąsajos} \en{interfaces} – komponentų jungimo taškai.
+    Autoriai išskyrė tokias sąsajų charakteristikas:
+    \begin{enumerate}
+      \item Sąsajos tipas: paremtas operacijomis \en{operation based},
+        pavyzdžiui, metodų kvietimas, ar paremtas jungtimis
+        \en{port-based}, pavyzdžiui, duomenų perdavimas. Tarp nagrinėtų
+        komponentinių modelių dažniausiai naudojamas yra operacijomis
+        paremtas sąsajos tipas.
+      \item Atskyrimas teikiamų ir prašomų servisų. Tik keli iš
+        nagrinėtų komponentinių modelių neatskiria prašomų ir
+        teikiamų servisų. Autorių teigimu visi jie yra naudojami
+        praktikoje, bet yra senokai sukurti ir po truputi tampa
+        nebenaudotinais.
+      \item Išskirtinių savybių buvimas.
+      \item Kalba, kuria yra aprašoma sąsaja.
+      \item Sąsajos kontrakto užtikrinimas: sintaksinis, semantinis ir / ar
+        veiksenos. Visi nagrinėti komponentiniai modeliai palaiko bent
+        jau sintaksinį kontrakto užtikrinimą.
+    \end{enumerate}
+  \item \emph{Saistymo mechanizmai} \en{binding mechanisms} – mechanizmai
+    skirti komponentų sujungimui į vieną sistemą. Klasifikacijos
+    autoriai išskyrė dvi charakteristikas:
+    \begin{enumerate}
+      \item Išorinio jungimo palaikymas – tai yra ar komponentinis modelis
+        išskiria jungtis, kaip atskirus architektūrinius elementus.
+        Dauguma iš nagrinėtų komponentinių modelių neišskiria.
+      \item \gls{vertical-composition}{Vertikalios kompozicijos}
+        palaikymas – tai yra ar ansamblis, gautas sujungus kelis
+        komponentus, tenkina komponentinio modelio pateikiamą
+        komponento apibrėžimą. Klasifikacijos autoriai nurodo, kad
+        ši savybė yra labai naudinga, bet sunkiai pasiekiama. Jie taip
+        pat nurodo, kad nemažai modelių palaiko dalinę vertikalią
+        kompoziciją (\gls{vertical-binding}{vertikalų saistymą}):
+        ansamblio sąsajos yra komponentų, iš kurių jis buvo
+        sukomponuotas, sąsajų kompozicija, bet pats ansamblis
+        netenkina komponentinio modelio komponentui keliamų ekstra-
+        funkcinių savybių reikalavimų. Autorių teigimu tik keli iš
+        nagrinėtų komponentinių modelių palaiko ekstra-funkcinių
+        reikalavimų kompoziciją ir tie, kurie palaiko, palaiko tik
+        kelių ekstra-funkcinių reikalavimų kompoziciją.
+    \end{enumerate}
+  \item \emph{Sąveika} \en{interaction} – komponentų komunikacija.
+    Autoriai išskyrė tokias jos charakteristikas:
+    \begin{enumerate}
+      \item Sąveikos stilius. Populiariausi sąveikos stiliai būtų:
+        \begin{itemize}
+          \item \emph{Užklausa-atsakymas} \en{request-response} –
+            vienas komponentas kitam siunčia užklausą ir laukia atsakymo.
+            Komunikacija tarp komponentų šiuo atveju yra dvikryptė.
+          \item \emph{vamzdis ir filtras} \en{pipe \& filter} –
+            šiuo atveju komponentai yra „filtrai“, kurie yra sujungti
+            „vamzdžiais“. Tada per tokią sistemą yra leidžiamas
+            duomenų (dažniausiai įvykių) srautas.
+        \end{itemize}
+        Klasifikacijos autoriai pastebi, kad sąveikos stilius stipriai
+        koreliuoja su sąsajos tipu: \emph{užklausa-atsakymas}
+        labiau naudojamas komponentiniuose modeliuose paremtuose
+        operacijomis, o \emph{vamzdis ir filtras} – paremtuose
+        jungtimis.
+      \item Komunikavimo tipas, kuris gali būti sinchroninis bei
+        asinchroninis. Visi iš nagrinėtų komponentinių modelių
+        palaiko sinchroninį komunikavimo tipą, o kai kurie
+        komponentiniai modeliai greta palaiko ir asinchroninį.
+    \end{enumerate}
+\end{enumerate}
+
+Ekstra-funkcinių savybių charakteristikas autoriai suskirstė į tokias
+grupes:
+\begin{enumerate}
+  \item Ekstra-funkcinių savybių specifikavimas – ar komponentinis
+    modelis nurodo ekstra-funkcinių savybių specifikavimo būdus.
+    Iš nagrinėtų komponentinių modelių tik apie pusė pateikia
+    specifikavimo formalizmus nors daliai ekstra-funkcinių savybių.
+  \item Ekstra-funkcinių savybių tvarkymas – kokiu būdu yra tvarkomos
+    ekstra-funkcinės savybės vykdymo metu. Klasifikacijos autoriai
+    išskyrė keturis skirtingus metodus:
+    \begin{enumerate}
+      \item \emph{Vidinis per sąveiką} \en{endogenous per collaboration}
+        – komponentinis modelis nepateikia jokio palaikymo
+        ekstra-funkcinių savybių tvarkymui. Tuo turi pasirūpinti
+        patys komponentai sąveikaudami tarpusavyje.
+      \item \emph{Vidinis, bendras sistemai} \en{endogenous system wide}
+        – komponentų vykdymo aplinka pateikia ekstra-funkcinių
+        savybių aprašymo būdus, bet jų tvarkymu rūpinasi patys
+        komponentai.
+      \item \emph{Išorinis per sąveiką} \en{exogenous per collaboration}
+        – šiuo atveju komponentai realizuoja tik funkcinius reikalavimus,
+        o ekstra-funkcinėmis savybėmis rūpinasi vykdymo aplinka:
+        komponentai būna patalpinami į konteinerius, kurie rūpinasi
+        ekstra-funkcinėmis savybėmis.
+      \item \emph{Išorinis, bendras sistemai} \en{exogenous system wide}
+        – panašus į \emph{išorinį per sąveiką}, tik šiuo atveju dar
+        yra galimybė valdyti ekstra-funkcines savybes bendrai visai
+        sistemai.
+    \end{enumerate}
+    Iš nagrinėtų komponentinių modelių nemaža dalis pateikia palaikymą
+    ekstra-funkcinių savybių valdymui.
+  \item Ekstra-funkcinių savybių kompozicija – ar komponentinis modelis
+    pateikia būdus, metodus, technikas ansamblių konkrečių ekstra-funkcinių
+    savybių nustatymui. Iš nagrinėtų komponentinių modelių tai realizuoja
+    tik keli.
 \end{enumerate}
 
 \section{Komponentinių technologijų ir paketų tvarkymo sistemų skirtumai}
