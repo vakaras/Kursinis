@@ -173,11 +173,13 @@ suskirstė į tris sritis (dimensijas):
     iš komponento gyvavimo ciklo stadijų.
   \item[Konstravimas] – kokiu būdu yra sukonstruojama sistema iš
     komponentų.
-  \item[\gls{extra-functional-properties}{ekstra-funkcinės savybės}]
+  \item[\gls{extra-functional-properties}{Ekstra-funkcinės savybės}]
     – ką komponentinis modelis siūlo
     \gls{extra-functional-properties}{ekstra-funkcinių savybių}
     specifikavimui, valdymui ir kompozicijai.
 \end{description}
+
+\subsection{Gyvavimo ciklas}
 
 Nagrinėdami komponento gyvavimo ciklą autoriai išskyrė tokius
 etapus:
@@ -186,19 +188,15 @@ etapus:
     specialias priemones komponentų bei iš jų sudarytų sistemų
     modeliavimui. Iš autorių analizuotų komponentinių modelių net
     32 procentai šio komponento gyvavimo ciklo etapo nepalaiko,
-    o išlikusių didesnė dalis modeliavimui pateikia sričiai
-    specifines \en{domain-specific} modeliavimo kalbas. Autoriai
+    o išlikusių didesnė dalis modeliavimui pateikia specifinės
+    srities \en{domain-specific} modeliavimo kalbas. Autoriai
     pastebi, kad visi komponentiniai modeliai, kurie nenaudoja
     modeliavimo kalbų yra atėję iš praktikos \en{state of the
     practice}, o ne akademinių tyrimų \en{state of the art}
     \cite[604]{classification-framework-for-scm}.
   \item \emph{Realizacija} – kokias komponentų realizacines technologijas
-    komponentinis modelis palaiko ir kokią daro įtaką jų naudojimui
-    (pavyzdžiui, EJB komponentinis modelis prideda papildomus reikalavimus
-    programavimo su Java būdui
-    \cite[597]{classification-framework-for-scm}). Pagal palaikomas
-    programavimo kalbas autoriai išskyrė keturias komponentinių
-    modelių grupes:
+    palaiko komponentinis modelis. Pagal palaikomas programavimo kalbas
+    autoriai išskyrė keturias komponentinių modelių grupes:
     \begin{enumerate}
       \item Nepriklausomi nuo programavimo kalbos (18 procentų).
       \item Palaikantys objektiškai orientuotas programavimo kalbas
@@ -206,7 +204,7 @@ etapus:
       \item Palaikantys \plangname{C} programavimo kalbą (36 procentai)
         – šie komponentiniai modeliai daugiausiai skirti įtaisytoms
         \en{embedded} ir realaus laiko sistemoms.
-      \item Palaikantys specifinės sričiai \en{domain-specific}
+      \item Palaikantys specifinės sričiai \en{domain-specific} skirtas
         programavimo kalbas (10 procentų).
     \end{enumerate}
   \item \emph{Supakavimas} – ar komponentinis modelis nurodo kokiu
@@ -226,7 +224,7 @@ etapus:
         sistemą.
     \end{enumerate}
     Tarp analizuotų komponentinių modelių saistymas kompiliavimo
-    metu yra populiaresnis tarp specifiniai dalykinei sričiai skirtų
+    metu yra populiaresnis tarp specifiniai sričiai skirtų
     komponentinių modelių, tuo tarpu tarp bendro pobūdžio
     komponentinių modelių populiaresnis saistymas vykdymo metu.
     Kaip galimas tokio pasiskirstymo priežastis autoriai nurodo
@@ -246,6 +244,8 @@ etapus:
         kurie tai palaikytų?)}
 \end{enumerate}
 
+\subsection{Konstravimas}
+
 Konstrukcijos sritį autoriai suskirstė į tris grupes:
 \begin{enumerate}
   \item \emph{Sąsajos} \en{interfaces} – komponentų jungimo taškai.
@@ -259,13 +259,20 @@ Konstrukcijos sritį autoriai suskirstė į tris grupes:
       \item Atskyrimas teikiamų ir prašomų servisų. Tik keli iš
         nagrinėtų komponentinių modelių neatskiria prašomų ir
         teikiamų servisų. Autorių teigimu visi jie yra naudojami
-        praktikoje, bet yra senokai sukurti ir po truputi tampa
-        nebenaudotinais.
+        praktikoje, bet yra jau senokai sukurti ir po truputi tampa
+        nebenaudotinais (pavyzdžiui, \progname{MS COM}).
       \item Išskirtinių savybių buvimas.
       \item Kalba, kuria yra aprašoma sąsaja.
-      \item Sąsajos kontrakto užtikrinimas: sintaksinis, semantinis ir / ar
-        veiksenos. Visi nagrinėti komponentiniai modeliai palaiko bent
-        jau sintaksinį kontrakto užtikrinimą.
+      \item Sąsajos kontrakto užtikrinimas: sintaksinis (pavyzdžiui,
+        jei turime sąsajos tipą paremtą operacijomis, tai
+        užtikrinama, kad sutaptų argumentų duomenų tipai ir jų
+        išdėstymo tvarka), semantinis (papildo sintaksinį tuo, kad
+        papildomai yra tikrinama ar argumentai turi leistinas reikšmes)
+        ir / ar veiksenos (apibrėžia kokia tvarka komponentai gali
+        sąveikauti arba nurodo kokios yra galimos komponento vidinės
+        veiksenos reaguojant į sąveiką). Visi nagrinėti
+        komponentiniai modeliai palaiko bent jau sintaksinį kontrakto
+        užtikrinimą.
     \end{enumerate}
   \item \emph{Saistymo mechanizmai} \en{binding mechanisms} – mechanizmai
     skirti komponentų sujungimui į vieną sistemą. Klasifikacijos
@@ -286,8 +293,8 @@ Konstrukcijos sritį autoriai suskirstė į tris grupes:
         netenkina komponentinio modelio komponentui keliamų ekstra-
         funkcinių savybių reikalavimų. Autorių teigimu tik keli iš
         nagrinėtų komponentinių modelių palaiko ekstra-funkcinių
-        reikalavimų kompoziciją ir tie, kurie palaiko, palaiko tik
-        kelių ekstra-funkcinių reikalavimų kompoziciją.
+        reikalavimų kompoziciją, o ir tie, kurie palaiko, palaiko tik
+        keleto iš jų kompoziciją.
     \end{enumerate}
   \item \emph{Sąveika} \en{interaction} – komponentų komunikacija.
     Autoriai išskyrė tokias jos charakteristikas:
@@ -300,19 +307,22 @@ Konstrukcijos sritį autoriai suskirstė į tris grupes:
           \item \emph{vamzdis ir filtras} \en{pipe \& filter} –
             šiuo atveju komponentai yra „filtrai“, kurie yra sujungti
             „vamzdžiais“. Tada per tokią sistemą yra leidžiamas
-            duomenų (dažniausiai įvykių) srautas.
+            duomenų (dažniausiai įvykių) srautas. Komunikacija
+            tarp komponentų šiuo atveju yra vienkryptė.
         \end{itemize}
         Klasifikacijos autoriai pastebi, kad sąveikos stilius stipriai
         koreliuoja su sąsajos tipu: \emph{užklausa-atsakymas}
         labiau naudojamas komponentiniuose modeliuose paremtuose
         operacijomis, o \emph{vamzdis ir filtras} – paremtuose
         jungtimis.
-      \item Komunikavimo tipas, kuris gali būti sinchroninis bei
+      \item Komunikavimo tipas. Jis gali būti sinchroninis bei
         asinchroninis. Visi iš nagrinėtų komponentinių modelių
         palaiko sinchroninį komunikavimo tipą, o kai kurie
         komponentiniai modeliai greta palaiko ir asinchroninį.
     \end{enumerate}
 \end{enumerate}
+
+\subsection{Ekstra-funkcinės savybės}
 
 Ekstra-funkcinių savybių charakteristikas autoriai suskirstė į tokias
 grupes:
@@ -343,8 +353,6 @@ grupes:
         yra galimybė valdyti ekstra-funkcines savybes bendrai visai
         sistemai.
     \end{enumerate}
-    Iš nagrinėtų komponentinių modelių nemaža dalis pateikia palaikymą
-    ekstra-funkcinių savybių valdymui.
   \item Ekstra-funkcinių savybių kompozicija – ar komponentinis modelis
     pateikia būdus, metodus, technikas ansamblių konkrečių ekstra-funkcinių
     savybių nustatymui. Iš nagrinėtų komponentinių modelių tai realizuoja
