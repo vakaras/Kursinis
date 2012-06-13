@@ -184,86 +184,62 @@ bet kokio \scala{Tree} tipo objekto \scala{SimpleNode} tipo objektas.
 \section{Scala komponentinis modelis}
 
 \cite[37]{heineman2001component} komponentinį modelį apibrėžė kaip
-standartų rinkinį. (Žr.: \ref{section:component:model} skyrelį.)
-Remiantis juo aprašytas \plangname{Scala} komponentinis modelis
-pateiktas lentelėje (detalius aprašymus ką turėtų apibrėžti
-kiekvienas iš standartų galima rasti
-\cite[38-44]{heineman2001component}):
-
-\xtable{
-  w [ 2 | 5 ]
-  a [ p | p ]
-  h [ Standartas | Realizacija ]
-  %
-  e [
-    realizacija |
-    Komponentas gali būti realizuojamas, kaip @plangname{Scala} klasė
+standartų rinkinį. Žemiau paaiškinta, kaip \plangname{Scala}
+komponentinis modelis realizuoja kiekvieną iš jų (kas aprašoma
+standartuose trumpai paaiškinta \ref{section:component:model}
+skyrelyje):
+\begin{enumerate}
+  \item \emph{Realizacija.}
+    Komponentas gali būti realizuojamas, kaip \plangname{Scala} klasė
     arba kaip fragmentas.
-    ]
-  e [
-    sąsajos |
+  \item \emph{Sąsajos.}
     Komponentas servisus, kurių jam reikia, nurodo kaip abstrakčius
     narius, o kuriuos jis realizuoja – kaip konkrečius.
-    ]
-  e [
-    įvardinimas |
+  \item \emph{Įvardinimas.}
     Komponentams globalūs vardai yra priskiriami taip pat, kaip ir
-    @plangname{Java} klasėms – pagal hierarchines vardų sritis.
-    ]
-  e [
-    meta duomenys |
-    Nėra.
-    ]
-  e [
-    tarpusavio sąveika |
-    Kadangi komponentų egzemplioriai @en{component instances} yra
+    \plangname{Java} klasėms – pagal hierarchines vardų sritis.
+  \item \emph{Meta duomenys.} Kadangi \plangname{Scala} komponentai yra
+    sujungiami statiškai kompiliavimo metu, tai meta duomenys nėra
+    reikalingi.
+  \item \emph{Tarpusavio sąveika.}
+    Kadangi komponentų egzemplioriai \en{component instances} yra
     objektai, tai jie sąveikauja keisdamiesi žinutėmis.
-    ]
-  e [
-    pritaikymas |
+  \item \emph{Pritaikymas.}
     Komponentą pritaikyti konkrečiam atvejui galima jam pateikiant
     kitokias jo abstrakčių narių realizacijas (pavyzdžiui, kitą
     konkretų tipą). Taip pat komponento egzemplioriaus sukūrimo
     metu jį galima pritaikyti pasinaudojant konstruktoriaus parametrais
     bei parametrizuojamais tipais.
-    ]
-  e [
-    kompozicija |
+  \item \emph{Kompozicija.}
     Komponentai yra surišami kompiliavimo metu. Abstraktūs nariai su
     jų realizacijomis yra sujungiami pagal sutampančią signatūrą.
     Kompozicijos rezultatas yra naujas komponentas, kuris gali būti
     toliau komponuojamas.
-    ]
-  e [
-    evoliucijos palaikymas |
+  \item \emph{Evoliucijos palaikymas.}
     Kadangi komponentai yra surišami kompiliavimo metu, tai norint
     pakeisti vieną komponentą kitu reikia perkompiliuoti sistemą.
     Taip pat nėra galimybės turėti dvi to paties komponento versijas
     vienoje sistemoje.
-    ]
-  e [
-    supakavimas ir įdiegimas |
-    Nėra.
-    ]
-}
+\end{enumerate}
 
-Pagal \cite[40]{heineman2001component} meta duomenys, tai yra
-informacija apie sąsajas, komponentus ir jų ryšius. Ji leidžia
-dinamiškai sujungti komponentus, taip pat ir nutolusius. Kadangi
-\plangname{Scala} komponentai yra sujungiami statiškai kompiliavimo
-metu, tai ši informacija nėra reikalinga.
-
-Viena iš esminių komponento savybių yra tai, kad jis yra fizinis
-diegimo vienetas. Tačiau \plangname{Scala} komponentinis modelis
-neapibrėžia kokiu būdu turėtų būti platinami ir įdiegiami
-komponentai. Taigi galima būtų teigti, kad \plangname{Scala}
-komponentinis modelis šios komponento apibrėžimo dalies netenkina.
+\plangname{Scala} komponentinis modelis neapibrėžia kaip turėtų būti
+supakuojami komponentai platinimui ir įdiegimui. Kadangi viena iš
+esminių komponento savybių yra tai, kad jis yra fizinis
+diegimo vienetas, tai galima būtų teigti, kad \plangname{Scala}
+komponentinis modelis šios komponentinio modelio apibrėžimo dalies
+netenkina.
 
 Tam, kad \plangname{Scala} komponentinis modelis visiškai tenkintų
 komponentinio modelio apibrėžimą, reikia apibrėžti komponentų
-platinimo būdus. Kadangi programų kodas dažniausiai yra laikomas
-versijų kontrolės sistemose, tai kaip vienas iš būdų platinti
-\plangname{Scala} komponentus, būtų pasinaudojant jomis. Pavyzdžiui,
+platinimo būdus. Problema tame, kad \plangname{Scala} komponentai
+gali būti labai maži (kartais prasmingas komponentas gali būti tik
+kelių dešimčių kodo eilučių ilgio) ir apibrėžti bendras taisykles
+komponentų pakavimui ir įdiegimui gali būti tiesiog neprasminga,
+nes tada komponento supakavimui greičiausiai reikės daugiau pastangų
+nei jo sukūrimui. Nagrinėjant, kaip didesni komponentai galėtų
+būti platinami, tai kaip vienas iš būdų platinti \plangname{Scala}
+komponentus, būtų pasinaudojant versijų kontrolės sistemomis,
+kadangi programų kodas dažniausiai yra laikomas jose. Pavyzdžiui,
 \progname{Git}\footnote{\url{http://git-scm.com/}} ir
 \progname{Mercurial}\footnote{\url{http://mercurial.selenic.com/}} palaiko
 įdėtines saugyklas, taigi komponentų, iš kurių sudaryta sistema,
