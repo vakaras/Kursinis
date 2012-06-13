@@ -99,18 +99,36 @@ apibendrinant, galima būtų išskirti tokias komponento savybes:
 
 \section{Objektinio ir komponentinio sąryšis}
 
+\TODO{Tikslas:
+1.  Pasakyti, kad komponentai gali būti realizuojami ne būtinai
+    objektinėmis programavimo kalbomis.
+2.  Parodyti, kad komponentinės sistemos yra susijusios su SOLID.
+3.  Pasakyti, kad programuojant su projektavimo schemomis
+    \en{design patterns} gauname SOLID ir tuo pačiu gauname
+    sistemą, kurią galima lengvai išskaidyti į komponentus, bet
+    išskaidę nebūtinai gausime komponentus, nes komponentai yra
+    paketai ir todėl turi tenkinti dar Robert C. Martin nurodytus
+    gerų paketų principus.}
+
 \cite[36]{heineman2001component} nurodo, kad sąvoka \emph{komponentas}
 kartais yra klaidingai vartojama, kaip sąvokos \emph{objektas}
 sinonimas. Kadangi komponentas yra įdiegimo vienetas, o objektas yra
 esybė egzistuojanti vykdymo metu, tai šių sąvokų net nelabai galima
-lyginti. Taigi teisingiau būtų lyginti \gls{component-instance}{%
+lyginti. Taip pat \cites[36]{heineman2001component}{point-counterpoint}
+teigimu nors komponentus realizuoti pasinaudojant objektinėmis
+programavimo kalbomis ir yra patogu, bet komponentai neprivalo
+būti realizuoti jomis.
+
+
+Taigi teisingiau būtų lyginti \gls{component-instance}{%
 komponento egzempliorių} su objektu, bet čia susiduriame su problema,
 kad vykdymo metu ne visada įmanoma nurodyti kas yra komponento
 egzempliorius (pavyzdžiui, jei komponentas yra realizuotas kaip keletas
-klasių). Tuo tarpu komponentas yra panašus į statinio klasinio objektinio
-klasę tuo, kad jis yra statinis „planas“ komponento egzemplioriaus, kaip
-kad klasė yra objekto „planas“. Be to skirtumo, kad klasė yra
-labiau loginis, o komponentas – fizinis darinys, iš
+klasių, tai vykdymo metu tik jos ir bus matomos). Tuo tarpu komponentas
+yra panašus į statinio klasinio objektinio klasę tuo, kad jis yra
+statinis „planas“ komponento egzemplioriaus, kaip kad klasė yra
+objekto „planas“. Be to skirtumo, kad klasė yra labiau loginis, o
+komponentas – fizinis darinys, iš
 \ref{section:component:descriptions} skyrelyje išvardintų savybių
 klasė nepasižymi tuo, kad poreikius nurodo tik per išreikštinai
 apibrėžtas sąsajas. \cite[36]{heineman2001component} pamini dar
@@ -131,6 +149,17 @@ objektai). Ką apie tai sako Szyperski?}
 \TODO{Pagal Szyperski komponento įdiegimo į sistemą rezultatas dar
 nėra jo egzempliorius. Tą įdiegtą komponentą dar reikia „aktyvuoti“
 ir tada tik gausime jo egzempliorių.}
+
+\TODO{Dar kartą peržiūrėti vadovo pastabas, nes jos kažkur pasimetė.}
+
+TODO: Paprastas objektinis, ar objektinis su dizaino šablonais? Jei su
+dizaino šablonais, tai pranašumo nebus, nes jie ir yra tam, kad
+leistų užtikrinti modifikuojamumą ir perpanaudojamumą užtikrindami
+SOLID. Turbūt netgi išeitų parodyti, kad sistemą, kurioje yra
+tenkinamas SOLID, galima lengvai išskaidyti į komponentus.
+Kitaip tariant vienintelis \plangname{Scala} pranašumas prieš
+\plangname{Java} būtų tai, kad ji komponentinio konstrukcijas
+palaiko ne programavimo disciplina, o kalbos priemonėmis.
 
 \section{Komponentinio modelio apibrėžimas}
 
