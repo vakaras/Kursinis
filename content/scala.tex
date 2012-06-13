@@ -277,113 +277,87 @@ atitinkantį \cite[37]{heineman2001component} pateiktą apibrėžimą.
 
 \section{\plangname{Scala} komponentinio modelio savybės}
 
-Šiame skyrelyje pabandyta palyginti \plangname{Scala} komponentinį
-modelį su kitais komponentiniais modeliais, remiantis
-\cite{classification-framework-for-scm} klasifikacija. Klasifikacijos
-autoriai išskyrė tokias komponentinių modelių klasifikavimo dimensijas:
-\begin{description}
-  \item[gyvavimo ciklas] – kiek komponentinis modelis paremia kiekvieną
-    iš komponento gyvavimo ciklo stadijų;
-  \item[konstravimas] – kokiu būdu yra sukonstruojama sistema iš
-    komponentų;
-  \item[ekstra-funkcinės savybės] – ką komponentinis modelis siūlo
-    ekstra-funkcinių savybių specifikavimui, valdymui ir kompozicijai.
-\end{description}
+Šiame skyrelyje pateikiama \plangname{Scala} komponentinio modelio
+analizė remiantis \ref{section:component:model:classification}
+skyrelyje pristatyta \cite{classification-framework-for-scm}
+klasifikacija.
 
-\cite[596]{classification-framework-for-scm} gyvavimo ciklą suskirstė į
-keturias stadijas. Komentarai, kaip \plangname{Scala} komponentinis
-modelis palaiko kiekvieną iš jų, pateikti lentelėje:
-\xtable{
-  w [ 2 | 5 ]
-  a [ p | p ]
-  h [ Stadija | Jos palaikymas ]
-  %
-  e [
-    modeliavimas |
+\subsection{Gyvavimo ciklas}
+
+\begin{enumerate}
+  \item \emph{Modeliavimas.}
     Specialių metodų ar įrankių nėra. Iš dalies (be konstrukcijų
     perimtų iš funkcinių programavimo kalbų) galima modeliuoti
-    pasinaudojant @progname{UML} (Unified Modeling Language), ją
+    pasinaudojant \progname{UML}\footnote{\url{http://uml.org/}}, ją
     papildžius tokiomis konstrukcijomis kaip fragmentas ir
     modulinė maišos kompozicija. Galima realizacija pateikiama
-    @cite&L145&R{rachimow2009scala}.
-    ]
-  e [
-    realizacija |
-    Galima teigti, kad @plangname{Scala} komponentinis modelis yra
-    labiausiai orientuotas į šią komponento gyvavimo ciklo dalį.
-    Komponentų realizavimui jis pateikia ne tik taisykles, bet
-    ir kalbos konstrukcijas. (Skirtingai, pavyzdžiui, nuo @progname{EJB} ar
-    @progname{OSGi}, kurie tik apriboja programavimo su @plangname{Java}
-    būdus.)
-    ]
-  e [
-    pakavimas |
-    Šios stadijos @plangname{Scala} komponentinis modelis nepalaiko.
-    ]
-  e [
-    įdiegimas |
+    \cite[145]{rachimow2009scala}.
+  \item \emph{Realizacija.}
+    Galima teigti, kad \plangname{Scala} modelis, kaip ir kiti
+    \cite{classification-framework-for-scm} analizuoti komponentiniai
+    modeliai yra labiausiai orientuotas į šią komponento gyvavimo
+    ciklo dalį. \plangname{Scala} komponentinis modelis iš kitų
+    bendro pobūdžio komponentinių modelių išsiskiria tuo, kad
+    komponentų realizavimui jis pateikia ne tik taisykles, bet ir
+    kalbos konstrukcijas. (Skirtingai, pavyzdžiui, nuo \progname{EJB}
+    ar \progname{OSGi}, kurie tik apriboja programavimo su
+    \plangname{Java} būdus.)
+  \item \emph{Supakavimas.}
+    Šios stadijos \plangname{Scala} komponentinis modelis nepalaiko.
+  \item \emph{Įdiegimas.}
     Komponentai yra surišami kompiliavimo metu.
-    ]
-}
-
-\cite{classification-framework-for-scm} konstravimo dimensiją suskirstė
-į tris dalis:
-\begin{enumerate}
-  \item sąsajų specifikavimas – komponentų sujungimo taškų nurodymas;
-  \item surišimas – ryšių tarp komponentų sukūrimas;
-  \item sąveika – komponentų tarpusavio komunikacija.
 \end{enumerate}
 
-Nagrinėjant \plangname{Scala} komponentinio modelio sąsajų
-specifikaciją pagal \cite[599]{classification-framework-for-scm}
-pateiktus kriterijus galima būtų išskirti:
+\subsection{Konstravimas}
+
 \begin{enumerate}
-  \item sąsajos yra paremtos operacijomis (o ne prievadais);
-  \item yra aiškiai atskiriamos reikalaujamos \en{required interface}
-    ir teikiamos sąsajos \en{provided interface};
-  \item sąsajos yra aprašomos \plangname{Scala} programavimo kalba;
-  \item sąsajų suderinamumas yra tikrinamas tik sintaksiniu
-    požiūriu.
-\end{enumerate}
-Nagrinėjant surišimo mechanizmus galima būtų išskirti:
-\begin{enumerate}
-  \item komponentus galima sujungti tik tiesiogiai, tai yra sujungimai
-    \en{connectors}, kaip atskiri elementai nėra išskiriami;
-  \item kadangi kompozicijos rezultatas yra komponentas, tai
-    galime teigti, kad \plangname{Scala} palaiko pilną vertikalią
-    kompoziciją: delegavimo tipo jungimą (ansamblio prašomos /
-    teikiamos sąsajos sujungiamos su vidinių jo komponentų
-    prašomomis / teikiamomis sąsajomis), agregavimo jungimą
-    (visos vidinių komponentų sąsajos yra pasiekiamos per ansamblio
-    sąsajas) ir naujojo komponento ekstra-funkcinės savybės
-    tenkina komponentinio modelio reikalavimus, kadangi visi
-    \plangname{Scala} fragmentai ir klasės gali būti naudojami,
-    kaip komponentai.
-\end{enumerate}
-Nagrinėjant komponentų sąveiką galima būtų išskirti:
-\begin{enumerate}
-  \item sąveikos stilius tarp komponentų yra užklausa-atsakymas
-    \en{request-response};
-  \item kadangi komunikacija tarp komponentų vyksta kviečiant metodus,
-    tai ji yra sinchroninio tipo.
+  \item \emph{Sąsajos.}
+    \begin{enumerate}
+      \item Sąsajos tipas yra paremtas operacijomis (metodų kvietimas).
+      \item Teikiami ir prašomi servisai yra atskirti.
+      \item Sąsajos yra aprašomos \plangname{Scala} programavimo
+        kalba.
+      \item Sąsajų suderinamumas yra tikrinamas tik sintaksiniu
+        požiūriu.
+    \end{enumerate}
+  \item \emph{Saistymo mechanizmai.}
+    \begin{enumerate}
+      \item Komponentai yra sujungiami tiesiogiai. Tokie elementai,
+        kaip jungtys, nėra išskiriami.
+      \item Kadangi kelių komponentų kompozicijos rezultatas vėl yra
+        komponentas, tai \plangname{Scala} komponentinis modelis
+        palaiko vertikalų saistymą. Dėl to, kad \plangname{Scala}
+        komponentinis modelis nenurodo kokius ekstra-funkcinius
+        reikalavimus turi tenkinti komponentai, tai jis taip pat
+        palaiko ir pilną vertikalią kompoziciją.
+    \end{enumerate}
+  \item \emph{Sąveika.}
+    \begin{enumerate}
+      \item Komponentų sąveikos stilius yra \emph{užklausa-atsakymas}.
+      \item Komunikacija tarp komponentų yra sinchroninio tipo.
+    \end{enumerate}
 \end{enumerate}
 
-\cite[602]{classification-framework-for-scm} išskyrė tokius
-aspektus, pagal kuriuos galima nagrinėti kaip komponentinis
-modelis palaiko ekstra-funkcines savybes \en{extra-functional
-properties}\NFIXME{Vadovo pastaba: „būtų gerai pasakyti, kas tai
-yra (ar pavyzdį duoti).“}:
-\begin{enumerate}
-  \item ekstra-funkcinių savybių valdymas;
-  \item ekstra-funkcinių savybių specifikavimas;
-  \item ekstra-funkcinių savybių komponavimas.
-\end{enumerate}
-\plangname{Scala} komponentinis modelis nei vieno iš šių aspektų
-išreikštinai nepalaiko.
+\subsection{Ekstra-funkcinės savybės}
 
-Apibendrinant galima būtų paminėti, kad \plangname{Scala} komponentinis
-modelis iš kitų modelių, nagrinėtų
-\cite{classification-framework-for-scm}, išsiskiria tuo, kad
+\begin{enumerate}
+  \item \emph{Specifikavimas.}
+    \plangname{Scala} komponentinis modelis ekstra-funkcinių savybių
+    specifikavimo nepalaiko.
+  \item \emph{Tvarkymas.}
+    \plangname{Scala} komponentinis modelis nepateikia jokio
+    palaikymo ekstra-funkcinių savybių tvarkymui, tuo turi
+    pasirūpinti komponentų kūrėjai. (Metodas būtų \emph{vidinis
+    per sąveiką}.)
+  \item \emph{Kompozicija.}
+    \plangname{Scala} komponentinis modelis ekstra-funkcinių savybių
+    kompozicijos nepalaiko.
+\end{enumerate}
+
+\subsection{Išskirtinumai}
+
+Iš kitų \cite{classification-framework-for-scm} nagrinėtų komponentinių
+modelių \plangname{Scala} komponentinis išsiskiria tuo, kad
 pilnai palaiko vertikalią kompoziciją. Iš to atsiranda privalumų
 ir trūkumų. Kadangi komponentai, iš kurių yra surinktas ansamblis
 yra paslepiami jo viduje, tai toks modelis labiau tinkamas realaus
@@ -399,7 +373,7 @@ yra ansambliai, yra žymiai paprasčiau naudotis, nei kitų modelių
 ansambliais, kurie yra tiesiog komponentų rinkiniai. Pavyzdžiui,
 nors \plangname{Scala} kompiliatorius yra ansamblis sukomponuotas
 iš kelių skirtingų komponentų, bet norint jį inicijuoti nieko apie
-tuos komponentus, iš kurių jis buvo sukomponuotas, žinoti nereikia –
+tuos komponentus, iš kurių jis buvo sukomponuotas, žinoti nereikia:
 pakanka susikurti kompiliatoriaus objektą pasinaudojant standartiniu
 \scala{new} operatoriumi (\ref{lst:scala:compiler:1} \plangname{Scala}
 sesijos pavyzdys). Be nurodyto privalumo, komponentų paslėpimas
@@ -412,18 +386,51 @@ tai norint juos pakeisti gali reikėti išardyti ansamblį.
   \label{lst:scala:compiler:1}
 \end{scalainterpreterlisting}
 
-\TODO{Scala palaiko recursive dependencies su statiniu patikrinimu. Ar
-kiti komponentiniai modeliai tai palaiko?}
+Be to, kad palaiko vertikalią kompoziciją \plangname{Scala}
+komponentinis modelis išsiskiria dar ir tuo, jog yra realizuotas, kaip
+programavimo kalba. Kitaip tariant, \plangname{Scala} yra bandymas
+apjungti du komponentinių sistemų kūrimo lygius (komponentų kūrimo
+ir jų tvarkymo) į vieną. Su tuo yra susiję keletas svarbių pastebėjimų:
+\begin{enumerate}
+  \item Apibrėžus komponentą, kaip įdiegimo vienetą, yra natūralu
+    kalbėti apie komponentų programavimą ir sistemų surinkimą iš
+    komponentų. Tuo tarpu, kadangi \plangname{Scala} komponentai yra
+    sujungiami programuojant, tai šiuo atveju galima kalbėti jau ir
+    apie komponentinį programavimą.
+  \item Su \plangname{Scala} galima kurti net labai mažus komponentus:
+    pavyzdžiui, \progname{EJB} mažiausias komponentas yra
+    \plangname{Java} klasė, tuo tarpu \plangname{Scala} mažiausias
+    komponentas yra fragmentas, o tai yra mažesnis darinys už klasę.
+  \item Kuriant sistemą su \plangname{Scala}, yra vartojamos tos
+    pačios sąvokos (objektas, fragmentas, klasė, modulinė maišos
+    kompozicija ir t.t.), nepriklausomai nuo to kokio dydžio
+    sistema yra kuriama.
+  \item \cite[36]{heineman2001component} teigimu komponentų vardai
+    negali būti naudojami, kaip tipų vardai. Tam gali būti naudojami
+    tik sąsajų vardai. \plangname{Scala} šito apribojimo neturi.
+  \item Su \plangname{Scala} yra lengviau kurti sudėtingas sistemas,
+    turinčias rekursyvias priklausomybes tarp komponentų nei su
+    objektinėms sistemoms skirtais komponentiniais modeliais, nes
+    priklausomybės yra automatiškai ištiesinamos ir patikrinamos
+    kompiliavimo metu, o komponentus realizuojant objektinėmis
+    programavimo kalbomis tektų arba taikyti metaprogramavimą,
+    arba rašyti daug palaikančio kodo
+    \cite[9]{scalable-component-abstractions}.
+  \item Kadangi norint išmokti kurti komponentines sistemas su
+    \plangname{Scala} tereikia įsisavinti vieną technologiją
+    vietoj dviejų (programavimo kalbos ir komponentinio modelio),
+    tai su ja yra lengviau išmokti kurti sistemas komponentiškai.
+  \item \plangname{Scala} yra suderinama su kitomis komponentinėmis
+    technologijomis (su \plangname{Scala} galima realizuoti jų
+    komponentus), kurios palaiko \plangname{Java} (pavyzdžiui,
+    \progname{OSGi}, \progname{EJB}). Tai leidžia apeiti kai kuriuos
+    \plangname{Scala} komponentinio modelio trūkumus: pavyzdžiui,
+    jis nesuteikia priemonių leidžiančių realizuoti sistemas, kurių
+    komponentai „gyventų“ skirtingose fizinėse mašinose.
+\end{enumerate}
 
-\FIXME{Reikėtų paminėti, kad komponentai gali būti vidiniai
-\en{nested}, todėl ir gaunasi, kad jie iš išorės nematomi, kai juos
-gaubiantys komponentai, kurie turi metodus jų kūrimui, yra matomi.}
-
-Taigi galima teigti, kad \plangname{Scala} kūrėjams pavyko sukurti
-komponentinį modelį, kuris leistų taip pat lengvai dirbti ir
-su labai mažais komponentais (iki kelių dešimčių eilučių) ir su
-dideliais (visa sistema, ar posistemė, pavyzdžiui \plangname{Scala}
-kompiliatorius).
+Apibendrinant galima būtų teigti, kad \plangname{Scala} komponentinio
+modelio esminis privalumas, lyginant su kitais, yra jo paprastumas.
 
 \section{Scala komponentinis prieš Java objektinį}
 
