@@ -70,8 +70,7 @@
             Abstraktūs tipai, kaip atributai yra objektiškai
             orientuota \gls{scala}{Scala} konstrukcija, kuri leidžia
             abstrahuotis nuo komponento funkcionavimui reikalingų
-            komponentų. Plačiau jie aprašyti \cite[8]{scala-
-            overview}.
+            komponentų. Plačiau jie aprašyti \cite[8]{scala-overview}.
             ''',
     },
     {
