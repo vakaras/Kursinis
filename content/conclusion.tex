@@ -6,15 +6,20 @@
 % sprendimo metodų palyginimai, teikiamos rekomendacijos, akcentuojamos
 % naujovės).
 
+Šiame darbe buvo pristatyta kas yra komponentinis modelis, išskirtos
+komponento savybės bei parodyta, kad \plangname{Scala} programavimo
+kalba ir \progname{Debian} paketų tvarkymo sistema yra komponentinės
+technologijos.
+
 Nors objektinis programavimas ir komponentinis sistemų kūrimo būdas
 yra du skirtingi programų sistemų kūrimo lygiai, bet
-\plangname{Scala} kūrėjams pavyko šiuos lygius sujungti į vieną
+\plangname{Scala} kūrėjams pavyko šiuos lygius sujungti į vieną,
 sukuriant kalbą, kuria yra įmanoma programuoti komponentiškai.
 Pagrindinis \plangname{Scala} privalumas lyginant su kitomis
 komponentinėmis technologijomis – jos naudojimo paprastumas. Taip pat
-\plangname{Scala} turi esminį trūkumą: tai, kad nėra apibrėžta
-kokiu būdu turėtų būti platinami \plangname{Scala} komponentai,
-apsunkina jos kodo perpanaudojamumą.
+\plangname{Scala} turi ir esminį trūkumą: tai, kad nėra apibrėžtas
+\plangname{Scala} komponentų perdavimo formatas, apsunkina jos kodo
+perpanaudojamumą.
 
 Iš \progname{Debian} paketų tvarkymo sistemos ir egzistuojančių
 komponentinių modelių analizės galima būtų teigti, kad
@@ -32,51 +37,3 @@ praplečiamumu reikia, kad jo komponentai be išimčių turėtų visas
 savybes ir komponentinis modelis papildomai apibrėžtų komponentų
 platinimo bei jų automatinio įdiegimo kartu su priklausomybėmis
 mechanizmus.
-
-\section{Idėjos}
-
-Darbo rezultatai:
-\begin{enumerate}
-  \item apibrėžta kas yra klasinis statinis stipriai tipizuotas
-    programavimas;
-  \item išskirtos pagrindinės komponento savybės;
-  \item pristatyta kas yra komponentinis modelis bei komponentinių
-    modelių klasifikacija;
-  \item parodyta, kad Debian paketų tvarkymo sistemą galima vadinti
-    komponentine technologija;
-  \item iškelta hipotezė, kad modifikuojamumui yra būtina, kad
-    visi komponentai priklausytų tik nuo abstrakcijų;
-  \item pristatytos Scalos savybės leidžiančios programuoti
-    komponentiškai;
-  \item parodyta, kad Scala komponentinis modelis tenkina komponentinio
-    modelio apibrėžimą;
-  \item Scala komponentinis modelis išanalizuotas pagal pristatytą
-    klasifikaciją;
-\end{enumerate}
-
-Hipotezė: norint gauti visas tris savybes reikia, kad komponentinio
-modelio komponentas tenkintų visas savybes be išimties ir
-turi būti papildomai apibrėžtas automatinio komponentų ir jų
-priklausomybių gavimo mechanizmas.
-
-
-Su perpanaudojamumu problemų neturi \plangname{Debian}, bet jis
-turi problemų su modifikuojamumu. Taigi hipotezė būtų, kad
-perpanaudojamumui yra reikalingos saugyklos ir galimybė automatiškai
-gauti priklausomybes, o modifikuojamumui privalomas priklausymas
-nuo abstrakcijos.
-
-
-Šiame darbe buvo apibrėžta kas yra klasinis statinis stipriai
-tipizuotas objektinis programavimas, komponentinis programavimas
-bei išskirtos pagrindinės komponento savybės. 
-
-pristatytas komponentinio modelio apibrėžimas
-bei komponentinių modelių klasifikacija. Taip pat pagal
-
-Šiame darbe buvo apibrėžta kas yra komponetinis modelis, išskirtos
-jo pagrindinės savybės ir parodyta, kad \plangname{Scala} modelį
-papildžius komponentų platinimo mechanizmu galėtume teigti, kad
-\plangname{Scala} yra komponentinis modelis. Taip pat buvo nustatyta,
-kad \plangname{Scala} modelis pasižymi reta savybe – vertikalios
-kompozicijos palaikymu.
