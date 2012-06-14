@@ -19,7 +19,10 @@ XELATEX_ARGS=-shell-escape \
 						 "${XARG1}${XARG2}${XARG3}"
 XELATEX_COMMAND=xelatex ${XELATEX_ARGS}
 
-all: config/main.pdf
+all: dist/glossary.tex config/main.pdf
+
+dist/glossary.tex: content/glossary.gls
+	python3 deps/pglossary.py "content/glossary.gls" "dist/glossary.tex"
 
 %.pdf: %.tex
 	echo ${TEXINPUTS} ${PATH}

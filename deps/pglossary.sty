@@ -1,0 +1,51 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pglossary}
+
+%\NewDocumentCommand \showGlossary {m} {%
+  %\immediate\write18 {%
+  %python3 deps/pglossary.py "#1" "dist/glossary.tex"
+  %}
+  %\input{dist/glossary.tex}
+%}
+
+\newcounter{glossaryCounter}
+
+\makeatletter
+\def\glossaryLabel#1{\begingroup
+  \def\@currentlabel{\textsuperscript{Ž\arabic{glossaryCounter}}}%
+	\phantomsection\label{#1}\endgroup
+}
+\makeatother
+\makeatletter
+\def\pGlossaryLabel#1#2{\begingroup
+  \def\@currentlabel{\textsuperscript{#2}}%
+	\phantomsection\label{#1}\endgroup
+}
+\makeatother
+
+\renewenvironment{glossary}{%
+\setcounter{glossaryCounter}{0}%
+\NewDocumentEnvironment{entry}{m m o o}{%
+\addtocounter{glossaryCounter}{1}%
+\glossaryLabel{glossary:##1}%
+{\noindent Ž\arabic{glossaryCounter} \strong{##2}} \par
+}{%
+  \IfNoValueTF{##3}{%
+  }{%
+
+  Angliškai: \emph{##3}
+  }
+  \IfNoValueTF{##4}{%
+  }{%
+
+  Aprašymas: ##4
+  }
+}
+}{%
+}
+
+\newcommand{\gls}[2]{%
+\pdfmarkupcomment[markup=Highlight]{#2}{Paaiškinimas.}
+\ref{glossary:#1}%
+}
+\pdfcommentsetup{color={0.8 0.8 0.8}}
