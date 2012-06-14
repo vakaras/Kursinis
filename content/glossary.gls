@@ -29,6 +29,13 @@
             'lt': 'fragmentas',
             'en': 'trait',
             },
+        'short': r'''
+            Programavimo kalbos Scala konstrukcija. Scala
+            fragmentai nuo Java sąsajų skiriasi tuo, kad gali turėti
+            metodų realizacijas. Taigi tuo jie primena abstrakčias
+            klases, bet nuo pastarųjų skiriasi tuo, kad jų
+            konstruktoriai negali turėti parametrų.
+          ''',
         'long': r'''
             Programavimo kalbos \gls{scala}{Scala} konstrukcija. Scala
             fragmentai nuo Java sąsajų skiriasi tuo, kad gali turėti
@@ -53,6 +60,12 @@
             'lt': 'abstraktus tipas-atributas',
             'en': 'abstract type member',
             },
+        'short': r'''
+            Abstraktūs tipai, kaip atributai yra objektiškai
+            orientuota Scala konstrukcija, kuri leidžia
+            abstrahuotis nuo komponento funkcionavimui reikalingų
+            komponentų.
+            ''',
         'long': r'''
             Abstraktūs tipai, kaip atributai yra objektiškai
             orientuota \gls{scala}{Scala} konstrukcija, kuri leidžia
@@ -67,6 +80,10 @@
             'lt': 'savo tipo anotacija',
             'en': 'selftype annotation',
             },
+        'short': r'''
+            Scala konstrukcija leidžianti specialiajam
+            kintamajam this priskirti kitą tipą.
+            ''',
         'long': r'''
             \gls{scala}{Scala} konstrukcija leidžianti specialiajam
             kintamajam \varname{this} priskirti kitą tipą.
@@ -78,6 +95,10 @@
             'lt': 'modulinė maišos kompozicija',
             'en': 'modular mixin composition',
             },
+        'short': r'''
+            Komponentų jungimo būdas realizuotas programavimo kalboje
+            Scala.
+            ''',
         'long': r'''
             Komponentų jungimo būdas realizuotas programavimo kalboje
             \gls{scala}{Scala}.
@@ -90,6 +111,10 @@
             'en': 'statically typed programming language',
             },
         'wikipedia': r'http://en.wikipedia.org/wiki/Static_typing\#Static_typing',
+        'short': r'''
+            Programavimo kalba, kurioje tipų patikrinimas yra
+            atliekamas kompiliavimo metu.
+            ''',
         'long': r'''
             Programavimo kalba, kurioje tipų patikrinimas yra
             atliekamas kompiliavimo metu.
@@ -103,6 +128,12 @@
             'en': 'dynamically typed programming language',
             },
         'wikipedia': r'http://en.wikipedia.org/wiki/Dynamic_typing\#Dynamic_typing',
+        'short': r'''
+            Programavimo kalba, kurioje tipų patikrinimas yra
+            atliekamas vykdymo metu. Kalbose, kurios naudoja dinaminį
+            tipų tikrinimą, tipus turi turi reikšmės, o ne
+            kintamieji.
+            ''',
         'long': r'''
             Programavimo kalba, kurioje tipų patikrinimas yra
             atliekamas vykdymo metu
@@ -118,6 +149,11 @@
             'en': 'class based programming language',
             },
         'wikipedia': r'http://en.wikipedia.org/wiki/Class-based_programming',
+        'short': r'''
+            Objektinė programavimo kalba, kurioje objektai yra apibrėžiami,
+            kaip klasių egzemplioriai. Pavedimas yra pasiekiamas
+            pasinaudojant klasių paveldėjimo konstrukciją.
+            ''',
         'long': r'''
             \gls{object-oriented-programming-language}{Objektinė
             programavimo kalba}, kurioje objektai yra apibrėžiami,
@@ -132,6 +168,13 @@
             'en': 'prototype based programming language',
             },
         'wikipedia': r'http://en.wikipedia.org/wiki/Prototype-based_programming',
+        'short': r'''
+            Objektinė programavimo kalba, kurioje objektai yra apibrėžiami,
+            nukopijuojant jau egzistuojančių objektų, kurie yra
+            vadinami prototipais, apibrėžimus arba nurodant, kad
+            objektui neradus, kaip jis turėtų apdoroti gautąją
+            žinutę, ji turėtų būti persiųsta jo prototipui.
+            ''',
         'long': r'''
             \gls{object-oriented-programming-language}{Objektinė
             programavimo kalba}, kurioje objektai yra apibrėžiami,
@@ -149,6 +192,11 @@
             'en': 'object oriented programming language',
             },
         'wikipedia': r'http://en.wikipedia.org/wiki/Object_oriented',
+        'short': r'''
+            Programavimo kalba, su kuria galima programuoti
+            pasinaudojant objekto abstrakcija bei kurioje yra
+            realizuotas objektų apibrėžimų dalinimosi mechanizmas.
+            ''',
         'long': r'''
             Programavimo kalba, su kuria galima programuoti
             pasinaudojant objekto abstrakcija bei kurioje yra
@@ -163,6 +211,12 @@
             'lt': 'objekto aprašymo dalinimosi mechanizmas',
             'en': 'object description sharing mechanism',
             },
+        'short': r'''
+            Mechanizmas leidžiantis egzistuojančių objektų
+            apibrėžimus panaudoti apibrėžiant naujus objektus.
+            Objektinėse programavimo kalbose tai gali būti realizuota, kaip
+            delegavimas arba klasių paveldėjimas.
+            ''',
         'long': r'''
             Mechanizmas leidžiantis egzistuojančių objektų
             apibrėžimus panaudoti apibrėžiant naujus objektus.
@@ -178,6 +232,13 @@
             'lt': 'delegavimas',
             'en': 'delegation',
             },
+        'short': r'''
+            Objektų apibrėžimų dalinimosi mechanizmas, kai naujas objektas
+            yra apibrėžiamas pasinaudojant jau egzistuojančio objekto
+            apibrėžimu. Šis mechanizmas vadinamas delegavimu, nes
+            neradus žinutę atitinkančio metodo ji yra persiunčiama
+            (deleguojama) tėviniam objektui.
+            ''',
         'long': r'''
             \gls{object-description-sharing-mechanism}{Objektų
             apibrėžimų dalinimosi mechanizmas}, kai naujas objektas
@@ -193,6 +254,12 @@
             'lt': 'klasių paveldėjimas',
             'en': 'class inheritance',
             },
+        'short': r'''
+            Objektų apibrėžimų dalinimosi mechanizmas, kai kiekvienas
+            objektas yra laikomas kokios nors klasės egzemplioriumi
+            (tai yra, jis apibrėžiamas pasinaudojant klase), o klasės
+            gali paveldėti savybes vienos iš kitų.
+            ''',
         'long': r'''
             \gls{object-description-sharing-mechanism}{Objektų
             apibrėžimų dalinimosi mechanizmas}, kai kiekvienas
@@ -208,6 +275,13 @@
             'en': 'strongly typed programming language',
             },
         'wikipedia': r'http://en.wikipedia.org/wiki/Strong_typing',
+        'short': r'''
+            Tipizacijos stiprumas yra tai, kokį kiekį informacijos
+            turi konkrečios išraiškos tipas. Idealiu atveju stipriai
+            tipizuotoje kalboje iš nuorodos į objektą tipo visada
+            galima pasakyti kokias žinutes galima siųsti tam
+            objektui.
+            ''',
         'long': r'''
             Tipizacijos stiprumas yra tai, kokį kiekį informacijos
             turi konkrečios išraiškos tipas. Idealiu atveju stipriai
@@ -223,6 +297,12 @@
             'en': 'weakly typed programming language',
             },
         'wikipedia': r'http://en.wikipedia.org/wiki/Strong_typing',
+        'short': r'''
+            Tipizacijos stiprumas yra tai, kokį kiekį informacijos
+            turi konkrečios išraiškos tipas. Silpnai tipizuotoje
+            kalboje neįmanoma nustatyti kokias žinutes galima siųsti
+            objektui iš nuorodos į jį tipo.
+            ''',
         'long': r'''
             Tipizacijos stiprumas yra tai, kokį kiekį informacijos
             turi konkrečios išraiškos tipas. Silpnai tipizuotoje
@@ -238,6 +318,10 @@
             'en': 'dynamic dispatch, dynamic binding',
             },
         'wikipedia': r'http://en.wikipedia.org/wiki/Dynamic_dispatch',
+        'short': r'''
+            Nusprendimo, kokią procedūrą vykdyti gavus žinutę,
+            procesas, atliekamas programos vykdymo metu.
+            ''',
         'long': r'''
             Nusprendimo, kokią procedūrą vykdyti gavus žinutę,
             procesas, atliekamas programos vykdymo metu.
@@ -250,6 +334,10 @@
             'lt': 'uždarumas',
             'en': 'encapsulation',
             },
+        'short': r'''
+            Savybė, kai vidinė objekto struktūra yra slepiama nuo
+            išorės naudotojų.
+            ''',
         'long': r'''
             Savybė, kai vidinė objekto struktūra yra slepiama nuo
             išorės naudotojų.
@@ -262,6 +350,12 @@
             'lt': 'potipiai',
             'en': 'subtyping',
             },
+        'short': r'''
+            Objektinės programavimo kalbos savybė, kai norint
+            pasinaudoti objektu mums rūpi tik jo sąsaja ir mes galime
+            naudoti objektą I vietoj objekto J, jei objekto J sąsaja
+            yra objekto I sąsajos poaibis.
+            ''',
         'long': r'''
             \gls{object-oriented-programming-language}{Objektinės
             programavimo kalbos} savybė, kai norint pasinaudoti objektu
@@ -277,6 +371,11 @@
             'lt': 'atvira rekursija',
             'en': 'open recursion',
             },
+        'short': r'''
+            Specialaus kintamojo (dažniausiai jis vadinamas this, arba
+            self) egzistavimas, kuriuo pasinaudojant galima kreiptis į
+            kitus to paties objekto metodus.
+            ''',
         'long': r'''
             Specialaus kintamojo (dažniausiai jis vadinamas
             \varname{this}, arba \varname{self}) egzistavimas, kuriuo
@@ -316,6 +415,13 @@
             'lt': 'vertikalus saistymas',
             'en': 'vertical binding',
             },
+        'short': r'''
+            Komponentinis modelis palaiko vertikalų saistymą tada, kai
+            sujungus komponentus gautas ansamblis turi sąsają, kuri
+            yra sujungtų komponentų sąsajų kompozicijos rezultatas,
+            ir ta sąsaja atitinka komponentinio modelio keliamus
+            reikalavimus.
+            ''',
         'long': r'''
             Pagal \cite[598]{classification-framework-for-scm}
             komponentinis modelis palaiko vertikalų saistymą tada, kai
@@ -331,6 +437,14 @@
             'lt': 'vertikali kompozicija',
             'en': 'vertical composition',
             },
+        'short': r'''
+            Komponentinis modelis palaiko vertikalią kompoziciją tada,
+            kai jis palaiko vertikalų saistymą ir kai sujungus
+            komponentus gauto ansamblio savybės tenkina komponentinio
+            modelio komponentams keliamus reikalavimus. Kitaip tariant
+            komponentinis modelis palaiko vertikalią kompoziciją tada,
+            kai komponentų kompozijos rezultatas yra komponentas.
+            ''',
         'long': r'''
             Pagal \cite[599]{classification-framework-for-scm}
             komponentinis modelis palaiko vertikalią kompoziciją tada,
@@ -352,6 +466,10 @@
             r'http://en.wikipedia.org/wiki/Polymorphism_(computer_science)',
             r'http://en.wikipedia.org/wiki/Polymorphism_in_object-oriented_programming',
             ],
+        'short': r'''
+            Programavimo kalbos savybė, kuri leidžia su skirtingų
+            tipų duomenimis dirbti naudojantis ta pačia sąsaja.
+            ''',
         'long': r'''
             Programavimo kalbos savybė, kuri leidžia su skirtingų
             tipų duomenimis dirbti naudojantis ta pačia sąsaja.
@@ -401,6 +519,12 @@
             'lt': 'įdėtinė klasė',
             'en': 'nested class, static inner class',
             },
+        'short': r'''
+            Java kalboje, tai klasė apibrėžta kitos klasės viduje,
+            bet kurios objekto sukūrimui nėra būtinas gaubiančiosios
+            klasės objektas. Ji apibrėžiama su static konstrukcija.
+            Scala neturi įdėtinių klasių.
+            ''',
         'long': r'''
             Java kalboje, tai klasė apibrėžta kitos klasės viduje,
             bet kurios objekto sukūrimui nėra būtinas gaubiančiosios

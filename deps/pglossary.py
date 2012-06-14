@@ -2,6 +2,8 @@
 
 
 import locale
+import os
+import re
 
 
 class TeXWriter:
@@ -51,9 +53,14 @@ class GlossaryEntryWriter(TeXWriter):
         """ Returns short description.
         """
         try:
-            return self.entry_dict['short']
+            description = self.entry_dict['short']
         except KeyError:
-            return self.description
+            description = self.description.replace(
+                    '{', '').replace('}', '').replace(
+                            '$', '').replace('\\', '')
+        description = re.sub(r'^\s+', '', description, flags=re.MULTILINE)
+        return description.replace('\n', ' ')
+
 
     @property
     def value(self):
@@ -100,15 +107,18 @@ class GlossaryEntryWriter(TeXWriter):
                     translation)
 
 
-def main(data_file, tex_file):
+def main(data_file, tex_file, short_dir):
     data = eval(open(data_file).read())
     data.sort(key=lambda entry: locale.strxfrm(entry['lang']['lt'].lower()))
     with open(tex_file, 'w') as fp:
         for i, entry in enumerate(data):
             writer = GlossaryEntryWriter(fp, entry, i + 1)
             writer()
+            path = os.path.join(short_dir, writer.id + '.tex')
+            with open(path, 'w') as sfp:
+                sfp.write(writer.short_description)
 
 
 if __name__ == '__main__':
     import sys
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], sys.argv[3])

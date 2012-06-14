@@ -22,7 +22,9 @@ XELATEX_COMMAND=xelatex ${XELATEX_ARGS}
 all: dist/glossary.tex config/main.pdf
 
 dist/glossary.tex: content/glossary.gls
-	python3 deps/pglossary.py "content/glossary.gls" "dist/glossary.tex"
+	mkdir -p dist/gls
+	python3 deps/pglossary.py \
+			"content/glossary.gls" "dist/glossary.tex" "dist/gls"
 
 %.pdf: %.tex
 	echo ${TEXINPUTS} ${PATH}
@@ -34,7 +36,7 @@ show:
 	xdg-open "${XELATEX_OUTPUT_DIR}/${XELATEX_JOB_NAME}.pdf" 2> /dev/null
 
 clean:
-	rm -f dist/document* dist/*.tmp
+	rm -f dist/document* dist/*.tmp dist/*.tex dist/gls/*
 
 test:
 	scala -cp code/KursinisScala/bin \
