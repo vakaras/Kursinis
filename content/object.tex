@@ -50,10 +50,10 @@ populiariausių objektinių programavimo kalbų kūrėjai nurodo
 dar ir tai, kad kiekvienas objektas turi unikalią tapatybę.
 Taigi apibendrinant, objektai yra esybės, kurios:
 \begin{enumerate}
-  \item turi unikalią tapatybę;
-  \item turi būsenas;
-  \item sąveikauja besikeisdamos žinutėmis;
-  \item reaguoja į žinutes įvykdydamos tam tikrą procedūrą.\NFIXME{
+  \item Turi unikalią tapatybę.
+  \item Turi būsenas.
+  \item Sąveikauja besikeisdamos žinutėmis.
+  \item Reaguoja į žinutes įvykdydamos tam tikrą procedūrą.\NFIXME{
     Aurelijaus pastaba: „Pasižiūrėk skirtumus tarp procedūrų ir
     funkcijų. Nes „sąveikauja besikeisdamos žinutėmis“ tai man
     asocijuojasi su sekų diagramomis, taigi ir return (funkciškesniu)
@@ -104,24 +104,24 @@ terminologiją. Bet tada netinka prototipinis su „deepcopy“?}
 Be šios „Orlando susitarime“ nurodytos savybės, dauguma
 objektinių programavimo kalbų turi ir daugiau bendrų bruožų,
 kuriuos išskyrė \cite[225-227]{types-and-programming-languages}:
-\begin{description}
-  \item[\gls{dynamic-dispatch}{dinaminis susiejimas}] –
-    objekto reakcija į gautą žinutę yra nustatoma vykdymo metu;
-  \item[\gls{encapsulation}{uždarumas}] – vidinė objekto
-    struktūra yra slepiama;
-  \item[\gls{subtyping}{potipiai}] – kai norime pasinaudoti objektu, 
+\begin{enumerate}
+  \item \emph{\gls{dynamic-dispatch}{Dinaminis susiejimas}} –
+    objekto reakcija į gautą žinutę yra nustatoma vykdymo metu.
+  \item \emph{\gls{encapsulation}{Uždarumas}} – vidinė objekto
+    struktūra yra slepiama.
+  \item \emph{\gls{subtyping}{Potipiai}} – kai norime pasinaudoti objektu, 
     tai mums rūpi tik jo sąsaja ir mes galime naudoti objektą $I$ vietoj
-    objekto $J$, jei objekto $J$ sąsaja yra objekto $I$ sąsajos poaibis;
-  \item[\gls{object-description-sharing-mechanism}{paveldėjimas,
-    pavedimas}] – galimybė perpanaudoti jau egzistuojantį kodą: tai
+    objekto $J$, jei objekto $J$ sąsaja yra objekto $I$ sąsajos poaibis.
+  \item \emph{\gls{object-description-sharing-mechanism}{Paveldėjimas,
+    pavedimas}} – galimybė perpanaudoti jau egzistuojantį kodą: tai
     gali būti pasiekiama objektų kūrimui naudojant klases, kurios
     gali paveldėti kai kurias savybes iš tėvinių klasių, arba
-    naudojant žinučių persiuntimą;
-  \item[\gls{open-recursion}{atvira rekursija}] –
-    (dažniausiai jis vadinamas „this“, arba „self“)
+    naudojant žinučių persiuntimą.
+  \item \emph{\gls{open-recursion}{Atvira rekursija}} –
+    (dažniausiai jis vadinamas \varname{this}, arba \varname{self})
     egzistavimas, kuriuo pasinaudojant galima kreiptis į kitus to
     paties objekto metodus.
-\end{description}
+\end{enumerate}
 Nors paminėtos savybės ir yra bendros populiariausioms objektinėms
 programavimo kalboms, bet\NFIXME{Aurelijaus pastaba: „Paįvairink
 jungtukus, pradeda atsibosti...

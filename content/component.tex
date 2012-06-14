@@ -40,12 +40,12 @@ apibrėžime:
   Komponentas (kode) yra rišlus programinės įrangos realizacijos
   paketas, kuris:
   \begin{enumerate}
-    \item gali būti nepriklausomai kuriamas ir pristatytas;
-    \item turi išreikštines ir gerai apibrėžtas sąsajas savo teikiamiems
-      servisams;
-    \item turi išreikštines ir gerai apibrėžtas sąsajas servisams,
-      kurių jis tikisi iš kitų;
-    \item gali būti sujungtas su kitais komponentais, galbūt pritaikant
+    \item Gali būti nepriklausomai kuriamas ir pristatytas.
+    \item Turi išreikštines ir gerai apibrėžtas sąsajas savo teikiamiems
+      servisams.
+    \item Turi išreikštines ir gerai apibrėžtas sąsajas servisams,
+      kurių jis tikisi iš kitų.
+    \item Gali būti sujungtas su kitais komponentais, galbūt pritaikant
       kai kurias savybes \en{properties}, bet be pačių komponentų
       keitimo.
   \end{enumerate}
@@ -82,17 +82,17 @@ panaudoti keliose skirtingose trečiųjų šalių sistemose
 [36]{cs-beyond-object-oriented-programming}. Taigi
 apibendrinant, galima būtų išskirti tokias komponento savybes:
 \begin{enumerate}
-  \item \label{com:exe:deployment} yra fizinis diegimo vienetas;
-  \item \label{com:exe:blackbox} yra juoda dėžė;
-  \item \label{com:exe:interfaceprovider} prie jo funkcionalumo galima
-    prieiti tik per išreikštinai apibrėžtas sąsajas;
-  \item \label{com:exe:interfaceuser} savo poreikius nurodo tik per
-    išreikštinai apibrėžtas sąsajas;
-  \item \label{com:exe:independent} gali būti kuriamas nepriklausomai;
-  \item \label{com:exe:reusable} gali būti perpanaudojamas;
-  \item \label{com:exe:composed} gali būti be pakeitimų sujungtas su
-    kitais komponentais į vieną sistemą;
-  \item \label{com:exe:interchangable} gali būti sistemoje
+  \item \label{com:exe:deployment} Yra fizinis diegimo vienetas.
+  \item \label{com:exe:blackbox} Yra juoda dėžė.
+  \item \label{com:exe:interfaceprovider} Prie jo funkcionalumo galima
+    prieiti tik per išreikštinai apibrėžtas sąsajas.
+  \item \label{com:exe:interfaceuser} Savo poreikius nurodo tik per
+    išreikštinai apibrėžtas sąsajas.
+  \item \label{com:exe:independent} Gali būti kuriamas nepriklausomai.
+  \item \label{com:exe:reusable} Gali būti perpanaudojamas.
+  \item \label{com:exe:composed} Gali būti be pakeitimų sujungtas su
+    kitais komponentais į vieną sistemą.
+  \item \label{com:exe:interchangable} Gali būti sistemoje
     pakeičiamas kitu, jei naujasis įgyvendina visą senojo
     funkcionalumą ir nereikalauja nieko daugiau.
 \end{enumerate}
@@ -198,16 +198,16 @@ autorių pastebėjimai apie išanalizuotus 24 komponentinius modelius.
 
 Klasifikacijos autoriai analizuojamas komponentinių modelių savybes
 suskirstė į tris sritis (dimensijas):
-\begin{description}
-  \item[Gyvavimo ciklas] – kiek komponentinis modelis paremia kiekvieną
-    iš komponento gyvavimo ciklo stadijų.
-  \item[Konstravimas] – kokiu būdu yra sukonstruojama sistema iš
+\begin{enumerate}
+  \item \emph{Gyvavimo ciklas} – kiek komponentinis modelis paremia
+    kiekvieną iš komponento gyvavimo ciklo stadijų.
+  \item \emph{Konstravimas} – kokiu būdu yra sukonstruojama sistema iš
     komponentų.
-  \item[\gls{extra-functional-properties}{Ekstra-funkcinės savybės}]
+  \item \emph{\gls{extra-functional-properties}{Ekstra-funkcinės savybės}}
     – ką komponentinis modelis siūlo
     \gls{extra-functional-properties}{ekstra-funkcinių savybių}
     specifikavimui, valdymui ir kompozicijai.
-\end{description}
+\end{enumerate}
 
 \subsection{Gyvavimo ciklas}
 
@@ -409,22 +409,22 @@ tvarkymo sistema. Jos paketo savybių palyginimas su
 \ref{section:component:descriptions} skyrelyje išvardintomis
 komponento savybėmis:
 \begin{enumerate}
-  \item \emph{yra fizinis diegimo vienetas:} taip;
-  \item \emph{yra juoda dėžė:} taip, nes paketo turinys yra jau
-    sukompiliuotas;
-  \item \emph{prie jo funkcionalumo galima prieiti tik per
+  \item \emph{Yra fizinis diegimo vienetas:} taip.
+  \item \emph{Yra juoda dėžė:} taip, nes paketo turinys yra jau
+    sukompiliuotas.
+  \item \emph{Prie jo funkcionalumo galima prieiti tik per
     išreikštinai apibrėžtas sąsajas:} taip, kadangi paketo turinys
     yra jau sukompiliuotas, tai juo pasinaudoti galima tik per
-    pateiktas sąsajas;
-  \item \emph{savo poreikius nurodo tik per išreikštinai apibrėžtas
+    pateiktas sąsajas.
+  \item \emph{Savo poreikius nurodo tik per išreikštinai apibrėžtas
     sąsajas:} ne visada, nes \progname{Debian} paketai priklauso nuo
     kitų paketų, iš kurių kai kurie gali būti virtualūs\footnote{
-    \url{http://www.debian.org/doc/manuals/debian-faq/ch-pkg_basics\#s-virtual}};
-  \item \emph{gali būti kuriamas nepriklausomai:} taip;
-  \item \emph{gali būti perpanaudojamas:} taip;
-  \item \emph{gali būti be pakeitimų sujungtas su kitais paketais
-    į vieną sistemą:} taip;
-  \item \emph{gali būti sistemoje pakeičiamas kitu, jei naujasis
+    \url{http://www.debian.org/doc/manuals/debian-faq/ch-pkg_basics\#s-virtual}}.
+  \item \emph{Gali būti kuriamas nepriklausomai:} taip.
+  \item \emph{Gali būti perpanaudojamas:} taip.
+  \item \emph{Gali būti be pakeitimų sujungtas su kitais paketais
+    į vieną sistemą:} taip.
+  \item \emph{Gali būti sistemoje pakeičiamas kitu, jei naujasis
     įgyvendina visą senojo funkcionalumą ir nereikalauja nieko
     daugiau:} tik tada, kai toks pakeitimas buvo numatytas iš anksto
     (tai yra buvo sukurta priklausomybė nuo virtualaus paketo).
@@ -446,10 +446,10 @@ teigimu esminiai komponentinio privalumai yra modifikuojamumas
 \en{evolvability} ir praplečiamumas \en{extensibility}. Šiomis
 savybėmis \progname{Debian} paketų tvarkymo sistema nepasižymi:
 \begin{enumerate}
-  \item vienus paketus pakeisti kitais galima tik ten, kur tokia galimybė
+  \item Vienus paketus pakeisti kitais galima tik ten, kur tokia galimybė
     buvo numatyta iš anksto – taigi sistema ne visada gali būti
-    lengvai modifikuojama;
-  \item naujų sistemos funkcijų pridėjimui dažnai trukdo tai,
+    lengvai modifikuojama.
+  \item Naujų sistemos funkcijų pridėjimui dažnai trukdo tai,
     kad sistemoje gali būti įdiegta tik viena konkretaus paketo
     versija (pavyzdžiui, jei sisteminių procesų veikimui yra reikalinga
     2.6 \plangname{Python} versija, o norimai įdiegti programai – 2.7,
