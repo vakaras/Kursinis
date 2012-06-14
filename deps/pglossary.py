@@ -98,11 +98,11 @@ class GlossaryEntryWriter(TeXWriter):
         """ Prints glossary entry.
         """
         self.write_label()
-        self.write_block('\\noindent Ž{s.counter} \\strong{{{s.value}}}')
-        self.write('\n{s.description}\n\n')
+        self.write('Ž{s.counter} & \\strong{{{s.value}}} \\\\\n')
+        self.write('&{s.description}\\\\\n')
         for code, translation in sorted(self.translations.items()):
             self.write(
-                    '{0}: \\emph{{{1}}}\n\n',
+                    '&{0}: \\emph{{{1}}}\\\\\n',
                     {'en': 'Angliškai'}[code],
                     translation)
 
@@ -111,12 +111,15 @@ def main(data_file, tex_file, short_dir):
     data = eval(open(data_file).read())
     data.sort(key=lambda entry: locale.strxfrm(entry['lang']['lt'].lower()))
     with open(tex_file, 'w') as fp:
+        tex = TeXWriter(fp)
+        tex.write('\\begin{{longtable}}{{p{{2em}} p{{32em}}}}\n')
         for i, entry in enumerate(data):
             writer = GlossaryEntryWriter(fp, entry, i + 1)
             writer()
             path = os.path.join(short_dir, writer.id + '.tex')
             with open(path, 'w') as sfp:
                 sfp.write(writer.short_description)
+        tex.write('\\end{{longtable}}\n')
 
 
 if __name__ == '__main__':
