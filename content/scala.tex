@@ -61,11 +61,7 @@ yra pirmoji programavimo kalba, kurioje realizuoti jie visi
 \cite[2]{scalable-component-abstractions}.} – moduline maišos
 kompozicija.
 
-\begin{scalainterpreterlisting}
-  \inputscalai{AbstractMembers4}
-  \ucaption{Parametrizuotų tipų panaudojimo atvejis}
-  \label{lst:scala:abstract:members:4}
-\end{scalainterpreterlisting}
+% \label{lst:scala:abstract:members:4}
 
 Modulinė maišos kompozicija, tai klasių kūrimo mechanizmas
 pasinaudojant fragmentų \en{trait} komponavimu. Fragmentą galimą
@@ -92,18 +88,8 @@ o jos panaudojimas pateiktas \ref{lst:scala:mixin:2} \plangname{Scala}
 sesijos pavyzdyje. Šiame pavyzdyje klasė \scala{C2} yra sukomponuojama
 iš fragmentų \scala{M3} ir \scala{T4} pritaikant maišos kompoziciją.
 
-\begin{scalacodelisting}
-  \inputscala[lastline=22]{e1/Demo}
-  \ucaption{Fragmentų hierarchijos modifikavimas}
-  \label{lst:scala:mixin:1}
-\end{scalacodelisting}
-
-\begin{scalainterpreterlisting}
-  \inputscalai{Mixin2}
-  \ucaption{\ref{lst:scala:mixin:1} kodo pavyzdyje pateiktos hierarchijos
-  panaudojimas}
-  \label{lst:scala:mixin:2}
-\end{scalainterpreterlisting}
+% \label{lst:scala:mixin:1}
+% \label{lst:scala:mixin:2}
 
 Turbūt svarbiausia maišos kompozicijos savybė yra ta, kad konkretus
 narys visada užkloja abstraktų
@@ -119,18 +105,8 @@ ir jie yra užklojami atitinkamų narių apibrėžtų fragmente
 abstraktus metodas \scala{lookup}, kurį užkloja konkretus metodas
 \scala{lookup}, apibrėžtas \scala{CachedCalculation}.
 
-\begin{scalacodelisting}
-  \inputscala[lastline=32]{e10/Demo}
-  \ucaption{Maišos kompozicijos panaudojimas}
-  \label{lst:scala:mixin:3}
-\end{scalacodelisting}
-
-\begin{scalainterpreterlisting}
-  \inputscalai{Mixin4}
-  \ucaption{\ref{lst:scala:mixin:3} kodo pavyzdyje sukomponuotos
-  klasės \scala{CachedFactorial} panaudojimas}
-  \label{lst:scala:mixin:4}
-\end{scalainterpreterlisting}
+% \label{lst:scala:mixin:3}
+% \label{lst:scala:mixin:4}
 
 Taikant maišos kompoziciją kartais prireikia, kad
 \scala{this}\footnote{\scala{this} yra specialus kintamasis rodantis į
@@ -147,18 +123,8 @@ anotacija yra \scala{this: Node =>} – su ja nurodoma, kad
 \scala{BaseNode} viduje \scala{this} tipas yra \scala{Node}. Todėl
 kvietimas \scala{show(this)} tampa galimas.
 
-\begin{scalacodelisting}
-  \inputscala[lastline=19]{e11/Demo}
-  \ucaption{Savojo tipo anotacijos panaudojimas}
-  \label{lst:scala:selftype:1}
-\end{scalacodelisting}
-
-\begin{scalainterpreterlisting}
-  \inputscalai{Selftype2}
-  \ucaption{\ref{lst:scala:selftype:1} kodo pavyzdyje apibrėžtų
-  klasių panaudojimas}
-  \label{lst:scala:selftype:2}
-\end{scalainterpreterlisting}
+% \label{lst:scala:selftype:1}
+% \label{lst:scala:selftype:2}
 
 Be savojo tipo anotacijos \ref{lst:scala:selftype:1} kodo pavyzdyje buvo
 panaudotas dar vienas svarbus programavimo kalbos elementas – vidinė
@@ -356,11 +322,7 @@ sesijos pavyzdys). Be nurodyto privalumo, komponentų paslėpimas
 ansamblyje turi ir trūkumą: kadangi komponentai yra paslepiami viduje,
 tai norint juos pakeisti gali reikėti išardyti ansamblį.
 
-\begin{scalainterpreterlisting}
-  \inputscalai{Compiler1}
-  \ucaption{Scala kompiliatoriaus objekto sukūrimas}
-  \label{lst:scala:compiler:1}
-\end{scalainterpreterlisting}
+% \label{lst:scala:compiler:1}
 
 Be to, kad palaiko vertikalią kompoziciją \plangname{Scala}
 komponentinis modelis išsiskiria dar ir tuo, jog yra realizuotas, kaip
