@@ -9,13 +9,16 @@
 \usepackage{scalatools}
 \usepackage{pglossary}
 
+\definecolor{plangnamecolor}{rgb}{0.2, 0.2, 0.2}
+\definecolor{prognamecolor}{rgb}{0.2, 0.2, 0.2}
+\newcommand{\plangname}[1]{\textcolor{plangnamecolor}{#1}}
+\newcommand{\progname}[1]{\textcolor{prognamecolor}{#1}}
+
 \newcommand{\TODO}[1]{} %{TODO: \emph{#1}}
 \newcommand{\FIXME}[1]{} %{FIXME: \emph{#1}}
 \newcommand{\NFIXME}[1]{} %{\footnote{FIXME: #1}}
 \newcommand{\NTODO}[1]{} %{\footnote{TODO: #1}}
-\newcommand{\varname}[1]{\strong{#1}}
-\newcommand{\plangname}[1]{\strong{#1}}
-\newcommand{\progname}[1]{\strong{#1}}
+\newcommand{\varname}[1]{\emph{#1}}
 \newcommand{\human}[1]{#1}
 \newcommand{\inlinequote}[1]{\emph{#1}}
 
