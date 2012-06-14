@@ -149,15 +149,18 @@
             },
         'wikipedia': r'http://en.wikipedia.org/wiki/Class-based_programming',
         'short': r'''
-            Objektinė programavimo kalba, kurioje objektai yra apibrėžiami,
-            kaip klasių egzemplioriai. Pavedimas yra pasiekiamas
-            pasinaudojant klasių paveldėjimo konstrukciją.
+            Objektinė programavimo kalba, kurioje objektai yra
+            apibrėžiami, kaip klasių egzemplioriai. Objektų
+            apibrėžimų dalinimasis yra realizuojamas panaudojant
+            klasių paveldėjimo konstrukciją.
             ''',
         'long': r'''
             \gls{object-oriented-programming-language}{Objektinė
             programavimo kalba}, kurioje objektai yra apibrėžiami,
-            kaip klasių egzemplioriai. \TODO{Pavedimas} yra pasiekiamas
-            pasinaudojant klasių paveldėjimo konstrukciją.
+            kaip klasių egzemplioriai.
+            \gls{object-description-sharing-mechanism}{Objektų
+            apibrėžimų dalinimasis} yra realizuojamas panaudojant
+            klasių paveldėjimo konstrukciją.
             ''',
     },
     {
