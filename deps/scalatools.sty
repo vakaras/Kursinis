@@ -35,18 +35,22 @@
   }
 
 % Listing: scalainterpreterlisting
-\floatstyle{ruled}
 \newfloat{scalainterpreterlisting}{H}{lol}
 \floatname{scalainterpreterlisting}{Scala sesijos pavyzdys}
 \DeclareCaptionLabelFormat{ltcaptionscalai}{#2 Scala sesijos pavyzdys.}
-\captionsetup[scalainterpreterlisting]{labelformat=ltcaptionscalai}
+\captionsetup[scalainterpreterlisting]{%
+  labelformat=ltcaptionscalai,%
+  labelsep=space%
+  }
 
 % Listing: scalacodelisting
-\floatstyle{ruled}
 \newfloat{scalacodelisting}{H}{lol}
 \floatname{scalacodelisting}{Scala kodo pavyzdys}
 \DeclareCaptionLabelFormat{ltcaptionscalac}{#2 Scala kodo pavyzdys.}
-\captionsetup[scalacodelisting]{labelformat=ltcaptionscalac}
+\captionsetup[scalacodelisting]{
+  labelformat=ltcaptionscalac,%
+  labelsep=space%
+  }
 
 % Listing counters.
 \newcounter{scalalisting}
