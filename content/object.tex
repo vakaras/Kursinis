@@ -107,26 +107,13 @@ programavimo kalbų galimoms pritaikymo sritims.
 
 \section{Objektinių kalbų rūšys}
 
-\TODO{Loginė slinktis:
-Objektinės programavimo kalbos yra taikomos skirtingose srityse, todėl
-yra reikalingos skirtingos savybės. (Lankstumas ir stabilumas.)
-%
-Nagrinėjant dalinimosi mechanizmą:
-  Lankstumą suteikia …, juo pasižymi prototipinės.
-  Stabilumą suteikia …, juo pasižymi klasinės.
-Be dalinimosi mechanizmo lankstumui ir stabilumai dar daro įtaka
-tipizacijos stiprumas, jos tikrinimo momentas.
-%
-Taigi norint sistemų, kurios pasižymi stabilumu, reikia naudoti…
-}
-
 Objektinės programavimo kalbos gali būti labai plačiai naudojamos:
 tiek eksperimentiniam, tiriamajam bei prototipiniam programavimui tiek
 jau produkcijai skirtoms sistemoms. Pirmuoju atveju paprastai dalykinė
 sritis yra prastai žinoma, todėl yra itin svarbus programavimo kalbos
-lankstumas – galimybė greitai atlikti pakeitimus, antruoju atveju
+lankstumas – galimybė greitai atlikti pakeitimus. Antruoju atveju
 svarbesniu tampa sistemos patikimumas
-\cite{Lieberman:1987:TO:62139.62144}. Programavimo kalbos
+\cite{Lieberman:1987:TO:62139.62144}. Objektinės programavimo kalbos
 lankstumui / stabilumui įtaką daro jos 
 \gls{object-description-sharing-mechanism}{dalinimosi mechanizmo}
 savybės \cite{Lieberman:1987:TO:62139.62144} bei jos naudojamos
@@ -143,7 +130,7 @@ savybės:
     \gls{object-description-sharing-mechanism}{dalinimosi
     mechanizmo} ryšius vykdymo metu – pavyzdžiui, pakeisti tėvinį
     objektą.
-  \item Išreikštinai nurodyti
+  \item Galimybė išreikštinai nurodyti
     \gls{object-description-sharing-mechanism}{dalinimosi mechanizmo}
     ryšius – pavyzdžiui, kokios žinutės kokiam objektui yra
     persiunčiamos.
@@ -212,95 +199,3 @@ patikimumo kriterijus, tai toliau darbe yra nagrinėjamos tik
 \gls{class-based-programming-language}{klasinės}
 \gls{object-oriented-programming-language}{objektinės} programavimo
 kalbos.
-
-Objektinės programavimo kalbos yra naudojamos įvairioms situacijoms:
-tiek eksperimentiniam, tiriamajam bei prototipiniam programavimui, kai
-dalykinė sritis yra prastai žinoma ir yra svarbus lankstumas, tiek
-jau produkcijai skirtoms sistemoms, kurios palyginus
-lėtai keičiasi ir kurių patikimumas yra itin
-svarbus \cite{Lieberman:1987:TO:62139.62144}\NFIXME{
-Aurelijaus pastaba: „4 eilutės 1-nam sakiniui „politiko“ stilius.
-Pabadyk išvardyti viską trumpai, o pridėtinus (šalutinius) sakinius
-parašyk po to.“}. Pagal \cite{Lieberman:1987:TO:62139.62144}\NFIXME{
-Aurelijaus pastaba: „Pagal pirmuoju“ Ir šiaip, jei jau pradedi
-plačiai rašyti, tai gražu būtų ir naujoje pastraipoje“} pirmuoju
-atveju lankstumą suteikia galimybės:
-\begin{itemize}
-  \item modifikuoti atskiro objekto veikseną – pavyzdžiui, vienam
-    konkrečiam objektui pridėti naują metodą;
-  \item keisti \gls{object-description-sharing-mechanism}{dalinimosi
-    mechanizmo} ryšius vykdymo metu – pavyzdžiui, pakeisti tėvinį
-    objektą;
-  \item išreikštinai nurodyti
-    \gls{object-description-sharing-mechanism}{dalinimosi mechanizmo}
-    ryšius – pavyzdžiui, kokios žinutės kokiam objektui yra
-    persiunčiamos.
-\end{itemize}
-Šiomis savybėmis pasižymi
-\gls{prototype-based-programming-language}{prototipinės objektinės
-programavimo kalbos}, iš kurių, turbūt, populiariausia atstovė yra
-\plangname{JavaScript}.
-
-Kuriamų sistemų patikimumą padeda užtikrinti tokios programavimo
-kalbos savybės, kaip:
-\begin{itemize}
-  \item galimybė užtikrinti, kad visi konkrečiai grupei priklausantys
-    objektai elgsis vienodai \NFIXME{Aurelijaus pastaba: „Pridėk,
-    „pvz, tai realizuojama gali būti realziuota klasėmis“.  Nes
-    turi praeiti keli suprantability ciklai, kol „until sąlyga tampa
-    patenkinta.“};
-  \item draudimas keisti objekto apibrėžimą po jo sukūrimo – tai
-    gali būti naudinga, pavyzdžiui, tuo, kad yra garantuojama,
-    jog objektas tenkina tą patį kontraktą, kurį jis tenkino iš
-    karto po sukūrimo;\NFIXME{Aurelijaus pastaba: „O ar yra kas, kas
-    keičia apibrėžimą po sukūrimo?  Netipizuotos kalbos,
-    reflectionai, dinaminiai metodai
-    (\url{http://www.php.net/manual/en/language.oop5.magic.php})“}
-  \item vieningas \gls{object-description-sharing-mechanism}{
-    apibrėžimų dalinimosi mechanizmas}, kuris palengvina supratimą
-    kaip veikia sistema.
-\end{itemize}
-Šiomis savybėmis pasižymi
-\gls{class-based-programming-language}{klasinės objektinės
-programavimo kalbos}, tokios, kaip \plangname{Java}, \plangname{C++},
-\plangname{Python}, \plangname{Ruby}.
-
-Kaip pavyzdys situacijos, kur prototipinės objektinės programavimo
-kalbos savybės yra naudingesnės nei klasinės objektinės, galėtų
-būti natūralios žmonių kalbos sintezatoriaus kūrimas. Tarkime, kad
-mums reikia galimybės turint veiksmažodžio bendratį susigeneruoti
-visas jo formas. Naudodami klasinę objektinę programavimo kalbą
-kiekvienai veiksmažodžių rūšiai galėtume susikurti po klasę,
-kuri gavusi bendratį mokėtų sugeneruoti tos rūšies veiksmažodžių
-formas. Problema ta, kad natūralios žmonių kalbos pasižymi didele
-išimčių gausa ir šiuo atveju kiekvienai išimčiai irgi reikėtų
-sukurti po klasę. Jei naudotume prototipinę objektinę programavimo
-kalbą, tai kiekvieną kartą pridėdami po naują veiksmažodžio
-objektą, jam kaip prototipą galėtume nurodyti panašiausią į jį ir
-tereikėtų perrašyti tik jų skirtumus.
-
-Pagal \cite[2]{Madsen:1990:STO:97946.97964}, programavimo kalbų
-lankstumą dar padidina \gls{weakly-typed-programming-language}{silpna
-tipizacija} bei \gls{dynamically-typed-programming-language}{dinaminis
-tipų tikrinimo mechanizmas}. Tuo tarpu
-\gls{strongly-typed-programming-language}{stipri tipizacija} bei
-\gls{statically-typed-programming-language}{statinis tipų tikrinimo
-mechanizmas} leidžia nemažai klaidų surasti dar programos kompiliavimo
-stadijoje, kas padidina programos patikimumą. Taigi siekiant kurti
-sistemas, kurioms yra itin svarbus jų patikimumas, derėtų naudoti
-\gls{statically-typed-programming-language}{statines}
-\gls{strongly-typed-programming-language}{stipriai tipizuotas}
-\gls{class-based-programming-language}{klasines} programavimo kalbas.
-Kadangi šiame darbe yra nagrinėjamos priemonės, kurios pagelbėtų
-kuriant verslo palaikymo sistemas, kurioms ir yra itin svarbus
-patikimumo kriterijus, tai toliau darbe yra nagrinėjamos tik
-\gls{statically-typed-programming-language}{statinės}
-\gls{strongly-typed-programming-language}{stipriai tipizuotos}
-\gls{class-based-programming-language}{klasinės}
-\gls{object-oriented-programming-language}{objektinės} programavimo
-kalbos.
-
-\FIXME{Aurelijaus pastaba: „Loginė slinktis: eksperimentinis,
-tiramosios, prototipinės ->  Prototipinės, klasinės [norėtųsi
-susieti su eksperimentinėmis arba tiriamosiomis], [vėl] prototipinės,
-tipizacija~lankstumas. Minčių šokinėjimas blogiau nei vidurkis :(“}
