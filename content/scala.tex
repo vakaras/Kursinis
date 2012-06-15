@@ -31,9 +31,12 @@ nagrinėjamos.
 išskyrė tris programavimo kalbos elementus įgalinančius kurti įvairaus
 dydžio \en{scalable} komponentus:
 \begin{enumerate}
-  \item Abstraktūs tipai – nariai \en{abstract type members}.
-  \item Savo tipo anotavimas \en{selftype annotations}.
-  \item Modulinė maišos kompozicija \en{modular mixin composition}.
+  \item \gls{abstract-type-member}{Abstraktūs tipai – nariai}
+    \en{abstract type members}.
+  \item \gls{selftype-annotation}{Savo tipo anotavimas}
+    \en{selftype annotations}.
+  \item \gls{modular-mixin-composition}{Modulinė maišos kompozicija}
+    \en{modular mixin composition}.
 \end{enumerate}
 
 \plangname{Scala}, be parametrizuojamųjų tipų \en{generics}, kuriuos
@@ -64,10 +67,10 @@ kompozicija.
 % \label{lst:scala:abstract:members:4}
 
 Modulinė maišos kompozicija, tai klasių kūrimo mechanizmas
-pasinaudojant fragmentų \en{trait} komponavimu. Fragmentą galimą
-būtų apibrėžti kaip sąsają, kurios metodai gali turėti
-realizacijas. Šiuo požiūriu fragmentai primena abstrakčias klases,
-tik skirtingai nuo jų, fragmentų konstruktoriai negali turėti
+pasinaudojant \gls{trait}{fragmentų} \en{trait} komponavimu.
+Fragmentą galimą būtų apibrėžti kaip sąsają, kurios metodai gali
+turėti realizacijas. Šiuo požiūriu fragmentai primena abstrakčias
+klases, tik skirtingai nuo jų, fragmentų konstruktoriai negali turėti
 parametrų. Fragmento konstrukcija leidžia pasinaudoti
 multipaveldėjimo suteikiamais kodo perpanaudojimo privalumais
 (klasę galima sukomponuoti iš kelių fragmentų), bet tuo pačiu, dėl
@@ -92,7 +95,7 @@ iš fragmentų \scala{M3} ir \scala{T4} pritaikant maišos kompoziciją.
 % \label{lst:scala:mixin:2}
 
 Turbūt svarbiausia maišos kompozicijos savybė yra ta, kad konkretus
-narys visada užkloja abstraktų
+narys visada \gls{method-overriding}{užkloja} abstraktų
 \cite[6]{scalable-component-abstractions}. Ši savybė leidžia
 sujungti du fragmentus, kurių nesieja bendra hierarchija. Tai yra
 iliustruota \ref{lst:scala:mixin:3} kodo pavyzdyje.
@@ -100,10 +103,11 @@ Sukomponuotosios klasės \scala{CachedFactorial} panaudojimas
 pademonstruotas \ref{lst:scala:mixin:4} \plangname{Scala} sesijos
 pavyzdyje. Fragmento \scala{CachedCalculation} nariai
 \scala{KeyType}, \scala{ValueType} ir \scala{calculate} yra abstraktūs
-ir jie yra užklojami atitinkamų narių apibrėžtų fragmente
-\scala{Factorial}. Fragmente \scala{Factorial} taip pat yra
-abstraktus metodas \scala{lookup}, kurį užkloja konkretus metodas
-\scala{lookup}, apibrėžtas \scala{CachedCalculation}.
+ir jie yra \gls{method-overriding}{užklojami} atitinkamų narių
+apibrėžtų fragmente \scala{Factorial}. Fragmente \scala{Factorial}
+taip pat yra abstraktus metodas \scala{lookup}, kurį
+\gls{method-overriding}{užkloja} konkretus metodas \scala{lookup},
+apibrėžtas \scala{CachedCalculation}.
 
 % \label{lst:scala:mixin:3}
 % \label{lst:scala:mixin:4}
@@ -127,14 +131,15 @@ kvietimas \scala{show(this)} tampa galimas.
 % \label{lst:scala:selftype:2}
 
 Be savojo tipo anotacijos \ref{lst:scala:selftype:1} kodo pavyzdyje buvo
-panaudotas dar vienas svarbus programavimo kalbos elementas – vidinė
-klasė (ir fragmentas). \cite[12]{scalable-component-abstractions}
+panaudotas dar vienas svarbus programavimo kalbos elementas –
+\gls{inner-class}{vidinė klasė (ir fragmentas)}.
+\cite[12]{scalable-component-abstractions}
 nurodo, kad jie šio elemento neįtraukė tarp būtinų komponentiniam
 programavimui vien todėl, kad vidines klases palaiko pagrindinės
 \en{mainstream} objektinės programavimo kalbos. Turbūt esminis
 skirtumas tarp \plangname{Java} ir \plangname{Scala} vidinių klasių
-yra tai, kad \plangname{Java} vidinės klasės tipas yra susietas su
-išorine klase, o \plangname{Scala} su išoriniu objektu.
+yra tai, kad \plangname{Java} \gls{inner-class}{vidinės klasės} tipas
+yra susietas su išorine klase, o \plangname{Scala} su išoriniu objektu.
 \ref{lst:scala:selftype:2} \plangname{Scala} sesijos pavyzdyje kintamojo
 \scala{root} tipas yra \scala{tree.SimpleNode}, kai \plangname{Java} jis
 būtų \scala{Tree.SimpleNode}. Ši savybė yra naudinga, pavyzdžiui, tuo, kad 
@@ -142,10 +147,11 @@ leidžia statiniais metodais užtikrinti, kad skirtingų abstrakčios
 gamyklos \en{abstract factory} realizacijų objektai nebūtų maišomi
 tarpusavyje \cite[36]{scala-design-patterns}. Prireikus šią savybę
 galima apeiti pasinaudojant tipų projekcija \en{type projection},
-tai yra išreikštinai nurodant, kad vidinės klasės objekto tipas
-turi priklausyti nuo išorinės klasės. \ref{lst:scala:selftype:2}
-sesijos pavyzdyje nurodyta, kad kintamojo \scala{node} tipas yra
-bet kokio \scala{Tree} tipo objekto \scala{SimpleNode} tipo objektas.
+tai yra išreikštinai nurodant, kad \gls{inner-class}{vidinės klasės}
+objekto tipas turi priklausyti nuo išorinės klasės.
+\ref{lst:scala:selftype:2} sesijos pavyzdyje nurodyta, kad kintamojo
+\scala{node} tipas yra bet kokio \scala{Tree} tipo objekto
+\scala{SimpleNode} tipo objektas.
 
 \section{Scala komponentinis modelis}
 
