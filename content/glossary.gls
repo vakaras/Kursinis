@@ -460,6 +460,7 @@
     },
     {
         'id': 'polymorphism',
+        'exclude': True,
         'lang': {
             'lt': 'polimorfismas',
             'en': 'polymorphism',
@@ -505,6 +506,7 @@
     },
     {
         'id': 'function-overloading',
+        'exclude': True,
         'lang': {
             'lt': 'funkcijos perdengimas',
             'en': 'function overloading',

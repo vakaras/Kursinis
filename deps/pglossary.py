@@ -114,6 +114,8 @@ def main(data_file, tex_file, short_dir):
         tex = TeXWriter(fp)
         tex.write('\\begin{{longtable}}{{p{{2em}} p{{32em}}}}\n')
         for i, entry in enumerate(data):
+            if entry.get('exclude', False):
+                continue
             writer = GlossaryEntryWriter(fp, entry, i + 1)
             writer()
             path = os.path.join(short_dir, writer.id + '.tex')
