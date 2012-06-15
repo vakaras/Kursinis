@@ -547,6 +547,27 @@
             klasių viduje yra vidinės klasės.
             ''',
     },
+    {
+        'id': 'object-identity',
+        'lang': {
+            'lt': 'objekto tapatybė',
+            'en': 'object identity',
+            },
+        'short': r'''
+            Objekto tapatybė yra tai, kas leidžia jį išskirti iš kitų,
+            nepriklausomai nuo to kokius pokyčius patiria pats objektas.
+            ''',
+        'long': r'''
+            Objekto tapatybė yra tai, kas leidžia jį išskirti iš kitų,
+            nepriklausomai nuo to kokius pokyčius patiria pats objektas.
+            \cite[37]{cs-beyond-object-oriented-programming} aiškindamas
+            kas yra objekto tapatybė kaip pavyzdį pateikia istoriją
+            apie Džordžo Vašingtono kirvį, kuris turėjo penkis
+            naujus kotus ir keturias galvas, bet vis tiek visą laiką
+            išsaugojo tą pačią tapatybę – buvo Džordžo Vašingtono
+            kirvis.
+            ''',
+    },
     #{
         #'id': '<++>',
         #'lang': {
