@@ -57,7 +57,7 @@
     {
         'id': 'abstract-type-member',
         'lang': {
-            'lt': 'abstraktus tipas-atributas',
+            'lt': 'abstraktus tipas – narys',
             'en': 'abstract type member',
             },
         'short': r'''
