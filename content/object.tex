@@ -3,13 +3,16 @@
 Norint atskirti objektinę paradigmą nuo komponentinės, reikia
 tiksliai apibrėžti, kas priklauso kiekvienai iš jų.
 Šiame skyriuje pabandyta išskirti, kas yra objektinis programavimas
-apskritai, kokios yra objektinio programavimo rūšys\NTODO{Nagrinėjant
-Scala yra svarbu nurodyti ant kokio objektinio ji „stovi“.} bei kam
-tos rūšys yra reikalingos (jų pritaikymo sritys)\NTODO{Nagrinėjant
-Scala panagrinėti ar ji keičia pritaikymo sritį.}\NFIXME{Aurelijaus
-pastaba: „Siūlau pradėti pastraipą nuo šito sakinio. Arba
-„Objektinį programavimą skirtingi autoriai apibrėžia skirtingai
-arba neišsamiai arba nepakankamai [Bla12; Bla13; Bla14]“}.
+apskritai, kokios yra objektinio programavimo rūšys bei kam
+tos rūšys yra reikalingos (jų pritaikymo sritys).
+
+\TODO{%
+Nagrinėjant Scala yra svarbu nurodyti ant kokio objektinio ji
+„stovi“. (Tam, kad pagrįsti kodėl nurodau objektinio rūšis.)
+%
+Nagrinėjant Scala panagrinėti ar ji keičia statinio klasinio
+objektinio pritaikymo sritį.
+}
 
 \section{Objektinio programavimo apibrėžimas}
 
@@ -18,48 +21,40 @@ bandyti tiksliai apibrėžti, ką reiškia „objektiškai orientuotas“,
 bet objektinį programavimą bendrąja prasme galima suvokti, kaip
 programavimą pasinaudojant objekto abstrakcija. Objektą galima
 apibrėžti, kaip \inlinequote{esybę, kuri apjungia duomenų ir procedūrų
-savybes tam, kad galėtų atlikti veiksmus ir turėti
-būseną} \cite[41]{OOP-themes-and-variations}. Objektinės sistemos veikimas
+savybes tam, kad galėtų atlikti veiksmus ir turėti būseną}
+\cite[41]{OOP-themes-and-variations}.  Objektinės sistemos veikimas
 yra suvokiamas, kaip objektų tarpusavio sąveika: objektai vienas kitam
-siuntinėja žinutes, o kiekvienas gavęs žinutę objektas į ją sureaguoja
-įvykdydamas atitinkamos procedūros (metodo)
-kodą
+siunčia žinutes, o kiekvienas gavęs žinutę objektas į ją sureaguoja
+atlikdamas atitinkamą operaciją
 \cites[41]{OOP-themes-and-variations}%
 [277]{concepts-in-programming-languages}%
-[168]{Wegner:1987:DOL:38807.38823}.\NFIXME{Aurelijaus pastaba:
-„Perskaičius pirmus sakinius man iš karto norėjosi išgirsti, kad
-objektai visų pirma skirti darbui su savyje saugomais duomenimis.
-Būsenos kažką į tą pusę sako, bet nepakankamai aiškiai
-„tūlam“ skaitytojui. Tai būtų kaip „abstrakciją“
-paaiškinimas, nes išreikštinio susiejimo su abstrakcijos formomis
-taip iki pastraipos galo ir neradau. Kai matai, kad nesiskaito, dėk
-pavyzdžius: procedūrinė (pvz., OpenGL) turi būsenų sistemą, bet
-bendrą „RAM'ą“, o programuojant objektiškai kiekvienas gauna savo
-gabalą ir daugiausia tik su tuo gabalu ir dirba. Su gabalais dirba ir
-funkcinės programavimo kalbos, bet jos paima pradinę būseną ir
-išspjauna galine (čia tinka tavo bendravimas žinutėmis). Kiek
-supratau, ši mano rašliava pas tave atitinka „unikalią
-tapatybę“, bet kadangi aš abejoju, tai reikės „unikalios
-tapatybės“ paaiškinimo.“}
-Be būsenos ir veiksenos\NFIXME{Aurelijaus pastaba: „low
-suprantability. „veikimas“, „kodo dalių vykdymas“,
-„paprogramių vykdymas“ (paprogramės įprastos informatikams, bet
-pridėjus į žodyną, turėtų sueiti.“}, prie objekto išskirtinių
-savybių \cite[37]{cs-beyond-object-oriented-programming} bei
-populiariausių objektinių programavimo kalbų kūrėjai nurodo
-dar ir tai, kad kiekvienas objektas turi unikalią tapatybę.
-Taigi apibendrinant, objektai yra esybės, kurios:
+[168]{Wegner:1987:DOL:38807.38823}.
+Objektų būsena paprastai yra realizuojama objektų viduje saugomais
+duomenimis, o žinučių siuntimas – su objektu susietų procedūrų,
+kurios vadinamos metodais, kvietimu \cite[41]{OOP-themes-and-variations}.
+Be būsenos ir operacijų, prie objekto išskirtinių savybių
+\cite[37]{cs-beyond-object-oriented-programming} bei populiariausių
+objektinių programavimo kalbų kūrėjai nurodo dar ir tai, kad
+kiekvienas objektas turi \gls{object-identity}{unikalią tapatybę}.
+\cite[37]{cs-beyond-object-oriented-programming} nurodo,
+kad \gls{object-identity}{objekto tapatybė} yra tai, kas leidžia jį
+išskirti iš kitų, nepriklausomai nuo to, kokius pokyčius patiria pats
+objektas, bei kaip pavyzdį pateikia istoriją apie Džordžo Vašingtono
+kirvį, kuris turėjo penkis naujus kotus ir keturias galvas, bet vis
+tiek visą laiką išsaugojo tą pačią tapatybę – buvo Džordžo
+Vašingtono kirvis. Taigi apibendrinant, objektai yra esybės, kurios:
 \begin{enumerate}
-  \item Turi unikalią tapatybę.
+  \item Turi \gls{object-identity}{unikalią tapatybę}.
   \item Turi būsenas.
   \item Sąveikauja besikeisdamos žinutėmis.
-  \item Reaguoja į žinutes įvykdydamos tam tikrą procedūrą.\NFIXME{
-    Aurelijaus pastaba: „Pasižiūrėk skirtumus tarp procedūrų ir
-    funkcijų. Nes „sąveikauja besikeisdamos žinutėmis“ tai man
-    asocijuojasi su sekų diagramomis, taigi ir return (funkciškesniu)
-    apibrėžimu. Čia tik tik pastebėjimas, jei prisikabintų per
-    ginimus.“}
 \end{enumerate}
+
+\TODO{Ar reikia pavyzdžio su Python, kuris parodo, jog
+paveldėjimas ir delegavimas yra tas pats
+\cite[1]{Stein:1987:DI:38807.38820}?
+(Jei $a$ yra klasės $A$ tipo objektas, o klasė $A$ paveldi iš $B$,
+tai delegavimo ryšys būtų: $a \to A \to B$, o \varname{self} yra
+tiesiog paprasčiausias argumentas.)}
 
 Siekiant išskirti
 \gls{object-oriented-programming-language}{objektines programavimo
@@ -67,17 +62,17 @@ kalbas} iš programavimo kalbų, kuriomis įmanoma programuoti
 objektiškai (pavyzdžiui, tarę, kad programavimo kalbos \plangname{Modula-2}
 modulis yra objektas, su ja galėtume programuoti objektiškai), yra
 reikalaujama, kad programavimo kalba, kurią vadiname objektine
-palaikytų objektinį programavimą kalbinėmis priemonėmis. 1987\NFIXME{
-Aurelijaus pastaba: „Prie mano „istorinių faktų“ vadovas kibo,
-klausė, „ar tai tiksliui/uždaviniams tikrai reikalinga“. Kadangi
-su apimtimi problemos, tai siūlyčiau truputi įdėti beletristikos su
-kalbų pavyzdžiais (kaip kas daro), taip ir suprantability turėtų
-padidėti. Istoriniai faktai yra naudingi, jei yra žinomas kontekstas:
-kokia situacija su kalbų įvairove buvo 1987 metais, kodėl svarbi ACM
-(neinformatikui), OOPSLA (wtf?), Orlando susitikime (ar kas nors
-pasikeistų, jei būtų „Kupiškio“)“}
-metais ACM OOPSLA konferencijos metu paskelbtame „Orlando
-susitarime“ \en{„The Treaty of Orlando“}
+palaikytų objektinį programavimą kalbinėmis priemonėmis. 1987 metų
+ACM\footnote{„Association for Computing Machinery“ yra viena didžiausių
+ir prestižiškiausių mokslinių ir mokymo bendruomenių, kurių domėjimosi
+sritis yra kompiuteriniai skaičiavimai.}
+OOPSLA\footnote{„Objektiškai orientuotas programavimas, sistemos, kalbos
+ir taikomosios programos“ \en{Object-Oriented Programming, Systems,
+Languages \& Applications} yra kasmetinė ACM tyrimų konferencija.}
+konferencijos metu paskelbtame „Orlando
+susitarime“\footnote{1987 metų ACM OOPSLA konferencija vyko Orlando
+mieste, Floridoje, JAV.}
+\en{„The Treaty of Orlando“}
 \cite{Lieberman:1987:TO:62139.62144} nurodoma, kad esminis
 objektinių programavimo kalbų bruožas yra 
 \gls{object-description-sharing-mechanism}{dalinimosi \en{sharing}
@@ -86,13 +81,7 @@ apibrėžiant naujus objektus.
 \gls{object-oriented-programming-language}{Objektinės programavimo kalbos}
 tai gali įgyvendinti panaudodamos \gls{delegation}{delegavimo} arba
 \gls{class-inheritance}{paveldėjimo}
-mechanizmus.\NFIXME{Ar reikia pavyzdžio su Python, kuris parodo, jog
-paveldėjimas ir delegavimas yra tas pats
-\cite[1]{Stein:1987:DI:38807.38820}?
-(Jei $a$ yra klasės $A$ tipo
-objektas, o klasė $A$ paveldi iš $B$, tai delegavimo ryšys būtų:
-$a \to A \to B$, o \varname{self} yra tiesiog paprasčiausias
-argumentas.)}
+mechanizmus.
 Šis mechanizmas yra itin svarbus tuo, kad leidžia objektus apibrėžti
 palaipsniui. Taigi, \plangname{Modula-2} nėra objektinė programavimo
 kalba, nes jos modulis negali automatiškai „perimti“ dalies kito modulio
