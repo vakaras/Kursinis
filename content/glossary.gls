@@ -572,6 +572,24 @@
             kirvis.
             ''',
     },
+    {
+        'id': 'package-management-system',
+        'lang': {
+            'lt': 'paketų tvarkymo sistema',
+            'en': 'package management system',
+            },
+        'wikipedia': r'http://en.wikipedia.org/wiki/Package_management_system',
+        'short': r'''
+            Programų platinimui naudojama sistema. Dauguma GNU/Linux
+            platinamųjų paketų naudoja paketų tvarkymo sistemas
+            programų platinimui.
+            ''',
+        'long': r'''
+            Programų platinimui naudojama sistema. Dauguma
+            \progname{GNU/Linux} platinamųjų paketų naudoja paketų
+            tvarkymo sistemas programų platinimui.
+            ''',
+    },
     #{
         #'id': '<++>',
         #'lang': {

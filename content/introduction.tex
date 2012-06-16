@@ -6,11 +6,11 @@
 
 Programinės įrangos naudojimas nuo pat jos atsiradimo nuolat auga,
 verslo palaikymo sistemos perima vis daugiau verslo funkcijų, todėl
-jos tampa vis didesnės ir tuo pačiu vien dėl savo dydžio tampa
+jos tampa vis didesnės ir tuo pačiu vien dėl savo dydžio pasidaro
 sudėtingos. Be to, verslo poreikiai nuolat kinta, o kartu su jais
 ir programų sistemoms keliami reikalavimai. Esant tokiai situacijai
-atsiranda noras turėti priemones, kurios leistų susitvarkyti
-su problemomis atsirandančiomis dėl kuriamų sistemų dydžio. Kitaip
+didėja būtinumas turėti priemones, kurios leistų susitvarkyti
+su problemomis, atsirandančiomis dėl kuriamų sistemų dydžio. Kitaip
 tariant, norisi turėti priemones, kurios:
 \begin{itemize}
   \item leistų kurti dideles sistemas
@@ -27,10 +27,11 @@ nes priemonės turi savybes, bet jų nežada. O čia būtent žada, nes ką
 duoda, tai jau bus prie išvadų.}
 Idealiu atveju komponentinis sistemų kūrimo būdas yra veikiančios
 sistemos surinkimas iš trečiųjų šalių sukurtų dalių –
-komponentų, kurie yra tarpusavyje nepriklausomi. (Nepriklausomi ta
-prasme, kad jokio komponento veikimui nereikia jokio kito konkretaus
-komponento, tačiau jam gali reikėti komponento tenkinančio tam
-tikras savybes.) Taigi, dėl komponentų nepriklausomumo, kiekvieną iš
+komponentų, kurie yra tarpusavyje
+nepriklausomi\footnote{Nepriklausomi ta prasme, kad komponento veikimui
+nereikia jokio kito konkretaus komponento, tačiau jam gali reikėti
+komponento tenkinančio tam tikras savybes.}.
+Tokiu atveju, dėl komponentų nepriklausomumo, kiekvieną iš
 komponentų galėtų kurti atskira komanda, kas leistų sistemos kūrimu
 užsiimti palyginti didelei grupei žmonių. Taip pat, komponentinėje
 sistemoje vieną komponentą galima pakeisti kitu neperdarant visos
@@ -40,21 +41,21 @@ sistemos, kas leidžia vystyti sistemą
 komponentinis sistemų kūrimas turi dar ir tą privalumą, kad tuos
 pačius komponentus galima panaudoti keliose skirtingose sistemose, kas
 leidžia sumažinti kuriamų sistemų
-kainą\cite[6]{cs-beyond-object-oriented-programming}. Taigi,
-apibendrinant, komponentinis programavimas žada perpanaudojamumą
-\en{reusability}, modifikuojamumą \en{evolvability} ir praplečiamumą
-\en{extensibility} \cites{what-to-compose}{point-counterpoint}.
+kainą \cite[6]{cs-beyond-object-oriented-programming}. Taigi
+komponentinis programavimas žada perpanaudojamumą \en{reusability},
+modifikuojamumą \en{evolvability} ir praplečiamumą \en{extensibility}
+\cites{what-to-compose}{point-counterpoint}.
 
 Programavimo kalbos \gls{scala}{\plangname{Scala}} autoriaus \human{Martin'o
 Odersky} teigimu komponentinių technologijų plitimui trukdo
 tai, kad dabartinėse programavimo kalbose trūksta priemonių leidžiančių
-apibrėžti ir sujungti komponentus\cite{odersky:scala-experiment}.
+apibrėžti ir sujungti komponentus \cite{odersky:scala-experiment}.
 Populiariausios šiuo metu naudojamos programavimo kalbos turi galimybes
 išreikštinai nurodyti komponentų teikiamas paslaugas, bet neturi
 galimybės išreikštinai nurodyti, kokių paslaugų
 komponentui reikia. Dėl šios priežasties paslaugų naudotojai dažnai
 būna pririšami prie konkrečių paslaugų teikėjų, pavyzdžiui,
-bibliotekų\cite{scalable-component-abstractions}. Taip pat, norint
+bibliotekų \cite{scalable-component-abstractions}. Taip pat, norint
 su dabartinėmis sistemomis programuoti komponentiškai reikia
 tam naudoti specialius karkasus, dėl ko dažnai tenka rašyti
 nemažai palaikančio \en{boilerplate} kodo, arba naudoti
@@ -84,7 +85,7 @@ pridėjimas įgalina programuoti komponentiškai.
 kūrėjų teiginys, jog su \gls{scala}{\plangname{Scala}} yra įmanoma
 programuoti komponentiškai, yra teisingas.
 
-Darbo tikslo bus siekiama įgyvendinant šiuos uždavinius:
+Uždaviniai, kuriais bus siekiama darbo tikslo įgyvendinimo:
 \begin{enumerate}
   \item \label{introduction:task:object-oriented-programming}
     Apibrėžti, kas yra objektinis programavimas.
@@ -113,16 +114,17 @@ Darbo tikslo bus siekiama įgyvendinant šiuos uždavinius:
     programavimo kalbų atstovė imama \plangname{Java}.
 \end{enumerate}
 
-Darbas suskirstytas į tris skyrius: pirmajame skyriuje surinkti
+Darbas suskirstytas į tris skyrius. Pirmajame skyriuje surinkti
 įvairūs objektinio programavimo apibrėžimai bei apibrėžta kas
 yra statinis klasinis objektiškai orientuotas programavimas.
 Antrajame apibrėžta kas yra komponentas bei kas yra komponentinis
 modelis, pristatyta \cite{classification-framework-for-scm} pateikta
 komponentinių modelių klasifikacija bei trumpai palygintos
-komponentinės technologijos su paketų tvarkymo sistemomis.
-Trečiajame skyriuje pristatomos galimybės, kuriomis \plangname{Scala}
-papildė statines klasines objektines programavimo kalbas, tokias
-kaip \plangname{Java}. Tada remiantis komponento apibrėžimu patikrinama, ar
-su \plangname{Scala} iš tiesų galima programuoti komponentiškai bei
-pateikiama jos siūlomo komponentinio modelio analizė remiantis
-anksčiau pristatyta komponentinių modelių klasifikacija.
+komponentinės technologijos su \gls{package-management-system}{paketų
+tvarkymo sistemomis}. Trečiajame skyriuje pristatomos galimybės,
+kuriomis \plangname{Scala} papildė statines klasines objektines
+programavimo kalbas, tokias kaip \plangname{Java}. Tada remiantis
+komponento apibrėžimu patikrinama, ar su \plangname{Scala} iš tiesų
+galima programuoti komponentiškai bei pateikiama jos siūlomo
+komponentinio modelio analizė remiantis anksčiau pristatyta
+komponentinių modelių klasifikacija.
