@@ -49,13 +49,10 @@ Vašingtono kirvis. Taigi apibendrinant, objektai yra esybės, kurios:
   \item Sąveikauja besikeisdamos žinutėmis.
 \end{enumerate}
 
-Siekiant išskirti
-\gls{object-oriented-programming-language}{objektines programavimo
-kalbas} iš programavimo kalbų, kuriomis įmanoma programuoti
-objektiškai (pavyzdžiui, tarę, kad programavimo kalbos \plangname{Modula-2}
-modulis yra objektas, su ja galėtume programuoti objektiškai), yra
-reikalaujama, kad programavimo kalba, kurią vadiname objektine
-palaikytų objektinį programavimą kalbinėmis priemonėmis. 1987 metų
+Norint išskirti \gls{object-oriented-programming-language}{objektines
+programavimo kalbas} iš kitų programavimo kalbų, reikia nustatyti
+kokias savybes turi tenkinti programavimo kalba, kad ją galima būtų
+vadinti objektine. 1987 metų
 ACM\footnote{„Association for Computing Machinery“ yra viena didžiausių
 ir prestižiškiausių mokslinių ir mokymo bendruomenių, kurių domėjimosi
 sritis yra kompiuteriniai skaičiavimai.}
@@ -75,9 +72,18 @@ apibrėžiant naujus objektus.
 tai gali įgyvendinti panaudodamos \gls{delegation}{delegavimo} arba
 \gls{class-inheritance}{paveldėjimo}
 mechanizmus. Šis mechanizmas yra itin svarbus tuo, kad leidžia
-objektus apibrėžti palaipsniui. Taigi, \plangname{Modula-2} nėra
-objektinė programavimo kalba, nes jos modulis negali automatiškai
-„perimti“ dalies kito modulio veiksenos.
+apibrėžiant naujus objektus pasinaudoti jau egzistuojančiais
+apibrėžimais. Tam, kad atskirti objektines programavimo kalbas nuo
+kalbų, kuriomis galima programuoti objektiškai, dar reikia
+pareikalauti, kad kalbos
+\gls{object-description-sharing-mechanism}{dalinimosi mechanizmą}
+palaikytų kalbos priemonėmis. (Pavyzdžiui, su \plangname{C} yra
+įmanoma programuoti objektiškai pasinaudojant
+\progname{GObject}\footnote{%
+\url{http://developer.gnome.org/gobject/stable/}} karkasu.)
+Taigi išskirtinė objektinių programavimo kalbų savybė būtų
+\gls{object-description-sharing-mechanism}{dalinimosi mechanizmo}
+palaikymas kalbos priemonėmis.
 
 Be šios „Orlando susitarime“ nurodytos savybės, dauguma
 objektinių programavimo kalbų turi ir daugiau bendrų bruožų,
