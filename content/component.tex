@@ -3,7 +3,7 @@
 \label{chapter:component}
 
 Šiame skyriuje yra surinkti įvairių autorių pateikiami komponento
-apibrėžimai, pateikiamas komponento savybių sąrašas, pristatoma kas
+apibrėžimai, pateikiamas komponento savybių sąrašas, pristatoma, kas
 yra komponentinis modelis, nurodomi objektinio ir komponentinio
 skirtumai bei komponentinių technologijų ir paketų tvarkymo sistemų
 skirtumai.
@@ -25,7 +25,7 @@ pateiktas komponento apibrėžimas:
   gali būti naudojamas nepriklausomai bei panaudotas
   kompozicijoje trečiųjų šalių.“
 \end{quote}
-Nors apibrėžime to išreikštinai ir nėra, tačiau kaip vieną iš
+Nors apibrėžime to išreikštinai ir nėra, kaip vieną iš
 esminių komponento savybių autorius nurodo, kad komponentas yra
 nepriklausomo diegimo vienetas \en{unit of deployment}
 \cite[36]{cs-beyond-object-oriented-programming} ir netgi
@@ -42,9 +42,9 @@ apibrėžime:
   paketas, kuris:
   \begin{enumerate}
     \item Gali būti nepriklausomai kuriamas ir pristatytas.
-    \item Turi išreikštines ir gerai apibrėžtas sąsajas savo teikiamiems
-      servisams.
-    \item Turi išreikštines ir gerai apibrėžtas sąsajas servisams,
+    \item Turi išreikštines ir gerai apibrėžtas sąsajas savo teikiamoms
+      paslaugoms.
+    \item Turi išreikštines ir gerai apibrėžtas sąsajas paslaugoms,
       kurių jis tikisi iš kitų.
     \item Gali būti sujungtas su kitais komponentais, galbūt pritaikant
       kai kurias savybes \en{properties}, bet be pačių komponentų
@@ -69,13 +69,13 @@ prieiti
 \cites[387]{objects-components-and-frameworks-with-uml}%
 [36]{cs-beyond-object-oriented-programming}. Dėl tos
 pačios priežasties tam, kad galėtume komponentui leisti pasinaudoti
-jam reikiamais servisais, jie irgi turi būti išreikštinai nurodyti
+jam reikiamomis paslaugomis, jie irgi turi būti išreikštinai nurodyti
 \cites[387]{objects-components-and-frameworks-with-uml}%
 [36]{cs-beyond-object-oriented-programming}. Visos šios
 savybės leidžia komponentų kūrėjams kurti komponentus nieko
 nežinant apie komponentų naudotojus
 \cites[2]{Gill:2003:CMF:966221.966237}%
-[139]{meyer1999components}
+[139]{meyer1999components},
 kas lemia, kad sistema gali būti surinkta iš nepriklausomai sukurtų
 komponentų. Taip pat tie patys komponentai be pakeitimų gali būti
 panaudoti keliose skirtingose trečiųjų šalių sistemose
@@ -106,11 +106,11 @@ sinonimas. Kadangi komponentas yra įdiegimo vienetas, o objektas yra
 esybė egzistuojanti vykdymo metu, tai šių sąvokų net nelabai galima
 lyginti. Taigi teisingiau būtų lyginti \gls{component-instance}{%
 komponento egzempliorių} su objektu, bet čia susiduriame su problema,
-kad vykdymo metu ne visada įmanoma nurodyti kas yra komponento
+kad vykdymo metu ne visada įmanoma nurodyti, kas yra komponento
 egzempliorius (pavyzdžiui, jei komponentas yra realizuotas kaip keletas
 klasių). Tuo tarpu komponentas yra panašus į statinio klasinio objektinio
-klasę tuo, kad jis yra statinis „planas“ komponento egzemplioriaus, kaip
-kad klasė yra objekto „planas“. Be to skirtumo, kad klasė yra
+klasę tuo, kad jis yra statinis komponento egzemplioriaus „planas“, kaip
+kad klasė yra objekto „planas“. Be skirtumo, kad klasė yra
 labiau loginis, o komponentas – fizinis darinys, iš
 \ref{section:component:descriptions} skyrelyje išvardintų savybių
 klasė nepasižymi tuo, kad poreikius nurodo tik per išreikštinai
@@ -119,7 +119,7 @@ vieną svarbią ypatybę: nors dėl panašumų komponentines sistemas ir
 yra patogu modeliuoti remiantis objektinio sąvokomis, bet patys
 komponentai neprivalo būti realizuoti naudojant objektines
 technologijas. Apibendrinant, galima būtų teigti, kad objektinė
-ir komponentinė yra dviejų skirtingų lygių technologijos: su
+ir komponentinė technologijos yra dviejų skirtingų lygių: su
 objektine galima realizuoti komponentus, o su komponentine – juos
 sujungti į vieną sistemą.
 
@@ -137,8 +137,8 @@ ir tada tik gausime jo egzempliorių.}
 
 \label{section:component:model}
 
-Ankstesniame skyrelyje pateiktais komponento apibrėžimais pasakoma kas
-yra komponentas, bet nėra pasakoma kaip yra kuriami komponentai ir kaip
+Ankstesniame skyrelyje pateiktais komponento apibrėžimais pasakoma, kas
+yra komponentas, bet nėra pasakoma, kaip yra kuriami komponentai ir kaip
 iš jų sukomponuojama sistema. Šitai apibrėžia komponentinis
 modelis. \cite[37]{heineman2001component} nurodo, kad
 \begin{quote}
@@ -164,9 +164,9 @@ būti aprašoma kiekviename iš komponentinį modelį apibrėžiančių standart
     \cite[40]{heineman2001component} išskiria du pagrindinius būdus:
     unikalūs identifikatoriai ir hierarchinės vardų sritys.
   \item \emph{Meta duomenys} – informacija apie komponentus, sąsajas
-    ir jų ryšius. Taip pat komponentinio modelio teikiami servisai
+    ir jų ryšius. Taip pat komponentinio modelio teikiamos paslaugos
     šiai informacijai gauti. Šie duomenys yra reikalingi tam, kad
-    galima būtų dinamiškai sujungti komponentus, taip pat ir
+    galima būtų dinamiškai sujungti komponentus, įskaitant ir
     nutolusius.
   \item \emph{Tarpusavio sąveika} – kokiu būdu komponentai bendrauja
     ir keičiasi informacija tarpusavyje.
@@ -175,7 +175,7 @@ būti aprašoma kiekviename iš komponentinį modelį apibrėžiančių standart
   \item \emph{Kompozicija} – sąsajos ir taisyklės komponentų
     sujungimui į ansamblius, jų pakeitimui bei pridėjimui į jau
     egzistuojančius.
-  \item \emph{Evoliucijos palaikymas} – taisyklės ir servisai
+  \item \emph{Evoliucijos palaikymas} – taisyklės ir paslaugos
     komponentų ir sąsajų pakeitimui naujesnėmis versijomis.
   \item \emph{Supakavimas ir įdiegimas} – kaip turėtų būti supakuojami
     komponento realizacija bei resursai, reikalingi jo įdiegimui
@@ -183,7 +183,7 @@ būti aprašoma kiekviename iš komponentinį modelį apibrėžiančių standart
 \end{enumerate}
 
 Komponentinio programavimo nagrinėjimas akcentuojant komponentinį modelį
-turi privalumą, kad remiantis juo galima nagrinėti skirtingas
+turi privalumą: remiantis juo galima nagrinėti skirtingas
 komponentinių sistemų kūrimo metodikas bei tuo pačiu išskirti
 kiekvienos iš jų privalumus ir trūkumus.
 
@@ -212,14 +212,14 @@ suskirstė į tris sritis (dimensijas):
 
 \subsection{Gyvavimo ciklas}
 
-Nagrinėdami komponento gyvavimo ciklą autoriai išskyrė tokius
+Nagrinėdami komponento gyvavimo ciklą, autoriai išskyrė tokius
 etapus:
 \begin{enumerate}
   \item \emph{Modeliavimas} – ar komponentinis modelis suteikia
     specialias priemones komponentų bei iš jų sudarytų sistemų
     modeliavimui. Iš autorių analizuotų 24 komponentinių modelių net
     32 procentai šio komponento gyvavimo ciklo etapo nepalaiko,
-    o išlikusių didesnė dalis modeliavimui pateikia specifinės
+    o iš likusių didesnė dalis modeliavimui pateikia specifinės
     srities \en{domain-specific} modeliavimo kalbas. Autoriai
     pastebi, kad visi komponentiniai modeliai, kurie nenaudoja
     modeliavimo kalbų yra atėję iš praktikos \en{state of the
@@ -256,9 +256,9 @@ etapus:
     \end{enumerate}
     Tarp analizuotų komponentinių modelių saistymas kompiliavimo
     metu yra populiaresnis tarp specifiniai sričiai skirtų
-    komponentinių modelių, tuo tarpu tarp bendro pobūdžio
-    komponentinių modelių populiaresnis saistymas vykdymo metu.
-    Kaip galimas tokio pasiskirstymo priežastis autoriai nurodo
+    komponentinių modelių, kai tarp bendro pobūdžio
+    komponentinių modelių populiaresnis yra saistymas vykdymo metu.
+    Kaip galimas tokio pasiskirstymo priežastis, autoriai nurodo
     sistemų naudojančių saistymą kompiliavimo metu didesnį
     nuspėjamumą ir greitį bei mažesnį lankstumą.
     \FIXME{Šioje vietoje norėtųsi dar išskirti komponentų jungimą ir
@@ -287,9 +287,9 @@ Konstrukcijos sritį autoriai suskirstė į tris grupes:
         \en{port-based}, pavyzdžiui, duomenų perdavimas. Tarp nagrinėtų
         komponentinių modelių dažniausiai naudojamas yra operacijomis
         paremtas sąsajos tipas.
-      \item Atskyrimas teikiamų ir prašomų servisų. Tik keli iš
+      \item Teikiamų ir prašomų paslaugų atskyrimas. Tik keli iš
         nagrinėtų komponentinių modelių neatskiria prašomų ir
-        teikiamų servisų. Autorių teigimu visi jie yra naudojami
+        teikiamų paslaugų. Autorių teigimu visi jie yra naudojami
         praktikoje, bet yra jau senokai sukurti ir po truputi tampa
         nebenaudotinais (pavyzdžiui, \progname{MS COM}).
       \item Išskirtinių savybių buvimas.
@@ -299,8 +299,8 @@ Konstrukcijos sritį autoriai suskirstė į tris grupes:
         užtikrinama, kad sutaptų argumentų duomenų tipai ir jų
         išdėstymo tvarka), semantinis (papildo sintaksinį tuo, kad
         papildomai yra tikrinama ar argumentai turi leistinas reikšmes)
-        ir / ar veiksenos (apibrėžia kokia tvarka komponentai gali
-        sąveikauti arba nurodo kokios yra galimos komponento vidinės
+        ir (ar) veiksenos (apibrėžia, kokia tvarka komponentai gali
+        sąveikauti arba nurodo, kokios yra galimos komponento vidinės
         veiksenos reaguojant į sąveiką). Visi nagrinėti
         komponentiniai modeliai palaiko bent jau sintaksinį
         suderinamumo užtikrinimą.
@@ -411,7 +411,8 @@ tvarkymo sistema. Jos paketo savybių palyginimas su
 \ref{section:component:descriptions} skyrelyje išvardintomis
 komponento savybėmis:
 \begin{enumerate}
-  \item \emph{Yra fizinis diegimo vienetas:} taip.
+  \item \emph{Yra fizinis diegimo vienetas:} taip, programos yra
+    platinamos paketais, kurie yra įdiegiami į sistemą.
   \item \emph{Yra juoda dėžė:} taip, nes paketo turinys yra jau
     sukompiliuotas.
   \item \emph{Prie jo funkcionalumo galima prieiti tik per
@@ -464,14 +465,17 @@ kad komponentai iš kurių ji yra surenkama savo poreikius nurodytų
 tik per abstrakčias sąsajas. Kadangi ši hipotezė reikalauja itin
 plačios analizės, tai ji toliau šiame darbe nėra nagrinėjama.
 
-Apibendrinant galima būtų pastebėti, kad be formalaus skirtumo, jog
+\FIXME{Aurelijaus pastaba: \emph{Sakinių ilgis, kaip teisės aktuose -
+kol pradedi skaityti, pamiršti, kas buvo pradžioje. Norėtųsi
+suskaldyti į trumpesnius sakinius.4}}
+Apibendrinant, galima būtų pastebėti, kad be formalaus skirtumo, jog
 paketų tvarkymo sistemų paketai ne visada priklauso nuo sąsajos,
 paketų tvarkymo sistemos nuo komponentinių sistemų dar skiriasi ir
 tuo, kad jos akcentuoja ne paketų sukūrimą ir kompoziciją, o jų
 perdavimą ir įdiegimą. Kitaip tariant, nors komponentas ir yra
-diegimo vienetas, o komponentinis modelis būtinai turi nurodyti
+diegimo vienetas, o komponentinis modelis būtinai turi nurodyti,
 kokiu būdu komponentai yra sujungiami į sistemą, bet komponentinis
-modelis neprivalo nurodyti kokiu būdu komponentai yra perduodami
+modelis neprivalo nurodyti, kokiu būdu komponentai yra perduodami
 klientams, o paketų tvarkymo sistemos būtent tai ir nurodo. Kadangi
 abi technologijos siekia užtikrinti galimybę surinkti sistemą
-iš atskirų dalių, tai todėl ir atsiranda jų supanašėjimas.
+iš atskirų dalių, todėl ir atsiranda jų supanašėjimas.
