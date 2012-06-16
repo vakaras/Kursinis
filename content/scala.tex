@@ -6,12 +6,12 @@ ir išanalizuotas jos komponentinis modelis.
 
 \section{\plangname{Scala} ir \plangname{Java} skirtumai}
 
-\plangname{Scala} kūrėjų \cite[1]{scala-overview} teigimu bent iš
-dalies komponentinių technologijų evoliucijai trukdo programavimo
+\plangname{Scala} kūrėjų \cite[1]{scala-overview} komponentinių
+technologijų evoliucijai teigimu bent iš dalies trukdo programavimo
 kalbų, kurios yra naudojamos komponentų kūrimui ir jų jungimui,
 trūkumai. Dėl šios priežasties jie pabandė sukurti programavimo
 kalbą, su kuria naudojant tas pačias priemones galima būtų aprašyti
-tiek mažas tiek dideles dalis\footnote{\plangname{Scala} išsišifruoja,
+tiek mažas, tiek dideles dalis\footnote{\plangname{Scala} išsišifruoja,
 kaip \emph{scalable language}.}. \plangname{Scala} yra multiparadigminė
 programavimo kalba, derinanti objektinio ir funkcinio programavimo
 savybes:
@@ -22,7 +22,7 @@ savybes:
   \item ji yra funkcinė kalba ta prasme, kad kiekviena funkcija yra
     reikšmė \en{value}.
 \end{itemize}
-Toliau yra pristatoma kuo \plangname{Scala} pakeitė statinį, klasinį
+Toliau yra pristatoma kuo \plangname{Scala} pakeitė statinį klasinį
 objektinį programavimą, kuriam „atstovauja“ \plangname{Java}.
 \plangname{Scala}, kaip funkcinės kalbos savybės šiame darbe nėra
 nagrinėjamos.
@@ -46,9 +46,9 @@ yra abstraktūs tipai. Abu mechanizmai yra pakeičiami vienas kitu:
 \cite[10]{scala-overview} pateiktas pavyzdys, kaip parametrizuojamuosius
 tipus galima būtų modeliuoti pasinaudojant abstrakčiais tipais, taip
 pat nurodoma, kad yra įmanomas ir atvirkštinis variantas.
-\plangname{Scala} kūrėjų \cite[11]{scala-overview} nurodytos
-priežastys kalboje realizuoti abu mechanizmus yra skirtingi jų
-panaudojimo atvejai: parametrizuojamus tipus yra siūloma naudoti kai
+\plangname{Scala} kūrėjai \cite[11]{scala-overview}, kaip 
+priežastys kalboje realizuoti abu mechanizmus nurodė skirtingus jų
+panaudojimo atvejus: parametrizuojamus tipus yra siūloma naudoti, kai
 norime tiesiog galimybės klasės naudotojui nurodyti konkretų tipą
 (tipinis pavyzdys būtų kolekcijos, kurių panaudojimas pademonstruotas
 \ref{lst:scala:abstract:members:4} \plangname{Scala} sesijos
@@ -64,6 +64,9 @@ yra pirmoji programavimo kalba, kurioje realizuoti jie visi
 \cite[2]{scalable-component-abstractions}.} – moduline maišos
 kompozicija.
 
+\FIXME{Aurelijaus pastaba: \emph{Gnerics suprantu, bet members ne.
+Reikia pavyzdžio. Geriausia kodas + UML ar pan.4}}
+
 % \label{lst:scala:abstract:members:4}
 
 Modulinė maišos kompozicija, tai klasių kūrimo mechanizmas
@@ -78,7 +81,8 @@ to, kad kompiliavimo metu paveldėjimo grafas yra ištiesinamas, neturi
 taip vadinamos rombo problemos.
 
 Klasių hierarchijos pakeitimas į fragmentų hierarchiją, net ir
-nesinaudojant komponentinio galimybėmis, turi privalumą, kad
+nesinaudojant \plangname{Scala}, kaip komponentinės technologijos,
+galimybėmis, turi privalumą –
 gauta sistema yra lengviau modifikuojama. Komponuojant klasę iš
 fragmentų yra įmanoma „įlįsti“ į fragmentų hierarchijos vidų
 ir ten atlikti pakeitimus, ko negalima padaryti su klasių hierarchija,
@@ -155,7 +159,7 @@ objekto tipas turi priklausyti nuo išorinės klasės.
 
 \section{Scala komponentinis modelis}
 
-\cite[37]{heineman2001component} komponentinį modelį apibrėžė kaip
+\cite[37]{heineman2001component} komponentinį modelį apibrėžė, kaip
 standartų rinkinį. Žemiau paaiškinta, kaip \plangname{Scala}
 komponentinis modelis realizuoja kiekvieną iš jų (kas aprašoma
 standartuose trumpai paaiškinta \ref{section:component:model}
@@ -194,7 +198,7 @@ skyrelyje):
     vienoje sistemoje.
 \end{enumerate}
 
-\plangname{Scala} komponentinis modelis neapibrėžia kaip turėtų būti
+\plangname{Scala} komponentinis modelis neapibrėžia, kaip turėtų būti
 supakuojami komponentai platinimui ir įdiegimui. Kadangi viena iš
 esminių komponento savybių yra tai, kad jis yra fizinis
 diegimo vienetas, tai galima būtų teigti, kad \plangname{Scala}
@@ -247,9 +251,9 @@ klasifikacija.
     ciklo dalį. \plangname{Scala} komponentinis modelis iš kitų
     bendro pobūdžio komponentinių modelių išsiskiria tuo, kad
     komponentų realizavimui jis pateikia ne tik taisykles, bet ir
-    kalbos konstrukcijas. (Skirtingai, pavyzdžiui, nuo \progname{EJB}
+    kalbos konstrukcijas. Skirtingai, pavyzdžiui, nuo \progname{EJB}
     ar \progname{OSGi}, kurie tik apriboja programavimo su
-    \plangname{Java} būdus.)
+    \plangname{Java} būdus.
   \item \emph{Supakavimas.}
     Šios stadijos \plangname{Scala} komponentinis modelis nepalaiko.
   \item \emph{Įdiegimas.}
@@ -295,14 +299,19 @@ klasifikacija.
   \item \emph{Tvarkymas.}
     \plangname{Scala} komponentinis modelis nepateikia jokio
     palaikymo ekstra-funkcinių savybių tvarkymui, tuo turi
-    pasirūpinti komponentų kūrėjai. (Metodas būtų \emph{vidinis
-    per sąveiką}.)
+    pasirūpinti komponentų kūrėjai. Metodas būtų \emph{vidinis
+    per sąveiką}.
   \item \emph{Kompozicija.}
     \plangname{Scala} komponentinis modelis ekstra-funkcinių savybių
     kompozicijos nepalaiko.
 \end{enumerate}
 
 \subsection{Išskirtinumai}
+
+\FIXME{Aurelijaus pastaba: \emph{Išvadose labai norėtųsi viso to
+kasifikavimo ir palyginimo su Scala „kas iš to“ ir apibendirnimo.
+Nes 2.4 ir 3.34 daugiausia DI paskaitos tipo skaitymo ir mažiausiai
+suvoktos inforamcijos.}}
 
 Iš kitų \cite{classification-framework-for-scm} nagrinėtų komponentinių
 modelių \plangname{Scala} komponentinis išsiskiria tuo, kad
@@ -316,7 +325,7 @@ naudotis automobiliu nieko nežinant apie jo variklį. Tuo tarpu
 modeliuojant su komponentiniu modeliu, kuris palaiko tik horizontalų
 jungimą, komponentai variklis ir automobilis būtų atskirai, todėl
 kiekvieną kartą kažką darant su automobiliu, reikėtų nepamiršti
-ir jo variklio. Kitaip tariant \plangname{Scala} komponentais, kurie
+ir jo variklio. Kitaip tariant, \plangname{Scala} komponentais, kurie
 yra ansambliai, yra žymiai paprasčiau naudotis, nei kitų modelių
 ansambliais, kurie yra tiesiog komponentų rinkiniai. Pavyzdžiui,
 nors \plangname{Scala} kompiliatorius yra ansamblis sukomponuotas
@@ -330,7 +339,7 @@ tai norint juos pakeisti gali reikėti išardyti ansamblį.
 
 % \label{lst:scala:compiler:1}
 
-Be to, kad palaiko vertikalią kompoziciją \plangname{Scala}
+Be to, kad palaiko vertikalią kompoziciją, \plangname{Scala}
 komponentinis modelis išsiskiria dar ir tuo, jog yra realizuotas, kaip
 programavimo kalba. Kitaip tariant, \plangname{Scala} yra bandymas
 apjungti du komponentinių sistemų kūrimo lygius (komponentų kūrimo
@@ -347,7 +356,7 @@ ir jų tvarkymo) į vieną. Su tuo yra susiję keletas svarbių pastebėjimų:
     komponentas yra fragmentas, o tai yra mažesnis darinys už klasę.
   \item Kuriant sistemą su \plangname{Scala}, yra vartojamos tos
     pačios sąvokos (objektas, fragmentas, klasė, modulinė maišos
-    kompozicija ir t.t.), nepriklausomai nuo to kokio dydžio
+    kompozicija ir t.t.), nepriklausomai nuo to, kokio dydžio
     sistema yra kuriama.
   \item \cite[36]{heineman2001component} teigimu komponentų vardai
     negali būti naudojami, kaip tipų vardai. Tam gali būti naudojami
@@ -370,7 +379,7 @@ ir jų tvarkymo) į vieną. Su tuo yra susiję keletas svarbių pastebėjimų:
     \progname{OSGi}, \progname{EJB}). Tai leidžia apeiti kai kuriuos
     \plangname{Scala} komponentinio modelio trūkumus: pavyzdžiui,
     jis nesuteikia priemonių leidžiančių realizuoti sistemas, kurių
-    komponentai „gyventų“ skirtingose fizinėse mašinose.
+    komponentai būtų skirtingose fizinėse mašinose.
 \end{enumerate}
 
 Apibendrinant galima būtų teigti, kad \plangname{Scala} komponentinio
