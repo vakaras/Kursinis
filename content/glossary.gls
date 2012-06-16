@@ -226,6 +226,8 @@
             programavimo kalbose} tai gali būti realizuota, kaip
             \gls{delegation}{delegavimas} arba
             \gls{class-inheritance}{klasių paveldėjimas}.
+            \cite{Lieberman:1987:TO:62139.62144} jį nurodė, kaip
+            esminę objektinių programavimo kalbų savybę.
             ''',
     },
     {
