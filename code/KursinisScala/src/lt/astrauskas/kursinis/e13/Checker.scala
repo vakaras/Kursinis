@@ -3,13 +3,38 @@ package lt.astrauskas.kursinis.e13
 
 trait Checker extends SourceFile {
   def compare(expected: String, got: String): Boolean = {
-    if (expected.length() != got.length()) {
+    val expectedLines = expected.split("\n")
+    val gotLines = got.split("\n")
+    if (expectedLines.length != gotLines.length) {
       return false
     }
     else {
-      for ((e, g) <- expected.zip(got)) {
-        if ((e != '?') && (e != g)) {
-          return false
+      for ((expectedLine, gotLine) <- expectedLines.zip(gotLines)) {
+        if ((expectedLine.endsWith("..."))) {
+          val checkedLength = expectedLine.length() - 3
+          if (checkedLength > gotLine.length()) {
+            return false
+          }
+          else {
+            for (i <- 0.to(checkedLength-1)) {
+              if ((expectedLine(i) != '?') &&
+                  (expectedLine(i) != gotLine(i))) {
+                return false
+              }
+            }
+          }
+        }
+        else {
+          if (expectedLine.length() != gotLine.length()) {
+            return false
+          }
+          else {
+            for ((e, g) <- expectedLine.zip(gotLine)) {
+              if ((e != '?') && (e != g)) {
+                return false
+              }
+            }
+          }
         }
       }
       return true
@@ -24,10 +49,10 @@ trait Checker extends SourceFile {
     }
     else {
       log("FAIL.")
-      log("----------Expected-----------")
-      log(fixExpected(expectedOutput))
       log("------Original expected------")
       log(expectedOutput)
+      log("----------Expected-----------")
+      log(fixExpected(expectedOutput))
       log("-----------Got---------------")
       log(output)
       log("-----------------------------")
