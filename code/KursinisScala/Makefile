@@ -25,3 +25,6 @@ e13: ${SRCFILES_e13}
 	scalac -unchecked -deprecation -d $(DESTDIR) $(SRCFILES_e13)
 	scala -cp bin lt.astrauskas.kursinis.e13.Demo \
 		src/lt/astrauskas/kursinis/e13/data.exmp
+
+interactive:
+	scala -cp bin
