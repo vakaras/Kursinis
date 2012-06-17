@@ -53,8 +53,14 @@ norime tiesiog galimybės klasės naudotojui nurodyti konkretų tipą
 (tipinis pavyzdys būtų kolekcijos, kurių panaudojimas pademonstruotas
 \ref{lst:scala:abstract:members:4} \plangname{Scala} sesijos
 pavyzdyje\footnote{Kodo pavyzdžiai pateikti priede.}), o abstrakčius
-tipus tada, kai norime kliento kode
-pasinaudoti abstrakčiu tipu. Pastaroji galimybė yra dažniausiai
+tipus tada, kai norime kliento kode pasinaudoti abstrakčiu tipu.
+\ref{lst:scala:abstract:members:5} \plangname{Scala} kodo pavyzdyje,
+6-oje eilutėje, parodytas abstraktaus tipo apibrėžimas, o 10-oje
+– jo sukonkretinimas, nurodant konkretų tipą \scala{Element}.
+\ref{lst:scala:abstract:members:6} \plangname{Scala} sesijos pavyzdyje,
+6 eilutėje, parodyta, kad kintamojo tipą kliento kode galima
+nurodyti pasinaudojant abstrakčiuoju tipu – nariu. Pastaroji
+galimybė yra dažniausiai
 naudojama su kita \plangname{Scala} „naujove“\footnote{
 Visi trys programavimo kalbos elementai, kurie \plangname{Scala}
 kūrėjų teigimu yra reikalingi komponentų kūrimui, (abstraktūs
@@ -64,10 +70,9 @@ yra pirmoji programavimo kalba, kurioje realizuoti jie visi
 \cite[2]{scalable-component-abstractions}.} – moduline maišos
 kompozicija.
 
-\FIXME{Aurelijaus pastaba: \emph{Gnerics suprantu, bet members ne.
-Reikia pavyzdžio. Geriausia kodas + UML ar pan.4}}
-
 % \label{lst:scala:abstract:members:4}
+% \label{lst:scala:abstract:members:5}
+% \label{lst:scala:abstract:members:6}
 
 Modulinė maišos kompozicija, tai klasių kūrimo mechanizmas
 pasinaudojant \gls{trait}{fragmentų} \en{trait} komponavimu.
