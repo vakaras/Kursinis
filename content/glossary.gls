@@ -80,7 +80,7 @@
             'en': 'selftype annotation',
             },
         'short': r'''
-            Scala konstrukcija leidžianti specialiajam
+            Scala konstrukcija, leidžianti specialiajam
             kintamajam this priskirti kitą tipą.
             ''',
         'long': r'''
@@ -95,7 +95,7 @@
             'en': 'modular mixin composition',
             },
         'short': r'''
-            Komponentų jungimo būdas realizuotas programavimo kalboje
+            Komponentų jungimo būdas, realizuotas programavimo kalboje
             Scala.
             ''',
         'long': r'''
@@ -130,14 +130,14 @@
         'short': r'''
             Programavimo kalba, kurioje tipų patikrinimas yra
             atliekamas vykdymo metu. Kalbose, kurios naudoja dinaminį
-            tipų tikrinimą, tipus turi turi reikšmės, o ne
+            tipų tikrinimą, tipus turi reikšmės, o ne
             kintamieji.
             ''',
         'long': r'''
             Programavimo kalba, kurioje tipų patikrinimas yra
             atliekamas vykdymo metu
             \cite[2]{Madsen:1990:STO:97946.97964}. Kalbose, kurios
-            naudoja dinaminį tipų tikrinimą, tipus turi turi
+            naudoja dinaminį tipų tikrinimą, tipus turi
             reikšmės, o ne kintamieji.
             ''',
     },
@@ -210,11 +210,11 @@
     {
         'id': 'object-description-sharing-mechanism',
         'lang': {
-            'lt': 'objekto aprašymo dalinimosi mechanizmas',
+            'lt': 'objekto apibrėžimo dalinimosi mechanizmas',
             'en': 'object description sharing mechanism',
             },
         'short': r'''
-            Mechanizmas leidžiantis egzistuojančių objektų
+            Mechanizmas, leidžiantis egzistuojančių objektų
             apibrėžimus panaudoti apibrėžiant naujus objektus.
             Objektinėse programavimo kalbose tai gali būti realizuota, kaip
             delegavimas arba klasių paveldėjimas.
@@ -226,7 +226,7 @@
             programavimo kalbose} tai gali būti realizuota, kaip
             \gls{delegation}{delegavimas} arba
             \gls{class-inheritance}{klasių paveldėjimas}.
-            \cite{Lieberman:1987:TO:62139.62144} jį nurodė, kaip
+            \cite{Lieberman:1987:TO:62139.62144} jį nurodė kaip
             esminę objektinių programavimo kalbų savybę.
             ''',
     },
@@ -283,14 +283,14 @@
             Tipizacijos stiprumas yra tai, kokį kiekį informacijos
             turi konkrečios išraiškos tipas. Idealiu atveju stipriai
             tipizuotoje kalboje iš nuorodos į objektą tipo visada
-            galima pasakyti kokias žinutes galima siųsti tam
+            galima pasakyti, kokias žinutes galima siųsti tam
             objektui.
             ''',
         'long': r'''
             Tipizacijos stiprumas yra tai, kokį kiekį informacijos
             turi konkrečios išraiškos tipas. Idealiu atveju stipriai
             tipizuotoje kalboje iš nuorodos į objektą tipo visada
-            galima pasakyti kokias žinutes galima siųsti tam
+            galima pasakyti, kokias žinutes galima siųsti tam
             objektui. \cite[1]{Madsen:1990:STO:97946.97964}
             ''',
     },
@@ -304,13 +304,13 @@
         'short': r'''
             Tipizacijos stiprumas yra tai, kokį kiekį informacijos
             turi konkrečios išraiškos tipas. Silpnai tipizuotoje
-            kalboje neįmanoma nustatyti kokias žinutes galima siųsti
+            kalboje neįmanoma nustatyti, kokias žinutes galima siųsti
             objektui iš nuorodos į jį tipo.
             ''',
         'long': r'''
             Tipizacijos stiprumas yra tai, kokį kiekį informacijos
             turi konkrečios išraiškos tipas. Silpnai tipizuotoje
-            kalboje neįmanoma nustatyti kokias žinutes galima siųsti
+            kalboje neįmanoma nustatyti, kokias žinutes galima siųsti
             objektui iš nuorodos į jį
             tipo. \cite[1]{Madsen:1990:STO:97946.97964}
             ''',
@@ -395,7 +395,7 @@
             },
         'long': r'''
             Komponento inicializacijos rezultatas. Vertėtų atkreipti
-            dėmesį, kad komponento įdiegimas tai yra procedūra, po
+            dėmesį, kad komponento įdiegimas yra procedūra, po
             kurios pats komponentas tampa pasiekiamas sistemoje. Tai
             nėra jo inicializavimas.
             ''',
@@ -407,10 +407,10 @@
             'en': 'extra-functional properties',
             },
         'long': r'''
-            Tai yra ne funkcinės sistemos savybės, tokios kaip
+            Tai yra nefunkcinės sistemos savybės, tokios kaip
             patikimumas, užduočių įvykdymo greitis, sunaudojamas
             resursų kiekis, apkrovos paskirstymas, autentifikacija ir
-            t.t.
+            t. t.
             ''',
     },
     {
@@ -526,13 +526,13 @@
             'en': 'nested class, static inner class',
             },
         'short': r'''
-            Java kalboje, tai klasė apibrėžta kitos klasės viduje,
+            Java kalboje tai klasė, apibrėžta kitos klasės viduje,
             bet kurios objekto sukūrimui nėra būtinas gaubiančiosios
             klasės objektas. Ji apibrėžiama su static konstrukcija.
             Scala neturi įdėtinių klasių.
             ''',
         'long': r'''
-            Java kalboje, tai klasė apibrėžta kitos klasės viduje,
+            Java kalboje tai klasė, apibrėžta kitos klasės viduje,
             bet kurios objekto sukūrimui nėra būtinas gaubiančiosios
             klasės objektas. Ji apibrėžiama su \varname{static}
             konstrukcija. Scala neturi įdėtinių klasių.
@@ -545,7 +545,7 @@
             'en': 'inner class',
             },
         'long': r'''
-            Java kalboje, tai klasė apibrėžta kitos klasės viduje.
+            Java kalboje tai klasė, apibrėžta kitos klasės viduje.
             Jos objekto sukūrimui yra būtinas gaubiančiosios klasės
             objektas.  Scala kalboje visos klasės apibrėžtos kitų
             klasių viduje yra vidinės klasės.
@@ -559,13 +559,13 @@
             },
         'short': r'''
             Objekto tapatybė yra tai, kas leidžia jį išskirti iš kitų,
-            nepriklausomai nuo to kokius pokyčius patiria pats objektas.
+            nepriklausomai nuo to, kokius pokyčius patiria pats objektas.
             ''',
         'long': r'''
             Objekto tapatybė yra tai, kas leidžia jį išskirti iš kitų,
-            nepriklausomai nuo to kokius pokyčius patiria pats objektas.
-            \cite[37]{cs-beyond-object-oriented-programming} aiškindamas
-            kas yra objekto tapatybė kaip pavyzdį pateikia istoriją
+            nepriklausomai nuo to, kokius pokyčius patiria pats objektas.
+            \cite[37]{cs-beyond-object-oriented-programming} aiškindamas,
+            kas yra objekto tapatybė, kaip pavyzdį pateikia istoriją
             apie Džordžo Vašingtono kirvį, kuris turėjo penkis
             naujus kotus ir keturias galvas, bet vis tiek visą laiką
             išsaugojo tą pačią tapatybę – buvo Džordžo Vašingtono

@@ -25,7 +25,7 @@ sistemos surinkimas iš trečiųjų šalių sukurtų dalių –
 komponentų, kurie yra tarpusavyje
 nepriklausomi\footnote{Nepriklausomi ta prasme, kad komponento veikimui
 nereikia jokio kito konkretaus komponento, tačiau jam gali reikėti
-komponento tenkinančio tam tikras savybes.}.
+komponento, tenkinančio tam tikras savybes.}.
 Tokiu atveju, dėl komponentų nepriklausomumo, kiekvieną iš
 komponentų galėtų kurti atskira komanda, kas leistų sistemos kūrimu
 užsiimti palyginti didelei grupei žmonių. Taip pat, komponentinėje
@@ -76,7 +76,7 @@ kalbą papildydami naujomis savybėmis
 Jų teigimu \cite[1]{scalable-component-abstractions} šių trijų savybių
 pridėjimas įgalina programuoti komponentiškai.
 
-Šio darbo tikslas yra patikrinti ar šis \gls{scala}{\plangname{Scala}}
+Šio darbo tikslas yra patikrinti, ar šis \gls{scala}{\plangname{Scala}}
 kūrėjų teiginys, jog su \gls{scala}{\plangname{Scala}} yra įmanoma
 programuoti komponentiškai, yra teisingas.
 
@@ -86,19 +86,19 @@ Uždaviniai, kuriais bus siekiama darbo tikslo įgyvendinimo:
     Apibrėžti, kas yra objektinis programavimas.
   \item Išsiaiškinti, kas yra komponentinis programavimas, kokios
     yra jį išskiriančios (privalomosios) savybės.
-  \item Pagal išskirtąsias savybes patikrinti ar su
+  \item Pagal išskirtąsias savybes patikrinti, ar su
     \gls{scala}{\plangname{Scala}} galima programuoti komponentiškai.
   \item Jei su \gls{scala}{\plangname{Scala}} yra įmanoma programuoti
-    komponentiškai, tai išsiaiškinti kokie yra
+    komponentiškai, tai išsiaiškinti, kokie yra
     \gls{scala}{\plangname{Scala}} komponentinės technologijos
     privalumai lyginant su kitomis komponentinėmis technologijomis.
 \end{enumerate}
 \emph{Pastabos:}
 \begin{enumerate}
   \item \ref{introduction:task:object-oriented-programming}
-    uždavinio rezultatas yra svarbus norint pilnai suvokti kaip būtent
+    uždavinio rezultatas yra svarbus norint pilnai suvokti, kaip būtent
     \gls{scala}{\plangname{Scala}} autoriai pakeitė objektinį programavimo
-    modelį, kad iš jo gautų komponentinį, bei siekiant suprasti kuo
+    modelį, kad iš jo gautų komponentinį, bei siekiant suprasti, kuo
     susijęs objektinis su komponentiniu.
   \item Kadangi \gls{scala}{\plangname{Scala}} yra susijusi su
     \plangname{Java} (iš \gls{scala}{\plangname{Scala}} kodo galima
@@ -110,16 +110,16 @@ Uždaviniai, kuriais bus siekiama darbo tikslo įgyvendinimo:
 \end{enumerate}
 
 Darbas suskirstytas į tris skyrius. Pirmajame skyriuje surinkti
-įvairūs objektinio programavimo apibrėžimai bei apibrėžta kas
+įvairūs objektinio programavimo apibrėžimai bei apibrėžta, kas
 yra statinis klasinis objektiškai orientuotas programavimas.
-Antrajame apibrėžta kas yra komponentas bei kas yra komponentinis
+Antrajame apibrėžta, kas yra komponentas bei kas yra komponentinis
 modelis, pristatyta \cite{classification-framework-for-scm} pateikta
 komponentinių modelių klasifikacija bei trumpai palygintos
 komponentinės technologijos su \gls{package-management-system}{paketų
 tvarkymo sistemomis}. Trečiajame skyriuje pristatomos galimybės,
 kuriomis \plangname{Scala} papildė statines klasines objektines
-programavimo kalbas, tokias kaip \plangname{Java}. Tada remiantis
-komponento apibrėžimu patikrinama, ar su \plangname{Scala} iš tiesų
+programavimo kalbas, tokias kaip \plangname{Java}. Tada, remiantis
+komponento apibrėžimu, patikrinama, ar su \plangname{Scala} iš tiesų
 galima programuoti komponentiškai bei pateikiama jos siūlomo
 komponentinio modelio analizė remiantis anksčiau pristatyta
 komponentinių modelių klasifikacija.
