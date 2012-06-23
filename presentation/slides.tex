@@ -1,0 +1,67 @@
+\documentclass[xetex,mathserif,serif]{beamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FONT                                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fontspec}
+\newfontfamily\sss{Palemonas}
+\setmainfont{Palemonas}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TRANSLATIONS                                                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[lithuanian]{babel}
+\usepackage{csquotes}
+
+\DeclareQuoteStyle{lithuanian}{„}{“}{„}{“}
+
+\addto\captionslithuanian{\renewcommand{\bibname}{Šaltiniai}}
+\addto\captionslithuanian{\renewcommand{\refname}{Šaltiniai}}
+\addto\captionslithuanian{\renewcommand{\abstractname}{Anotacija}}
+\addto\captionslithuanian{\renewcommand{\proofname}{Įrodymas}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Komponentinis programavimas su Scala}
+\subtitle{Component-based programming with Scala}
+\author{Vytautas Astrauskas}
+\institute{
+Vilniaus universitetas\\
+Matematikos ir informatikos fakultetas\\
+Programų sistemų katedra%
+}
+\date{\today}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Turinys}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+  \frame{\titlepage}
+
+  \begin{frame}
+  \frametitle{Turinys}
+  \tableofcontents[currentsection]
+  \end{frame}
+
+  \section{Komponentinis}
+  \begin{frame}
+    \frametitle{Čia yra pirma skaidrė}
+    %Content goes here
+  \end{frame}
+
+  \section{Scala}
+  \begin{frame}
+    \frametitle{Čia yra antra skaidrė.}
+    \framesubtitle{Čia daugiau info.}
+    %More content goes here
+  \end{frame}
+
+\end{document}
