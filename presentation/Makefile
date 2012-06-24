@@ -3,6 +3,7 @@ DOC_VERSION_TIME=$(shell git log -1 --pretty=format:"%ai")
 XELATEX_JOB_NAME=slides
 XELATEX_OUTPUT_DIR=dist
 MAIN_FILE=slides.tex
+TEX_FILES=$(wildcard *.tex)
 XELATEX_ARGS=-shell-escape \
 						 -output-directory=${XELATEX_OUTPUT_DIR} \
 						 -jobname=${XELATEX_JOB_NAME} \
@@ -11,7 +12,7 @@ XELATEX_COMMAND=xelatex ${XELATEX_ARGS}
 
 all: prepare dist/slides.pdf
 
-dist/slides.pdf: ${MAIN_FILE}
+dist/slides.pdf: ${TEX_FILES}
 	echo ${TEXINPUTS}
 	$(XELATEX_COMMAND)
 
