@@ -5,8 +5,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{fontspec}
-\newfontfamily\sss{Palemonas}
-\setmainfont{Palemonas}
+%\newfontfamily\sss{Palemonas}
+%\setmainfont{Palemonas}
+\newfontfamily\sss{Ubuntu}
+\setmainfont{Ubuntu}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TRANSLATIONS                                                             %
@@ -23,6 +25,16 @@
 \addto\captionslithuanian{\renewcommand{\proofname}{Įrodymas}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UTILS                                                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{environ}
+
+\NewEnviron{comment}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetheme{default}
 
 \title{Komponentinis programavimas su Scala}
 \subtitle{Component-based programming with Scala}
@@ -48,20 +60,9 @@ Programų sistemų katedra%
 
   \begin{frame}
   \frametitle{Turinys}
-  \tableofcontents[currentsection]
+  \tableofcontents[hideallsubsections]
   \end{frame}
 
-  \section{Komponentinis}
-  \begin{frame}
-    \frametitle{Čia yra pirma skaidrė}
-    %Content goes here
-  \end{frame}
-
-  \section{Scala}
-  \begin{frame}
-    \frametitle{Čia yra antra skaidrė.}
-    \framesubtitle{Čia daugiau info.}
-    %More content goes here
-  \end{frame}
+  \input{content.tex}
 
 \end{document}

@@ -1,0 +1,181 @@
+\begin{comment}
+  \begin{enumerate}
+    \item Tematika (svarbiausių tematikos sąvokų apibrėžimai,
+      įvadas į tematiką) - 1 skaidrė
+    \item Problemos/uždavinio formulavimas (iš to turi išplaukti
+      pagrindinė darbo tema) - 1 skaidrė
+    \item Darbo tikslo formulavimas (jei sutampa su problemos
+      formulavimu, tai kartoti nereikia) - 1 skaidrė
+    \item Darbo planas (kaip pasieksite tikslą) - čia surašote
+      punktus, kuriais buvo/bus pasiektas darbo tikslas - 1 skaidrė
+    \item Temos gynimui (magistrantams): svarbiausios sąvokos
+      (apibrėžimai, jei ilgi, neturi būti rašomi - turi būti sakomi
+      žodžiu) - 2-3 skaidrės
+    \item Darbo gynimui (bakalaurams, magistrantams): darbo metu
+      iškilusios problemos, esminiai priimti sprendimai, kas buvo
+      padaryta jūsų pačių ("susipažinau", "sukonspektavau",
+      "išsiaiškinau", "išmokau" tinka tik kursiniams darbams!) - 3-6
+      skaidrės
+    \item (Laukiami) rezultatai - sąrašo pavidalu, ne daugiau trijų.
+      "Susipažinau", "sukonspektavau", "išsiaiškinau", "išmokau" tinka
+      tik kursiniams darbams! - 1 skaidrė
+    \item Išvados - sąrašo pavidalu, ne daugiau trijų (temos gynime
+      nereikia) - 1 skaidrė. Nebandykite rezultatų, pastebėjimų,
+      komentarų, nuomonių apiforminti kaip išvadų!
+  \end{enumerate}
+\end{comment}
+
+\begin{frame}
+  \frametitle{Tematika}
+  Komponentinis programavimas – tai programų sistemų kūrimo būdas,
+  surenkant jas iš atskirų dalių (komponentų). Jo žadamos savybės:
+  \begin{enumerate}
+    \item Modifikuojamumas.
+    \item Praplečiamumas.
+    \item Perpanaudojamumas.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Problema}
+  Martinas Odersky:
+  \begin{enumerate}
+    \item Komponentinių technologijų plitimas stringa.
+    \item Priežastis yra dabartinių programavimo kalbų trūkumai.
+    \item Scala – kalba, su kuria galima programuoti komponentiškai.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Darbo tikslas}
+  Patikrinti ar Scala kūrėjų teiginys, jog su Scala yra įmanoma
+  programuoti komponentiškai, yra teisingas.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Uždaviniai}
+  \begin{enumerate}
+    \item Apibrėžti, kas yra objektinis programavimas.
+    \item Išsiaiškinti, kas yra komponentinis programavimas.
+    \item Patikrinti, ar su Scala galima programuoti komponentiškai.
+    \item Nustatyti Scala, kaip komponentinės technologijos, privalumus.
+  \end{enumerate}
+\end{frame}
+
+TODO: Komponento savybės.
+TODO: Komponentinis modelis.
+TODO: Debian komponentinis modelis.
+TODO: Scala komponentinis modelis.
+TODO: Scala komponentinio išskirtinumai.
+
+\begin{frame}
+  \frametitle{Rezultatai}
+  \begin{enumerate}
+    \item Išskirtos esminės komponento savybės.
+    \item Parodyta, kad Scala programavimo kalba ir Debian paketų
+      tvarkymo sistema yra komponentinės technologijos.
+    \item Nustatyta, kad pagrindinis Scala komponentinio modelio
+      privalumas yra jo paprastumas.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Išvados}
+  \begin{enumerate}
+    \item Praplečiamumas ir modifikuojamumas: Scala.
+    \item Perpanaudojamumas: Debian.
+    \item Visos trys(?):
+      \begin{enumerate}
+        \item Visų komponento savybių realizavimas be išimčių.
+        \item Platinimo mechanizmo apibrėžimas.
+      \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Klausimai?}
+\end{frame}
+
+\section{Probleminė situacija}
+
+% Apie ką ir kodėl kalbame.
+
+\begin{frame}
+  \frametitle{Probleminė situacija}
+  %\framesubtitle{TODO}
+  Dėl poreikio kurti vis didesnes verslo palaikymo sistemas yra
+  reikalingos priemonės, kurios:
+  \begin{enumerate}
+    \item Leistų kurti dideles sistemas evoliuciniu būdu.
+    \item Leistu darbus efektyviai paskirstyti didelei grupei
+      žmonių.
+  \end{enumerate}
+  \begin{comment}
+    Kadangi verslo palaikymo sistemos perima vis daugiau verslo
+    funkcijų, tai jos tampa vis didesnės ir todėl didėja poreikis
+    turėti priemones, kurios:
+    \begin{enumerate}
+      \item Leistų kurti dideles sistemas evoliuciniu būdu, kas
+        idealiu atveju būtų, kad papildant sistemą naujomis funkcijomis
+        nereikia lįsti prie jau esamų realizacijos.
+      \item Leistų sistemų kūrimo darbus efektyviai paskirstyti didelei
+        grupei žmonių.
+    \end{enumerate}
+  \end{comment}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Komponentinis}
+  \begin{enumerate}
+    \item Modifikuojamumas.
+    \item Praplečiamumas.
+    \item Perpanaudojamumas.
+  \end{enumerate}
+  \begin{comment}
+    Clemens Szyperski bei keleto kitų autorių teigimu sistemas kuriant
+    komponentiškai, jos būtų lengviau modifikuojamos ir praplečiamos
+    bei dėl to, kad komponentus nekeičiant galima naudoti keliose
+    sistemose, didėja perpanaudojamumas.
+  \end{comment}
+\end{frame}
+
+\begin{frame}
+  %\frametitle{Scala}
+  Martinas Odersky:
+  \begin{enumerate}
+    \item Komponentinių technologijų plitimas stringa.
+    \item Priežastis yra dabartinių programavimo kalbų trūkumai.
+    \item Scala – kalba, su kuria galima programuoti komponentiškai.
+  \end{enumerate}
+  \begin{comment}
+    Martino Odersky teigimu komponentinių technologijų plitimas stringa,
+    nes dabartinėse programavimo kalbose nėra realizuotos priemonės
+    leidžiančios apibrėžti ir sujungti komponentus. Jo siūlomas
+    sprendimas: programavimo kalba Scala, su kuria galima programuoti
+    komponentiškai.
+  \end{comment}
+\end{frame}
+
+\section{Darbo tikslas}
+
+% Ko buvo siekta atliekant darbą.
+
+\begin{frame}
+  \frametitle{Tikslas}
+  Patikrinti ar Scala kūrėjų teiginys, jog su Scala yra įmanoma
+  programuoti komponentiškai, yra teisingas.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Uždaviniai}
+  \begin{enumerate}
+    \item Apibrėžti, kas yra objektinis programavimas.
+    \item Išsiaiškinti, kas yra komponentinis programavimas.
+    \item Patikrinti, ar su Scala galima programuoti komponentiškai.
+    \item 
+  \end{enumerate}<++>
+\end{frame}<++>
+
+\section{Darbo rezultatai}
+
+\section{Darbo išvados}
