@@ -23,10 +23,33 @@
       nereikia) - 1 skaidrė. Nebandykite rezultatų, pastebėjimų,
       komentarų, nuomonių apiforminti kaip išvadų!
   \end{enumerate}
+
+  Pristatymo tikslas: supažindinti komisiją su darbu.
+  1.  Darbo tikslas ir uždaviniai – planas.
+  2.  Kas buvo padaryta – realizacija.
+  3.  Rezultatai ir išvados.
+
+  1.  Ko siekta.
+  2.  Kaip siekta.
+  3.  Kas pasiekta.
 \end{comment}
 
+\begin{handout}
+  Laba diena, aš esu Programų sistemų 3 kurso 2 grupės studentas
+  Vytautas Astrauskas. Dabar pristatysiu savo kursinį darbą, kurio
+  tema yra „Komponentinis programavimas su Scala“.
+\end{handout}
+
+\begin{handout}
+  Iš pradžių aš pristatysiu ko siekiau savo darbe, tada paminėsiu,
+  mano nuomone, esminius elementus iš to kaip siekiau ir galiausiai
+  ką man pavyko pasiekti.
+\end{handout}
+
+\section{Ko siekta}
+
 \begin{frame}
-  \frametitle{Tematika}
+  %\frametitle{Tematika}
   Komponentinis programavimas – tai programų sistemų kūrimo būdas,
   surenkant jas iš atskirų dalių (komponentų). Jo žadamos savybės:
   \begin{enumerate}
@@ -34,6 +57,39 @@
     \item Praplečiamumas.
     \item Perpanaudojamumas.
   \end{enumerate}
+  \begin{handout}
+    Taigi, dėl to, kad programų sistemos didėja, atsiranda poreikis
+    priemonėms, kurios:
+    \begin{itemize}
+      \item leistų kurti sistemas evoliuciniu būdu, tai yra norint
+        pridėti naujas funkcijas, nereikia keisti jau esančių
+        realizacijos, bei
+      \item leistų darbus efektyviai paskirstyti didelei grupei žmonių.
+    \end{itemize}
+    Viena iš tai žadančių priemonių būtų komponentinis programavimas.
+    Komponentinis programavimas, tai yra programų sistemų kūrimo
+    būdas, jas surenkant iš atskirų dalių, komponentų, kurios
+    paprastai yra gaunamos iš trečiųjų šalių. Clemens Szyperski
+    teigimu:
+    \begin{itemize}
+      \item komponentinės sistemos yra lengviau modifikuojamos;
+      \item jas lengviau praplėsti bei;
+      \item patys komponentai yra lengvai perpanaudojami.
+    \end{itemize}
+  \end{handout}
+
+  \begin{handout}
+    Kuriant programų sistemas rūpi, kad jos būtų lengvai tobulinamos.
+    Komponentinis programavimas, tai yra programų sistemų kūrimo
+    būdas, jas surenkant iš atskirų dalių, komponentų, kurie
+    paprastai yra gaunami iš trečiųjų šalių. Clemens Szyperski
+    teigimu:
+    \begin{itemize}
+      \item komponentinės sistemos yra lengviau modifikuojamos;
+      \item jas lengviau praplėsti bei;
+      \item patys komponentai yra lengvai perpanaudojami.
+    \end{itemize}
+  \end{handout}
 \end{frame}
 
 \begin{frame}
@@ -44,6 +100,9 @@
     \item Priežastis yra dabartinių programavimo kalbų trūkumai.
     \item Scala – kalba, su kuria galima programuoti komponentiškai.
   \end{enumerate}
+  \begin{comment}
+    Scala kūrėjo Martino Odersky teigimu
+  \end{comment}
 \end{frame}
 
 \begin{frame}
@@ -62,11 +121,62 @@
   \end{enumerate}
 \end{frame}
 
-TODO: Komponento savybės.
-TODO: Komponentinis modelis.
-TODO: Debian komponentinis modelis.
-TODO: Scala komponentinis modelis.
-TODO: Scala komponentinio išskirtinumai.
+\section{Kaip siekta}
+
+\begin{frame}
+  \frametitle{Komponento savybės}
+  \begin{enumerate}
+    \item Fizinis diegimo vienetas.
+    \item Juoda dėžė.
+    \item Funkcionalumas pasiekiamas tik per išreikštines sąsajas.
+    \item Poreikius nurodo tik per išreikštines sąsajas.
+    \item Gali būti kuriamas nepriklausomai.
+    \item Gali būti perpanaudojamas.
+    \item Gali būti be pakeitimų įkomponuotas.
+    \item Gali būti lengvai pakeičiamas kitu.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Komponentinis modelis}
+  „Komponentinis modelis apibrėžia standartus komponentų
+  realizacijai, įvardinimui, tarpusavio sąveikai, pritaikymui,
+  kompozicijai, evoliucijai ir įdiegimui.“
+\end{frame}
+
+\begin{frame}
+  \frametitle{Debian paketų tvarkymo sistema}
+  \begin{itemize}
+    \item Clemensas Szyperski: operacinė sistema yra pirmoji sėkminga
+      komponentinė technologija.
+    \item Debian – komponentinė technologija?
+    \item Netenkina komponento savybės: priklausyti nuo sąsajų.
+    \item Akcentuoja perpanaudojamumą.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scala komponentinis modelis}
+  \begin{itemize}
+    \item Komponentas: klasė arba fragmentas.
+    \item Prašoma paslauga: abstraktus narys.
+    \item Teikiama paslauga: Konkretus narys.
+    \item Sujungiama: kompiliuojant.
+    \item Netenkina komponento savybės: yra fizinis diegimo vienetas.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scala komponentinio savybės}
+  \begin{itemize}
+    \item Sujungia komponentų kūrimo ir sujungimo lygius į vieną.
+    \item Akcentuoja modifikuojamumą ir praplečiamumą.
+    \item Palaiko vertikalią kompoziciją.
+    \item Išsiskiria naudojimo paprastumu.
+  \end{itemize}
+\end{frame}
+
+\section{Kas pasiekta}
 
 \begin{frame}
   \frametitle{Rezultatai}
@@ -95,87 +205,3 @@ TODO: Scala komponentinio išskirtinumai.
 \begin{frame}
   \frametitle{Klausimai?}
 \end{frame}
-
-\section{Probleminė situacija}
-
-% Apie ką ir kodėl kalbame.
-
-\begin{frame}
-  \frametitle{Probleminė situacija}
-  %\framesubtitle{TODO}
-  Dėl poreikio kurti vis didesnes verslo palaikymo sistemas yra
-  reikalingos priemonės, kurios:
-  \begin{enumerate}
-    \item Leistų kurti dideles sistemas evoliuciniu būdu.
-    \item Leistu darbus efektyviai paskirstyti didelei grupei
-      žmonių.
-  \end{enumerate}
-  \begin{comment}
-    Kadangi verslo palaikymo sistemos perima vis daugiau verslo
-    funkcijų, tai jos tampa vis didesnės ir todėl didėja poreikis
-    turėti priemones, kurios:
-    \begin{enumerate}
-      \item Leistų kurti dideles sistemas evoliuciniu būdu, kas
-        idealiu atveju būtų, kad papildant sistemą naujomis funkcijomis
-        nereikia lįsti prie jau esamų realizacijos.
-      \item Leistų sistemų kūrimo darbus efektyviai paskirstyti didelei
-        grupei žmonių.
-    \end{enumerate}
-  \end{comment}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Komponentinis}
-  \begin{enumerate}
-    \item Modifikuojamumas.
-    \item Praplečiamumas.
-    \item Perpanaudojamumas.
-  \end{enumerate}
-  \begin{comment}
-    Clemens Szyperski bei keleto kitų autorių teigimu sistemas kuriant
-    komponentiškai, jos būtų lengviau modifikuojamos ir praplečiamos
-    bei dėl to, kad komponentus nekeičiant galima naudoti keliose
-    sistemose, didėja perpanaudojamumas.
-  \end{comment}
-\end{frame}
-
-\begin{frame}
-  %\frametitle{Scala}
-  Martinas Odersky:
-  \begin{enumerate}
-    \item Komponentinių technologijų plitimas stringa.
-    \item Priežastis yra dabartinių programavimo kalbų trūkumai.
-    \item Scala – kalba, su kuria galima programuoti komponentiškai.
-  \end{enumerate}
-  \begin{comment}
-    Martino Odersky teigimu komponentinių technologijų plitimas stringa,
-    nes dabartinėse programavimo kalbose nėra realizuotos priemonės
-    leidžiančios apibrėžti ir sujungti komponentus. Jo siūlomas
-    sprendimas: programavimo kalba Scala, su kuria galima programuoti
-    komponentiškai.
-  \end{comment}
-\end{frame}
-
-\section{Darbo tikslas}
-
-% Ko buvo siekta atliekant darbą.
-
-\begin{frame}
-  \frametitle{Tikslas}
-  Patikrinti ar Scala kūrėjų teiginys, jog su Scala yra įmanoma
-  programuoti komponentiškai, yra teisingas.
-\end{frame}
-
-\begin{frame}
-  \frametitle{Uždaviniai}
-  \begin{enumerate}
-    \item Apibrėžti, kas yra objektinis programavimas.
-    \item Išsiaiškinti, kas yra komponentinis programavimas.
-    \item Patikrinti, ar su Scala galima programuoti komponentiškai.
-    \item 
-  \end{enumerate}<++>
-\end{frame}<++>
-
-\section{Darbo rezultatai}
-
-\section{Darbo išvados}
