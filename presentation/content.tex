@@ -58,27 +58,6 @@
     \item Perpanaudojamumas.
   \end{enumerate}
   \begin{handout}
-    Taigi, dėl to, kad programų sistemos didėja, atsiranda poreikis
-    priemonėms, kurios:
-    \begin{itemize}
-      \item leistų kurti sistemas evoliuciniu būdu, tai yra norint
-        pridėti naujas funkcijas, nereikia keisti jau esančių
-        realizacijos, bei
-      \item leistų darbus efektyviai paskirstyti didelei grupei žmonių.
-    \end{itemize}
-    Viena iš tai žadančių priemonių būtų komponentinis programavimas.
-    Komponentinis programavimas, tai yra programų sistemų kūrimo
-    būdas, jas surenkant iš atskirų dalių, komponentų, kurios
-    paprastai yra gaunamos iš trečiųjų šalių. Clemens Szyperski
-    teigimu:
-    \begin{itemize}
-      \item komponentinės sistemos yra lengviau modifikuojamos;
-      \item jas lengviau praplėsti bei;
-      \item patys komponentai yra lengvai perpanaudojami.
-    \end{itemize}
-  \end{handout}
-
-  \begin{handout}
     Kuriant programų sistemas rūpi, kad jos būtų lengvai tobulinamos.
     Komponentinis programavimas, tai yra programų sistemų kūrimo
     būdas, jas surenkant iš atskirų dalių, komponentų, kurie
@@ -93,22 +72,31 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Problema}
+  %\frametitle{Problema}
   Martinas Odersky:
   \begin{enumerate}
     \item Komponentinių technologijų plitimas stringa.
     \item Priežastis yra dabartinių programavimo kalbų trūkumai.
     \item Scala – kalba, su kuria galima programuoti komponentiškai.
   \end{enumerate}
-  \begin{comment}
-    Scala kūrėjo Martino Odersky teigimu
-  \end{comment}
+  \begin{handout}
+    Scala kūrėjo Martino Odersky teigimu komponentinių technologijų
+    kūrimas stringa. Priežastis, jo nuomone, yra tai, kad dabartinėse
+    programavimo kalbose trūksta priemonių leidžiančių apibrėžti
+    ir sujungti komponentus. Tam jis kartu su kolegomis sukūrė
+    programavimo kalbą Scala, su kuria, jo teigimu, galima
+    programuoti komponentiškai.
+  \end{handout}
 \end{frame}
 
 \begin{frame}
   \frametitle{Darbo tikslas}
   Patikrinti ar Scala kūrėjų teiginys, jog su Scala yra įmanoma
   programuoti komponentiškai, yra teisingas.
+  \begin{handout}
+    Mano darbo tikslas buvo patikrinti ar Scala kūrėjų teiginys, jog
+    su Scala yra įmanoma programuoti komponentiškai yra teisingas.
+  \end{handout}
 \end{frame}
 
 \begin{frame}
@@ -119,6 +107,20 @@
     \item Patikrinti, ar su Scala galima programuoti komponentiškai.
     \item Nustatyti Scala, kaip komponentinės technologijos, privalumus.
   \end{enumerate}
+  \begin{handout}
+    Skaidrėje pateikti uždaviniai, kuriais buvo siekiama tikslo
+    įgyvendinimo.
+
+    Kadangi Scala yra ir objektinė programavimo kalba, tai
+    norint suvokti, ką pridėjus ji tapo komponentinė, reikia
+    apibrėžti, kas yra objektinis programavimas.
+
+    Tada, aišku, reikia apibrėžti kas yra komponentinis, kokios jo
+    privalomosios savybės ir tuomet jomis remiantis galima patikrinti
+    ar Scala yra komponentinė technologija. O jei ji tokia yra,
+    tada nustatyti jos privalumus lyginant su kitomis komponentinėmis
+    technologijomis.
+  \end{handout}
 \end{frame}
 
 \section{Kaip siekta}
