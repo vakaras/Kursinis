@@ -1,4 +1,6 @@
-\documentclass[xetex,mathserif,serif]{beamer}
+\documentclass[]{beamer}
+%\documentclass{article}
+%\usepackage{beamerarticle}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FONT                                                                     %
@@ -31,8 +33,13 @@
 \usepackage{environ}
 
 \NewEnviron{comment}{}
+%\NewEnviron{handout}{%
+%\textbf{\large \insertframenumber{} skaidrė:}\par
+%\BODY}
 \NewEnviron{handout}{}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SLIDES                                                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usetheme{default}
@@ -52,6 +59,8 @@
   \vskip0pt%
 }
 \makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Komponentinis programavimas su Scala}
 \subtitle{Component-based programming with Scala}
