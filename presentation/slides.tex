@@ -37,6 +37,22 @@
 
 \usetheme{default}
 
+\setbeamertemplate{navigation symbols}{}
+
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[%
+    wd=\paperwidth,ht=4ex,dp=1ex,right]{date in head/foot}%
+    \hfill
+    {\large \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
 \title{Komponentinis programavimas su Scala}
 \subtitle{Component-based programming with Scala}
 \author{Vytautas Astrauskas}
