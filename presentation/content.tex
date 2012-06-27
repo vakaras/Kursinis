@@ -198,57 +198,84 @@
   \end{handout}
 \end{frame}
 
-%\begin{frame}
-  %\frametitle{Scala}
-  %\begin{enumerate}
-    %\item Abstraktūs tipai – nariai.
-    %\item Savo tipo anotavimas.
-    %\item Modulinė maišos kompozicija. Fragmentai \en{trait}.
-  %\end{enumerate}
-  %\begin{handout}
-    %Scala autoriai statines klasines stipriai tipizuotas objektines
-    %programavimo kalbas tokias kaip Java, C# ir C++ papildė trimis
-    %konstrukcijomis:
-    %\begin{enumerate}
-      %\item abstraktūs tipai – nariai konstrukcija leidžia turėti
-        %narius, kurie yra abstraktūs nariai;
-      %\item savo tipo anotavimas leidžia pakeisti „this“ tipą;
-      %\item fragmentai kartu su moduline maišos kompozicija leidžia
-        %turėti daugybinio paveldėjimo privalumus išvengiant
-        %rombo problemos.
-    %\end{enumerate}
-  %\end{handout}
-%\end{frame}
+\begin{frame}
+  \frametitle{Scala}
+  \begin{enumerate}
+    \item Abstraktūs tipai – nariai.
+    \item Savo tipo anotavimas.
+    \item Modulinė maišos kompozicija. Fragmentai \en{trait}.
+  \end{enumerate}
+  \begin{handout}
+    Scala autoriai statines klasines stipriai tipizuotas objektines
+    programavimo kalbas tokias kaip Java, C\# ir C++ papildė trimis
+    konstrukcijomis:
+    \begin{enumerate}
+      \item abstraktūs tipai – nariai konstrukcija leidžia turėti
+        narius, kurie yra abstraktūs nariai;
+      \item savo tipo anotavimas leidžia pakeisti „this“ tipą;
+      \item fragmentai kartu su moduline maišos kompozicija leidžia
+        turėti daugybinio paveldėjimo privalumus išvengiant
+        rombo problemos.
+    \end{enumerate}
+  \end{handout}
+\end{frame}
 
 \begin{frame}
   \frametitle{Scala komponentinis modelis}
   \begin{tabularx}{\textwidth}[]{X | X}
-    bla & bla \\
+    Realizacija. & Klasė, fragmentas. \\
+    \hline
+    Sąsajos. & Abstraktūs ir konkretūs nariai. \\
+    \hline
+    Meta duomenys. & Nereikalingi. \\
+    \hline
+    Tarpusavio sąveika. & Žinutėmis. \\
+    \hline
+    Pritaikymas. &
+      Konstruktoriaus parametrais, parametrizuojamais tipais. \\
+    \hline
+    Kompozicija. & Per paveldėjimo mechanizmą, kompiliuojant. \\
+    \hline
+    Evoliucijos palaikymas. & Atnaujinant perkompiliuoti. \\
+    \hline
+    Supakavimas ir įdiegimas. & \strong{Nėra.} \\
   \end{tabularx}
+  \begin{handout}
+    \begin{enumerate}
+      \item \emph{Realizacija.}
+        Komponentas gali būti realizuojamas, kaip \plangname{Scala} klasė
+        arba kaip fragmentas.
+      \item \emph{Sąsajos.}
+        Komponentas servisus, kurių jam reikia, nurodo kaip abstrakčius
+        narius, o kuriuos jis realizuoja – kaip konkrečius.
+      \item \emph{Įvardinimas.}
+        Komponentams globalūs vardai yra priskiriami taip pat, kaip ir
+        \plangname{Java} klasėms – pagal hierarchines vardų sritis.
+      \item \emph{Meta duomenys.} Kadangi \plangname{Scala} komponentai yra
+        sujungiami statiškai kompiliavimo metu, tai meta duomenys nėra
+        reikalingi.
+      \item \emph{Tarpusavio sąveika.}
+        Kadangi komponentų egzemplioriai \en{component instances} yra
+        objektai, tai jie sąveikauja keisdamiesi žinutėmis.
+      \item \emph{Pritaikymas.}
+        Komponentą pritaikyti konkrečiam atvejui galima jam pateikiant
+        kitokias jo abstrakčių narių realizacijas (pavyzdžiui, kitą
+        konkretų tipą). Taip pat komponento egzemplioriaus sukūrimo
+        metu jį galima pritaikyti pasinaudojant konstruktoriaus parametrais
+        bei parametrizuojamais tipais.
+      \item \emph{Kompozicija.}
+        Komponentai yra surišami kompiliavimo metu. Abstraktūs nariai su
+        jų realizacijomis yra sujungiami pagal sutampančią signatūrą.
+        Kompozicijos rezultatas yra naujas komponentas, kuris gali būti
+        toliau komponuojamas.
+      \item \emph{Evoliucijos palaikymas.}
+        Kadangi komponentai yra surišami kompiliavimo metu, tai norint
+        pakeisti vieną komponentą kitu reikia perkompiliuoti sistemą.
+        Taip pat nėra galimybės turėti dvi to paties komponento versijas
+        vienoje sistemoje.
+    \end{enumerate}
+  \end{handout}
 \end{frame}
-
-%\begin{frame}
-  %\frametitle{Scala komponentinis modelis}
-  %\begin{itemize}
-    %\item Komponentas: klasė arba fragmentas.
-    %\item Prašoma paslauga: abstraktus narys.
-    %\item Teikiama paslauga: konkretus narys.
-    %\item Sujungiama: kompiliuojant.
-    %\item Netenkina komponento savybės: yra fizinis diegimo vienetas.
-  %\end{itemize}
-  %\begin{handout}
-    %Dabar keletas žodžių apie Scala komponentinį modelį. Scala
-    %programavimo kalboje komponentus galima realizuoti, kaip klases arba
-    %fragmentus (angliškai „trait“). Komponentai prašomas paslaugas
-    %nurodo per abstrakčius narius, o teikiamas per konkrečius ir tada
-    %kompiliavimo metu nariai yra sujungiami pagal sutampančias
-    %signatūras. Vėlgi, palyginus su komponento apibrėžimu, galime
-    %matyti, kad Scala komponentai netenkina tos savybės, jog jie nėra
-    %fiziniai diegimo vienetai, bet šią problemą galima nesunkiai
-    %apeiti kitomis priemonėmis ir todėl galima būtų teigti, kad
-    %Scala irgi yra komponentinė technologija.
-  %\end{handout}
-%\end{frame}
 
 \section{Kas pasiekta}
 
@@ -278,6 +305,8 @@
   \begin{itemize}
     \item Sujungia komponentų kūrimo ir komponavimo lygius į vieną.
     \item Išsiskiria naudojimo paprastumu.
+    \item Nėra apibrėžtas supakavimas ir įdiegimas → sudėtingas
+      perpanaudojamumas.
     \item Akcentuoja modifikuojamumą ir praplečiamumą.
   \end{itemize}
   \begin{handout}
