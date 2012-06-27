@@ -12,6 +12,7 @@ XELATEX_COMMAND=xelatex ${XELATEX_ARGS}
 
 all: prepare dist/slides.pdf
 
+.PHONY: dist/slides.pdf
 dist/slides.pdf: ${TEX_FILES}
 	echo ${TEXINPUTS}
 	$(XELATEX_COMMAND)
