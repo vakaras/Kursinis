@@ -82,19 +82,22 @@
 
 \begin{frame}
   %\frametitle{Problema}
-  Martinas Odersky:
+  Martinas Odersky 2005:
   \begin{enumerate}
     \item Komponentinių technologijų plitimas stringa.
     \item Priežastis yra dabartinių programavimo kalbų trūkumai.
     \item Scala – kalba, su kuria galima programuoti komponentiškai.
   \end{enumerate}
   \begin{handout}
-    Scala kūrėjo Martino Odersky teigimu komponentinių technologijų
-    kūrimas stringa. Priežastis, jo nuomone, yra tai, kad dabartinėse
-    programavimo kalbose trūksta priemonių leidžiančių apibrėžti
-    ir sujungti komponentus. Tam jis kartu su kolegomis sukūrė
-    programavimo kalbą Scala, su kuria, jo teigimu, galima
-    programuoti komponentiškai.
+    \begin{itemize}
+      \item Scala kūrėjo Martino Odersky teigimu komponentinių
+        technologijų kūrimas stringa.
+      \item Priežastis, jo nuomone, yra tai, kad dabartinėse
+        programavimo kalbose trūksta priemonių leidžiančių
+        apibrėžti ir sujungti komponentus.
+      \item Tam jis kartu su kolegomis sukūrė programavimo kalbą
+        Scala, su kuria, jo teigimu, galima programuoti komponentiškai.
+    \end{itemize}
   \end{handout}
 \end{frame}
 
@@ -159,17 +162,16 @@
     Iš pradžių galima bandyti apibrėžti komponentinį programavimą
     pasinaudojant komponento sąvoka. Išnagrinėjus keleto autorių
     pateikiamus komponento apibrėžimus, galima būtų išskirti skaidrėje
-    matomas \arabic{enumi} komponento savybes. Iš jų, norėčiau
-    akcentuoti \ref{enum:component:fiz}, tai yra, kad komponentas yra
-    fizinis diegimo vienetas, ir \ref{enum:component:req} – komponentas
-    poreikius nurodo tik per išreikštines sąsajas.
+    matomas \arabic{enumi} komponento savybes. Iš jų norėčiau
+    atkreipti dėmesį į \ref{enum:component:fiz}-ąją, tai yra, kad
+    komponentas yra fizinis diegimo vienetas.
   \end{handout}
 \end{frame}
 
 \begin{frame}
   \frametitle{Komponentinis modelis}
   \begin{itemize}
-    \item Problemos su komponento apibrėžimu:
+    \item Problemos su tyrimu, naudojant komponento apibrėžimą:
       \begin{enumerate}
         \item Nėra bendrai priimto apibrėžimo.
         \item Neaišku, kaip kuriami komponentai.
@@ -177,8 +179,8 @@
       \end{enumerate}
     \item „Komponentinis modelis apibrėžia standartus komponentų
       realizacijai, įvardinimui, tarpusavio sąveikai, pritaikymui,
-      kompozicijai, evoliucijai ir įdiegimui.“ (\mbox{G. T. Heineman},
-      \mbox{W. T. Councill} 2001)
+      kompozicijai, evoliucijai ir įdiegimui.“ (\mbox{G. T. Heinemanas},
+      \mbox{W. T. Councillas} 2001)
   \end{itemize}
   \begin{handout}
     Komponentinio programavimo tyrimas naudojantis komponento apibrėžimu
@@ -192,9 +194,11 @@
     Dėl šių priežasčių tampa sudėtinga lyginti skirtingas
     komponentines technologijas. Tam Heineman ir Councill įvedė
     komponentinio modelio sąvoką:
-    „Komponentinis modelis apibrėžia standartus komponentų
-    realizacijai, įvardinimui, tarpusavio sąveikai, pritaikymui,
-    kompozicijai, evoliucijai ir įdiegimui.“
+    \begin{quote}
+      „Komponentinis modelis apibrėžia standartus komponentų
+      realizacijai, įvardinimui, tarpusavio sąveikai, pritaikymui,
+      kompozicijai, evoliucijai ir įdiegimui.“
+    \end{quote}
   \end{handout}
 \end{frame}
 
@@ -211,7 +215,7 @@
     konstrukcijomis:
     \begin{enumerate}
       \item abstraktūs tipai – nariai konstrukcija leidžia turėti
-        narius, kurie yra abstraktūs nariai;
+        narius, kurie yra abstraktūs tipai;
       \item savo tipo anotavimas leidžia pakeisti „this“ tipą;
       \item fragmentai kartu su moduline maišos kompozicija leidžia
         turėti daugybinio paveldėjimo privalumus išvengiant
@@ -253,16 +257,15 @@
         \plangname{Java} klasėms – pagal hierarchines vardų sritis.
       \item \emph{Meta duomenys.} Kadangi \plangname{Scala} komponentai yra
         sujungiami statiškai kompiliavimo metu, tai meta duomenys nėra
-        reikalingi.
+        reikalingi. (Apibrėžimo autoriai nurodo, kad ši informacija
+        yra reikalinga vykdymo metu norint sujungti komponentus.)
       \item \emph{Tarpusavio sąveika.}
         Kadangi komponentų egzemplioriai \en{component instances} yra
         objektai, tai jie sąveikauja keisdamiesi žinutėmis.
       \item \emph{Pritaikymas.}
-        Komponentą pritaikyti konkrečiam atvejui galima jam pateikiant
-        kitokias jo abstrakčių narių realizacijas (pavyzdžiui, kitą
-        konkretų tipą). Taip pat komponento egzemplioriaus sukūrimo
-        metu jį galima pritaikyti pasinaudojant konstruktoriaus parametrais
-        bei parametrizuojamais tipais.
+        Komponento egzemplioriaus sukūrimo metu jį galima pritaikyti
+        pasinaudojant konstruktoriaus parametrais bei parametrizuojamais
+        tipais.
       \item \emph{Kompozicija.}
         Komponentai yra surišami kompiliavimo metu. Abstraktūs nariai su
         jų realizacijomis yra sujungiami pagal sutampančią signatūrą.
@@ -271,8 +274,6 @@
       \item \emph{Evoliucijos palaikymas.}
         Kadangi komponentai yra surišami kompiliavimo metu, tai norint
         pakeisti vieną komponentą kitu reikia perkompiliuoti sistemą.
-        Taip pat nėra galimybės turėti dvi to paties komponento versijas
-        vienoje sistemoje.
     \end{enumerate}
   \end{handout}
 \end{frame}
@@ -283,38 +284,41 @@
   \frametitle{Rezultatai}
   \begin{enumerate}
     \item Išskirtos esminės komponento savybės.
-    \item Parodyta, kad Scala programavimo kalba ir Debian paketų
-      tvarkymo sistema yra komponentinės technologijos.
-    \item Nustatyta, kad pagrindinis Scala komponentinio modelio
-      privalumas yra jo paprastumas.
+    \item Nustatyta, kad Scala kūrėjų siūlomas būdas iš tiesų gali
+      būti laikomas komponentiniu programavimu.
   \end{enumerate}
   \begin{handout}
     Taigi, esminiai darbai, kurie buvo atlikti kursinio darbo metu:
     \begin{enumerate}
-      \item Buvo išskirtos esminės komponento savybės.
-      \item Parodyta, kad Scala programavimo kalba ir Debian paketų
-        tvarkymo sistema yra komponentinės technologijos.
-      \item Nustatyta, kad pagrindinis Scala komponentinio modelio
-        privalumas yra jo paprastumas.
+      \item Išskirtos esminės komponento savybės.
+      \item Nustatyta, kad Scala kūrėjų siūlomas būdas iš tiesų gali
+        būti laikomas komponentiniu programavimu.
     \end{enumerate}
   \end{handout}
 \end{frame}
 
 \begin{frame}
   \frametitle{Išvados}
-  \begin{itemize}
+  \begin{enumerate}
     \item Sujungia komponentų kūrimo ir komponavimo lygius į vieną.
     \item Išsiskiria naudojimo paprastumu.
-    \item Nėra apibrėžtas supakavimas ir įdiegimas → sudėtingas
+    \item Nėra apibrėžtas supakavimas ir įdiegimas $\to$ prastas
       perpanaudojamumas.
     \item Akcentuoja modifikuojamumą ir praplečiamumą.
-  \end{itemize}
+  \end{enumerate}
   \begin{handout}
-    Scala, kaip komponentinė technologija yra ypatinga tuo, kad
-    sujungia komponentų kūrimo ir jų komponavimo lygius į vieną.
-    Tuo pačiu ji pasižymi naudojimo paprastumu. Pavyzdžiui, komponentinį
-    „Sveikas pasauli“ galima būtų realizuoti su 10 eilučių kodo.
-    Scala, kitaip nei Debian akcentuoja modifikuojamumą ir praplečiamumą.
+    \begin{enumerate}
+      \item Scala, kaip komponentinė technologija yra ypatinga tuo, kad
+        sujungia komponentų kūrimo ir jų komponavimo lygius į vieną.
+      \item Tuo pačiu ji pasižymi naudojimo paprastumu. Pavyzdžiui,
+        komponentinį „Sveikas pasauli“ galima būtų realizuoti su
+        10 eilučių kodo.
+      \item Bet tai, kad nėra apibrėžtas komponentų perdavimo formatas,
+        apsunkina jos kodo perpanaudojamumą.
+      \item Taigi Scala, kaip ir kiti komponentinių modelių
+        klasifikacijos autorių tirti modeliai akcentuoja
+        modifikuojamumą ir praplečiamumą.
+    \end{enumerate}
   \end{handout}
 \end{frame}
 
