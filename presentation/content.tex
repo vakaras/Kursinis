@@ -134,119 +134,121 @@
 
 \section{Kaip siekta}
 
+\begin{handout}
+  Dabar trumpai pristatysiu komponentinį programavimą, tada Scala
+  naujas kalbos konstrukcijas ir galiausiai pristatysiu, kaip
+  Scala realizuoja.
+\end{handout}
+
 \begin{frame}
   \frametitle{Komponento savybės}
   \begin{enumerate}
-    \item Fizinis diegimo vienetas.
+    \item \label{enum:component:fiz} Fizinis diegimo vienetas.
     \item Juoda dėžė.
     \item Funkcionalumas pasiekiamas tik per išreikštines sąsajas.
-    \item Poreikius nurodo tik per išreikštines sąsajas.
+    \item \label{enum:component:req} Poreikius nurodo tik per
+      išreikštines sąsajas.
     \item Gali būti kuriamas nepriklausomai.
     \item Gali būti perpanaudojamas.
     \item Gali būti be pakeitimų įkomponuotas.
     \item Gali būti pakeičiamas kitu.
   \end{enumerate}
+  Pagal Clemensą Szyperski 2002, Desmondą F. D'Souza ir Alaną Cemeroną
+  Willsą 1998 bei Joną Hopkinsą 2000.
   \begin{handout}
     Iš pradžių galima bandyti apibrėžti komponentinį programavimą
     pasinaudojant komponento sąvoka. Išnagrinėjus keleto autorių
-    pateikiamus komponento apibrėžimus, galima būtų išskirti tokias
-    komponento savybes:
-    \begin{enumerate}
-      \item Komponentas yra fizinis diegimo vienetas.
-      \item Jis yra juoda dėžė.
-      \item Prie jo funkcionalumo galima prieiti tik per išreikštinai
-        apibrėžtas sąsajas.
-      \item Komponentas savo poreikius nurodo tik per išreikštinai
-        apibrėžtas sąsajas.
-      \item Komponentas gali būti kuriamas nepriklausomai.
-      \item Gali būti perpanaudojamas.
-      \item Gali būti be pakeitimų sujungtas su kitais komponentais
-        į vieną sistemą.
-      \item Gali būti sistemoje pakeičiamas kitu, jei naujasis įgyvendina
-        visą senojo funkcionalumą ir nereikalauja nieko daugiau.
-    \end{enumerate}
+    pateikiamus komponento apibrėžimus, galima būtų išskirti skaidrėje
+    matomas \arabic{enumi} komponento savybes. Iš jų, norėčiau
+    akcentuoti \ref{enum:component:fiz}, tai yra, kad komponentas yra
+    fizinis diegimo vienetas, ir \ref{enum:component:req} – komponentas
+    poreikius nurodo tik per išreikštines sąsajas.
   \end{handout}
 \end{frame}
 
 \begin{frame}
   \frametitle{Komponentinis modelis}
-  „Komponentinis modelis apibrėžia standartus komponentų
-  realizacijai, įvardinimui, tarpusavio sąveikai, pritaikymui,
-  kompozicijai, evoliucijai ir įdiegimui.“
+  \begin{itemize}
+    \item Problemos su komponento apibrėžimu:
+      \begin{enumerate}
+        \item Nėra bendrai priimto apibrėžimo.
+        \item Neaišku, kaip kuriami komponentai.
+        \item Neaišku, kaip iš jų surenkama sistema.
+      \end{enumerate}
+    \item „Komponentinis modelis apibrėžia standartus komponentų
+      realizacijai, įvardinimui, tarpusavio sąveikai, pritaikymui,
+      kompozicijai, evoliucijai ir įdiegimui.“ (\mbox{G. T. Heineman},
+      \mbox{W. T. Councill} 2001)
+  \end{itemize}
   \begin{handout}
-    Komponentinio programavimo apibrėžimas naudojant komponento
-    sąvoką, turi trūkumą, kad remiantis juo sudėtinga nagrinėti
-    skirtingas komponentinių sistemų kūrimo metodikas ir jas
-    lyginti. Tam tikslui yra naudinga įsivesti komponentinio modelio
-    sąvoką. Skaidrėje pateiktas Heineman ir Councill komponentinio
-    modelio apibrėžimas:
+    Komponentinio programavimo tyrimas naudojantis komponento apibrėžimu
+    turi trūkumus:
+    \begin{itemize}
+      \item nėra visuotinio sutarimo, kas yra komponentas;
+      \item komponento apibrėžimas nepasako, nei kaip yra kuriami
+        komponentai, nei kaip iš tų komponentų vėliau yra surenkama
+        sistema.
+    \end{itemize}
+    Dėl šių priežasčių tampa sudėtinga lyginti skirtingas
+    komponentines technologijas. Tam Heineman ir Councill įvedė
+    komponentinio modelio sąvoką:
     „Komponentinis modelis apibrėžia standartus komponentų
     realizacijai, įvardinimui, tarpusavio sąveikai, pritaikymui,
     kompozicijai, evoliucijai ir įdiegimui.“
   \end{handout}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Debian paketų tvarkymo sistema}
-  \begin{itemize}
-    \item Clemensas Szyperski: operacinė sistema yra pirmoji sėkminga
-      komponentinė technologija.
-    \item Debian – komponentinė technologija?
-    \item Netenkina komponento savybės: priklausyti nuo sąsajų.
-    \item Akcentuoja perpanaudojamumą.
-  \end{itemize}
-  \begin{handout}
-    Turint komponento bei komponentinio modelio apibrėžimus galima
-    patikrinti, ar kai kurios technologijos yra komponentinės. Pradėkime
-    nuo Debian paketų tvarkymo sistemos. Clemenso Szyperski teigimu
-    operacinė sistema yra pirmoji sėkminga komponentinė technologija.
-    Čia komponentu yra laikoma programa. Klausimas: ar Debian yra
-    komponentinė technologija? Palyginus Debian paketo ir komponento
-    savybes, matosi, kad Debian paketas ne visada priklauso nuo sąsajos.
-    Nepaisant to, galima būtų teigti, kad Debian yra komponentinė
-    technologija, kuri iš Szyperski išvardintų komponentinio savybių
-    akcentuoja perpanaudojamumą.
-  \end{handout}
-\end{frame}
+%\begin{frame}
+  %\frametitle{Scala}
+  %\begin{enumerate}
+    %\item Abstraktūs tipai – nariai.
+    %\item Savo tipo anotavimas.
+    %\item Modulinė maišos kompozicija. Fragmentai \en{trait}.
+  %\end{enumerate}
+  %\begin{handout}
+    %Scala autoriai statines klasines stipriai tipizuotas objektines
+    %programavimo kalbas tokias kaip Java, C# ir C++ papildė trimis
+    %konstrukcijomis:
+    %\begin{enumerate}
+      %\item abstraktūs tipai – nariai konstrukcija leidžia turėti
+        %narius, kurie yra abstraktūs nariai;
+      %\item savo tipo anotavimas leidžia pakeisti „this“ tipą;
+      %\item fragmentai kartu su moduline maišos kompozicija leidžia
+        %turėti daugybinio paveldėjimo privalumus išvengiant
+        %rombo problemos.
+    %\end{enumerate}
+  %\end{handout}
+%\end{frame}
 
 \begin{frame}
   \frametitle{Scala komponentinis modelis}
-  \begin{itemize}
-    \item Komponentas: klasė arba fragmentas.
-    \item Prašoma paslauga: abstraktus narys.
-    \item Teikiama paslauga: konkretus narys.
-    \item Sujungiama: kompiliuojant.
-    \item Netenkina komponento savybės: yra fizinis diegimo vienetas.
-  \end{itemize}
-  \begin{handout}
-    Dabar keletas žodžių apie Scala komponentinį modelį. Scala
-    programavimo kalboje komponentus galima realizuoti, kaip klases arba
-    fragmentus (angliškai „trait“). Komponentai prašomas paslaugas
-    nurodo per abstrakčius narius, o teikiamas per konkrečius ir tada
-    kompiliavimo metu nariai yra sujungiami pagal sutampančias
-    signatūras. Vėlgi, palyginus su komponento apibrėžimu, galime
-    matyti, kad Scala komponentai netenkina tos savybės, jog jie nėra
-    fiziniai diegimo vienetai, bet šią problemą galima nesunkiai
-    apeiti kitomis priemonėmis ir todėl galima būtų teigti, kad
-    Scala irgi yra komponentinė technologija.
-  \end{handout}
+  \begin{tabularx}{\textwidth}[]{X | X}
+    bla & bla \\
+  \end{tabularx}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Scala komponentinio savybės}
-  \begin{itemize}
-    \item Sujungia komponentų kūrimo ir komponavimo lygius į vieną.
-    \item Išsiskiria naudojimo paprastumu.
-    \item Akcentuoja modifikuojamumą ir praplečiamumą.
-  \end{itemize}
-  \begin{handout}
-    Scala, kaip komponentinė technologija yra ypatinga tuo, kad
-    sujungia komponentų kūrimo ir jų komponavimo lygius į vieną.
-    Tuo pačiu ji pasižymi naudojimo paprastumu. Pavyzdžiui, komponentinį
-    „Sveikas pasauli“ galima būtų realizuoti su 10 eilučių kodo.
-    Scala, kitaip nei Debian akcentuoja modifikuojamumą ir praplečiamumą.
-  \end{handout}
-\end{frame}
+%\begin{frame}
+  %\frametitle{Scala komponentinis modelis}
+  %\begin{itemize}
+    %\item Komponentas: klasė arba fragmentas.
+    %\item Prašoma paslauga: abstraktus narys.
+    %\item Teikiama paslauga: konkretus narys.
+    %\item Sujungiama: kompiliuojant.
+    %\item Netenkina komponento savybės: yra fizinis diegimo vienetas.
+  %\end{itemize}
+  %\begin{handout}
+    %Dabar keletas žodžių apie Scala komponentinį modelį. Scala
+    %programavimo kalboje komponentus galima realizuoti, kaip klases arba
+    %fragmentus (angliškai „trait“). Komponentai prašomas paslaugas
+    %nurodo per abstrakčius narius, o teikiamas per konkrečius ir tada
+    %kompiliavimo metu nariai yra sujungiami pagal sutampančias
+    %signatūras. Vėlgi, palyginus su komponento apibrėžimu, galime
+    %matyti, kad Scala komponentai netenkina tos savybės, jog jie nėra
+    %fiziniai diegimo vienetai, bet šią problemą galima nesunkiai
+    %apeiti kitomis priemonėmis ir todėl galima būtų teigti, kad
+    %Scala irgi yra komponentinė technologija.
+  %\end{handout}
+%\end{frame}
 
 \section{Kas pasiekta}
 
@@ -273,26 +275,17 @@
 
 \begin{frame}
   \frametitle{Išvados}
-  \begin{enumerate}
-    \item Praplečiamumas ir modifikuojamumas: Scala.
-    \item Perpanaudojamumas: Debian.
-    \item Visos trys(?):
-      \begin{enumerate}
-        \item Visų komponento savybių realizavimas be išimčių.
-        \item Platinimo ir įdiegimo mechanizmų apibrėžimas.
-      \end{enumerate}
-  \end{enumerate}
+  \begin{itemize}
+    \item Sujungia komponentų kūrimo ir komponavimo lygius į vieną.
+    \item Išsiskiria naudojimo paprastumu.
+    \item Akcentuoja modifikuojamumą ir praplečiamumą.
+  \end{itemize}
   \begin{handout}
-    Apibendrinat: Scala „duoda“ praplečiamumą ir modifikuojamumą, o
-    Debian „duoda“ perpanaudojamumą. Tikslas, aišku, yra turėti
-    visas tris savybes. Taigi iš turimų pavyzdžių analizės galima
-    būtų kelti hipotezę, kad visas tris savybes galėtų duoti komponentinė
-    technologija, kurios:
-    \begin{itemize}
-      \item komponentai tenkintų visas komponento savybes be išimčių ir
-      \item kuri apibrėžtų komponentų platinimo bei automatinio
-        įdiegimo kartu su priklausomybėmis mechanizmus.
-    \end{itemize}
+    Scala, kaip komponentinė technologija yra ypatinga tuo, kad
+    sujungia komponentų kūrimo ir jų komponavimo lygius į vieną.
+    Tuo pačiu ji pasižymi naudojimo paprastumu. Pavyzdžiui, komponentinį
+    „Sveikas pasauli“ galima būtų realizuoti su 10 eilučių kodo.
+    Scala, kitaip nei Debian akcentuoja modifikuojamumą ir praplečiamumą.
   \end{handout}
 \end{frame}
 
