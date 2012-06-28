@@ -144,31 +144,6 @@
 \end{handout}
 
 \begin{frame}
-  \frametitle{Komponento savybės}
-  \begin{enumerate}
-    \item \label{enum:component:fiz} Fizinis diegimo vienetas.
-    \item Juoda dėžė.
-    \item Funkcionalumas pasiekiamas tik per išreikštines sąsajas.
-    \item \label{enum:component:req} Poreikius nurodo tik per
-      išreikštines sąsajas.
-    \item Gali būti kuriamas nepriklausomai.
-    \item Gali būti perpanaudojamas.
-    \item Gali būti be pakeitimų įkomponuotas.
-    \item Gali būti pakeičiamas kitu.
-  \end{enumerate}
-  Pagal Clemensą Szyperski 2002, Desmondą F. D'Souza ir Alaną Cemeroną
-  Willsą 1998 bei Joną Hopkinsą 2000.
-  \begin{handout}
-    Iš pradžių galima bandyti apibrėžti komponentinį programavimą
-    pasinaudojant komponento sąvoka. Išnagrinėjus keleto autorių
-    pateikiamus komponento apibrėžimus, galima būtų išskirti skaidrėje
-    matomas \arabic{enumi} komponento savybes. Iš jų norėčiau
-    atkreipti dėmesį į \ref{enum:component:fiz}-ąją, tai yra, kad
-    komponentas yra fizinis diegimo vienetas.
-  \end{handout}
-\end{frame}
-
-\begin{frame}
   \frametitle{Komponentinis modelis}
   \begin{itemize}
     \item Problemos su tyrimu, naudojant komponento apibrėžimą:
@@ -181,24 +156,61 @@
       realizacijai, įvardinimui, tarpusavio sąveikai, pritaikymui,
       kompozicijai, evoliucijai ir įdiegimui.“ (\mbox{G. T. Heinemanas},
       \mbox{W. T. Councillas} 2001)
+      \begin{itemize}
+        \item Sąsajos.
+        \item Meta duomenys.
+      \end{itemize}
   \end{itemize}
   \begin{handout}
-    Komponentinio programavimo tyrimas naudojantis komponento apibrėžimu
-    turi trūkumus:
+    Bandant analizuoti komponentinį programavimą pasinaudojant komponento
+    apibrėžimu kyla problemų:
     \begin{itemize}
-      \item nėra visuotinio sutarimo, kas yra komponentas;
+      \item nėra bendrai priimto apibrėžimo (Clemensas Szyperski
+        pateikia vienokį, Desmondas F. D'Souza su Alanu Cemeronu
+        Willsu pateikia kitokį, ir t. t.);
       \item komponento apibrėžimas nepasako, nei kaip yra kuriami
         komponentai, nei kaip iš tų komponentų vėliau yra surenkama
         sistema.
     \end{itemize}
     Dėl šių priežasčių tampa sudėtinga lyginti skirtingas
-    komponentines technologijas. Tam Heineman ir Councill įvedė
+    komponentines technologijas. Tam Heinemanas ir Councillas įvedė
     komponentinio modelio sąvoką:
     \begin{quote}
       „Komponentinis modelis apibrėžia standartus komponentų
       realizacijai, įvardinimui, tarpusavio sąveikai, pritaikymui,
       kompozicijai, evoliucijai ir įdiegimui.“
     \end{quote}
+    Pačiame apibrėžime autoriai nepamini, bet savo knygoje taip pat
+    išskiria sąsajų ir meta duomenų standartus. Pagal šiuos 9
+    punktus aš vėliau analizuosiu Scala, o prieš tai norėčiau
+    pristatyti jos „naujoves“.
+
+    Klausimams:
+    \begin{enumerate}
+      \item \emph{Sąsajos} – kokiu būdu yra aprašoma kaip naudotis
+        komponentu.
+      \item \emph{Įvardinimas} – kokiu būdu yra priskiriami globaliai
+        unikalūs vardai sąsajoms ir komponentams. Autoriai išskiria
+        du pagrindinius būdus: unikalūs identifikatoriai ir
+        hierarchinės vardų sritys.
+      \item \emph{Meta duomenys} – informacija apie komponentus, sąsajas
+        ir jų ryšius. Taip pat komponentinio modelio teikiamos paslaugos
+        šiai informacijai gauti. Šie duomenys yra reikalingi tam, kad
+        galima būtų dinamiškai sujungti komponentus, įskaitant ir
+        nutolusius.
+      \item \emph{Tarpusavio sąveika} – kokiu būdu komponentai bendrauja
+        ir keičiasi informacija tarpusavyje.
+      \item \emph{Pritaikymas} – kokias galimybes turi komponento
+        naudotojas, norintis komponentą pritaikyti savo poreikiams.
+      \item \emph{Kompozicija} – sąsajos ir taisyklės komponentų
+        sujungimui į ansamblius, jų pakeitimui bei pridėjimui į jau
+        egzistuojančius.
+      \item \emph{Evoliucijos palaikymas} – taisyklės ir paslaugos
+        komponentų ir sąsajų pakeitimui naujesnėmis versijomis.
+      \item \emph{Supakavimas ir įdiegimas} – kaip turėtų būti supakuojami
+        komponento realizacija bei resursai, reikalingi jo įdiegimui
+        ir sukonfigūravimui.
+    \end{enumerate}
   \end{handout}
 \end{frame}
 
@@ -226,10 +238,12 @@
 
 \begin{frame}
   \frametitle{Scala komponentinis modelis}
-  \begin{tabularx}{\textwidth}[]{X | X}
+  \begin{tabularx}{\textwidth}[]{l | X}
     Realizacija. & Klasė, fragmentas. \\
     \hline
     Sąsajos. & Abstraktūs ir konkretūs nariai. \\
+    \hline
+    Įvardinimas. & Hierarchinės vardų sritys. \\
     \hline
     Meta duomenys. & Nereikalingi. \\
     \hline
